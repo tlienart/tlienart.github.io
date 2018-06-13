@@ -5,6 +5,7 @@
 .content {
     padding-left: 12.5%;
     padding-right: 12.5%;
+    line-height: 1.2em;
 }
 
 @media (min-width: 880px) {
@@ -26,13 +27,24 @@
 .content h1 {
     padding-bottom: 0.5em;
     border-bottom: 3px double lightgrey;
+    margin-top: 1.5em;
     margin-bottom: 1em;
 }
 
 .content h2 {
     padding-bottom: 0.3em;
     border-bottom: 1px solid lightgrey;
+    margin-top: 2em;
     margin-bottom: 1em;
+}
+
+/* ==================================================================
+    GENERAL FORMATTING
+================================================================== */
+
+/* spacing between bullet points */
+.content li p {
+        margin: 10px 0;
 }
 
 
@@ -58,7 +70,7 @@ body {
     BOXES
 ================================================================== */
 
-.colbox1 {
+.colbox-yellow {
     background-color: yellow;
     opacity: 50%;
     padding: 10px;

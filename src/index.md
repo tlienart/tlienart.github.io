@@ -18,4 +18,6 @@ If you happen to see a dubious statement, a mistake or would like to make a sugg
 If you would like to be updated when new posts appear, you can follow me on [twitter](https://twitter.com/t_lienart).
 
 * [opti - intro](pub/cvx_opti/intro.html)
+* [opti - ca1](pub/cvx_opti/ca_1.html)
+* [opti - ca2](pub/cvx_opti/ca_2.html)
 * [sandbox - tests](pub/tests/test.html)

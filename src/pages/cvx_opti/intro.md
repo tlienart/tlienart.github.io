@@ -1,5 +1,4 @@
 @def title = "Introduction to Convex Optimisation"
-@def hascode = false
 
 <!--
 TODO:
@@ -8,7 +7,7 @@ TODO:
 * add link to mirror descent (same place)
 -->
 
-# Convex Optimisation
+# Introduction to Convex Optimisation
 
 > *If you haven't already, please take a minute to read !LINK HERE! explaining the approach taken in the notes on this website.*
 

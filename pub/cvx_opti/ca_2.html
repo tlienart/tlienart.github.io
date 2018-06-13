@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-UK">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/css/main.css">
+		 <link rel="stylesheet" href="/css/content.css"></link>
+
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.css"></link>
+<script src="/libs/katex/katex.js"></script>
+<script src="/libs/katex/auto-render.js"></script>
+
+		
+	</head>
+<body>
+<!-- CONTENT IS APPENDED HERE -->
+<div class=content>
+<h1>More Convex Analysis</h1>
+<p>We add here a few more results of Convex Analysis which can be skipped in a first reading. You will find here:</p>
+<ul>
+<li><p>convex conjugate of the convex conjugate,</p>
+</li>
+<li><p>link between \(\partial f\) and \(\partial f^{\star}\),</p>
+</li>
+<li><p>link between <em>Lipschitz continuity</em> and strong convexity,</p>
+</li>
+<li><p>link between the Bregman divergence associated with a function and that of its convex conjugate.</p>
+</li>
+</ul>
+<h2>Conjugate of the conjugate</h2>
+<p>We had claimed that for \(f\in\Gamma_{0}(X)\), \(f^{\star\star}=f\). A &#40;slightly hand-wavy&#41; proof for this goes as follows:</p>
+<p>$$
+\begin{array}{c}
+f^{\star\star}(z) &=& \max_{y} \left[\langle z,y\rangle-f^{\star}(y)\right]\\
+	&=& \max_{y}\min_{x} \left[\langle z-x,y\rangle + f(x) \right].
+\end{array}
+$$</p>
+<p>Provided everything is finite, the max and the min can be swapped and we are then left with</p>
+<p>$$
+\begin{array}{c}
+f^{\star\star}(z)&=& \min_{x}\left\{ f(x)+\left[ \max_{y} \langle z-x,y\rangle\right]\right\}
+\end{array}
+$$</p>
+<p>but the inner max is infinite unless \(z=x\) which leads to \(f^{\star\star}(z)=f(z)\).</p>
+<h2>Subdifferential of the convex conjugate</h2>
+<p>Recall that the subgradient of a convex function can be expressed in terms of its convex conjugate as follows:</p>
+<p>$$
+\begin{array}{c}
+\partial f(x) &=& \{ y\,|\, f^{\star}(y) \,=\, \langle x,y\rangle - f(x)\}.
+\end{array}
+$$</p>
+<p>Rearranging terms then yields the following equivalences:</p>
+<p>$$
+\begin{array}{c}
+f(x)+f^\star(y) \,=\, \langle x,y\rangle &\Longleftrightarrow&y \,\in\, \partial f(x)
+&\Longleftrightarrow& x\,\in\, \partial f^\star(y),
+\end{array}
+$$</p>
+<p>where, for the second equivalence, we used that \(f^{\star\star}=f\) when \(f\in \Gamma_0(X)\).</p>
+<p>If we consider all such couples of points, we can write \(\{x,y \,|\, y\in\partial f(x)\} = \{x,y\,|\, x\in \partial f^\star(y)\}\) and if we then consider the notion of /inverse/ of the subdifferential operator, this can be re-written as</p>
+<p>$$
+\begin{array}{c}
+\{x,y\,|\, x\in(\partial f)^{-1}(y)\} &=& \{x,y\,|\, x\in \partial f^\star(y)\}.
+\end{array}
+$$</p>
+<p>We thus have for \(f\in\Gamma_0(X)\):</p>
+<p>$$
+\begin{array}{c}
+(\partial f)^{-1} &\equiv & \partial f^\star.
+\end{array}
+$$</p>
+<h2>Lipschitz continuity and Strong convexity</h2>
+<p>Let us first recall the definitions: a function \(\phi\) is \(\beta\)<em>-Lipschitz-continuous</em> if \(\forall u,v\in \text{dom}\, \phi\) the following inequality holds:</p>
+<p>$$
+\begin{array}{c}
+\|\phi(u)-\phi(v)\| &\le& \beta \|u-v\|.
+\end{array}
+$$</p>
+<p>We have voluntarily left vague the definition of the domain of the function as well as that of the norms for a reason that will appear clear as we go on.</p>
+<p>A function \(\varphi\) is \(\mu\)<em>-strongly convex</em> if \(\forall u,v\in \text{dom}\,\varphi\) the following inequality holds:</p>
+<p>$$
+\begin{array}{c}
+{\mu\over 2}\|u-v\|^{2}_{2} &\le& B_{\varphi}(u,v).
+\end{array}
+$$</p>
+<p>Observe that this inequality must hold for all \(u\) and \(v\) so that we can swap \(u\) and \(v\). Hence, we have that</p>
+<p>$$
+\begin{array}{c}
+\mu \|u-v\|^{2}_{2} &\le& B_{\varphi}(u,v)+B_{\varphi}(v,u) .
+\end{array}
+$$</p>
+<p>Now, recall that \(B_{\varphi}(u,v):=\varphi(u)-\varphi(v)-\langle u-v, y\rangle\), where \(y\in\partial\varphi(u)\) so that if we let \(z\in\partial\varphi(v)\), then the previous inequality reads:</p>
+<p>$$
+\begin{array}{c}
+\mu\| u-v\|^{2}_{2} &\le & \langle u-v, y-z \rangle \,\,\le\,\, \|u-v\|_2 \|y-z\|_2,
+\end{array}
+$$</p>
+<p>where for the last inequality, we used Cauchy-Schwartz&#39;s inequality. Rearranging terms then yields</p>
+<p>$$
+\begin{array}{c}
+\|u-v\|_{2} &\le& {1\over \mu}\| y-z\|.
+\end{array}
+$$</p>
+<p>Observing that \(u\in(\partial \varphi)^{-1}(y)\) and \(v\in(\partial \varphi)^{-1}(z)\) &#40;by definition of \(y\) and \(z\)&#41; leads to the following result.</p>
+<p>Let \(\varphi\) be a \(\mu\)-strongly convex function on \(X\). Then, the inverse subdifferential map \((\partial\varphi)^{-1}\) is \(1/\mu\)-Lipschitz continuous, i.e.:</p>
+<p>$$
+\begin{array}{c}
+\| (\partial \varphi)^{-1}(y)-(\partial \varphi)^{-1}(z)  \| &\le& {1\over \mu}\|y-z\|,\quad \forall y,z\in \text{dom}\,(\partial \varphi)^{-1}.
+\end{array}
+$$</p>
+<p>Also, if \(\varphi\in\Gamma_{0}(X)\) then by the set of equivalences, \((\partial \varphi)^{-1}\equiv \partial \varphi^{\star}\) so that the map \((\partial\varphi^{\star})\) is also \(1/\mu\)-Lipschitz continuous.</p>
+<p><em>Remarks</em>:</p>
+<ul>
+<li><p>for \(\varphi \in \Gamma_{0}(X)\) and \(\mu\)-strongly convex, one can also show that the inverse subdifferential map \((\partial \varphi)^{-1}\) is <em>everywhere single-valued</em> so that the notion of <em>gradient of the convex conjugate</em> makes sense and we can write \(\nabla \varphi^{\star}\).</p>
+</li>
+<li><p>we had initially left vague the definition of the domain of the function as well as that of the norms, this is because we consider this inverse subdifferential map and hence change the space we consider along the way. It is easy to show that there is no real loss of precision incurred by this vagueness though.</p>
+</li>
+</ul>
+<h2>Bregman divergence and convex conjugacy</h2>
+<p>Take \(\psi\in\Gamma_{0}(X)\), strictly convex and continuously differentiable, the Bregman divergence associated to it is</p>
+<p>$$
+\begin{array}{c}
+B_{\psi}(x,y) &:=& \psi(x)-\psi(y)-\langle x-y,\nabla \psi(y)\rangle.
+\end{array}
+$$</p>
+<p>Recall that the convex conjugate is given by \(\psi^{\star}(y):=\max_{x}[\langle x,y \rangle - \psi(x) ]\) which we can write</p>
+<p>$$
+\begin{array}{c}
+\psi^{\star}(y) &=& \langle x^{+},y\rangle - \psi (x^{+})
+\end{array}
+$$</p>
+<p>with \(\nabla \psi(x^{+})=y\) by the FOC. We can thus write</p>
+<p>$$
+\begin{array}{c}
+\psi^{\star}(\nabla \psi(x)) &=& \langle x,\nabla\psi (x)\rangle - \psi(x).
+\end{array}
+$$</p>
+<p>We can then consider the Bregman divergence associated to \(\psi^{\star}\) and obtain</p>
+<p>$$
+\begin{array}{c}
+B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& \psi(y)-\psi(x)-\langle x-y,\nabla\psi(x)\rangle \,\,=\,\, B_{\psi}(y,x).
+\end{array}
+$$</p>
+<p>We have thus shown that</p>
+<p>$$
+\begin{array}{c}
+B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& B_{\psi}(y,x)
+\end{array}
+$$</p>
+<p>and, equivalently, \(B_{\psi}(\nabla \psi^{\star}(\mu),\nabla\psi^{\star}(\nu))=B_{\psi^{\star}}(\nu,\mu)\).</p>
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. All rights reserved. Last modified: June 13, 2018.
+		</div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+        
+                <script>
+		renderMathInElement(document.body)
+</script>
+
+        
+    </body>
+</html>

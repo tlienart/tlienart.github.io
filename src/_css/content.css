@@ -1,0 +1,67 @@
+/* ==================================================================
+    TEXT GEOMETRY
+================================================================== */
+
+.content {
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+}
+
+@media (min-width: 880px) {
+    .content {
+        width: 660px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ==================================================================
+    TITLES
+================================================================== */
+
+.content h1, h2, h3, h4, h5 {
+    text-align: left;
+}
+
+.content h1 {
+    padding-bottom: 0.5em;
+    border-bottom: 3px double lightgrey;
+    margin-bottom: 1em;
+}
+
+.content h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 1em;
+}
+
+
+/* ==================================================================
+    KATEX
+================================================================== */
+
+body {
+    counter-reset: eqnum;
+}
+
+.katex {
+    font-size: 1em !important;
+}
+.katex-display::after {
+    counter-increment: eqnum;
+    content: "(" counter(eqnum) ")";
+    position: relative;
+    float: right;
+}
+
+/* ==================================================================
+    BOXES
+================================================================== */
+
+.colbox1 {
+    background-color: yellow;
+    opacity: 50%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}

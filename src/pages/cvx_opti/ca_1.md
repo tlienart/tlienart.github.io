@@ -12,7 +12,7 @@ We introduce here briefly a few important building blocks of convex optimisation
 
 ## Subgradient and First-order Optimality Condition
 
-<!-- @@colbox-yellow -->
+@@colbox-yellow
 
 We say that $y\in X$ is a *subgradient* of the function $f\in\Gamma_{0}(X)$ at $x\in X$ and belongs to the *subdifferential* of $f$ at that point (denoted $\partial f(x)$) if it verifies the following inequality:
 
@@ -20,7 +20,7 @@ We say that $y\in X$ is a *subgradient* of the function $f\in\Gamma_{0}(X)$ at $
 f(z) &\ge & f(x) + \langle z-x, y \rangle, \qquad \forall z\in X.
 \end{eqnarray}
 
-<!-- @@ -->
+@@
 
 
 The inequality above simply indicates that the graph of the function $f$ is supported by the hyperplane defined by the right-hand side.

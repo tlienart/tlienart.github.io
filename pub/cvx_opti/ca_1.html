@@ -28,12 +28,18 @@
 </li>
 </ul>
 <h2>Subgradient and First-order Optimality Condition</h2>
-<p>We say that \(y\in X\) is a <em>subgradient</em> of the function \(f\in\Gamma_{0}(X)\) at \(x\in X\) and belongs to the <em>subdifferential</em> of \(f\) at that point &#40;denoted \(\partial f(x)\)&#41; if it verifies the following inequality:</p>
-<p>$$
+<p><div class="colbox-yellow">
+
+We say that \(y\in X\) is a *subgradient* of the function \(f\in\Gamma_{0}(X)\) at \(x\in X\) and belongs to the *subdifferential* of \(f\) at that point (denoted \(\partial f(x)\)) if it verifies the following inequality:
+
+$$
 \begin{array}{c}
 f(z) &\ge & f(x) + \langle z-x, y \rangle, \qquad \forall z\in X.
 \end{array}
-$$</p>
+$$
+
+</div>
+</p>
 <p>The inequality above simply indicates that the graph of the function \(f\) is supported by the hyperplane defined by the right-hand side. A subgradient is thus the &quot;slope&quot; of one such <em>supporting hyperplane</em>. If the function is differentiable at \(x\) then there is only one such subgradient &#40;the classical gradient&#41; and, correspondingly, only one supporting hyperplane. However, if the function is not differentiable at \(x\) &#40;e.g., if there is a kink at \(x\)&#41; then there is an infinity of hyperplanes supporting the function and, correspondingly, the subdifferential at that point is a <em>set</em> with a continuum of subgradients.</p>
 <p>An example is the absolute value function \(f(x)=|x|\) which is not differentiable at \(0\). It is however supported at that point by all lines of the form \(\ell(x)=\alpha x\) with \(\alpha\in [-1,1]\). This set is the subdifferential of the function at \(0\), denoted \(\partial f(0)\).</p>
 <p>By definition of an optimal point \(x^{\sharp}\) for the unconstrained problem, we must have \(f(z)\ge f(x^{\sharp})\) for all \(z\in X\). This can be written as</p>
@@ -135,7 +141,7 @@ $$</p>
 </ul>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. All rights reserved. Last modified: June 13, 2018.
+				&copy; T. Lienart. All rights reserved. Last modified: June 14, 2018.
 		</div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

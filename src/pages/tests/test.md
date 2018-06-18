@@ -3,7 +3,7 @@
 
 In these notes, we consider the standard *constrained minimisation problem* in convex optimisation:
 
-This is a test blah! blah! new! new!
+This is a *test* blah! blah! new! $\sin(\pi)+1=?$
 
 $$
 	\min_{x\in C}\quad f(x)

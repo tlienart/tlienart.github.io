@@ -5,6 +5,8 @@
 
 # Welcome
 
+**THIS WEBSITE IS CURRENTLY A DRAFT**
+
 On this website, you will find some notes on topics in applied maths	(including optimisation, machine learning etc), focusing on core ideas rather than rigorous proofs.
 
 The aim of this website is to suggest a constructive path to results I	find useful, beautiful, or just interesting.

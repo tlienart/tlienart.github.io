@@ -8,25 +8,11 @@ ccall(:jl_exit_on_sigint, Void, (Cint,), 0)
 
 FOLDER_PATH = "/Users/tlienart/Desktop/tlienart.github.io/"
 
-# try
-bstask = @async begin
-    try
-        run(`browser-sync start -s -f "." --no-notify --logLevel silent --port 8000`)
-    catch e
-        if isa(e, InterruptException)
-            # now find the PID of the node process and kill it
-            pid = readstring(pipeline(`ps -el`, `grep browser-sync`, `grep node`))
-            # this returns something with the second number being the PID (1718 here)
-            # "  501  1718  1717 (...) node /usr/local/bin/browser-sync start -s -f . (...)
-            # so we can retrieve that number and kill
-            run(`kill $(split(pid)[2])`)
-        else
-            rethrow(e)
-        end
-   end
-end
+# NOTE: works with bash, would have to be tested with other shells, we don't
+# care at this point, when other users, we'll see
+run(`bash -c "browser-sync start -s -f $FOLDER_PATH --no-notify --logLevel silent --port 8000 &"`)
 
-# this is blocking
+# this is blocking, when interrupted, it also kills the background process.
 judoc(single_pass=false)
 
 # all done.

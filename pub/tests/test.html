@@ -10,12 +10,20 @@
 <script src="/libs/katex/katex.js"></script>
 <script src="/libs/katex/auto-render.js"></script>
 
-		
+		 <!-- Syntax highlighting via Prism, note: restricted langs -->
+<link rel="stylesheet" href="/libs/prism/prism.css"></script>
+<script src="/libs/prism/prism.js"></script>
+
 	</head>
 <body>
 <!-- CONTENT IS APPENDED HERE -->
 <div class=content>
 <p>In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:</p>
+<pre><code class="language-julia">struct MDBlock
+	fpat::Tuple&#123;String, String&#125;
+	rpat::Tuple&#123;String, String&#125;
+	sym_offset::Int
+end</code></pre>
 <p>This is a <em>test</em> blah&#33; blah&#33; new&#33; \(\sin(\pi)+1=?\)</p>
 <p>$$
 	\min_{x\in C}\quad f(x)
@@ -67,7 +75,7 @@ $$</p>
 <p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. All rights reserved. Last modified: June 18, 2018.
+				&copy; T. Lienart. All rights reserved. Last modified: June 21, 2018.
 		</div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

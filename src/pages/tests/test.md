@@ -1,7 +1,15 @@
 @def title = "tests"
-@def hascode = false
+@def hascode = true
 
 In these notes, we consider the standard *constrained minimisation problem* in convex optimisation:
+
+```julia
+struct MDBlock
+	fpat::Tuple{String, String}
+	rpat::Tuple{String, String}
+	sym_offset::Int
+end
+```
 
 This is a *test* blah! blah! new! $\sin(\pi)+1=?$
 

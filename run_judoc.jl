@@ -10,7 +10,9 @@ FOLDER_PATH = "/Users/tlienart/Desktop/tlienart.github.io/"
 
 # NOTE: works with bash, would have to be tested with other shells, we don't
 # care at this point, when other users, we'll see
-run(`bash -c "browser-sync start -s -f $FOLDER_PATH --no-notify --logLevel silent --port 8000 &"`)
+# NOTE: add a message, should go `localhost:8000`, also make this a function
+# wrapping around the JuDoc call with single_pass = false or something.
+run(`bash -c "browser-sync start -s -f $FOLDER_PATH --no-notify --logLevel silent --port 8000 --no-open &"`)
 
 # this is blocking, when interrupted, it also kills the background process.
 judoc(single_pass=false)

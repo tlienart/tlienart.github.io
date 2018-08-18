@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/css/main.css">
-		[[ if isnotes {{insert head_notes}}]]
-		[[ if hasmath {{insert head_katex}}]]
-		[[ if hascode {{insert head_prism}}]]
+		{{if isnotes}} {{insert head_notes.html }} {{end}}
+		{{if hasmath}} {{insert head_katex.html }} {{end}}
+		{{if hascode}} {{insert head_prism.html }} {{end}}
 	</head>
 <body>
 <!-- CONTENT IS APPENDED HERE -->

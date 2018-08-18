@@ -20,47 +20,50 @@
 <p><em>If you haven&#39;t already, please take a minute to read &#33;LINK HERE&#33; explaining the approach taken in the notes on this website.</em></p>
 </blockquote>
 <h2>Introduction</h2>
-<p>In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:</p>
-<p>$$
+<p>In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:
+$$
 	\min_{x\in C}\quad f(x)
-$$</p>
-<p>where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
+$$where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
 <ul>
-<li><p>\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
-</li>
-<li><p>\(f\) is in the set \(\Gamma_0(X)\) of convex functions on \(X\) that are <em>proper</em> and <em>lower semi-continuous</em>,</p>
-</li>
-<li><p>one can compute a gradient or subgradient of \(f\) at a given point.</p>
+<li></li>
+</ul>
+\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
+<ul>
+<li></li>
+</ul>
+\(f\) is in the set \(\Gamma_0(X)\) of convex functions on \(X\) that are <em>proper</em> and <em>lower semi-continuous</em>,</p>
+<ul>
+<li><p>one can compute a gradient or subgradient of </p>
 </li>
 </ul>
+\(f\) at a given point.</p>
 <p>Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm. We shall try to make these assumptions clearer as we get to use them throughout the notes &#40;and, it is therefore not required to look them up on Wikipedia quite just yet&#41;.</p>
-<p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as</p>
-<p>$$
+<p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as
+$$
 	i_C(x) = \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
-$$</p>
-<p>then the constrained problem can be written as</p>
-<p>$$
+$$then the constrained problem can be written as
+$$
 	\min_x f(x)+i_C(x).
-$$</p>
-<p>This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
+$$This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
 <h3>Iterative methods</h3>
 <p>So far we have kept concepts at a high level, there will be enough occasions to delve into the details but it&#39;s important to understand how algorithms for optimisation are &#40;generally&#41; designed.</p>
 <p>A big part of convex optimisation aims at defining clever <em>iterative algorithms</em> which, ideally, enjoy the following properties when started from a sensible initial point \(x_0\):</p>
 <ul>
-<li><p>the iterations converge &quot;quickly&quot; to a minimiser &#40;i.e. a point \(x^\sharp\) such that \(f(x)\ge f(x^\sharp)\) for all \(x\in C\)&#41;</p>
+<li><p>the iterations converge &quot;quickly&quot; to a minimiser &#40;i.e. a point </p>
 </li>
+</ul>
+\(x^\sharp\) such that \(f(x)\ge f(x^\sharp)\) for all \(x\in C\)&#41;</p>
+<ul>
 <li><p>the iterations are &quot;cheap&quot; to compute.</p>
 </li>
 </ul>
-<p>Often these iterative algorithms can be derived from some kind of <em>fixed point equation</em> that is satisfied by a minimiser, i.e.: an equation of the form</p>
-<p>$$
+<p>Often these iterative algorithms can be derived from some kind of <em>fixed point equation</em> that is satisfied by a minimiser, i.e.: an equation of the form
+$$
 	x^\sharp = P(x^\sharp)
-$$</p>
-<p>where \(P\) is some appropriate operator and \(x^\sharp\) is a minimiser. Provided we have such a fixed point equation, we can consider a <em>fixed point algorithm</em> with the simplest form being:</p>
-<p>$$
+$$where \(P\) is some appropriate operator and \(x^\sharp\) is a minimiser. Provided we have such a fixed point equation, we can consider a <em>fixed point algorithm</em> with the simplest form being:
+$$
 	x_{k+1} = P(x_k).
-$$</p>
-<p>Under some conditions on the operator \(P\) and possibly on \(x_0\), such an  algorithm will provably converge to \(x^\sharp\).</p>
+$$Under some conditions on the operator \(P\) and possibly on \(x_0\), such an  algorithm will provably converge to \(x^\sharp\).</p>
 <p>In the rest of these notes, we will show how to obtain the fixed point equations and useful fixed point algorithms for a variety of scenarios and, by doing so, will recover well known algorithms such as the classical gradient descent as well as more sophisticated algorithms such as the mirror descent.</p>
 <h2>General references</h2>
 <p>More precise pointers will be given on subsequent pages but most of the content in these notes relates in some way or another to the following references &#40;in particular the first one&#41;:</p>
@@ -72,6 +75,7 @@ $$</p>
 <li><p><strong>Boyd</strong> and <strong>Vandenberghe</strong>: <a href="https://stanford.edu/~boyd/cvxbook/">Convex Optimization</a>. More accessible and more oriented towards giving &quot;tools&quot; to the reader.</p>
 </li>
 </ol>
+
 <div class="page-foot">
 		<div class="copyright">
 				&copy; T. Lienart. All rights reserved. Last modified: June 13, 2018.

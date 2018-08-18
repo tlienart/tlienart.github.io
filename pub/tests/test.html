@@ -18,64 +18,68 @@
 <body>
 <!-- CONTENT IS APPENDED HERE -->
 <div class=content>
-<p>In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:</p>
+In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:
 <pre><code class="language-julia">struct MDBlock
 	fpat::Tuple&#123;String, String&#125;
 	rpat::Tuple&#123;String, String&#125;
 	sym_offset::Int
 end</code></pre>
-<p>This is a <em>test</em> blah&#33; blah&#33; new&#33; \(\sin(\pi)+1=?\)</p>
-<p>$$
+This is a <em>test</em> blah&#33; blah&#33; new&#33; \(\sin(\pi)+1=?\)
+$$
 	\min_{x\in C}\quad f(x)
-$$</p>
-<p>where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
+$$where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
 <ul>
-<li><p>\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
-</li>
-<li><p>\(f\) is in the set \(\Gamma_0(X)\) of convex functions on \(X\) that are <em>proper</em> and <em>lower semi-continuous</em>,</p>
-</li>
-<li><p>one can compute a gradient or subgradient of \(f\) at a given point.</p>
+<li></li>
+</ul>
+\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
+<ul>
+<li></li>
+</ul>
+\(f\) is in the set \(\Gamma_0(X)\) of convex functions on \(X\) that are <em>proper</em> and <em>lower semi-continuous</em>,</p>
+<ul>
+<li><p>one can compute a gradient or subgradient of </p>
 </li>
 </ul>
+\(f\) at a given point.</p>
 <p>Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm. We shall try to make these assumptions clearer as we get to use them throughout the notes &#40;and, it is therefore not required to look them up on Wikipedia quite just yet&#41;.</p>
-<p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as</p>
-<p>$$
+<p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as
+$$
 	i_C(x) = \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
-$$</p>
-<p>then the constrained problem can be written as</p>
-<p>$$
+$$then the constrained problem can be written as
+$$
 	\min_x f(x)+i_C(x).
-$$</p>
-<p>This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
-<p>In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:</p>
-<p>$$
+$$This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
+<p>In these notes, we consider the standard <em>constrained minimisation problem</em> in convex optimisation:
+$$
 	\min_{x\in C}\quad f(x)
-$$</p>
-<p>where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
+$$where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
 <ul>
-<li><p>\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
-</li>
-<li><p>\(f\) is in the set \(\Gamma_0(X)\) of convex functions on \(X\) that are <em>proper</em> and <em>lower semi-continuous</em>,</p>
-</li>
-<li><p>one can compute a gradient or subgradient of \(f\) at a given point.</p>
+<li></li>
+</ul>
+\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
+<ul>
+<li></li>
+</ul>
+\(f\) is in the set \(\Gamma_0(X)\) of convex functions on \(X\) that are <em>proper</em> and <em>lower semi-continuous</em>,</p>
+<ul>
+<li><p>one can compute a gradient or subgradient of </p>
 </li>
 </ul>
+\(f\) at a given point.</p>
 <p>Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm. We shall try to make these assumptions clearer as we get to use them throughout the notes &#40;and, it is therefore not required to look them up on Wikipedia quite just yet&#41;.</p>
-<p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as</p>
-<p>$$
+<p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as
+$$
 	i_C(x) = \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
-$$</p>
-<p>then the constrained problem can be written as</p>
-<p>$$
+$$then the constrained problem can be written as
+$$
 	\min_x f(x)+i_C(x).
-$$</p>
-<p>This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
+$$This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
 <p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>
 <p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>
-<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>
+<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. All rights reserved. Last modified: June 21, 2018.
+				&copy; T. Lienart. All rights reserved. Last modified: August 17, 2018.
 		</div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

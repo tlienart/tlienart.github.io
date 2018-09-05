@@ -1,7 +1,7 @@
 @def title = "Basics of Convex Analysis"
 
 # Basics of Convex Analysis
-
+ 
 
 We introduce here briefly a few important building blocks of convex optimisation:
 

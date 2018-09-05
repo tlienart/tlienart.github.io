@@ -1,4 +1,4 @@
-@def title = "Thibaut's blog"
+@def title = "tlienart.github.io"
 @def hascode = false
 @def hasmath = false
 @def date = Dates.today()

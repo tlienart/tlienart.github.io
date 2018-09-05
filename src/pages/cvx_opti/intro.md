@@ -1,4 +1,4 @@
-@def title = "Introduction to Convex Optimisation"
+@def title = "Convex Optimisation I"
 
 <!--
 TODO:
@@ -7,11 +7,9 @@ TODO:
 * add link to mirror descent (same place)
 -->
 
-# Introduction to Convex Optimisation
+# Convex Optimisation (part. 1)
 
 > *If you haven't already, please take a minute to read !LINK HERE! explaining the approach taken in the notes on this website.*
-
-## Introduction
 
 In these notes, we consider the standard *constrained minimisation problem* in convex optimisation:
 

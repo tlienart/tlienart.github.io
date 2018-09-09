@@ -47,6 +47,11 @@
         margin: 10px 0;
 }
 
+/* internal links -- equations */
+.eqref a {
+    text-decoration: none;
+    color:  #9900ff;
+}
 
 /* ==================================================================
     KATEX

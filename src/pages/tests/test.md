@@ -11,11 +11,17 @@ struct MDBlock
 end
 ```
 
-This is a *test* blah! blah! new! $\sin(\pi)+1=?$
+This is a *test* blah! blah! new! $\sin(\pi)+1=?$ the following equation should, ideally, not have a number
 
 $$
-	\min_{x\in C}\quad f(x)
+	\min_{x\in C}\quad f(x) \label{eq:a test}
 $$
+
+however the next one should (ref \eqref{eq:a test})
+
+\begin{eqnarray}
+    x^2+1 = \exp(y) \label{hello}
+\end{eqnarray}
 
 where $C$ is a *nice* convex set and $f$ a *nice* convex function.
 Usual assumptions of *niceness* (that are typically verified in problems of interest) are:
@@ -25,7 +31,7 @@ Usual assumptions of *niceness* (that are typically verified in problems of inte
 * one can compute a gradient or subgradient of $f$ at a given point.
 
 Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm.
-We shall try to make these assumptions clearer as we get to use them throughout the notes (and, it is therefore not required to look them up on Wikipedia quite just yet).
+We shall try to make these assumptions clearer as we get to use them throughout the notes (and, it is therefore not required to look them up on Wikipedia quite just yet). A reference to equation \eqref{hello}.
 
 We will also consider the unconstrained form of the problem, i.e.: when $C=\mathbb R^n$ (and will then just write $\min_x f(x)$).
 Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the *indicator* of a convex set $C$ as

@@ -26,10 +26,14 @@
 	sym_offset::Int
 end</code></pre>
 </p>
-<p>This is a <em>test</em> blah&#33; blah&#33; new&#33; \(\sin(\pi)+1=?\)</p>
-<p>$$
-	\min_{x\in C}\quad f(x)
+<p>This is a <em>test</em> blah&#33; blah&#33; new&#33; \(\sin(\pi)+1=?\) the following equation should, ideally, not have a number</p>
+<p><a name="2658638446576219590"></a>$$
+	\min_{x\in C}\quad f(x) 
 $$</p>
+<p>however the next one should &#40;ref <span class="eqref"><a href="#2658638446576219590">(1)</a></span>&#41;</p>
+<p><a name="17533006386712898841"></a>$$\begin{array}{c}
+    x^2+1 = \exp(y) 
+\end{array}$$</p>
 <p>where \(C\) is a <em>nice</em> convex set and \(f\) a <em>nice</em> convex function. Usual assumptions of <em>niceness</em> &#40;that are typically verified in problems of interest&#41; are:</p>
 <ul>
 <li><p>\(C\) is <em>closed</em>, has <em>non-empty interior</em> and is a subset of \(\mathbb R^n\),</p>
@@ -39,7 +43,7 @@ $$</p>
 <li><p>one can compute a gradient or subgradient of \(f\) at a given point.</p>
 </li>
 </ul>
-<p>Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm. We shall try to make these assumptions clearer as we get to use them throughout the notes &#40;and, it is therefore not required to look them up on Wikipedia quite just yet&#41;.</p>
+<p>Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm. We shall try to make these assumptions clearer as we get to use them throughout the notes &#40;and, it is therefore not required to look them up on Wikipedia quite just yet&#41;. A reference to equation <span class="eqref"><a href="#17533006386712898841">(2)</a></span>.</p>
 <p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as</p>
 <p>$$
 	i_C(x) = \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
@@ -77,7 +81,7 @@ $$</p>
 <p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. All rights reserved. Last modified: August 17, 2018.
+				&copy; T. Lienart. All rights reserved. Last modified: September 09, 2018.
 		</div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

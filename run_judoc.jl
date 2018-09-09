@@ -12,8 +12,6 @@ else
     # curdir = normpath(joinpath(@__DIR__, "/"))
     # FOLDER_PATH = (typeof(curdir)==Void) ? pwd() : curdir
 
-
-
     # NOTE: works with bash, would have to be tested with other shells, we don't
     # care at this point, when other users, we'll see
     # NOTE: add a message, should go `localhost:8000`, also make this a function

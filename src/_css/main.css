@@ -7,17 +7,6 @@ html {
     font-size  : 17px;
 }
 
-.page-foot {
-    font-size: 80%;
-    font-family: Arial, serif;
-    color: lightgrey;
-    text-align: center;
-    margin-top: 6em;
-    border-top: 1px solid lightgrey;
-    padding-top: 2em;
-    margin-bottom: 4em;
-}
-
 /* ==================================================================
     BASIC GRID FOR PROFILE PIC
 ================================================================== */
@@ -35,5 +24,124 @@ html {
 .container {
 }
 .container img {
+    border-radius: 10px;
+}
+
+/* ==================================================================
+    FOOT / COPYRIGHT
+================================================================== */
+
+.content .page-foot a {
+    text-decoration: none;
+    color: lightgrey;
+    text-decoration: underline;
+}
+
+.page-foot {
+    font-size: 80%;
+    font-family: Arial, serif;
+    color: lightgrey;
+    text-align: center;
+    margin-top: 6em;
+    border-top: 1px solid lightgrey;
+    padding-top: 2em;
+    margin-bottom: 4em;
+}
+
+/* ==================================================================
+    TEXT GEOMETRY
+================================================================== */
+
+.content {
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    line-height: 1.2em;
+}
+
+@media (min-width: 880px) {
+    .content {
+        width: 660px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ==================================================================
+    TITLES
+================================================================== */
+
+.content h1 {
+    font-size: 24px;
+}
+.content h2 {
+    font-size: 22px;
+}
+.content h3 {
+    font-size: 20px;
+}
+
+.content h1, h2, h3, h4, h5 {
+    text-align: left;
+}
+
+.content h1 {
+    padding-bottom: 0.5em;
+    border-bottom: 3px double lightgrey;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.content h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+/* ==================================================================
+    GENERAL FORMATTING
+================================================================== */
+
+/* spacing between bullet points */
+.content li p {
+        margin: 10px 0;
+}
+
+.content a {
+    color: #598fc4;
+    text-decoration: none;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* ==================================================================
+    KATEX
+================================================================== */
+
+body {
+    counter-reset: eqnum;
+}
+
+.katex {
+    font-size: 1em !important;
+}
+.katex-display::after {
+    counter-increment: eqnum;
+    content: "(" counter(eqnum) ")";
+    position: relative;
+    float: right;
+}
+
+/* ==================================================================
+    BOXES
+================================================================== */
+
+.colbox-yellow {
+    background-color: yellow;
+    opacity: 50%;
+    padding: 10px;
+    margin: 5px;
     border-radius: 10px;
 }

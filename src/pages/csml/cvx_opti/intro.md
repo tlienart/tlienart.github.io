@@ -9,8 +9,6 @@ TODO:
 
 # Convex Optimisation (part. 1)
 
-> *If you haven't already, please take a minute to read !LINK HERE! explaining the approach taken in the notes on this website.*
-
 In these notes, we consider the standard *constrained minimisation problem* in convex optimisation:
 
 $$

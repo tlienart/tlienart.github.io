@@ -2,8 +2,13 @@
 
 # Miscellaneous notes
 
-## Side projects
+Here I keep a record of pages I wrote which do not deserve their own category (at least for now).
 
-* [JuDoc](/pub/misc/judoc.html): where I discuss the static site generator I wrote in Julia which I used for this website.
+## General
 
-## Travelling
+* [notes on this website](/pub/misc/about-website.html) where I discuss how this website was built.
+
+## Travels
+
+* *notes of a trip to Iran*
+* *notes of a trip to Colombia*

@@ -62,7 +62,7 @@ wide display: enforce maximum width of header to match content
 narrow display: collapse the header (don't show the menu items)
 instead, display a burger menu.
 */
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     header {
         height: 35px;
         justify-content: right;

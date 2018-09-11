@@ -23,3 +23,7 @@ jdrun() = begin
         JuDoc.judoc(single_pass=false)
     end
 end
+
+jdpub() = begin
+    run(`bash -c "git add -A && git commit -m \"jd-update\" && git push`)
+end

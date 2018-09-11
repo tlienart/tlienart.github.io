@@ -5,7 +5,7 @@ const FOLDER_PATH = "/Users/tlienart/Desktop/tlienart.github.io/"
 
 jdrun() = begin
     if SINGLE_PASS
-        JuDoc.judoc()
+        ec = JuDoc.judoc()
     else
         # this is needed for a "clean exit" when running from outside REPL.
         ccall(:jl_exit_on_sigint, Nothing, (Cint,), 0)
@@ -20,7 +20,7 @@ jdrun() = begin
         run(`bash -c "browser-sync start -s -f $FOLDER_PATH --no-notify --logLevel silent --port 8000 --no-open &"`)
 
         # this is blocking, when interrupted, it also kills the background process.
-        JuDoc.judoc(single_pass=false)
+        ec = JuDoc.judoc(single_pass=false)
     end
 end
 

@@ -70,8 +70,8 @@ html {
 /* on narrow device, reduce margins */
 @media (max-width: 480px) {
     .content {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 6%;
+        padding-right: 6%;
     }
 }
 

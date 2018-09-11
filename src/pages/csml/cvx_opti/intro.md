@@ -7,19 +7,19 @@ TODO:
 * add link to mirror descent (same place)
 -->
 
-# Convex Optimisation (part. 1)
+# Introduction
 
 In these notes, we consider the standard *constrained minimisation problem* in convex optimisation:
 
 $$
-	\min_{x\in C}\quad f(x)
+	\min_{x\in C}\quad f(x) \label{initial-min-problem}
 $$
 
 where $C$ is a *nice* convex set and $f$ a *nice* convex function.
 Usual assumptions of *niceness* (that are typically verified in problems of interest) are:
 
-* $C$ is *closed*, has *non-empty interior* and is a subset of $\mathbb R^n$,
-* $f$ is in the set $\Gamma_0(X)$ of convex functions on $X$ that are *proper* and *lower semi-continuous*,
+* $C$ is a *non-empty* convex subset of $\mathbb R^n$,
+* $f$ is in the set $\Gamma_0(C)$ of convex functions on $C$ that are *proper* and *lower semi-continuous*,
 * one can compute a gradient or subgradient of $f$ at a given point.
 
 Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm.
@@ -28,21 +28,21 @@ We shall try to make these assumptions clearer as we get to use them throughout 
 We will also consider the unconstrained form of the problem, i.e.: when $C=\mathbb R^n$ (and will then just write $\min_x f(x)$).
 Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the *indicator* of a convex set $C$ as
 
-$$
-	i_C(x) = \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
-$$
+\eqa{
+	i_C(x) &:=& \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
+}
 
-then the constrained problem can be written as
+then the constrained problem \eqref{initial-min-problem} can be written equivalently as
 
 $$
-	\min_x f(x)+i_C(x).
+	\min_x \quad f(x)+i_C(x).
 $$
 
 This is not entirely pointless as will become apparent when deriving the projected gradient descent.
 
 ## Iterative methods
 
-So far we have kept concepts at a high level, there will be enough occasions to delve into the details but it's important to understand how algorithms for optimisation are (generally) designed.
+Before delving into the details it's important to understand how many algorithms for optimisation can be constructed.
 
 A big part of convex optimisation aims at defining clever *iterative algorithms* which, ideally, enjoy the following properties when started from a sensible initial point $x_0$:
 
@@ -51,20 +51,26 @@ A big part of convex optimisation aims at defining clever *iterative algorithms*
 
 Often these iterative algorithms can be derived from some kind of *fixed point equation* that is satisfied by a minimiser, i.e.: an equation of the form
 
-$$
-	x^\sharp = P(x^\sharp)
-$$
+\eqa{
+	x^\sharp &=& P(x^\sharp)
+}
 
-where $P$ is some appropriate operator and $x^\sharp$ is a minimiser.
+where $P$ is an appropriate operator and $x^\sharp$ is a minimiser.
 Provided we have such a fixed point equation, we can consider a *fixed point algorithm* with the simplest form being:
 
-$$
-	x_{k+1} = P(x_k).
-$$
+\eqa{
+	x_{k+1} &=& P(x_k).
+}
 
 Under some conditions on the operator $P$ and possibly on $x_0$, such an  algorithm will provably converge to $x^\sharp$.
+This may seem reasonably straightforward but there are quite a few questions to solve in order to make this work in practice:
 
-In the rest of these notes, we will show how to obtain the fixed point equations and useful fixed point algorithms for a variety of scenarios and, by doing so, will recover well known algorithms such as the classical gradient descent as well as more sophisticated algorithms such as the mirror descent.
+* how to get a decent starting point? (quite a hard problem in general)
+* how to pick an operator $P$ that is numerically stable and converges quickly?
+* how to offer guarantees at any one point of how close we are to the true minimiser?
+* etc.
+
+In the rest of these notes, we will show how to obtain the fixed point equations and useful fixed point algorithms for a variety of scenarios and, by doing so, will recover well known algorithms such as the classical gradient descent and the mirror descent.
 
 ## General references
 

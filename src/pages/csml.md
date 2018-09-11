@@ -8,7 +8,7 @@ The aim of the notes you'll find here is to suggest a constructive path to resul
 The emphasis is on building intuition rather than mathematical rigour.
 The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in mathematics.
 
-If you find anything suspicious in the notes, please write a comment or send me an email.
+If you find anything dubious in the notes, please send me an email.
 
 ## Stats, ML and related
 

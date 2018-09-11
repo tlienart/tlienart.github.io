@@ -3,8 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="icon" href="/assets/infra/favicon.png">
 		 <title>Convex Optimisation I</title>	
-		 <link rel="stylesheet" href="/css/content.css"></link>
+		 <link rel="stylesheet" href="/css/content.css">
  		
 		 <!-- Un-minified script so that can play a bit -->
 <link rel="stylesheet" href="/libs/katex/katex.css"></link>
@@ -13,7 +15,19 @@
  		
         
 	</head>
-<body>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML Notes</a></li>
+                    <li><a href="/pub/julia.html">Julia Notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+
 <!-- CONTENT IS APPENDED HERE -->
 <div class=content>
 <p> </p>
@@ -44,7 +58,7 @@ $$</p>
 	\min_x f(x)+i_C(x).
 $$</p>
 <p>This is not entirely pointless as will become apparent when deriving the projected gradient descent.</p>
-<h3>Iterative methods</h3>
+<h2>Iterative methods</h2>
 <p>So far we have kept concepts at a high level, there will be enough occasions to delve into the details but it&#39;s important to understand how algorithms for optimisation are &#40;generally&#41; designed.</p>
 <p>A big part of convex optimisation aims at defining clever <em>iterative algorithms</em> which, ideally, enjoy the following properties when started from a sensible initial point \(x_0\):</p>
 <ul>
@@ -75,7 +89,7 @@ $$</p>
 </ol>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. All rights reserved. Last modified: September 05, 2018.
+				&copy; T. Lienart. All rights reserved. Last modified: September 10, 2018.
 		</div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

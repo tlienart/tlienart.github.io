@@ -17,3 +17,23 @@ html {
     padding-top: 2em;
     margin-bottom: 4em;
 }
+
+/* ==================================================================
+    BASIC GRID FOR PROFILE PIC
+================================================================== */
+
+.row {
+  display: block;
+}
+.left {
+  float: left;
+  margin-right: 15px;
+}
+.right {
+    float: right;
+}
+.container {
+}
+.container img {
+    border-radius: 10px;
+}

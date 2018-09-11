@@ -5,10 +5,15 @@
 		<link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/header.css">
         <link rel="icon" href="/assets/infra/favicon.png">
-		{{ifdef title}} <title>{{fill title}}</title>	{{end}}
-		{{if isnotes}} {{insert head_notes.html }} 		{{end}}
-		{{if hasmath}} {{insert head_katex.html }} 		{{end}}
-        {{if hascode}} {{insert head_highlight.html }} 	{{end}}
+		 <title>JuDoc</title>	
+		 <link rel="stylesheet" href="/css/content.css">
+ 		
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.css"></link>
+<script src="/libs/katex/katex.js"></script>
+<script src="/libs/katex/auto-render.js"></script>
+ 		
+        
 	</head>
     <body>
         <header>
@@ -24,3 +29,20 @@
         </header>
 
 <!-- CONTENT IS APPENDED HERE -->
+<div class=content>
+<p></p>
+<h1>JuDoc</h1>
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. All rights reserved. Last modified: September 11, 2018.
+		</div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+        
+                <script>
+		renderMathInElement(document.body)
+</script>
+
+        
+    </body>
+</html>

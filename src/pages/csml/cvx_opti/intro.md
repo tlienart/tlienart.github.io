@@ -42,7 +42,7 @@ $$
 
 This is not entirely pointless as will become apparent when deriving the projected gradient descent.
 
-### Iterative methods
+## Iterative methods
 
 So far we have kept concepts at a high level, there will be enough occasions to delve into the details but it's important to understand how algorithms for optimisation are (generally) designed.
 

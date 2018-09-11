@@ -20,6 +20,16 @@
     TITLES
 ================================================================== */
 
+.content h1 {
+    font-size: 24px;
+}
+.content h2 {
+    font-size: 22px;
+}
+.content h3 {
+    font-size: 20px;
+}
+
 .content h1, h2, h3, h4, h5 {
     text-align: left;
 }
@@ -47,10 +57,13 @@
         margin: 10px 0;
 }
 
-/* internal links -- equations */
-.eqref a {
+.content a {
+    color: #598fc4;
     text-decoration: none;
-    color:  #9900ff;
+}
+
+.content a:hover {
+    text-decoration: underline;
 }
 
 /* ==================================================================

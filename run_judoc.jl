@@ -25,5 +25,5 @@ jdrun() = begin
 end
 
 jdpub() = begin
-    run(`bash -c "git add -A && git commit -m \"jd-update\" && git push`)
+    run(`bash -c "git add -A && git commit -m \"jd-update\" && git push > /dev/null"`, wait=false)
 end

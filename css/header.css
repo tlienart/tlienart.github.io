@@ -3,11 +3,9 @@ header {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    justify-content: right;
+    text-align: right;
     align-items: center;
     padding-bottom: 20px;
-    /* border-bottom: 2px solid black; */
     margin-bottom: 30px;
 }
 
@@ -24,6 +22,7 @@ header li {
 header li a {
     color: #4C9CF1;
     text-decoration: none;
+    font-size: 18px;
     font-weight: bold;
     display: inline-block;
     float: center;

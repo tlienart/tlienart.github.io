@@ -1,158 +1,115 @@
-@def title = "Basics of Convex Analysis"
+@def title = "Convex analysis II"
 
-# More Convex Analysis
+# Convex analysis (part 2)
 
-We add here a few more results of Convex Analysis which can be skipped in a first reading.
-You will find here:
+## The convex conjugate <!-- ✅ 12/9/2018 -->
 
-* convex conjugate of the convex conjugate,
-* link between $\partial f$ and $\partial f^{\star}$,
-* link between *Lipschitz continuity* and strong convexity,
-* link between the Bregman divergence associated with a function and that of its convex conjugate.
+Let us start with the definition of the subdifferential of a convex function $f$ defined on $C$ at a point $x\in C^\circ$:
 
-## Conjugate of the conjugate
+\eqa{
+    \partial f(x) &=& \{y\in \R^n\,|\, f(z)\,\ge\, f(x)+\langle z-x,y\rangle, \,\forall z\in C\}.
+}
 
-We had claimed that for $f\in\Gamma_{0}(X)$, $f^{\star\star}=f$.
-A (slightly hand-wavy) proof for this goes as follows:
+We can rearrange terms in the condition as follows:
 
-\begin{eqnarray}
-f^{\star\star}(z) &=& \max_{y} \left[\langle z,y\rangle-f^{\star}(y)\right]\\
-	&=& \max_{y}\min_{x} \left[\langle z-x,y\rangle + f(x) \right].
-\end{eqnarray}
+\eqa{
+    \partial f(x) &=& \{y\in\R^n\,|\, \langle z,y\rangle - f(z)\,\le\, \langle x,y\rangle - f(x), \,\forall z\in C\}.
+}
 
-Provided everything is finite, the max and the min can be swapped and we are then left with
+However, since the condition must hold for all $z$, it must equivalently hold for any $z$ that maximises the lower bound.
+Note that the maximum of that lower bound tightens the inequality exactly (just take $z=x$).
+We can thus write the subdifferential as
 
-\begin{eqnarray}
-f^{\star\star}(z)&=& \min_{x}\left\{ f(x)+\left[ \max_{y} \langle z-x,y\rangle\right]\right\}
-\end{eqnarray}
+$$
+    \partial f(x) \spe{=} \{y\in \R^n \,|\, \max_{z\in C} \,\, [\langle z,y\rangle -f(z)] \,=\, \langle x,y\rangle -f(x)\}.\label{def subdiff 1}
+$$
 
-but the inner max is infinite unless $z=x$ which leads to $f^{\star\star}(z)=f(z)$.
-
-## Subdifferential of the convex conjugate
-
-Recall that the subgradient of a convex function can be expressed in terms of its convex conjugate as follows:
-
-\begin{eqnarray}
-\partial f(x) &=& \{ y\,|\, f^{\star}(y) \,=\, \langle x,y\rangle - f(x)\}.
-\end{eqnarray}
-
-<!-- ~~~ -->
-
-Rearranging terms then yields the following equivalences:
-
-\begin{eqnarray}
-f(x)+f^\star(y) \,=\, \langle x,y\rangle &\Longleftrightarrow&y \,\in\, \partial f(x)
-&\Longleftrightarrow& x\,\in\, \partial f^\star(y),
-\end{eqnarray}
-
-where, for the second equivalence, we used that $f^{\star\star}=f$ when $f\in \Gamma_0(X)$.
-<!-- ~~~ -->
-
-If we consider all such couples of points, we can write $\{x,y \,|\, y\in\partial f(x)\} = \{x,y\,|\, x\in \partial f^\star(y)\}$ and
-if we then consider the notion of /inverse/ of the subdifferential operator, this can be re-written as
-
-\begin{eqnarray}
-\{x,y\,|\, x\in(\partial f)^{-1}(y)\} &=& \{x,y\,|\, x\in \partial f^\star(y)\}.
-\end{eqnarray}
-
-<!-- ~~~ -->
-
-We thus have for $f\in\Gamma_0(X)$:
-
-\begin{eqnarray}
-(\partial f)^{-1} &\equiv & \partial f^\star.
-\end{eqnarray}
-
-<!-- ~~~ -->
-
-## Lipschitz continuity and Strong convexity
-
-Let us first recall the definitions: a function $\phi$ is $\beta$*-Lipschitz-continuous* if $\forall u,v\in \text{dom}\, \phi$ the following inequality holds:
-
-\begin{eqnarray}
-\|\phi(u)-\phi(v)\| &\le& \beta \|u-v\|.
-\end{eqnarray}
-
-We have voluntarily left vague the definition of the domain of the function as well as that of the norms for a reason that will appear clear as we go on.
-
-A function $\varphi$ is $\mu$*-strongly convex* if $\forall u,v\in \text{dom}\,\varphi$ the following inequality holds:
-
-\begin{eqnarray}
-{\mu\over 2}\|u-v\|^{2}_{2} &\le& B_{\varphi}(u,v).
-\end{eqnarray}
-
-Observe that this inequality must hold for all $u$ and $v$ so that we can swap $u$ and $v$. Hence, we have that
-
-\begin{eqnarray}
-\mu \|u-v\|^{2}_{2} &\le& B_{\varphi}(u,v)+B_{\varphi}(v,u) .
-\end{eqnarray}
-
-Now, recall that $B_{\varphi}(u,v):=\varphi(u)-\varphi(v)-\langle u-v, y\rangle$, where $y\in\partial\varphi(u)$ so that if we let $z\in\partial\varphi(v)$, then the previous inequality reads:
-
-\begin{eqnarray}
-\mu\| u-v\|^{2}_{2} &\le & \langle u-v, y-z \rangle \,\,\le\,\, \|u-v\|_2 \|y-z\|_2,
-\end{eqnarray}
-
-where for the last inequality, we used Cauchy-Schwartz's inequality. Rearranging terms then yields
-
-\begin{eqnarray}
-\|u-v\|_{2} &\le& {1\over \mu}\| y-z\|.
-\end{eqnarray}
-
-Observing that $u\in(\partial \varphi)^{-1}(y)$ and $v\in(\partial \varphi)^{-1}(z)$ (by definition of $y$ and $z$) leads to the following result.
-
-<!-- ~~~ -->
-
-Let $\varphi$ be a $\mu$-strongly convex function on $X$.
-Then, the inverse subdifferential map $(\partial\varphi)^{-1}$ is $1/\mu$-Lipschitz continuous, i.e.:
-
-\begin{eqnarray}
-\| (\partial \varphi)^{-1}(y)-(\partial \varphi)^{-1}(z)  \| &\le& {1\over \mu}\|y-z\|,\quad \forall y,z\in \text{dom}\,(\partial \varphi)^{-1}.
-\end{eqnarray}
-
-Also, if $\varphi\in\Gamma_{0}(X)$ then by the set of equivalences, $(\partial \varphi)^{-1}\equiv \partial \varphi^{\star}$ so that the map $(\partial\varphi^{\star})$ is also $1/\mu$-Lipschitz continuous.
-<!-- ~~~ -->
-
-*Remarks*:
-
-* for $\varphi \in \Gamma_{0}(X)$ and $\mu$-strongly convex, one can also show that the inverse subdifferential map $(\partial \varphi)^{-1}$ is *everywhere single-valued* so that the notion of *gradient of the convex conjugate* makes sense and we can write $\nabla \varphi^{\star}$.
-* we had initially left vague the definition of the domain of the function as well as that of the norms, this is because we consider this inverse subdifferential map and hence change the space we consider along the way. It is easy to show that there is no real loss of precision incurred by this vagueness though.
+We can now introduce the *convex conjugate* of a function (also sometimes known as the *Fenchel-Legendre convex conjugate* or a combination of those words).
+We write $\eR$ the extended real line: $\eR = \R \cup \{\pm\infty\}$.
 
 
-## Bregman divergence and convex conjugacy
+@@colbox-yellow
+Let $f: C\to \eR$ denote any function. The *convex conjugate* of $f$ is the function $f^\star(y):\R^n\to \eR$ defined as follows:
 
-Take $\psi\in\Gamma_{0}(X)$, strictly convex and continuously differentiable, the Bregman divergence associated to it is
+$$
+    f^\star(y) \spe{:=} \sup_{z\in C} \,\,[\langle z,y \rangle - f(z)].
+$$
+@@
 
-\begin{eqnarray}
-B_{\psi}(x,y) &:=& \psi(x)-\psi(y)-\langle x-y,\nabla \psi(y)\rangle.
-\end{eqnarray}
+**Note**: it's easy to show that the convex conjugate of a function $f$ is convex even if the function $f$ is not convex.
 
-Recall that the convex conjugate is given by $\psi^{\star}(y):=\max_{x}[\langle x,y \rangle - \psi(x) ]$ which we can write
+We can now use the convex conjugate in \eqref{def subdiff 1}:
+\eqa{
+    \partial f(x) &=& \{ y\in\R^n \,|\, f^{\star}(y) \,=\, \langle x,y\rangle - f(x)\}, \label{def subdiff 2}
+}
+which is a convenient characterisation we'll use soon to link $(\partial f)^{-1}$ and $(\partial f^\star)$.
 
-\begin{eqnarray}
-\psi^{\star}(y) &=& \langle x^{+},y\rangle - \psi (x^{+})
-\end{eqnarray}
+### Example
 
-with $\nabla \psi(x^{+})=y$ by the FOC. We can thus write
+We can consider a simple (and yet quite useful) example for the convex conjugate: if we define $\psi(x):=\|x\|^2/2$, its convex conjugate is then
 
-\begin{eqnarray}
-\psi^{\star}(\nabla \psi(x)) &=& \langle x,\nabla\psi (x)\rangle - \psi(x).
-\end{eqnarray}
+$$
+    \psi^\star(y) \speq \sup_{z\in C}\,\, \langle z,y\rangle - \frac12\langle z,z\rangle.
+$$
 
-We can then consider the Bregman divergence associated to $\psi^{\star}$ and obtain
+The problem in the right hand side is easy to solve: the objective function is differentiable and the FOC gives $y-z^\sharp = 0$ so that $\psi^\star(y)= \psi(y)$.
 
-\begin{eqnarray}
-B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& \psi(y)-\psi(x)-\langle x-y,\nabla\psi(x)\rangle \,\,=\,\, B_{\psi}(y,x).
-\end{eqnarray}
+Another nice example is $f(x)=x\exp(x)$, it's an easy exercise to show that $f^\star(y)=\exp(y-1)$ and $f^{\star\star}(x) = f(x)$.
 
+### Fenchel-Moreau theorem and Fenchel's inequality <!-- ✅ 12/9/2018 -->
 
-<!-- ~~~ -->
+@@colbox-yellow
+An important property of the convex conjugate is that for $f\in \Gamma_0(C)$, $f^{\star\star}\equiv f$ on $C$ which is known as the *Fenchel-Moreau* theorem.
+@@
+It's easy to show that $f\ge f^{\star\star}$ on $C$ but it requires a few extra results to show the converse (see references).
 
-We have thus shown that
+The definition of the convex conjugate also directly implies *Fenchel's inequality*.
 
-\begin{eqnarray}
-B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& B_{\psi}(y,x)
-\end{eqnarray}
+@@colbox-yellow
+Let $f:C\to \eR$ and $f^\star$ its convex conjugate, then:
+\eqa{
+    f(x) + f^\star(y) &\ge & \langle x,y\rangle, \quad \forall x\in C,y\in \R^n.
+}
+@@
 
-and, equivalently, $B_{\psi}(\nabla \psi^{\star}(\mu),\nabla\psi^{\star}(\nu))=B_{\psi^{\star}}(\nu,\mu)$.
-<!-- ~~~ -->
+## Subdifferential of the convex conjugate <!-- ✅ 12/9/2018 -->
+
+Consider the definition of the subdifferential \eqref{def subdiff 2}, for any $x\in C$ with $y\in \partial(x)$ we have
+\eqa{
+    (x\in C, y\in\partial f(x)) &\Longleftrightarrow& f^\star(y)=\scal{x, y}-f(x).
+}
+With exactly the same definition, we have that for $x\in\partial f^\star(y)$
+\eqa{
+    (x\in\partial f^\star(y)) &\Longleftrightarrow& f^{\star\star}(x)=\scal{x, y}-f^\star(y),
+}
+and the last equality can be rearranged to $f^\star(y)=\scal{x,y}-f^{\star\star}(x)$.
+In the case where $f\in\Gamma_0(C)$ then $f\equiv f^{\star\star}$ on $C$ by the Fenchel-Moreau theorem which gives the result that follows.
+
+@@colbox-yellow
+Let $f\in\Gamma_0(C)$ then the following equivalence holds
+\eqa{
+    (x\in C, y \in \partial f(x)) &\Longleftrightarrow& x \in \partial f^\star(y) \cap C.
+}
+Such a pair of point is called a *dual pair* and verifies $f(x)+f^\star(y)=\scal{x,y}$.
+@@
+
+Using the inverse of the subdifferential operator, we have that $x\in(\partial f)^{-1}(y)\cap C$ is equivalent to $x\in\partial f^\star(y)\cap C$ which shows a close link between $(\partial f)^{-1}$ and $\partial f^\star$.
+This link becomes even more apparent in the unconstrained case.
+
+@@colbox-yellow
+Let $f\in\Gamma_0(\R^n)$, then
+\eqa{
+    (\partial f)^{-1} &\equiv & \partial f^\star.
+}
+@@
+
+**Note**: recall that, with the first order condition, a minimiser $x^\sharp$ is such that $0\in \partial f(x^\sharp)$ or $(\partial f)^{-1}(0) \ni x^\sharp$.
+We can now also write this $x^\sharp \in \partial f^\star(0)$, thereby expressing the minimiser in terms of the convex-conjugate.
+Of course it's not clear at this point whether this helps at all to find the minimiser but, as it turns out, it will.
+
+## Short references
+
+1. **Hiriart-Urruty**, [A note on the Legendre-Fenchel transform of convex composite functions](https://www.math.univ-toulouse.fr/~jbhu/A_note_on_the_LF_transform.pdf): this is a more technical note that you may find interesting if you would like more details on convex conjugacy.
+1. **Mete Soner**, [Convex analysis and Fenchel-Moreau theorem](https://www2.math.ethz.ch/education/bachelor/lectures/hs2015/math/mf/lecture7notes): lecture notes covering convex conjugacy in more depth and proving rigorously the Fenchel-Moreau theorem.
+
+*See also the books mentioned in the introduction.*

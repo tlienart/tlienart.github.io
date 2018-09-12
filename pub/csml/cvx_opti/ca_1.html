@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/header.css">
         <link rel="icon" href="/assets/infra/favicon.png">
-		 <title>Basics of Convex Analysis</title>	
+		 <title>Convex analysis I</title>	
 		 <!-- Un-minified script so that can play a bit -->
 <link rel="stylesheet" href="/libs/katex/katex.css"></link>
 <script src="/libs/katex/katex.js"></script>
@@ -30,123 +30,65 @@
 <!-- CONTENT IS APPENDED HERE -->
 <div class=content>
 <p></p>
-<h1>Basics of convex analysis</h1>
-<p>We introduce here briefly a few important building blocks of convex optimisation:</p>
+<h1>Convex analysis &#40;part 1&#41;</h1>
+<p>In the notes \(\Gamma_0(C)\) denotes the set of <em>proper</em> and <em>lsc</em> convex functions on a convex set \(C\subseteq \mathbb R^n\). Often we will just write \(\Gamma_0\) when the domain of the minimisation is unambiguous.</p>
 <ul>
-<li><p><em>subgradient</em> &#40;generalised gradient&#41; and <em>subdifferential</em>,</p>
+<li><p><strong>proper</strong> indicates that the function takes a finite value for at least one \(x\in C\) &#40;i.e.: \(\exists x\in C, f(x) < \infty\)&#41; and is always lower bounded &#40;i.e.: \(f(x)>-\infty, \forall x\in C\)&#41;. For instance: the indicator of a non-empty set is a proper convex function.</p>
 </li>
-<li><p><em>first-order optimality condition</em> &#40;FOC&#41;,</p>
-</li>
-<li><p><em>strict</em> and <em>strong convexity</em>, <em>positive-definite functions</em> and a hint at <em>Bregman divergences</em>,</p>
-</li>
-<li><p><em>convex conjugate</em>.</p>
+<li><p><strong>lsc</strong> &#40;<em>lower semi continuous</em>&#41; indicates that around a point \(x_d\in C\) of discontinuity, we will either have \(f(x)>f(x_d)\) or \(f(x)\le f(x_d)\). For instance: the function \(f(x)=1\) if \(x>0\) and \(f(x)=0\) otherwise, is lsc. on \(\mathbb R\). However, the function \(g(x)=1\) if \(x\ge0\) and \(g(x)=0\) is <em>upper</em> semi continuous on \(\mathbb R\).</p>
 </li>
 </ul>
-<h3>Notations</h3>
-<p>In the notes \(\Gamma_0(X)\) denotes the set of <em>proper</em> and <em>lsc</em> convex functions on \(X\subseteq \mathbb R^n\) &#40;i.e.: <em>nice</em> functions&#41;.</p>
-<ul>
-<li><p><strong>proper</strong> indicates that the function takes a finite value for at least one \(x\in X\) &#40;i.e.: \(\exists x\in X, f(x) < \infty\)&#41; and is always lower bounded &#40;i.e.: \(f(x)>-\infty, \forall x\in X\)&#41;. For instance: the indicator of a non-empty set is a proper function.</p>
-</li>
-<li><p><strong>lsc</strong> &#40;<em>lower semi continuous</em>&#41; indicates that around a point \(x_d\in X\) of discontinuity, we will either have \(f(x)>f(x_d)\) or \(f(x)\le f(x_d)\). For instance: the function \(f(x)=1\) if \(x>0\) and \(f(x)=0\) otherwise is lsc.</p>
-</li>
-</ul>
-<p>We also write \(x^\sharp\) a true minimiser of the function, i.e. a point such that \(f(x)\ge f(x^\sharp)\) for all \(x\in X\). Finally, we write \(\overline{\mathbb R}\) the extended real line: \(\overline{\mathbb R} = \mathbb R \cup \{+\infty\}\).</p>
-<h2>Subgradient, subdifferential and FOC</h2>
+<p><div class="img-small"> <img src="/assets/csml/cvxopt/lsc-usc.svg" alt="" /> </div></p>
+<p>We denote by \(x^\sharp \in C^\circ\) a minimiser of the function, i.e. a point such that \(f(x)\ge f(x^\sharp)\) for all \(x\in C\) &#40;remember that we assume that the minimum is achieved on \(C^\circ\)&#41;. It is easy to show that the set of minimisers \(\arg\min_{x\in C}\) is a convex subset of \(C\).</p>
+<h2>Subgradient, subdifferential and FOC </h2>
 <p><div class="colbox-yellow"></p>
-<p>We say that \(y\in X\) is a <em>subgradient</em> of the function \(f\in\Gamma_{0}(X)\) at \(x\in X\) and belongs to the <em>subdifferential</em> of \(f\) at that point &#40;denoted \(\partial f(x)\)&#41; if it verifies the following inequality:</p>
-<p><a name="10778028128907436957"></a>$$\begin{array}{c}
-    f(z) &\ge & f(x) + \langle z-x, y \rangle, \qquad \forall z\in X. 
+<p>We say that \(y\in\mathbb R^n\) is a <em>subgradient</em> of the function \(f\) at \(x\in C\) if it verifies the following inequality:</p>
+<p><a name="10778028128907436957"></a>$$\begin{array}{c} 
+    f(z) &\ge & f(x) + \langle z-x, y \rangle, \qquad \forall z\in C. 
+\end{array}$$ </div></p>
+<p>The inequality <span class="eqref"><a href="#10778028128907436957">(1)</a></span> simply indicates that the graph of the function \(f\) at \(x\) is supported by the hyperplane defined by the right-hand side. A subgradient is thus the &quot;slope&quot; of one such <em>supporting hyperplane</em>.</p>
+<p>If the function is differentiable at \(x\) then there is only one such subgradient at \(x\) &#40;the classical gradient \(\nabla f(x)\)&#41; and, correspondingly, only one supporting hyperplane:</p>
+<p>$$\begin{array}{c} 
+    f(z) &\ge& f(x) + \left\langle z-x, \nabla f(x)\right\rangle, \qquad \forall z \in C.
 \end{array}$$</p>
-<p></div></p>
-<p>The inequality <span class="eqref"><a href="#10778028128907436957">(1)</a></span> simply indicates that the graph of the function \(f\) is supported by the hyperplane defined by the right-hand side. A subgradient is thus the &quot;slope&quot; of one such <em>supporting hyperplane</em>.</p>
-<p>If the function is differentiable at \(x\) then there is only one such subgradient at \(x\) &#40;the classical gradient&#41; and, correspondingly, only one supporting hyperplane. However, if the function is not differentiable at \(x\) &#40;e.g., if there is a kink at \(x\)&#41; then there is an infinity of hyperplanes supporting the function and, correspondingly, the subdifferential at that point is a <em>set</em> with a continuum of subgradients.</p>
-<p>An example is the absolute value function \(f(x)=|x|\) which is not differentiable at \(0\). It is however supported at that point by all lines of the form \(\ell(x)=\alpha x\) with \(\alpha\in [-1,1]\). The set \([-1, 1]\) is therefore the subdifferential of the function at \(0\), denoted \(\partial f(0)\).</p>
-<p></p>
-<h3>First order optimality condition &#40;FOC&#41;</h3>
-<p>By definition, an optimal point \(x^{\sharp}\) for the general minimisation problem must be such that \(f(z)\ge f(x^{\sharp})\) for all \(z\in X\). This can be written as</p>
-<p>$$\begin{array}{c}
-    f(z) &\ge& f(x^{\sharp}) + \langle z-x,0 \rangle, \qquad \forall z \in X,
+<p>However, if the function is not differentiable at \(x\) &#40;e.g., if there is a kink at \(x\)&#41; then there may be infinitely many supporting hyperplanes and infinitely many subgradients.</p>
+<p><div class="colbox-yellow"> The set of subgradients of a function \(f\) at a point \(x\in \mathrm{dom}\, f\) is called the <em>subdifferential</em> and denoted \(\partial f(x)\). For a convex function \(f\), it can be shown that the subdifferential of \(f\) is a non-empty bounded set at any point \(x\in (\mathrm{dom}\,f)^\circ\). </div></p>
+<p>An example is the absolute value function \(f(x)=|x|\) which is not differentiable at \(0\). It is however supported at that point by all lines of the form \(\ell_\alpha(x)=\alpha x\) with \(\alpha\in [-1,1]\) &#40;see figure below&#41;. The set \([-1, 1]\) is therefore the subdifferential of the function at \(0\), denoted \(\partial f(0)\).</p>
+<p><img src="/assets/csml/cvxopt/abs-subgrad.svg" alt="" /></p>
+<h3>First order optimality condition &#40;FOC&#41; </h3>
+<p>A point \(x^{\sharp}\in C\) is a minimiser of the function \(f\) if and only if \(f(z)\ge f(x^{\sharp})\) for all \(z\in C\). This can be written equivalently as:</p>
+<p>$$\begin{array}{c} 
+    f(z) &\ge& f(x^{\sharp}) + \left\langle z-x, 0\right\rangle, \qquad \forall z \in C,
 \end{array}$$</p>
 <p>and hence \(0\) must be a subgradient of \(f\) at \(x^\sharp\).</p>
-<p><div class="colbox-yellow"></p>
-<p>This is the <em>first-order optimality condition</em> &#40;FOC&#41;:</p>
-<p>$$\begin{array}{c}
-    x^\sharp \,\in\, \arg\min_x \, f(x) &\Longleftrightarrow& 0\,\in\, \partial f(x^\sharp).
+<p><div class="colbox-yellow"> <em>First-order optimality condition</em> &#40;FOC&#41;: for a convex function \(f\),</p>
+<p>$$
+x^\sharp \,\in\, \arg\min_{x\in C} \, f(x) \quad\!\! \Longleftrightarrow\quad\!\! 0\,\in\, \partial f(x^\sharp).$$ </div></p>
+<p>If we take the subdifferential as an <em>operator</em> then, intuitively, looking for a minimiser amounts to &quot;inverting&quot; the subdifferential and evaluating it at \(0\), i.e.: \(x^\sharp = (\partial f)^{-1}(0)\). Of course at this point we don&#39;t know how to compute \((\partial f)^{-1}\) in general. We shall come back to this in more details but the idea of inverting an operator involving the subdifferential to find the minimiser is key in convex optimisation.</p>
+<p>Note that in some simple situations the FOC is sufficient to immediately find a minimiser, for instance, if \(f(x)=|x|\), then clearly the subdifferential:</p>
+<p>$$\begin{array}{c} 
+    \partial f(x) &=& \begin{cases} \mathrm{sign}(x) & (x\neq 0) \\\\ [-1, 1] & (x=0) \end{cases}
 \end{array}$$</p>
-<p></div></p>
-<p>If we take the subdifferential as an <em>operator</em> then, intuitively, looking for a minimiser amounts to &quot;inverting&quot; the subdifferential and evaluating it at \(0\), i.e.: \(x^\sharp = (\partial f)^{-1}(0)\). We shall come back to this in more details but the idea of inverting an operator involving the subdifferential to find the minimiser is key in convex optimisation.</p>
-<h3>Subdifferential of a sum</h3>
-<p>Before moving on, it is useful to note &#40;and not too hard to convince oneself&#41; that the following inclusion holds for the subdifferential of a sum:</p>
-<p>$$\begin{array}{c}
-    \partial \sum_i f_i &\supseteq& \sum_i \partial f_i.
-\end{array}$$</p>
-<p>For most problems of interest, it holds as an equality. But note that, even if it does not hold as an equality, if \(0\in \sum_i \partial f_i(x^\dagger)\) then the inclusion above implies that \(0\in\partial \sum_i f_i(x^\dagger)\) which is sufficient to show that \(x^\dagger\) is a minimiser &#40;and is ultimately what we are interested in&#41;.</p>
-<h2>Strict and strong convexity</h2>
-<h3>Strict convexity and Bregman divergence</h3>
-<p><div class="colbox-yellow"> The function \(\psi\) is said to be <em>strictly convex</em> at \(x\) if the sub-gradient inequality <span class="eqref"><a href="#10778028128907436957">(1)</a></span> holds <em>strictly</em> for all \(z\in X\backslash \{x\}\) i.e.:</p>
-<p>$$\begin{array}{c}
-\psi(z) &>& \psi(x) + \langle z-x , y\rangle, \quad\forall z\in X,\, z\neq x
-\end{array}$$</p>
-<p>where \(y\in\partial \psi(x)\). </div></p>
-<p>Recalling that a function \(d: X\times X\) is said to be <em>positive-definite</em> if \(d(u,u)=0\) and \(d(u,v)>0\) for \(u\neq v\), we can observe that we can use such a strictly convex function to define a positive-definite function \(B_{\psi}:X\times X\to \mathbb R^{+}\) as:</p>
-<p>$$\begin{array}{c}
-B_{\psi}(z,x) &:=& \psi(z)-\psi(x) - \langle z-x,y \rangle, \quad \text{with}\quad y\in\partial \psi(x).
-\end{array}$$</p>
-<p>This equation actually characterises <em>Bregman divergences</em>, we will come back to those later in the notes.</p>
-<h3>Strong convexity</h3>
-<p><div class="colbox-yellow"> The function \(\varphi\) is said to be \(\mu\)-<em>strongly convex</em> with parameter \(\mu>0\) if it is strictly convex and if the Bregman divergence associated to it is lower bounded by \(\mu\) times the squared Euclidean &#40;\(\ell^{2}\)&#41; distance, i.e.:</p>
-<p>$$\begin{array}{c}
-B_{\varphi}(x,y) &\ge& {\mu\over 2} {\|x-y\|^{2}_{2}}, \quad\forall x,y\in X.
+<p>which shows that the only point \(x^\sharp\) where \(0\in \partial f(x^\sharp)\) is \(x^\sharp=0\). In other words, \((\partial f)^{-1}(0) = 0\).</p>
+<h3>Subdifferential of a sum </h3>
+<p><div class="colbox-yellow"> Let \(f_i:C\to \mathbb R\) be convex functions then <a name="2307685298850424370"></a>$$\begin{array}{c} 
+    \partial \sum_i f_i &\supseteq& \sum_i \partial f_i. 
 \end{array}$$ </div></p>
-<p>The factor \(1/2\) might seem irrelevant but makes other developments look nicer. For now, observe that if we take the derivative of the right-hand side, then we are left with \((x-y)\) without a spurious factor \(2\).</p>
-<p><em>Remark</em>: note that, obviously, a strongly-convex function is also strictly convex.</p>
-<h2>The convex conjugate</h2>
-<p>Let us once more consider the definition of the subgradient of a convex function \(f:X\to\overline{\mathbb R}\) at a point \(x\in X\):</p>
-<p>$$\begin{array}{c}
-    \partial f(x) &=& \{y\,|\, f(z)\,\ge\, f(x)+\langle z-x,y\rangle, \,\forall z\in X\}.
-\end{array}$$</p>
-<p>We can rearrange terms in the condition as follows:</p>
-<p>$$\begin{array}{c}
-    \partial f(x) &=& \{y\,|\, \langle z,y\rangle - f(z)\,\le\, \langle x,y\rangle - f(x), \,\forall z\in X\}.
-\end{array}$$</p>
-<p>However, since the condition must hold for all \(z\in X\), it must equivalently hold for any \(z\in X\) that maximises the lower bound. Note that the maximum of that lower bound tightens the inequality exactly &#40;just take \(z=x\)&#41;. We can thus write the subgradient as</p>
-<p>$$\begin{array}{c}
-    \partial f(x) &=& \{y \,|\, \max_{z\in X} \,\, [\langle z,y\rangle -f(z)] \,=\, \langle x,y\rangle -f(x)\}.
-\end{array}$$</p>
-<p>This justifies the definition of the <em>convex conjugate</em> of a function &#40;also sometimes known as the <em>Fenchel-Legendre convex conjugate</em> or a combination of those words&#41;.</p>
-<p><div class="colbox-yellow"> Let \(f: X\to \overline{\mathbb R}\) be a function, we define its <em>convex conjugate</em> \(f^\star(y):X\to \overline{\mathbb R}\) as follows:</p>
-<p>$$\begin{array}{c}
-    f^\star(y) &:=& \sup_{z\in X} \,\,[\langle z,y \rangle - f(z)].
-\end{array}$$ </div></p>
-<p>It is easy to show that the convex conjugate of a function \(f\) is always convex even if the function \(f\) is not convex.</p>
-<p>The subgradient of a convex function \(f\) can then be expressed in terms of the convex conjugate as:</p>
-<p>$$\begin{array}{c}
-    \partial f(x) &=& \{ y \,|\, f^{\star}(y) \,=\, \langle x,y\rangle - f(x)\}.
-\end{array}$$</p>
-<p>A useful property of the convex conjugate for <em>nice</em> convex functions \(f\) &#40;i.e.: \(f\in \Gamma_0(X)\)&#41;, the convex conjugate of the convex conjugate is the function itself: \(f^{\star\star}=f\). </p>
-<p>We can consider a simple &#40;and yet quite useful&#41; example for the convex conjugate: if we define \(\psi(x):=\|x\|^2/2\), its convex conjugate is then</p>
-<p>$$\begin{array}{c}
-\psi^\star(y) &=& \sup_z\,\, \langle z,y\rangle - \frac12\langle z,z\rangle.
-\end{array}$$</p>
-<p>The problem in the right hand side is easy to solve: the objective function is differentiable and the FOC gives \(y-z^\sharp = 0\) so that \(\psi^\star(y)= \psi(y)\).</p>
-<h3>Fenchel&#39;s inequality</h3>
-<p>The definition of the convex conjugate also directly implies <em>Fenchel&#39;s inequality</em>.</p>
-<p><div class="colbox-yellow"> Let \(f:X\to \overline{\mathbb R}\) and \(f^\star\) its convex conjugate, then: $$\begin{array}{c}
-    f(x) + f^\star(y) &\ge & \langle x,y\rangle, \quad \forall x,y\in X.
-\end{array}$$ </div></p>
-<h2>Comments and references</h2>
-<ul>
-<li><p>The notion of duality is rather important in convex analysis and, to be a bit more precise, we should note that a subgradient belongs to the dual space \(X^{\star}\) and that the convex conjugate is actually defined on \(X^{\star}\) as well. However, in most cases, \(X\) is \(\mathbb R^n\) which is self-dual and one can afford to drop making the distinction which makes the notations less cumbersome. Generalisation to arbitrary Banach spaces is not difficult but requires a bit of care, see Rockafellar&#39;s book.</p>
-</li>
-</ul>
-<p>Beyond the books mentioned in the <a href="/pub/csml/cvx_opti/intro.html">introduction</a>, you may want to consider these references:</p>
+<p>Indeed, let \(g\equiv\sum_i f_i\) and let \(y_i\in\partial f_i(x)\) then, by definition,</p>
+<p>$$\begin{array}{c} 
+    f_i(z) &\ge& f_i(x) + \left\langle z-x, y_i\right\rangle, \quad\forall z\in C,
+\end{array}$$ and we can sum across these inequalities to get $$\begin{array}{c} 
+    g(z) &\ge& g(x) + \langle z-x, \sum_i y_i\rangle, \quad\forall z\in C,
+\end{array}$$ so that \(\sum_i y_i \in \partial g(x)\). Note that if we have \(0\in \sum_i \partial f_i(x^\dagger)\) then the inclusion implies that \(0\in\partial \sum_i f_i(x^\dagger)\) which is sufficient to show that \(x^\dagger\) is a minimiser.</p>
+<h2>Short references</h2>
 <ol>
-<li><p><strong>Hiriart-Urruty</strong>: <a href="https://www.math.univ-toulouse.fr/~jbhu/A_note_on_the_LF_transform.pdf">A note on the Legendre-Fenchel transform of convex composite functions</a>. This is a more technical note that you may find interesting if you would like more details on convex conjugacy.</p>
+<li><p><strong>Boyd</strong> and <strong>Vandenberghe</strong>, <a href="https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf">Subgradients</a>: accessible lecture notes introducing the subgradients and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.</p>
 </li>
 </ol>
+<p><em>See also the books mentioned in the introduction.</em></p>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. All rights reserved. Last modified: September 11, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+				&copy; T. Lienart. All rights reserved. Last modified: September 12, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

@@ -15,15 +15,15 @@ $$
 	\min_{x\in C}\quad f(x) \label{initial-min-problem}
 $$
 
-where $C$ is a *nice* convex set and $f$ a *nice* convex function.
-Usual assumptions of *niceness* (that are typically verified in problems of interest) are:
+where $C$ is a *nice* convex set and $f$ a *nice* convex function. In these notes, the following notions of *niceness* are used (unless explicitly specified)
 
-* $C$ is a *non-empty* convex subset of $\mathbb R^n$,
-* $f$ is in the set $\Gamma_0(C)$ of convex functions on $C$ that are *proper* and *lower semi-continuous*,
-* one can compute a gradient or subgradient of $f$ at a given point.
+* $C\subseteq \R^n$ and is non-empty,
+* $\mathrm{dom}\, f \supseteq C$, i.e.: the domain of $f$ covers $C$,
+* $f$ is in the set $\Gamma_0(C)$ of convex functions on $C$ that are *proper* and *lower semi-continuous* (see [further](/pub/csml/cvx_opti/ca_1.html)),
+* $f$ achieves its minimum on the *interior* of $C^\circ$.
 
 Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm.
-We shall try to make these assumptions clearer as we get to use them throughout the notes (and, it is therefore not required to look them up on Wikipedia quite just yet).
+We will come back to these assumptions as we get to use them throughout the notes.
 
 We will also consider the unconstrained form of the problem, i.e.: when $C=\mathbb R^n$ (and will then just write $\min_x f(x)$).
 Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the *indicator* of a convex set $C$ as

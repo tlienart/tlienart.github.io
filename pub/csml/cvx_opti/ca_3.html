@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-UK">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="icon" href="/assets/infra/favicon.png">
+		 <title>Convex analysis III</title>	
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.css"></link>
+<script src="/libs/katex/katex.js"></script>
+<script src="/libs/katex/auto-render.js"></script>
+ 		
+        
+	</head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML Notes</a></li>
+                    <li><a href="/pub/julia.html">Julia Notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="/assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+
+<!-- CONTENT IS APPENDED HERE -->
+<div class=content>
+<p></p>
+<h1>Convex analysis &#40;part 3&#41;</h1>
+<p>We add here a few more results of convex analysis which can be skipped in a first reading but to which we may refer in subsequent pages. You will find here:</p>
+<ul>
+<li><p>the link between \(\partial f\) and \(\partial f^{\star}\),</p>
+</li>
+<li><p>the link between <em>Lipschitz continuity</em> and strong convexity,</p>
+</li>
+<li><p>the link between the Bregman divergence associated with a function and that of its convex conjugate.</p>
+</li>
+</ul>
+<p><strong>Note</strong>: we use the shorthand \(f\in\Gamma_0\) to denote \(f\in\Gamma_0(\mathbb R^n)\).</p>
+<h2>Strict and strong convexity</h2>
+<h3>Strict convexity and Bregman divergence</h3>
+<p><div class="colbox-yellow"> The function \(\psi\) is said to be <em>strictly convex</em> at \(x\) if the subgradient inequality (<b>??</b>) holds <em>strictly</em> for all \(z\neq x\) i.e.:</p>
+<p>$$\begin{array}{c} 
+    \psi(z) &>& \psi(x) + \langle z-x , y\rangle, \quad\forall z\neq x
+\end{array}$$ where \(y\in\partial \psi(x)\). </div></p>
+<p>Let us consider the particular case where \(\psi\) is strictly convex and differentiable. Recalling that a function \(d: \mathbb R^n\times \mathbb R^n\) is said to be <em>positive-definite</em> if \(d(u,u)=0\) and \(d(u,v)>0\) for \(u\neq v\), we can observe that we can use a strictly convex function to define a positive-definite function \(B_{\psi}:\mathbb R^n\times \mathbb R^n\to \mathbb R^{+}\) as:</p>
+<p>$$\begin{array}{c} 
+B_{\psi}(z,x) &:=& \psi(z)-\psi(x) - \langle z-x,\nabla \psi(x) \rangle
+\end{array}$$</p>
+<p>This equation actually characterises <em>Bregman divergences</em>, we will come back to those later in the notes.</p>
+<h3>Strong convexity</h3>
+<p><div class="colbox-yellow"> The function \(\varphi\) is said to be \(\mu\)-<em>strongly convex</em> with parameter \(\mu>0\) if the subgradient inequality (<b>??</b>) holds with:</p>
+<p>$$\begin{array}{c} 
+    \varphi(z) &\ge& \varphi(x) + \left\langle z-x, y\right\rangle + {\mu\over 2}\|z-x\|_2^2,
+\end{array}$$ for any \(z, x\) and \(y\in\partial \varphi(x)\). </div></p>
+<p>Note that if the function is differentiable, then another characterisation of strong convexity is that the Bregman divergence associated to it is lower bounded by the squared Euclidean &#40;\(\ell^{2}\)&#41; distance:</p>
+<p>$$\begin{array}{c} 
+B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z.
+\end{array}$$</p>
+<p>The factor \(1/2\) might seem irrelevant but makes other developments look nicer. For now, observe that if we take the derivative of the right-hand side, then we are left with \((x-y)\) without a spurious factor \(2\).</p>
+<h2>Lipschitz continuity and strong convexity</h2>
+<p>Let us first recall definitions: a function \(\phi\) is \(\beta\)<em>-Lipschitz-continuous</em> if \(\forall u,v\in \text{dom}\, \phi\) the following inequality holds:</p>
+<p>$$\begin{array}{c}
+\|\phi(u)-\phi(v)\| &\le& \beta \|u-v\|.
+\end{array}$$</p>
+<p>A differentiable function \(\varphi\) is \(\mu\)<em>-strongly convex</em> if \(\forall u,v\in \text{dom}\,\varphi\) the following inequality holds:</p>
+<p>$$\begin{array}{c}
+{\mu\over 2}\|u-v\|^{2}_{2} &\le& B_{\varphi}(u,v).
+\end{array}$$</p>
+<p>Of course such a function is also \(\Gamma_0\). Observe that the inequality must hold for all \(u\) and \(v\) so that, in particular, we can swap \(u\) and \(v\) and get</p>
+<p>$$\begin{array}{c}
+\mu \|u-v\|^{2}_{2} &\le& B_{\varphi}(u,v)+B_{\varphi}(v,u) .
+\end{array}$$</p>
+<p>Now, recall that \(B_{\varphi}(u,v):=\varphi(u)-\varphi(v)-\langle u-v, \nabla\varphi(u)\rangle\) so that if we let \(y = \nabla\varphi(u)\) and \(z=\nabla\varphi(v)\), then the previous inequality reads:</p>
+<p>$$\begin{array}{c} 
+    \mu\| u-v\|^{2}_{2} &\le & \langle u-v, z-y \rangle \,\,\le\,\, \|u-v\|_2 \|y-z\|_2,
+\end{array}$$</p>
+<p>where for the last inequality, we used Cauchy-Schwartz&#39;s inequality. Rearranging terms yields</p>
+<p>$$\begin{array}{c} 
+    \|u-v\|_{2} &\le& {1\over \mu}\| y-z\|_2.
+\end{array}$$</p>
+<p>Since \(u=(\nabla \varphi)^{-1}(y)=\nabla\varphi^\star(y)\) and \(v=(\nabla \varphi)^{-1}(z)=\nabla\varphi^\star(z)\) &#40;by definition of \(y\) and \(z\) and since \(\varphi\in\Gamma_0\)&#41; we get the following result.</p>
+<p><div class="colbox-yellow"> Let \(\varphi\) be a \(\mu\)-strongly convex function then \(\varphi^\star\) has a  gradient that is is \(1/\mu\)-Lipschitz continuous, i.e.:</p>
+<p>$$\begin{array}{c} 
+    \| \nabla \varphi^\star(y)-\nabla \varphi^\star(z)  \| &\le& {1\over \mu}\|y-z\|,\quad \forall y,z\in \text{dom}\,\nabla\varphi^\star.
+\end{array}$$ </div></p>
+<h2>Bregman divergence and convex conjugacy</h2>
+<p><strong>FIX THIS, DEFINE BD, USE DUAL PAIR</strong></p>
+<p>Take \(\psi\in\Gamma_{0}\), strictly convex and continuously differentiable, the Bregman divergence associated to it is</p>
+<p>$$\begin{array}{c} 
+    B_{\psi}(x,y) &:=& \psi(x)-\psi(y)-\langle x-y,\nabla \psi(y)\rangle.
+\end{array}$$</p>
+<p>Recall that the convex conjugate is given by \(\psi^{\star}(y):=\sup_{x}[\langle x,y \rangle - \psi(x) ]\) and assume that it is attained at a point \(x^+\). We can then write</p>
+<p>$$\begin{array}{c}
+    \psi^{\star}(y) &=& \langle x^{+},y\rangle - \psi (x^{+})
+\end{array}$$</p>
+<p>with \(\nabla \psi(x^{+})=y\) by the FOC. We can thus write</p>
+<p>$$\begin{array}{c}
+\psi^{\star}(\nabla \psi(x)) &=& \langle x,\nabla\psi (x)\rangle - \psi(x).
+\end{array}$$</p>
+<p>We can then consider the Bregman divergence associated to \(\psi^{\star}\) and obtain</p>
+<p>$$\begin{array}{c}
+B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& \psi(y)-\psi(x)-\langle x-y,\nabla\psi(x)\rangle \,\,=\,\, B_{\psi}(y,x).
+\end{array}$$</p>
+<p></p>
+<p>We have thus shown that</p>
+<p>$$\begin{array}{c}
+B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& B_{\psi}(y,x)
+\end{array}$$</p>
+<p>and, equivalently, \(B_{\psi}(\nabla \psi^{\star}(\mu),\nabla\psi^{\star}(\nu))=B_{\psi^{\star}}(\nu,\mu)\). </p>
+<h2>Short references</h2>
+<p><em>See also the books mentioned in the introduction.</em></p>
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. All rights reserved. Last modified: September 12, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+        
+                <script>
+		renderMathInElement(document.body)
+</script>
+
+        
+    </body>
+</html>

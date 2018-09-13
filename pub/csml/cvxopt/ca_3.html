@@ -57,7 +57,7 @@
 <p><a name="11961872200048882832"></a>$$\begin{array}{c} 
 B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C.
 \end{array}$$</p>
-<h2>Lipschitz continuity and strong convexity </h2>
+<h2>Lipschitz continuity and strong convexity</h2>
 <p>This is a useful result to prove convergence rates of some iterative minimisation methods but can easily be skipped in a first reading.</p>
 <p>First we recall that a function \(\phi\) is \(\beta\)<em>-Lipschitz-continuous</em> if \(\forall u,v\in \text{dom}\, \phi\) the following inequality holds:</p>
 <p>$$\begin{array}{c}
@@ -85,36 +85,12 @@ B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C.
     \psi(x) + \psi^\star(\nabla\psi(x)) &=& \left\langle x, \nabla \psi(x)\right\rangle,
 \end{array}$$ and the same for \(z\). Plugging this into <span class="eqref"><a href="#9968585754000012516">(12)</a></span>, we obtain $$\begin{array}{c} 
     B_\psi^\star(\nabla\psi(x), \nabla\psi(y)) &=& \psi(z)-\psi(x)-\left\langle z-x, \nabla \psi (x)\right\rangle.
-\end{array}$$  <div class="colbox-yellow"> Let \(\psi:C\to \mathbb R\) be a differentiable, strictly convex function. Then for \(x, z \in C^\circ\) we have $$\begin{array}{c} 
+\end{array}$$ <div class="colbox-yellow"> Let \(\psi:C\to \mathbb R\) be a differentiable, strictly convex function. Then for \(x, z \in C^\circ\) we have $$\begin{array}{c} 
     B_{\psi^\star}(\nabla \psi(x), \nabla\psi(z)) &=& B_\psi(z, x).
 \end{array}$$ </div></p>
-<p>Let \(x\in C^\circ\) and consider the dual pair \((x, \nabla\psi(x))\). We know that for a dual pair \((x, y)\) we have $$\begin{array}{c} 
-    \psi(x)+\psi^\star(y) &=& \left\langle x, y\right\rangle
-\end{array}$$ so that, with \(y=\nabla\psi(x)\), we have $$\begin{array}{c} 
-    \psi^\star(\nabla\psi(x)) &=& \left\langle x, \nabla \psi(x)\right\rangle - \psi(x).
-\end{array}$$ We will use this in a moment. Now</p>
-<p>Take \(\psi\in\Gamma_{0}\), strictly convex and continuously differentiable, the Bregman divergence associated to it is</p>
-<p>$$\begin{array}{c} 
-    B_{\psi}(x,y) &:=& \psi(x)-\psi(y)-\langle x-y,\nabla \psi(y)\rangle.
-\end{array}$$</p>
-<p>Recall that the convex conjugate is given by \(\psi^{\star}(y):=\sup_{x}[\langle x,y \rangle - \psi(x) ]\) and assume that it is attained at a point \(x^+\). We can then write</p>
-<p>$$\begin{array}{c}
-    \psi^{\star}(y) &=& \langle x^{+},y\rangle - \psi (x^{+})
-\end{array}$$</p>
-<p>with \(\nabla \psi(x^{+})=y\) by the FOC. We can thus write</p>
-<p>$$\begin{array}{c}
-\psi^{\star}(\nabla \psi(x)) &=& \langle x,\nabla\psi (x)\rangle - \psi(x).
-\end{array}$$</p>
-<p>We can then consider the Bregman divergence associated to \(\psi^{\star}\) and obtain</p>
-<p>$$\begin{array}{c}
-B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& \psi(y)-\psi(x)-\langle x-y,\nabla\psi(x)\rangle \,\,=\,\, B_{\psi}(y,x).
-\end{array}$$</p>
-<p></p>
-<p>We have thus shown that</p>
-<p>$$\begin{array}{c}
-B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& B_{\psi}(y,x)
-\end{array}$$</p>
-<p>and, equivalently, \(B_{\psi}(\nabla \psi^{\star}(\mu),\nabla\psi^{\star}(\nu))=B_{\psi^{\star}}(\nu,\mu)\). </p>
+<p>Of course, by symmetry, we also have $$\begin{array}{c} 
+    B_{\psi}(\nabla \psi^{\star}(u),\nabla\psi^{\star}(v)) &=& B_{\psi^{\star}}(u,v),
+\end{array}$$ for any \(u, v\in\nabla\psi(C)\).</p>
 <h2>Short references</h2>
 <p><em>See also the general references mentioned in the <a href="/pub/csml/cvxopt/intro.html">introduction</a>.</em></p>
 <div class="page-foot">

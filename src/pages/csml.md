@@ -18,10 +18,16 @@ If you find anything dubious in the notes, please send me an email.
 
 ## Applied maths
 
-* **notes on convex optimisation** (*assumes knowledge of what a convex function is*) <!-- 🚫🚫🚫 12/9/18 -->
+* **notes on convex optimisation** (*assumes knowledge of what a convex function is*) <!-- 🚫🚫🚫 12/9/18
+NOTE TODO:
+    🍺 add references to Nesterov's course (+link)
+    🍺 add references in ca_3 (see note)
+-->
     * [introduction](/pub/csml/cvxopt/intro.html): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
     * [convex analysis part 1](/pub/csml/cvxopt/ca_1.html): introduction of elementary notions of convex analysis: the *subgradient* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
     * [convex analysis part 2](/pub/csml/cvxopt/ca_2.html): introduction of the *convex conjugate* along with some of its properties. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 3](/pub/csml/cvxopt/ca_3.html): discussion of *strict* and *strong* convexity, introduction of the *Bregman divergence* and discussion of the link between *lipschitz continuity* and *strong convexity*. <!-- 🚫 12/9/18 -->
+    * [convex analysis part 3](/pub/csml/cvxopt/ca_3.html): discussion of *strict* and *strong* convexity, introduction of the *Bregman divergence* and discussion of the link between *lipschitz continuity* and *strong convexity*. <!-- 🚫 12/9/18 NOTE: ok but needs references for Lipschitz <> strong convex maybe as well as something nice on Bregman -->
+
+
 <!-- * *notes on Krylov subspace methods* -->
 <!-- * *notes on matrix theory* -->

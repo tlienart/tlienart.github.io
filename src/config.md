@@ -2,7 +2,7 @@
 @def author = "T. Lienart"
 
 <!-- Add here your commands that you'd like to use throughout  -->
-\newcommand{\eqa}[1]{\begin{array}{c}#1\end{array}}
+\newcommand{\eqa}[1]{\begin{eqnarray}#1\end{eqnarray}}
 \newcommand{\eqal}[1]{\begin{align}#1\end{align}}
 
 \newcommand{\esp}{\quad\!\!}

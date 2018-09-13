@@ -170,5 +170,6 @@ body {
     padding-left: 10px;
     padding-bottom: 5px;
     margin: 5px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
+    border-left: 5px solid orange;
 }

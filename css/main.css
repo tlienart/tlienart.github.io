@@ -59,9 +59,9 @@ html {
 }
 
 /* on wide screens, fix content width to a max value */
-@media (min-width: 880px) {
+@media (min-width: 940px) {
     .content {
-        width: 700px;
+        width: 705px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -69,6 +69,10 @@ html {
 
 /* on narrow device, reduce margins */
 @media (max-width: 480px) {
+    header {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
     .content {
         padding-left: 6%;
         padding-right: 6%;

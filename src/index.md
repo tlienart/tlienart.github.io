@@ -7,12 +7,11 @@
 # Welcome
 
 On this website, you will mainly find some notes on topics in computer science and machine learning (CS/ML) as well as, more generally, applied maths.
+These are mostly things I write to keep track of results I find useful or nice.
 I also really like the Julia programming language and keep some notes on that too.
 
-Finally, there are a number of miscellaneous posts in other topics ranging from philosophy to travelling.
-For instance, if you're interested in knowing how this website was made, there's a [post for that](/pub/misc/judoc.html) where I explain how the static site generator I built works.
-
-Feedback is much appreciated, be it on the content, the format or the inevitable typos and clumsy english.
+Then, there's a number of miscellaneous posts in other topics ranging from philosophy to travelling and side-projects.
+For example if you're interested in knowing how this website was built, there's a [post for that](/pub/misc/about-website.html) where I explain how my static site generator works.
 
 ## News
 

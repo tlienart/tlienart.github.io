@@ -3,7 +3,7 @@
 # Convex analysis (part 3)
 
 ## Strict and strong convexity <!-- ✅ 13/9/2018 -->
-
+<!--
 Remember that for a convex function $\psi:C\to \R$, the subdifferential at a point $x\in C^\circ$ is non-empty and for any subgradient $y\in\partial \psi(x)$, the following inequality holds:
 \eqa{
     \psi(z) &\ge& \psi(x) + \scal{z-x, y}, \quad\forall z\in C.\label{subgrad ineq}
@@ -14,10 +14,10 @@ This simply means that the graph of the function is above its supporting hyperpl
 The function $\psi:C \to \R$ is said to be *strictly convex* at $x\in C^\circ$ if the inequality \eqref{subgrad ineq} holds *strictly* for all $z\neq x$.
 @@
 
-For example $\psi(x)=x\log(x)$ is strictly convex on $\R^+$ whereas $\psi(x)=|x|$ isn't.
+For example $\psi(x)=x\log(x)$ is strictly convex on $\R^+$ whereas $\psi(x)=|x|$ isn't. -->
 
 ### Bregman divergence <!-- ✅ 13/9/2018 -->
-
+<!--
 Let's consider the particular case where $\psi$ is strictly convex and differentiable so that $\partial \psi(x)=\{\nabla \psi(x)\}$.
 In that case we have
 \eqa{
@@ -38,10 +38,10 @@ For example, $\psi(x) = \frac12\scal{x, x}$ then
     B_\psi(z, x) \esp&=\esp \frac12\scal{z, z} - \frac12\scal{x, x} - \scal{z-x, x}\\
                  &=\esp \frac12\scal{z-x, z-x}
 }
-which is just the squared Euclidean ($\ell^{2}$) distance.The factor $1/2$ might seem irrelevant but it makes other developments a bit nicer so that, traditionally in convex-optimisation, the squared Euclidean distance is always scaled by a factor two.
+which is just the squared Euclidean ($\ell^{2}$) distance.The factor $1/2$ might seem irrelevant but it makes other developments a bit nicer so that, traditionally in convex-optimisation, the squared Euclidean distance is always scaled by a factor two. -->
 
 ### Strong convexity <!-- ✅ 13/9/2018 -->
-
+<!--
 @@colbox-yellow
 The function $\varphi:C\to \R$ is said to be $\mu$-*strongly convex* at $x\in C^\circ$ with parameter $\mu>0$ if the subgradient inequality \eqref{subgrad ineq} holds with:
 
@@ -57,10 +57,10 @@ Note that if the function $\varphi$ is $\mu$-strongly convex and differentiable,
 
 \eqa{
 B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C.
-\label{strong convex bregman}}
+\label{strong convex bregman}} -->
 
 ## Lipschitz continuity and strong convexity <!-- 🚫 13/9/2018 -->
-
+<!--
 This is a useful result to prove convergence rates of some iterative minimisation methods but can easily be skipped in a first reading.
 
 First we recall that a function $\phi$ is $\beta$*-Lipschitz-continuous* if $\forall u,v\in \text{dom}\, \phi$ the following inequality holds:
@@ -118,7 +118,7 @@ and the same for $z$.
 Plugging this into \eqref{eq breg 1}, we obtain
 \eqa{
     B_\psi^\star(\nabla\psi(x), \nabla\psi(y)) &=& \psi(z)-\psi(x)-\scal{z-x, \nabla \psi (x)}.
-}
+} -->
 <!-- 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 sept 13-->
 <!-- @@colbox-yellow
 Let $\psi:C\to \R$ be a differentiable, strictly convex function. Then for $x, z \in C^\circ$ we have
@@ -168,13 +168,13 @@ B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& \psi(y)-\psi(x)-\langle x-y,\n
 
 <!-- ~~~ -->
 
-We have thus shown that
+<!-- We have thus shown that
 
 \begin{eqnarray}
 B_{\psi^{\star}}(\nabla\psi(x),\nabla\psi(y)) &=& B_{\psi}(y,x)
 \end{eqnarray}
 
-and, equivalently, $B_{\psi}(\nabla \psi^{\star}(\mu),\nabla\psi^{\star}(\nu))=B_{\psi^{\star}}(\nu,\mu)$.
+and, equivalently, $B_{\psi}(\nabla \psi^{\star}(\mu),\nabla\psi^{\star}(\nu))=B_{\psi^{\star}}(\nu,\mu)$. -->
 <!-- ~~~ --> -->
 
 ## Short references

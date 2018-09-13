@@ -61,7 +61,7 @@ html {
 /* on wide screens, fix content width to a max value */
 @media (min-width: 880px) {
     .content {
-        width: 660px;
+        width: 700px;
         margin-left: auto;
         margin-right: auto;
     }

@@ -54,7 +54,7 @@ $$
 
 The problem in the right hand side is easy to solve: the objective function is differentiable and the FOC gives $y-z^\sharp = 0$ so that $\psi^\star(y)= \psi(y)$.
 
-Another nice example is $f(x)=x\exp(x)$, it's an easy exercise to show that $f^\star(y)=\exp(y-1)$ and $f^{\star\star}(x) = f(x)$.
+Another nice example is $f(x)=x\log(x)$, it's an easy exercise to show that $f^\star(y)=\exp(y-1)$ and $f^{\star\star}(x) = f(x)$.
 
 ### Fenchel-Moreau theorem and Fenchel's inequality <!-- ✅ 12/9/2018 -->
 
@@ -72,7 +72,7 @@ Let $f:C\to \eR$ and $f^\star$ its convex conjugate, then:
 }
 @@
 
-## Subdifferential of the convex conjugate <!-- ✅ 12/9/2018 -->
+## Subdifferential of the convex conjugate <!-- ✅ 13/9/2018 -->
 
 Consider the definition of the subdifferential \eqref{def subdiff 2}, for any $x\in C$ with $y\in \partial(x)$ we have
 \eqa{
@@ -80,7 +80,7 @@ Consider the definition of the subdifferential \eqref{def subdiff 2}, for any $x
 }
 With exactly the same definition, we have that for $x\in\partial f^\star(y)$
 \eqa{
-    (x\in\partial f^\star(y)) &\Longleftrightarrow& f^{\star\star}(x)=\scal{x, y}-f^\star(y),
+    (x\in\partial f^\star(y)) &\Longleftrightarrow& f^{\star\star}(x)=\scal{x, y}-f^\star(y),\label{general dfstar dfinv}
 }
 and the last equality can be rearranged to $f^\star(y)=\scal{x,y}-f^{\star\star}(x)$.
 In the case where $f\in\Gamma_0(C)$ then $f\equiv f^{\star\star}$ on $C$ by the Fenchel-Moreau theorem which gives the result that follows.
@@ -107,9 +107,25 @@ Let $f\in\Gamma_0(\R^n)$, then
 We can now also write this $x^\sharp \in \partial f^\star(0)$, thereby expressing the minimiser in terms of the convex-conjugate.
 Of course it's not clear at this point whether this helps at all to find the minimiser but, as it turns out, it will.
 
+### Example
+
+Let's consider $f(x)=x\log(x)$ on $C = [0, 1]$.
+We know that $f^\star(y)=\exp(y-1)$. Both $f$ and $f^\star$ are differentiable so $\partial f(x)=\{\nabla f(x)\}$ with $\nabla f(x)=\log x +1$ on $\R^+$ and $\partial f^\star(y)=\{\nabla f^\star(y)\}$ with $\nabla f^\star(y)=\exp(y-1)$ on $\R$.
+
+Gathering the pieces, if we take $x\in C$ and $y=\nabla f(x)$, we have
+\eqa{
+    y \,=\,\log x+1 &\Longrightarrow& x \,=\,\exp(y-1) \,=\,\nabla f^\star(y)
+}
+and conversely if we consider a $y$ such that $\exp(y-1)\in C$ then
+\eqa{
+    x \,=\,\exp(y-1) &\Longrightarrow& y \,=\,\log x + 1 \,=\,\nabla f(x)
+}
+So that the equivalence \eqref{general dfstar dfinv} holds as expected.
+
+
 ## Short references
 
 1. **Hiriart-Urruty**, [A note on the Legendre-Fenchel transform of convex composite functions](https://www.math.univ-toulouse.fr/~jbhu/A_note_on_the_LF_transform.pdf): this is a more technical note that you may find interesting if you would like more details on convex conjugacy.
 1. **Mete Soner**, [Convex analysis and Fenchel-Moreau theorem](https://www2.math.ethz.ch/education/bachelor/lectures/hs2015/math/mf/lecture7notes): lecture notes covering convex conjugacy in more depth and proving rigorously the Fenchel-Moreau theorem.
 
-*See also the books mentioned in the introduction.*
+*See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

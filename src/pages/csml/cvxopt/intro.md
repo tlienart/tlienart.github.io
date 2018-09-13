@@ -19,7 +19,7 @@ where $C$ is a *nice* convex set and $f$ a *nice* convex function. In these note
 
 * $C\subseteq \R^n$ and is non-empty,
 * $\mathrm{dom}\, f \supseteq C$, i.e.: the domain of $f$ covers $C$,
-* $f$ is in the set $\Gamma_0(C)$ of convex functions on $C$ that are *proper* and *lower semi-continuous* (see [further](/pub/csml/cvx_opti/ca_1.html)),
+* $f$ is in the set $\Gamma_0(C)$ of convex functions on $C$ that are *proper* and *lower semi-continuous* (see [further](/pub/csml/cvxopt/ca_1.html)),
 * $f$ achieves its minimum on the *interior* of $C^\circ$.
 
 Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm.

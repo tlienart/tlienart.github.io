@@ -2,9 +2,11 @@
 @def author = "T. Lienart"
 
 <!-- Add here your commands that you'd like to use throughout  -->
-\newcommand{\eqa}[1]{\begin{eqnarray}#1\end{eqnarray}}
+\newcommand{\eqa}[1]{\begin{array}{c}#1\end{array}}
+\newcommand{\eqal}[1]{\begin{align}#1\end{align}}
 
-\newcommand{\spe}[1]{\quad\!\!#1\quad\!\!}
+\newcommand{\esp}{\quad\!\!}
+\newcommand{\spe}[1]{\esp#1\esp}
 \newcommand{\speq}{\spe{=}}
 
 \newcommand{\E}{\mathbb E}

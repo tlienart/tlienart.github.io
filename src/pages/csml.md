@@ -18,10 +18,10 @@ If you find anything dubious in the notes, please send me an email.
 
 ## Applied maths
 
-* *notes on convex optimisation* <!-- 🚫🚫🚫 12/9/18 -->
-    * [introduction](/pub/csml/cvx_opti/intro.html): where the general minimisation problem is mentioned as well as a hint for generic iterative methods. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 1](/pub/csml/cvx_opti/ca_1.html): where some elementary notions of convex analysis are introduced: the *subgradient* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 2](/pub/csml/cvx_opti/ca_2.html): where the *convex conjugate* is introduced with some of its properties. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 3](/pub/csml/cvx_opti/ca_3.html): where more notions of convex analysis are introduced, these are more the type of results which would be useful to elucidate proofs and so can easily be skipped in a first pass. <!-- 🚫 12/9/18 -->
+* **notes on convex optimisation** (*assumes knowledge of what a convex function is*) <!-- 🚫🚫🚫 12/9/18 -->
+    * [introduction](/pub/csml/cvxopt/intro.html): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
+    * [convex analysis part 1](/pub/csml/cvxopt/ca_1.html): introduction of elementary notions of convex analysis: the *subgradient* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
+    * [convex analysis part 2](/pub/csml/cvxopt/ca_2.html): introduction of the *convex conjugate* along with some of its properties. <!-- ✅ 12/9/18 -->
+    * [convex analysis part 3](/pub/csml/cvxopt/ca_3.html): discussion of *strict* and *strong* convexity, introduction of the *Bregman divergence* and discussion of the link between *lipschitz continuity* and *strong convexity*. <!-- 🚫 12/9/18 -->
 <!-- * *notes on Krylov subspace methods* -->
 <!-- * *notes on matrix theory* -->

@@ -41,10 +41,10 @@ For a convex function $f$, it can be shown that the subdifferential of $f$ is a 
 @@
 
 An example is the absolute value function $f(x)=|x|$ which is not differentiable at $0$.
-It is however supported at that point by all lines of the form $\ell_\alpha(x)=\alpha x$ with $\alpha\in [-1,1]$ (see figure below).
+It is however supported at that point by all lines of the form $\ell_\alpha(x)=\alpha x$ with $\alpha\in [-1,1]$ (see the dashed lines on the figure below).
 The set $[-1, 1]$ is therefore the subdifferential of the function at $0$, denoted $\partial f(0)$.
 
-![](/assets/csml/cvxopt/abs-subgrad.svg)
+@@img-small ![](/assets/csml/cvxopt/abs-subgrad.svg) @@
 
 ### First order optimality condition (FOC) <!-- ✅ 12/9/2018 -->
 
@@ -101,4 +101,4 @@ Note that if we have $0\in \sum_i \partial f_i(x^\dagger)$ then the inclusion im
 
 1. **Boyd** and **Vandenberghe**, [Subgradients](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf): accessible lecture notes introducing the subgradients and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.
 
-*See also the books mentioned in the introduction.*
+*See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

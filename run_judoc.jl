@@ -25,10 +25,5 @@ jdrun() = begin
 end
 
 jdpub() = begin
-    isok = run(`bash -c "git add -A && git commit -m \"jd-update\" && git push > /dev/null"`, wait=false)
-    if success(isok)
-        println("Published successfully 🍺.")
-    else
-        println("Couldn't publish 🚫, check connection.")
-    end
+    return run(`bash -c "git add -A && git commit -m \"jd-update\" && git push > /dev/null"`, wait=false)
 end

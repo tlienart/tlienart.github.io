@@ -30,7 +30,7 @@ NOTE TODO:
     * [introduction](/pub/csml/cvxopt/intro.html): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
     * [convex analysis part 1](/pub/csml/cvxopt/ca1.html): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
     * [convex analysis part 2](/pub/csml/cvxopt/ca2.html): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 3](/pub/csml/cvxopt/ca3.html): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- 🚫 12/9/18 NOTE: ok but needs references for Lipschitz <> strong convex maybe as well as something nice on Bregman -->
+    * [convex analysis part 3](/pub/csml/cvxopt/ca3.html): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
 
 
 <!-- * *notes on Krylov subspace methods* -->

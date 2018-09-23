@@ -2,6 +2,8 @@ header {
     text-align: right;
     margin-top: 50px;
     margin-bottom: 50px;
+    display: flex;
+    align-items: center;
 }
 
 @media (min-width: 480px) {
@@ -12,16 +14,16 @@ header {
 }
 
 header .name {
-    width: 33%;
+    width: 39%;
     display: inline-block;
     text-align: left;
     font-size: 25px;
     color: gray;
-    font-style: italic;
+    font-family: monospace;
 }
 
 nav {
-    width: 66%;
+    width: 69%;
     display: inline-block;
 }
 
@@ -73,7 +75,8 @@ wide display: enforce maximum width of header to match content
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 880px) {
+    header { display: block; }
     header .name {
         display: block;
         width: 100%;
@@ -91,6 +94,8 @@ instead, display a burger menu.
 @media (max-width: 530px) {
     header {
         height: 35px;
+        display: flex;
+        align-items: center;
     }
     header .name {
         display: inline-block;

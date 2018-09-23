@@ -161,6 +161,7 @@ body {
     content: "(" counter(eqnum) ")";
     position: relative;
     float: right;
+    padding-right: 5px;
 }
 
 /* ==================================================================
@@ -169,6 +170,19 @@ body {
 
 .colbox-yellow {
     background-color: #ffffe6;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 0 10px 10px 0;
+    border-left: 5px solid orange;
+}
+
+.colbox-red {
+    background-color: red;
     padding-top: 5px;
     padding-right: 10px;
     padding-left: 10px;

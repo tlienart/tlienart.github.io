@@ -2,22 +2,24 @@
 
 # Convex analysis (part 1)
 
-In the notes $\Gamma_0(C)$ denotes the set of *proper* and *lsc* convex functions on a convex set $C\subseteq \R^n$.
-Often we will just write $\Gamma_0$ when the domain of the minimisation is unambiguous.
+In the notes $\Gamma_0(C)$ denotes the set of *proper* and *lsc* convex functions on a non-empty convex set $C\subseteq \R^n$. Remember that we assume $C\subseteq \mathrm{dom} f$ the domain of the function of interest $f$.
 
-* **proper** indicates that the function takes a finite value for at least one $x\in C$ (i.e.: $\exists x\in C, f(x) < \infty$) and is always lower bounded (i.e.: $f(x)>-\infty, \forall x\in C$). For instance: the indicator of a non-empty set is a proper convex function.
-* **lsc** (*lower semi continuous*) indicates that around a point $x_d\in C$ of discontinuity, we will either have $f(x)>f(x_d)$ or $f(x)\le f(x_d)$. For instance: the function $f(x)=1$ if $x>0$ and $f(x)=0$ otherwise, is lsc. on $\R$. However, the function $g(x)=1$ if $x\ge0$ and $g(x)=0$ is *upper* semi continuous on $\R$.
+* a **proper** convex function $f$ is finite value for at least one $x\in C$ (i.e.: $\exists x\in C, f(x) < \infty$) and is always lower bounded (i.e.: $f(x)>-\infty, \forall x\in C$).
+* a **lsc** (*lower semi continuous*) function is such that
+\eqa{f(x)&\le& \lim_{i\to \infty} f(x_i) \label{def lsc}}
+for any sequence $x_1, x_2, \dots$ in $C$ that converges to $x$ and such that the limit exists (see Rockafellar section 7). The figure below illustrates this (note that the functions are of course not convex).
 
 @@img-small ![](/assets/csml/cvxopt/lsc-usc.svg) @@
 
-We denote by $x^\sharp \in C^\circ$ a minimiser of the function, i.e. a point such that $f(x)\ge f(x^\sharp)$ for all $x\in C$ (remember that we assume that the minimum is achieved on $C^\circ$).
-It is easy to show that the set of minimisers $\arg\min_{x\in C}$ is a convex subset of $C$.
+For the purpose of these notes, we will *always* assume that $f$ is a proper convex function and usually assume that it is also lsc.
 
-## Subgradient, subdifferential and FOC <!-- ✅ 12/9/2018 -->
+**Example**: the function $f(x)=|x|+i_{[-1,1]}(x)$ is in $\Gamma_0(\R)$. Clearly it is a proper convex function on $\R$ and is lsc on $\R\backslash\{-1, 1\}$. Then, it's easy to see that for any sequence $x_1,x_2,\dots$ in $\R$ converging to $1$ (resp. $-1$) we have $\lim_{i\to\infty} f(x_i)=\infty$ or $f(1)$ (resp. $f(-1)$) so that \eqref{def lsc} holds.
+
+
+## Subgradient, subdifferential and FOC <!-- ✅ 19/9/2018 -->
 
 @@colbox-yellow
-
-We say that $y\in\R^n$ is a *subgradient* of the function $f$ at $x\in C$ if it verifies the following inequality:
+We say that $y\in\R^n$ is a *subgradient* of the convex function $f$ at $x\in C$ if it verifies the following inequality:
 
 \eqa{
     f(z) &\ge & f(x) + \langle z-x, y \rangle, \qquad \forall z\in C. \label{subgradient ineq}
@@ -27,7 +29,7 @@ We say that $y\in\R^n$ is a *subgradient* of the function $f$ at $x\in C$ if it 
 The inequality \eqref{subgradient ineq} simply indicates that the graph of the function $f$ at $x$ is supported by the hyperplane defined by the right-hand side.
 A subgradient is thus the "slope" of one such *supporting hyperplane*.
 
-If the function is differentiable at $x$ then there is only one such subgradient at $x$ (the classical gradient $\nabla f(x)$) and, correspondingly, only one supporting hyperplane:
+The function is differentiable at $x$ if and only if there is a unique subgradient at $x$ (the classical gradient $\nabla f(x)$) and, correspondingly, only one supporting hyperplane:
 
 \eqa{
     f(z) &\ge& f(x) + \scal{z-x, \nabla f(x)}, \qquad \forall z \in C.
@@ -36,9 +38,11 @@ If the function is differentiable at $x$ then there is only one such subgradient
 However, if the function is not differentiable at $x$ (e.g., if there is a kink at $x$) then there may be infinitely many supporting hyperplanes and infinitely many subgradients.
 
 @@colbox-yellow
-The set of subgradients of a function $f$ at a point $x\in \mathrm{dom}\, f$ is called the *subdifferential* and denoted $\partial f(x)$.
-For a convex function $f$, it can be shown that the subdifferential of $f$ is a non-empty bounded set at any point $x\in (\mathrm{dom}\,f)^\circ$.
+The set of subgradients of a convex function $f$ at a point $x\in \mathrm{dom}\, f$ is called the *subdifferential* of $f$ and denoted $\partial f(x)$.
+For a proper convex function $f$, it can be shown that the subdifferential of $f$ is a non-empty bounded set at any point $x\in (\mathrm{dom}\,f)^\circ$ (Rockafellar, theorem 23.4).
 @@
+
+Note that since we have assumed that $C\subseteq \mathrm{dom}\,f$, then $C^\circ\subseteq (\mathrm{dom}\,f)^\circ$ and therefore $\partial f$ is non-empty and bounded on $C^\circ$.
 
 An example is the absolute value function $f(x)=|x|$ which is not differentiable at $0$.
 It is however supported at that point by all lines of the form $\ell_\alpha(x)=\alpha x$ with $\alpha\in [-1,1]$ (see the dashed lines on the figure below).
@@ -58,11 +62,13 @@ This can be written equivalently as:
 and hence $0$ must be a subgradient of $f$ at $x^\sharp$.
 
 @@colbox-yellow
-*First-order optimality condition* (FOC): for a convex function $f$,
-
+*First-order optimality condition* (FOC): for a proper convex function $f$,
 $$
 x^\sharp \,\in\, \arg\min_{x\in C} \, f(x) \spe{\Longleftrightarrow} 0\,\in\, \partial f(x^\sharp).$$
 @@
+
+**Note**: some care must be taken when $x^\sharp \in \arg\inf_{x\in C} f(x)$ is on the boundary of $C$ as there may not be a subgradient there, this is why we had originally assumed that $f$ is minimised on the interior of $C$.
+We will come back to this when discussing optimisation methods for constrained problems such as the projected gradient descent.
 
 If we take the subdifferential as an *operator* then, intuitively, looking for a minimiser amounts to "inverting" the subdifferential and evaluating it at $0$, i.e.: $x^\sharp = (\partial f)^{-1}(0)$.
 Of course at this point we don't know how to compute $(\partial f)^{-1}$ in general.
@@ -79,7 +85,7 @@ which shows that the only point $x^\sharp$ where $0\in \partial f(x^\sharp)$ is 
 ### Subdifferential of a sum <!-- ✅ 12/9/2018 -->
 
 @@colbox-yellow
-Let $f_i:C\to \R$ be convex functions then
+Let $f_i:C\to \R$ be proper convex functions then
 \eqa{
     \partial \sum_i f_i &\supseteq& \sum_i \partial f_i. \label{subdiff of sum}
 }

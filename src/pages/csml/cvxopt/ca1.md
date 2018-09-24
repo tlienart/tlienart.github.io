@@ -103,8 +103,8 @@ and we can sum across these inequalities to get
 so that $\sum_i y_i \in \partial g(x)$.
 Note that if we have $0\in \sum_i \partial f_i(x^\dagger)$ then the inclusion implies that $0\in\partial \sum_i f_i(x^\dagger)$ which is sufficient to show that $x^\dagger$ is a minimiser.
 
-## Short references
+## Additional references
 
-1. **Boyd** and **Vandenberghe**, [Subgradients](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf): accessible lecture notes introducing the subgradients and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.
+1. **Boyd** and **Vandenberghe**, [Subgradients](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf), 2008. Accessible lecture notes introducing the subgradient and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

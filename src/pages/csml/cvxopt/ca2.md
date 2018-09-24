@@ -151,13 +151,13 @@ and conversely if we consider a $y$ such that $\exp(y-1)\in C$ then
 So that the equivalence \eqref{equiv 1} holds as expected.
 
 
-## Short references
+## Additional references
 
 **Note**: in this page (and also further) we usually consider $C^\circ$ instead of  $C$ to make the presentation simpler since we know that on $C^\circ$, subgradients exist and are bounded.
 Of course this is done at the expense of generality and some care is needed to generalise properly but the extra details did not seem particularly relevant at the level of this presentation.
 The references listed typically show the results in their full glory.
 
-1. **Hiriart-Urruty**, [A note on the Legendre-Fenchel transform of convex composite functions](https://www.math.univ-toulouse.fr/~jbhu/A_note_on_the_LF_transform.pdf): this is a more technical note that you may find interesting if you would like more details on convex conjugacy.
-1. **Mete Soner**, [Convex analysis and Fenchel-Moreau theorem](https://www2.math.ethz.ch/education/bachelor/lectures/hs2015/math/mf/lecture7notes): lecture notes covering convex conjugacy in more depth and proving rigorously the Fenchel-Moreau theorem.
+1. **Hiriart-Urruty**, [A note on the Legendre-Fenchel transform of convex composite functions](https://www.math.univ-toulouse.fr/~jbhu/A_note_on_the_LF_transform.pdf), 2006. This is a more technical note that you may find interesting if you would like more details on convex conjugacy.
+1. **Mete Soner**, [Convex analysis and Fenchel-Moreau theorem](https://www2.math.ethz.ch/education/bachelor/lectures/hs2015/math/mf/lecture7notes), 2015. Lecture notes covering convex conjugacy in more depth and proving rigorously the Fenchel-Moreau theorem.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

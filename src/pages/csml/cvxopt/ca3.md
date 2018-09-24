@@ -167,8 +167,8 @@ where $\nabla \varphi (C^\circ)=\{u\in\R^n\,|\,\exists x\in C^\circ, u=\nabla \v
 
 ## Short references
 
-1. **Bregman**, [A relaxation method of finding a common point of convex sets and its application to the solution of problems in convex programming](http://www.mathnet.ru/links/7dbe5d285fbf611e001a7ab6365e2bed/zvmmf7353.pdf): this is just for fun, it's the original paper by Bregman in 1967 and though you may struggle to read it, you should be able to recognise equation (1.4).
-1. **Goebel**, **Rockafellar**, [Local strong convexity and local Lipschitz continuity of the gradient of convex functions](https://pdfs.semanticscholar.org/d16c/32505274be2bc80d8547a36e6ac2239a80b2.pdf): this is a more technical note covering the link between strong convexity and Lipschitz-continuity.
+1. **Bregman**, [A relaxation method of finding a common point of convex sets and its application to the solution of problems in convex programming](http://www.mathnet.ru/links/7dbe5d285fbf611e001a7ab6365e2bed/zvmmf7353.pdf), 1967. This is just for fun, it's the original paper by Bregman in 1967 and though you may struggle to read it, you should be able to recognise equation (1.4).
+1. **Goebel**, **Rockafellar**, [Local strong convexity and local Lipschitz continuity of the gradient of convex functions](https://pdfs.semanticscholar.org/d16c/32505274be2bc80d8547a36e6ac2239a80b2.pdf), 2007. This is a more technical note covering the link between strong convexity and Lipschitz-continuity.
 
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

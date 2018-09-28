@@ -10,15 +10,33 @@ The emphasis here is on building intuition rather than mathematical rigour thoug
 Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
-The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra and real analysis).
+The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra. real analysis and basic probability theory).
+When the level of the notes is judged to be close to research, it is marked by a "⭒" symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 
 ## Stats, ML and related
 
-<!-- * *notes on variational inference* -->
-<!-- * *notes on inference on graphical models* -->
-<!-- * *notes on RKHS embeddings* -->
+<!--
+* **notes on approximated bayesian inference** (*assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation*)
+    * [introduction](/pub/csml/abi/intro.html): 🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references //
+        - http://www.orchid.ac.uk/eprints/40/1/fox_vbtut.pdf
+        -
+    * [exponential family and convexity part 1](/pub/csml/abi/ef-cvx1.html): 🚫🚫🚫🚫 (ongoing)
+    * [exponential family and convexity part 2](/pub/csml/abi/ef-cvx2.html): 🚫🚫🚫🚫 (ongoing)
+    * [online bayesian learning and assumed density filtering](/pub/csml/abi/obl-adf.html): 🚫🚫🚫🚫 (ongoing)
+    * [expectation propagation](/pub/csml/abi/ep.html): 🚫🚫🚫🚫 (ongoing)
+    * (⭒) [EP and distributed bayesian inference part 1](/pub/csml/abi/ep-dbi1.html): 🚫🚫🚫🚫 (ongoing)
+    * (⭒) [EP and distributed bayesian inference part 1](/pub/csml//abi/ep-dbi2.html): 🚫🚫🚫🚫 (ongoing)
+    * (⭒) [EP and distributed bayesian inference part 2](/pub/csml//abi/ep-dbi2.html): 🚫🚫🚫🚫 (ongoing) natural parameter space update, links with SMS
+    * (⭒) [EP and distributed bayesian inference part 3](/pub/csml//abi/ep-dbi3.html): 🚫🚫🚫🚫 (ongoing) mean parameter space
+    * (⭒) [EP and distributed bayesian inference part 4](/pub/csml//abi/ep-dbi4.html): 🚫🚫🚫🚫 (ongoing) ep energy perspective
+    * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
+-->
+
+<!-- 🍺 * *notes on inference on graphical models* -->
+<!-- 🍺 * *notes on RKHS embeddings* -->
+
 
 ## Applied maths
 
@@ -35,7 +53,10 @@ NOTE TODO:
     * [convex analysis part 1](/pub/csml/cvxopt/ca1.html): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
     * [convex analysis part 2](/pub/csml/cvxopt/ca2.html): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
     * [convex analysis part 3](/pub/csml/cvxopt/ca3.html): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
+    * [projected gradient descent](/pub/csml/cvxopt/pgd.html):
 
-
-<!-- * *notes on Krylov subspace methods* -->
-<!-- * *notes on matrix theory* -->
+<!-- 🍺
+* *notes on Krylov subspace methods*
+    * conjugate gradient
+-->
+<!-- 🍺 * *notes on matrix theory* -->

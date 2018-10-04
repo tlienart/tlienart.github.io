@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="icon" href="/assets/infra/favicon.png">
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="stylesheet" href="/css/header.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
 		 <title>Convex Optimisation I</title>	
 		 <!-- Un-minified script so that can play a bit -->
 <link rel="stylesheet" href="/libs/katex/katex.css"></link>
@@ -15,6 +17,7 @@
         
 	</head>
     <body>
+		
         <header>
             <div class="name">Thibaut Lienart</div>
             <nav>
@@ -27,12 +30,9 @@
                 <img src="/assets/infra/hamburger.svg" id="menu-icon">
             </nav>
         </header>
+		
 
-<!-- CONTENT IS APPENDED HERE -->
-
-<!--
-[ ~~~ ][ ~~~ ]
--->
+<!-- Content appended here -->
 <div class=content>
 <p> </p>
 <h1>Introduction</h1>
@@ -43,7 +43,7 @@
 </li>
 <li><p><em>convex sets</em> and <em>convex functions</em>,</p>
 </li>
-<li><p>basic linear algebra and in particular things like the inner product &#40;which we&#39;ll write \(\left\langlex, y\right\rangle\)&#41; and norms,</p>
+<li><p>basic linear algebra and in particular things like the inner product &#40;which we&#39;ll write \(\left\langle x, y\right\rangle\)&#41; and norms,</p>
 </li>
 <li><p>basic calculus and in particular things like differentiability and the gradient.</p>
 </li>
@@ -66,7 +66,7 @@ $$</p>
 <p></p>
 <p>Roughly speaking, these conditions guarantee that there is a solution to the problem and that we can find one applying some simple iterative algorithm. We will come back to these assumptions as we get to use them throughout the notes.</p>
 <p>We will also consider the unconstrained form of the problem, i.e.: when \(C=\mathbb R^n\) &#40;and will then just write \(\min_x f(x)\)&#41;. Constrained problems can always be interpreted as unconstrained problems: indeed, if we define the <em>indicator</em> of a convex set \(C\) as</p>
-<p>$$\begin{array}{c}
+<p>$$\begin{array}{c} 
 	i_C(x) &:=& \begin{cases} 0 & (x\in C) \\\\ +\infty & (x\notin C) \end{cases}
 \end{array}$$</p>
 <p>then the constrained problem <span class="eqref"><a href="#11126617841431966942">(1)</a></span> is equivalent to</p>
@@ -84,11 +84,11 @@ $$</p>
 </li>
 </ul>
 <p>Often these iterative algorithms can be derived from some kind of <em>fixed point equation</em> that is satisfied by a minimiser \(x^\sharp\), i.e.: an equation of the form</p>
-<p>$$\begin{array}{c}
+<p>$$\begin{array}{c} 
 	x^\sharp &=& P(x^\sharp)
 \end{array}$$</p>
 <p>where \(P\) is an appropriate operator. Provided we have such a fixed point equation, we can consider a <em>fixed point algorithm</em> with the simplest form being:</p>
-<p>$$\begin{array}{c}
+<p>$$\begin{array}{c} 
 	x_{k+1} &=& P(x_k).
 \end{array}$$</p>
 <p>Under some conditions on the operator \(P\) and possibly on \(x_0\), such an  algorithm will provably converge to \(x^\sharp\). This may seem reasonably straightforward but there are quite a few difficult questions that need be addressed and will be investigated in the notes:</p>
@@ -97,9 +97,10 @@ $$</p>
 </li>
 <li><p>how can we pick an operator \(P\) that is numerically stable and converges quickly?</p>
 </li>
-<li><p>how can we offer guarantees of how close we are to the true minimiser at a step \(k\)e rest of these notes, we will show how to obtain the fixed point equations and useful fixed point algorithms for a variety of scenarios and, by doing so, will recover well known algorithms such as the classical gradient descent and the mirror descent.</p>
+<li><p>how can we offer guarantees of how close we are to the true minimiser at a step \(k\)?</p>
 </li>
 </ul>
+<p>In the rest of these notes, we will show how to obtain the fixed point equations and useful fixed point algorithms for a variety of scenarios and, by doing so, will recover well known algorithms such as the classical gradient descent and the mirror descent.</p>
 <h2>General references</h2>
 <p>More precise pointers will be given on subsequent pages but most of the content in these notes relates in some way or another to the following references &#40;in particular the first one&#41;:</p>
 <ol>

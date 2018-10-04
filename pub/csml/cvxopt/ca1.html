@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="icon" href="/assets/infra/favicon.png">
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="stylesheet" href="/css/header.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
 		 <title>Convex analysis I</title>	
 		 <!-- Un-minified script so that can play a bit -->
 <link rel="stylesheet" href="/libs/katex/katex.css"></link>
@@ -15,6 +17,7 @@
         
 	</head>
     <body>
+		
         <header>
             <div class="name">Thibaut Lienart</div>
             <nav>
@@ -27,12 +30,9 @@
                 <img src="/assets/infra/hamburger.svg" id="menu-icon">
             </nav>
         </header>
+		
 
-<!-- CONTENT IS APPENDED HERE -->
-
-<!--
-[ ~~~ ][ ~~~ ]
--->
+<!-- Content appended here -->
 <div class=content>
 <p></p>
 <h1>Convex analysis &#40;part 1&#41;</h1>
@@ -43,21 +43,21 @@
 <li><p>a <strong>lsc</strong> &#40;<em>lower semi continuous</em>&#41; function is such that</p>
 </li>
 </ul>
-<p><a name="11099734731247943640"></a>$$\begin{array}{c}f(x)&\le& \lim_{i\to \infty} f(x_i) \end{array}$$ for any sequence \(x_1, x_2, \dots\) in \(C\) that converges to \(x\) and such that the limit exists &#40;see Rockafellar section 7&#41;. The figure below illustrates this &#40;note that the functions are of course not convex&#41;.</p>
+<p><a name="11099734731247943640"></a>$$\begin{array}{c} f(x)&\le& \lim_{i\to \infty} f(x_i) \end{array}$$ for any sequence \(x_1, x_2, \dots\) in \(C\) that converges to \(x\) and such that the limit exists &#40;see Rockafellar section 7&#41;. The figure below illustrates this &#40;note that the functions are of course not convex&#41;.</p>
 <p><div class="img-small"> <img src="/assets/csml/cvxopt/lsc-usc.svg" alt="" /> </div>
 </p>
 <p>For the purpose of these notes, we will <em>always</em> assume that \(f\) is a proper convex function and usually assume that it is also lsc.</p>
 <p><strong>Example</strong>: the function \(f(x)=|x|+i_{[-1,1]}(x)\) is in \(\Gamma_0(\mathbb R)\). Clearly it is a proper convex function on \(\mathbb R\) and is lsc on \(\mathbb R\backslash\{-1, 1\}\). Then, it&#39;s easy to see that for any sequence \(x_1,x_2,\dots\) in \(\mathbb R\) converging to \(1\) &#40;resp. \(-1\)&#41; we have \(\lim_{i\to\infty} f(x_i)=\infty\) or \(f(1)\) &#40;resp. \(f(-1)\)&#41; so that <span class="eqref"><a href="#11099734731247943640">(1)</a></span> holds.</p>
 <h2>Subgradient, subdifferential and FOC </h2>
 <p><div class="colbox-yellow"> We say that \(y\in\mathbb R^n\) is a <em>subgradient</em> of the convex function \(f\) at \(x\in C\) if it verifies the following inequality:</p>
-<p><a name="10778028128907436957"></a>$$\begin{array}{c}
+<p><a name="10778028128907436957"></a>$$\begin{array}{c} 
     f(z) &\ge & f(x) + \langle z-x, y \rangle, \qquad \forall z\in C. 
 \end{array}$$ </div>
 </p>
 <p>The inequality <span class="eqref"><a href="#10778028128907436957">(2)</a></span> simply indicates that the graph of the function \(f\) at \(x\) is supported by the hyperplane defined by the right-hand side. A subgradient is thus the &quot;slope&quot; of one such <em>supporting hyperplane</em>.</p>
 <p>The function is differentiable at \(x\) if and only if there is a unique subgradient at \(x\) &#40;the classical gradient \(\nabla f(x)\)&#41; and, correspondingly, only one supporting hyperplane:</p>
-<p>$$\begin{array}{c}
-    f(z) &\ge& f(x) + \left\langlez-x, \nabla f(x)\right\rangle, \qquad \forall z \in C.
+<p>$$\begin{array}{c} 
+    f(z) &\ge& f(x) + \left\langle z-x, \nabla f(x)\right\rangle, \qquad \forall z \in C.
 \end{array}$$</p>
 <p>However, if the function is not differentiable at \(x\) &#40;e.g., if there is a kink at \(x\)&#41; then there may be infinitely many supporting hyperplanes and infinitely many subgradients.</p>
 <p><div class="colbox-yellow"> The set of subgradients of a convex function \(f\) at a point \(x\in \mathrm{dom}\, f\) is called the <em>subdifferential</em> of \(f\) and denoted \(\partial f(x)\). For a proper convex function \(f\), it can be shown that the subdifferential of \(f\) is a non-empty bounded set at any point \(x\in (\mathrm{dom}\,f)^\circ\) &#40;Rockafellar, theorem 23.4&#41;. </div>
@@ -68,31 +68,31 @@
 </p>
 <h3>First order optimality condition &#40;FOC&#41; </h3>
 <p>A point \(x^{\sharp}\in C\) is a minimiser of the function \(f\) if and only if \(f(z)\ge f(x^{\sharp})\) for all \(z\in C\). This can be written equivalently as:</p>
-<p>$$\begin{array}{c}
-    f(z) &\ge& f(x^{\sharp}) + \left\langlez-x, 0\right\rangle, \qquad \forall z \in C,
+<p>$$\begin{array}{c} 
+    f(z) &\ge& f(x^{\sharp}) + \left\langle z-x, 0\right\rangle, \qquad \forall z \in C,
 \end{array}$$</p>
 <p>and hence \(0\) must be a subgradient of \(f\) at \(x^\sharp\).</p>
 <p><div class="colbox-yellow"> <em>First-order optimality condition</em> &#40;FOC&#41;: for a proper convex function \(f\), $$
-x^\sharp \,\in\, \arg\min_{x\in C} \, f(x) \quad\!\!\Longleftrightarrow\quad\!\! 0\,\in\, \partial f(x^\sharp).$$ </div>
+x^\sharp \,\in\, \arg\min_{x\in C} \, f(x) \quad\!\! \Longleftrightarrow\quad\!\! 0\,\in\, \partial f(x^\sharp).$$ </div>
 </p>
 <p><strong>Note</strong>: some care must be taken when \(x^\sharp \in \arg\inf_{x\in C} f(x)\) is on the boundary of \(C\) as there may not be a subgradient there, this is why we had originally assumed that \(f\) is minimised on the interior of \(C\). We will come back to this when discussing optimisation methods for constrained problems such as the projected gradient descent.</p>
 <p>If we take the subdifferential as an <em>operator</em> then, intuitively, looking for a minimiser amounts to &quot;inverting&quot; the subdifferential and evaluating it at \(0\), i.e.: \(x^\sharp = (\partial f)^{-1}(0)\). Of course at this point we don&#39;t know how to compute \((\partial f)^{-1}\) in general. We shall come back to this in more details but the idea of inverting an operator involving the subdifferential to find the minimiser is key in convex optimisation.</p>
 <p>Note that in some simple situations the FOC is sufficient to immediately find a minimiser, for instance, if \(f(x)=|x|\), then clearly the subdifferential:</p>
-<p>$$\begin{array}{c}
+<p>$$\begin{array}{c} 
     \partial f(x) &=& \begin{cases} \mathrm{sign}(x) & (x\neq 0) \\\\ [-1, 1] & (x=0) \end{cases}
 \end{array}$$</p>
 <p>which shows that the only point \(x^\sharp\) where \(0\in \partial f(x^\sharp)\) is \(x^\sharp=0\). In other words, \((\partial f)^{-1}(0) = 0\).</p>
 <h3>Subdifferential of a sum </h3>
-<p><div class="colbox-yellow"> Let \(f_i:C\to \mathbb R\) be proper convex functions then <a name="2307685298850424370"></a>$$\begin{array}{c}
+<p><div class="colbox-yellow"> Let \(f_i:C\to \mathbb R\) be proper convex functions then <a name="2307685298850424370"></a>$$\begin{array}{c} 
     \partial \sum_i f_i &\supseteq& \sum_i \partial f_i. 
 \end{array}$$ </div>
 </p>
 <p>Indeed, let \(g\equiv\sum_i f_i\) and let \(y_i\in\partial f_i(x)\) then, by definition,</p>
-<p>$$\begin{array}{c}
-    f_i(z) &\ge& f_i(x) + \left\langlez-x, y_i\right\rangle, \quad\forall z\in C,
-\end{array}$$ and we can sum across these inequalities to get $$\begin{array}{c}
+<p>$$\begin{array}{c} 
+    f_i(z) &\ge& f_i(x) + \left\langle z-x, y_i\right\rangle, \quad\forall z\in C,
+\end{array}$$ and we can sum across these inequalities to get $$\begin{array}{c} 
     g(z) &\ge& g(x) + \langle z-x, \sum_i y_i\rangle, \quad\forall z\in C,
-\end{array}$$ so that \(\sum_i y_i \in \partial g(x)\). Note that if we have \(0\in \sum_i \partial f_i(x^\dagger)\) then the inclusion implies that \(0\in\partial \sum_i f_i(x^\dagger)\) which is sufficient to show that \(x^\dagger\)minimiser.</p>
+\end{array}$$ so that \(\sum_i y_i \in \partial g(x)\). Note that if we have \(0\in \sum_i \partial f_i(x^\dagger)\) then the inclusion implies that \(0\in\partial \sum_i f_i(x^\dagger)\) which is sufficient to show that \(x^\dagger\) is a minimiser.</p>
 <h2>Additional references</h2>
 <ol>
 <li><p><strong>Boyd</strong> and <strong>Vandenberghe</strong>, <a href="https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf">Subgradients</a>, 2008. Accessible lecture notes introducing the subgradient and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.</p>

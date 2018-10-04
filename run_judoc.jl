@@ -20,7 +20,7 @@ jdrun() = begin
         run(`bash -c "browser-sync start -s -f $FOLDER_PATH --no-notify --logLevel silent --port 8000 --no-open &"`)
 
         # this is blocking, when interrupted, it also kills the background process.
-        ec = JuDoc.judoc(single_pass=false, verb=false, clear_out_dir=true);
+        ec = JuDoc.judoc(single_pass=false, verb=true, clear_out_dir=true);
     end
 end
 

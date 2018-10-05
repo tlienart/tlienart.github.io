@@ -1,7 +1,6 @@
 @def title = "tlienart.github.io"
 @def hascode = false
 @def hasmath = false
-@def date = Dates.today()
 
 
 # Welcome

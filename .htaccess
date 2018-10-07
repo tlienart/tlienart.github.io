@@ -1,0 +1,9 @@
+<FilesMatch "^(katex\.min\.js|katex\.min\.css|auto-render\.min\.js)$">
+	ExpiresActive on
+	ExpiresDefault "access plus 1 year"
+</FilesMatch>
+
+<FilesMatch "^(atom-one-dark\.min\.css|github\.min\.css|highlight\.pack\.js)$">
+	ExpiresActive on
+	ExpiresDefault "access plus 1 year"
+</FilesMatch>

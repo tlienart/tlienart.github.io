@@ -1,4 +1,0 @@
-<FilesMatch "\.(jpg|png|svg|css|js)$">
-	ExpiresActive on
-	ExpiresDefault "access plus 1 week"
-</FilesMatch>

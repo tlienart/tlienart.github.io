@@ -4,6 +4,14 @@
 
 ## Projects
 
-* [PDSampler](https://github.com/alan-turing-institute/PDSampler.jl), a package I wrote for *piecewise deterministic samplers*.
-* [JuDoc](https://github.com/tlienart/JuDoc.jl), an experimental static site generator (SSG) which I used for this website.
-* [EPBP](https://github.com/tlienart/EPBP.jl), a package accompanying my paper on [_expected particle belief propagation_](/assets/misc/pdf/epbp.pdf), it hasn't been maintained in a while.
+Some packages I have worked on, I may write notes on some of them in the future.
+
+### Misc
+
+* [JuDoc](https://github.com/tlienart/JuDoc.jl), an experimental static site generator (SSG) which I use for this website (actively maintained).
+
+### Research related
+
+* [PDSampler](https://github.com/alan-turing-institute/PDSampler.jl), a package I wrote while at the Alan Turing Institute for *piecewise deterministic samplers* and accompanying [_our paper_](https://arxiv.org/abs/1701.04244) (infrequently maintained).
+* [EPBP](https://github.com/tlienart/EPBP.jl), a package accompanying our paper on [_expected particle belief propagation_](/assets/misc/pdf/epbp.pdf) (unmaintained).
+* [Posterior Server](https://github.com/BigBayes/PosteriorServer), a package I contributed to for our paper on [_distributed Bayesian learning_](http://www.jmlr.org/papers/volume18/16-478/16-478.pdf) (unmaintained).

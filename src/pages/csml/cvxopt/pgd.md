@@ -114,8 +114,8 @@ $(f(x_k)-f(x^\sharp)) = \mathcal O(k^{-1})$ (see references for more).
 
 ## Additional references
 
-1. **Burke**, [The Gradient Projection Algorithm](https://sites.math.washington.edu/~burke/crs/408/notes/nlp/gpa.pdf), 2014: lecture notes at the University of Washington covering the topic in a bit more depth.
-2. **Saunders**, [Notes on First-Order Methods for Minimizing Smooth Functions](https://web.stanford.edu/class/msande318/notes/notes-first-order-smooth.pdf), 2017: lectures notes at Stanford covering the topic (among others) and proving the linear convergence rate under regularity conditions.
-3. **Liu**, **Ye**, [Efficient Euclidean Projections in Linear Time](https://icml.cc/Conferences/2009/papers/123.pdf), 2009: a paper describing the projection problem and how it can be done efficiently in some cases.
+1. **Burke**, [The Gradient Projection Algorithm](https://sites.math.washington.edu/~burke/crs/408/notes/nlp/gpa.pdf), 2014. Lecture notes at the University of Washington covering the topic in a bit more depth.
+2. **Saunders**, [Notes on First-Order Methods for Minimizing Smooth Functions](https://web.stanford.edu/class/msande318/notes/notes-first-order-smooth.pdf), 2017. Lectures notes at Stanford covering the topic (among others) and proving the linear convergence rate under regularity conditions.
+3. **Liu**, **Ye**, [Efficient Euclidean Projections in Linear Time](https://icml.cc/Conferences/2009/papers/123.pdf), 2009. A paper describing the projection problem and how it can be done efficiently in some cases.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

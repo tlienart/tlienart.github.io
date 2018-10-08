@@ -40,7 +40,7 @@ If you find anything dubious in the notes, please send me an email, feedback is 
 
 ## Applied maths
 
-* **notes on convex optimisation** (*assumes basic knowledge of convexity*) <!-- 🚫🚫🚫 12/9/18
+* **notes on convex optimisation** (*assumes basic knowledge of convexity*):  <!-- 🚫🚫🚫 12/9/18
 NOTE TODO:
     🍺 continue to port things from old website
         ✅ intro
@@ -53,7 +53,7 @@ NOTE TODO:
     * [convex analysis part 1](/pub/csml/cvxopt/ca1.html): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
     * [convex analysis part 2](/pub/csml/cvxopt/ca2.html): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
     * [convex analysis part 3](/pub/csml/cvxopt/ca3.html): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
-    * [projected gradient descent](/pub/csml/cvxopt/pgd.html):
+    * [projected gradient descent](/pub/csml/cvxopt/pgd.html): _normal cone_, _Euclidean projection_ and _projected gradient descent_.
 
 <!-- 🍺
 * *notes on Krylov subspace methods*

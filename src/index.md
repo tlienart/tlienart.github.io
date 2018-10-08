@@ -9,8 +9,8 @@ On this website, you will mainly find some notes on topics in computer science a
 These are mostly things I write to keep track of results I find useful or nice.
 I also really like the Julia programming language and keep some notes on that too.
 
-Then, there's a number of miscellaneous posts in other topics ranging from philosophy to travelling and side-projects.
-For example if you're interested in knowing how this website was built, there's a [post for that](/pub/misc/about-website.html) where I explain how my static site generator works.
+Then, there's a number of miscellaneous posts in other topics ranging from  travel notes to side-projects.
+For example if you're interested in knowing how this website was built, there's a [post for that](/pub/misc/about-website.html).
 
 ## News
 
@@ -29,7 +29,7 @@ If you would like to be updated when new sets of notes appear, you can follow me
     I got my PhD from Oxford in Bayesian ML co-supervised by <a href="http://www.stats.ox.ac.uk/~doucet/">Arnaud Doucet</a> and <a href="http://www.stats.ox.ac.uk/~teh/">Yee-Whye Teh</a>.
     </p>
     <p>
-    You can find me on <a href="https://github.com/tlienart">GitHub</a>, <a href="https://linkedin.com/in/tlienart">Linkedin</a> or email me at  𝛂.𝛃 @unimelb.edu.au where 𝛂 is my first and 𝛃 my last name.
+    You can find me on <a href="https://github.com/tlienart">GitHub</a>, <a href="https://linkedin.com/in/tlienart">Linkedin</a> or email me at  𝛂.𝛃 @unimelb.edu.au where 𝛂 is my first and 𝛃 my last name (<a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x3B830BADB56BDAC4">PGP key</a>).
     </p>
     <div style="clear: both"></div>      
   </div>

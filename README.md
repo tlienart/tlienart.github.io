@@ -1,7 +1,9 @@
-# Website
+# My website
 
-This repository contains the source files leading to the website as well as the issues for comments / questions.
+This repository contains the source files behind [my website](https://tlienart.github.io) as well as the issues for comments / questions.
 
-**Note** (October 2018): this is ongoing work along with the [JuDoc.jl](https://github.com/tlienart/JuDoc.jl) package, while it will eventually become my website.
+**Note** (October 2018): this is _ongoing work_ along with the [JuDoc.jl](https://github.com/tlienart/JuDoc.jl) package (a static site generator I built for this purpose). I'm basically porting (and fixing) all the content from my old website to this which will take me some time but should hopefully be done by the end of November.
 
-Attention: careful with updating katex.css, check that the numbering appears at the right place
+### Random notes
+
+* KaTeX: careful with updating as it may mess up things like numbering or not-equal sign, version here seems to work fine.

@@ -6,7 +6,7 @@ Here I keep a record of pages I wrote which do not deserve their own category (a
 
 * [about this website](/pub/misc/about-website.html): where I discuss how this website was built.
 
-
+<!--
 ## Travels
 
 TODO: think about a format for this. Probably best to stick to the actual useful stuff rather than a blog-style thing. Maybe add small intro saying these are mostly a list of tips that may be useful
@@ -39,3 +39,4 @@ TODO: think about a format for this. Probably best to stick to the actual useful
     - hand sanitizer in a pharmacy <= 250 RS
     - tea in a tea factory <= 1000 RS for 250g of top quality loose leaf black tea,
     - SIM card at the airport, 3Go of data (very convenient) we paid 10USD in the airport, could probably have paid less outside but didn't want the hassle
+-->

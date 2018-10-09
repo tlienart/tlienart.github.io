@@ -15,6 +15,7 @@ For example if you're interested in knowing how this website was built, there's 
 ## News
 
 If you would like to be updated when new sets of notes appear, you can follow me on [Twitter](https://twitter.com/t_lienart).
+At the moment (as of October 2018), I'm still in the process of porting (and fixing!) the notes from my previous website to here but the plan is to keep adding content on a regular basis.
 
 ## About me
 

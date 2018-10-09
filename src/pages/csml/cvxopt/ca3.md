@@ -10,7 +10,7 @@ Remember that a function $\psi:C\to \R$ is convex if the following inequality ho
 }
 When that inequality holds *strictly* for any two $x\neq z$ in $C$, the function $\psi$ is called *strictly convex*.
 
-@@colbox-yellow
+@@colbox-blue
 Let $x\in C^\circ$ and $y\in \partial \psi(x)$, $\psi$ is strictly convex on $C^\circ$ if and only if the subgradient inequality holds strictly for all $z\neq x$:
 \eqa{
     \psi(z) &>& \psi(x) + \scal{z-x, y}, \quad\forall z\in C\backslash\{x\}.\label{strict def 2}
@@ -33,7 +33,7 @@ Combining \eqref{strict pt1} and \eqref{strict pt2} gives \eqref{strict def 2}.
 
 @@img-small ![](/assets/csml/cvxopt/strict-convex-ex.svg) @@
 
-@@colbox-yellow
+@@colbox-blue
 The function $\varphi:C\to \R$ is said to be $\mu$-*strongly convex* at $x\in C$ with parameter $\mu>0$ if the subgradient inequality holds with:
 
 \eqa{
@@ -47,7 +47,7 @@ Intuitively, a strongly convex function is a strictly convex function whose grap
 
 ### Strict convexity and differentiability
 
-@@colbox-yellow
+@@colbox-blue
 Let $\psi:C\to \R$ a convex function; $\psi$ is strictly convex on $C^\circ$ if and only if $\psi^\star$ is differentiable on $\partial f(C^\circ) = \{y\in\R^n\,|\,\exists x\in C^\circ, y\in\partial f(x)\}$.
 @@
 
@@ -78,7 +78,7 @@ In that case, we have
 with equality *if and only* if $z=x$.
 We can use this to define a notion of similarity between two points $x$ and $z$ in $C$.
 
-@@colbox-yellow
+@@colbox-blue
 Let $\psi$ denote a strictly convex and differentiable function on $C^\circ$.
 The *Bregman-divergence* on $C^\circ\times C^\circ$ associated with $\psi$ is defined as
 \eqa{B_\psi(z, x) &=& \psi(z)-\psi(x)-\scal{z-x,\nabla \psi(x)}.}
@@ -116,7 +116,7 @@ Then, since $(x, u)$ and $(z, v)$ are dual pairs, we have that $\psi^\star(u)+\p
 }
 which proves the following result.
 
-@@colbox-yellow
+@@colbox-blue
 Let $\psi$ be a differentiable and strictly convex function on $C^\circ$ then the following equality holds:
 \eqa{
     B_{\psi^\star}(\nabla\psi(x), \nabla\psi(z)) &=& B_\psi(z, x),
@@ -156,7 +156,7 @@ Rearranging terms yields
 Since $x\in C^\circ$ and $u=\nabla \varphi(x)$, we can write $x = \nabla \varphi^\star(u)$ and similarly, $z=\nabla\varphi^\star(v)$ (see [convex analysis part 2](/pub/csml/cvx_opti/ca2.html)).
 This shows that the gradient $\nabla\varphi^\star$ is Lispchitz-continuous.
 
-@@colbox-yellow
+@@colbox-blue
 Let $\varphi$ be a differentiable, $\mu$-strongly convex function on $C^\circ$ then $\varphi^\star$ has a gradient that is is $1/\mu$-Lipschitz continuous over $\nabla \varphi(C^\circ)$, i.e.:
 
 \eqa{

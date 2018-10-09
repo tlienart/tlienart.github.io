@@ -27,7 +27,7 @@ We can now introduce the *convex conjugate* of a function (also sometimes known 
 We write $\eR$ the extended real line: $\eR = \R \cup \{\pm\infty\}$.
 
 
-@@colbox-yellow
+@@colbox-blue
 Let $f: C\to \eR$ denote any function. The *convex conjugate* of $f$ is the function $f^\star(y):\R^n\to \eR$ defined as follows:
 
 $$
@@ -55,7 +55,7 @@ Another nice example is $f(x)=x\log(x)$, it's an easy exercise to show that $f^\
 
 ###  Fenchel's inequality and the Fenchel-Moreau theorem <!-- 🚫 17/9/2018 -->
 
-@@colbox-yellow
+@@colbox-blue
 Let $f:C\to \eR$ and $f^\star$ its convex conjugate, then:
 \eqa{
     f(x) + f^\star(y) &\ge & \langle x,y\rangle, \quad \forall x\in C,y\in \R^n.
@@ -65,7 +65,7 @@ This is known as *Fenchel's inequality*.
 
 This inequality is directly implied by the definition of the convex conjugate.
 
-@@colbox-yellow
+@@colbox-blue
 Let $f\in \Gamma_0(C)$ then $f^{\star\star}\equiv f$ on $C$. This is known as the *Fenchel-Moreau theorem* (FMT).
 @@
 
@@ -115,7 +115,7 @@ With exactly the same definition, we have for $x\in\partial f^\star(y)$
 and the last equality can be rearranged to $f^\star(y)=\scal{x,y}-f^{\star\star}(x)$.
 In the case where $f\in\Gamma_0(C)$ then $f\equiv f^{\star\star}$ on $C$ by the Fenchel-Moreau theorem which gives the result that follows.
 
-@@colbox-yellow
+@@colbox-blue
 Let $f\in\Gamma_0(C)$ then the following equivalence holds
 \eqa{
     (x\in C, y \in \partial f(x)) &\Longleftrightarrow& x \in \partial f^\star(y) \cap C. \label{equiv 1}
@@ -126,7 +126,7 @@ Such a pair of point is called a *dual pair* and verifies $f(x)+f^\star(y)=\scal
 Using the inverse of the subdifferential operator on the left hand side of \eqref{equiv 1}, we have that $x\in(\partial f)^{-1}(y)\cap C$ is equivalent to $x\in\partial f^\star(y)\cap C$ which exposes a close link between $(\partial f)^{-1}$ and $\partial f^\star$.
 This link becomes even more apparent in the unconstrained case.
 
-@@colbox-yellow
+@@colbox-blue
 Let $f\in\Gamma_0(\R^n)$, then
 \eqa{
     (\partial f)^{-1} &\equiv & \partial f^\star.

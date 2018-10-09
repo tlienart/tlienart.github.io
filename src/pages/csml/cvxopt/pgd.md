@@ -68,7 +68,7 @@ Replacing $x^\sharp$ by $\pi_C(z)$ and re-arranging terms gives
 
 This is a classical and important relationship.
 
-@@colbox-yellow
+@@colbox-blue
 Let $C$ denote a convex subset of $\R^n$ then
 \eqa{\pi_C &\equiv& (\mathbb I+ N_C)^{-1}. \label{proj equiv}}
 @@
@@ -90,7 +90,7 @@ By \eqref{proj equiv}, this is equivalent to $x=\pi_C(z)$ or
 To finish up, let's go back once more to the FOC \eqref{partial FOC} which indicates that if $x^\sharp$ is such that $-\nabla f(x^\sharp) \in N_C(x^\sharp)$ then it is a minimiser.
 Combined with \eqref{fixed point 1}, we get the following useful fixed-point form for the minimiser of the constrained problem:
 
-@@colbox-yellow
+@@colbox-blue
 $$ x^\sharp \speq \pi_C(x^\sharp - \alpha \nabla f(x^\sharp)). \label{pgd fixed point} $$
 @@
 

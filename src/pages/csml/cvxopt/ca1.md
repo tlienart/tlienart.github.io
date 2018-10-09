@@ -18,7 +18,7 @@ For the purpose of these notes, we will *always* assume that $f$ is a proper con
 
 ## Subgradient, subdifferential and FOC <!-- ✅ 19/9/2018 -->
 
-@@colbox-yellow
+@@colbox-blue
 We say that $y\in\R^n$ is a *subgradient* of the convex function $f$ at $x\in C$ if it verifies the following inequality:
 
 \eqa{
@@ -37,7 +37,7 @@ The function is differentiable at $x$ if and only if there is a unique subgradie
 
 However, if the function is not differentiable at $x$ (e.g., if there is a kink at $x$) then there may be infinitely many supporting hyperplanes and infinitely many subgradients.
 
-@@colbox-yellow
+@@colbox-blue
 The set of subgradients of a convex function $f$ at a point $x\in \mathrm{dom}\, f$ is called the *subdifferential* of $f$ and denoted $\partial f(x)$.
 For a proper convex function $f$, it can be shown that the subdifferential of $f$ is a non-empty bounded set at any point $x\in (\mathrm{dom}\,f)^\circ$ (Rockafellar, theorem 23.4).
 @@
@@ -61,7 +61,7 @@ This can be written equivalently as:
 
 and hence $0$ must be a subgradient of $f$ at $x^\sharp$.
 
-@@colbox-yellow
+@@colbox-blue
 *First-order optimality condition* (FOC): for a proper convex function $f$,
 $$
 x^\sharp \,\in\, \arg\min_{x\in C} \, f(x) \spe{\Longleftrightarrow} 0\,\in\, \partial f(x^\sharp).$$
@@ -84,7 +84,7 @@ which shows that the only point $x^\sharp$ where $0\in \partial f(x^\sharp)$ is 
 
 ### Subdifferential of a sum <!-- ✅ 12/9/2018 -->
 
-@@colbox-yellow
+@@colbox-blue
 Let $f_i:C\to \R$ be proper convex functions then
 \eqa{
     \partial \sum_i f_i &\supseteq& \sum_i \partial f_i. \label{subdiff of sum}

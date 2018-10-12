@@ -15,7 +15,7 @@ When the level of the notes is judged to be close to research, it is marked by a
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 
-## Stats, ML and related
+## Stats, ML and related topics
 
 <!--
 * **notes on approximated bayesian inference** (*assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation*)
@@ -33,6 +33,9 @@ If you find anything dubious in the notes, please send me an email, feedback is 
     * (⭒) [EP and distributed bayesian inference part 4](/pub/csml//abi/ep-dbi4.html): 🚫🚫🚫🚫 (ongoing) ep energy perspective
     * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
+
+* **unsorted notes**
+    * (⭒) [RKHS embeddings](/pub/csml/uns/intro-rkhs.html): a note on *reproducing kernel Hilbert space* embeddings and their use.
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 <!-- 🍺 * *notes on RKHS embeddings* -->
@@ -54,6 +57,7 @@ NOTE TODO:
     * [convex analysis part 2](/pub/csml/cvxopt/ca2.html): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
     * [convex analysis part 3](/pub/csml/cvxopt/ca3.html): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
     * [projected gradient descent](/pub/csml/cvxopt/pgd.html): _normal cone_, _Euclidean projection_ and _projected gradient descent_.
+    <!-- * [mirror descent](/) -->
 
 <!-- 🍺
 * *notes on Krylov subspace methods*

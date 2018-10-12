@@ -1,3 +1,17 @@
+\newcommand{\eqa}[1]{\begin{eqnarray}#1\end{eqnarray}}
+\newcommand{\eqal}[1]{\begin{align}#1\end{align}}
+
+\newcommand{\esp}{\quad\!\!}
+\newcommand{\spe}[1]{\esp#1\esp}
+\newcommand{\speq}{\spe{=}}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\eR}{\overline{\mathbb R}}
+
+\newcommand{\scal}[1]{\left\langle#1\right\rangle}
+
+
 @def title = "RKHS Embeddings"
 
 ## Introduction
@@ -41,7 +55,9 @@ Recall that an inner product is a *measure of alignment* so that this automatica
 When the embedding is *injective* (i.e.: different objects are mapped to different points in the RKHS), the corresponding kernel is said to be **characteristic** (this is often the case for standard kernels).
 
 An example of objects we can embed in an RKHS are distributions.
-Each distribution is then considered as a point which we can embed through the *mean-embedding*. @@colbox-blue
+Each distribution is then considered as a point which we can embed through the *mean-embedding*.
+
+@@colbox-blue
 Let $P$ denote a distribution among a set of distributions, the **mean embedding** is defined as follows:
 
 \eqa{  P \mapsto \mu_X(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_X],}

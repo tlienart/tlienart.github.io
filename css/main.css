@@ -1,1 +1,224 @@
-@charset "utf-8";html{font-family:Helvetica,Arial,sans-serif;font-size:17px}.row{display:block}.left{float:left;margin-right:15px}.right{float:right}.content .container img{width:auto;padding-left:0;border-radius:10px}.content .page-foot a{text-decoration:none;color:lightgrey;text-decoration:underline}.page-foot{font-size:80%;font-family:Arial,serif;color:lightgrey;text-align:center;margin-top:6em;border-top:1px solid lightgrey;padding-top:2em;margin-bottom:4em}.content{position:relative;padding-left:12.5%;padding-right:12.5%;line-height:1.35em}@media (min-width:940px){.content{width:705px;margin-left:auto;margin-right:auto}}@media (max-width:480px){header{padding-left:6%;padding-right:6%}.content{padding-left:6%;padding-right:6%}}.content h1{font-size:24px}.content h2{font-size:22px}.content h3{font-size:20px}.content h1,h2,h3,h4,h5{text-align:left}.content h1{padding-bottom:.5em;border-bottom:3px double lightgrey;margin-top:1.5em;margin-bottom:1em}.content h2{padding-bottom:.3em;border-bottom:1px solid lightgrey;margin-top:2em;margin-bottom:1em}.content li p{margin:10px 0}.content a{color:#598fc4;text-decoration:none}.content a:hover{text-decoration:underline}.content img{width:70%;text-align:center;padding-left:10%}.content .img-small img{width:50%;text-align:center;padding-left:20%}body{counter-reset:eqnum}.katex{font-size:1em !important}.katex-display::after{counter-increment:eqnum;content:"(" counter(eqnum) ")";position:relative;float:right;padding-right:5px}code{background-color:rgba(27,31,35,0.05);padding:.1em .2em;border-radius:2px;font-size:95%}.hljs{font-size:85%;line-height:1.1em;border-radius:10px}.colbox-blue{background-color:#EEF3F5;padding-top:5px;padding-right:10px;padding-left:10px;padding-bottom:5px;margin-left:5px;margin-top:5px;margin-bottom:5px;border-radius:0 10px 10px 0;border-left:5px solid #4C9CF1}.colbox-yellow{background-color:#ffffe6;padding-top:5px;padding-right:10px;padding-left:10px;padding-bottom:5px;margin-left:5px;margin-top:5px;margin-bottom:5px;border-radius:0 10px 10px 0;border-left:5px solid orange}.colbox-red{background-color:red;padding-top:5px;padding-right:10px;padding-left:10px;padding-bottom:5px;margin:5px;border-radius:0 10px 10px 0;border-left:5px solid orange}
+/* ==================================================================
+    DEFAULT FONT AND LAYOUT
+================================================================== */
+
+html {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size  : 17px;
+}
+
+/* ==================================================================
+    BASIC GRID FOR PROFILE PIC
+================================================================== */
+
+.row {
+  display: block;
+}
+.left {
+  float: left;
+  margin-right: 15px;
+}
+.right {
+    float: right;
+}
+.content .container img {
+    width: auto;
+    padding-left: 0;
+    border-radius: 10px;
+}
+
+/* ==================================================================
+    FOOT / COPYRIGHT
+================================================================== */
+
+.content .page-foot a {
+    text-decoration: none;
+    color: lightgrey;
+    text-decoration: underline;
+}
+
+.page-foot {
+    font-size: 80%;
+    font-family: Arial, serif;
+    color: lightgrey;
+    text-align: center;
+    margin-top: 6em;
+    border-top: 1px solid lightgrey;
+    padding-top: 2em;
+    margin-bottom: 4em;
+}
+
+/* ==================================================================
+    TEXT GEOMETRY
+================================================================== */
+
+.content {
+    position: relative;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    line-height: 1.35em;
+}
+
+/* on wide screens, fix content width to a max value */
+@media (min-width: 940px) {
+    .content {
+        width: 705px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* on narrow device, reduce margins */
+@media (max-width: 480px) {
+    header {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .content {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+}
+
+/* ==================================================================
+    TITLES
+================================================================== */
+
+.content h1 {
+    font-size: 24px;
+}
+.content h2 {
+    font-size: 22px;
+}
+.content h3 {
+    font-size: 20px;
+}
+
+.content h1, h2, h3, h4, h5 {
+    text-align: left;
+}
+
+.content h1 {
+    padding-bottom: 0.5em;
+    border-bottom: 3px double lightgrey;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.content h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+/* ==================================================================
+    GENERAL FORMATTING
+================================================================== */
+
+/* spacing between bullet points */
+.content li p {
+        margin: 10px 0;
+}
+
+.content a {
+    color: #598fc4;
+    text-decoration: none;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* ==================================================================
+    IMAGES in CONTENT
+================================================================== */
+
+.content img {
+    width: 70%;
+    text-align: center;
+    padding-left: 10%;
+}
+
+.content .img-small img {
+    width: 50%;
+    text-align: center;
+    padding-left: 20%;
+}
+
+/* ==================================================================
+    KATEX
+================================================================== */
+
+body {
+    counter-reset: eqnum;
+}
+
+.katex {
+    font-size: 1em !important;
+}
+.katex-display::after {
+    counter-increment: eqnum;
+    content: "(" counter(eqnum) ")";
+    position: relative;
+    float: right;
+    padding-right: 5px;
+}
+
+/* ==================================================================
+    CODE & HIGHLIGHT.JS
+================================================================== */
+
+code {
+    background-color: rgba(27,31,35,0.05); /*#f6f8fa;*/
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+    font-size: 95%;
+}
+
+.hljs {
+    font-size: 85%;
+    line-height: 1.1em;
+    border-radius: 10px;
+}
+
+/* ==================================================================
+    BOXES
+================================================================== */
+
+.colbox-blue {
+    background-color: #EEF3F5;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 0 10px 10px 0;
+    border-left: 5px solid #4C9CF1;
+}
+
+.colbox-yellow {
+    background-color: #ffffe6;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 0 10px 10px 0;
+    border-left: 5px solid orange;
+}
+
+.colbox-red {
+    background-color: red;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin: 5px;
+    border-radius: 0 10px 10px 0;
+    border-left: 5px solid orange;
+}

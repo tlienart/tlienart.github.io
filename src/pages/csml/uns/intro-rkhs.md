@@ -88,7 +88,40 @@ Let $X, Y$ be jointly distributed according to some distribution $P$, the **join
 assuming that the two variables share the same kernel.
 @@
 
+The tensor product satisfies $\scal{k_x \otimes k_y, k_{x'} \otimes k_{y'}}_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')$.
+
+In the same way that $\mu_X$ represents the expectation operator, the joint-embedding $\mathcal C_{XY}$ can be viewed as the *uncentered cross-covariance operator*: for any two functions $f, g \in \mathcal H$, their covariance is given by
+
+\eqa{\E_{XY}[f(X)f(Y)] &=& \scal{f\otimes g, \mathcal C_{XY}}_{\mathcal H\otimes \mathcal H} \speq \scal{f, \mathcal C_{XY} g}_{\mathcal H}}
+
+(still assuming both random variables share the same kernel).
+Following the same reasoning, we can define the *auto-covariance operators* $\mathcal C_{XX}$ and $\mathcal C_{YY}$.
+Note that, in the same way that $\mu_X$ represents expectations with respect to $P$ (the distribution of $X$), these operatros represent cross-covariance/auto-covariance with respect to $P$.
+
+**Remark**: we have assumed that both random variables share the same kernel but this need not be the case: we can consider a second kernel $k'$ with a RKHS $\mathcal H'$; the cross-covariance operator then belongs to the product space $\mathcal H\otimes \mathcal H'$ (which is also a RKHS).
+
+
 ### MMD and HSIC
+
+When considering a characteristic kernel (such as, for example, the Gaussian RBF with $k(x, x')=\exp(-\sigma\|x-x'\|^2_2)$), the RKHS embedding is injective.
+In that case, we can use the distance in the RKHS as a proxy for similarity in the distribution space.
+This can be used in the two-sample test or when testing for independence.
+
+In the *two sample test*, the test statistic is the squared distance between the embeddings of the two distributions:
+
+@@colbox-blue
+The kernel **Maximum Mean Discrepancy** (**MMD**) measure is defined for two distributions $P$ and $Q$ by
+\eqa{\mathrm{MMD}(P, Q) &:=& \|\mu_X - \mu_Y\|_{\mathcal H}^2, } <!--_-->
+where $X\sim P$ and $Y\sim Q$.
+@@
+
+When testing for *independence*, the test statistic is the squared distance between the embeddings of the joint distribution and the product of its marginals:
+
+@@colbox-blue
+The **Hilbert-Schmidt Independence Criterion** (**HSIC**) is defined for two distributions $P$ and $Q$ by
+\eqa{\mathrm{HSIC}(P, Q) &:=& \|\mathcal C_{XY} - \mu_X \otimes \mu_Y\|_{\mathcal H}^2, }<!--_-->
+where $X\sim P$ and $Y\sim Q$.
+@@
 
 ### Finite sample embeddings
 

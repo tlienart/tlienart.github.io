@@ -16,7 +16,7 @@
 
 ## Introduction
 
-These notes were prepared with help from [Dino Sejdinovic](http://www.stats.ox.ac.uk/~sejdinov/) for a talk to a *kernel methods reading group* given in Oxford in July 2015, they're mostly based on a 2013 paper by Song, Fukumizu and Gretton: *Kernel embeddings of conditional distributions*
+These notes were prepared with help from [Dino Sejdinovic](http://www.stats.ox.ac.uk/~sejdinov/) for a talk to a *kernel methods reading group* given in Oxford in July 2015, they're mostly based on \cite{song13}.
 
 ### Basic definitions
 
@@ -24,12 +24,12 @@ These notes were prepared with help from [Dino Sejdinovic](http://www.stats.ox.a
 A Hilbert space $\mathcal H$ of functions $f:\mathcal X\mapsto \R$ defined on a non-empty set $\mathcal X$ is said to be a *reproducing kernel Hilbert space* (RKHS) if *evaluation functionals* $\delta_x: f\mapsto f(x)$ are continuous for all $x\in\mathcal X$
 @@
 
-If we consider a RKHS then, by Riesz's representation theorem, since $\delta_x$ is a continuous functional, it has a *representer* in $\mathcal H$ that we can denote $k_x$ such that
+If we consider a RKHS then, by Riesz's representation theorem, since $\delta_x$ is a continuous functional, it has a *representer* in $\mathcal H$ that we can denote $k_{_X}$ such that
 
-\eqa{  \scal{f, k_x}_{\mathcal H} &=& \delta_x(f) \speq f(x). }
+\eqa{  \scal{f, k_{_X}}_{\mathcal H} &=& \delta_x(f) \speq f(x). }
 
-We can then define a (positive-definite) bilinear form $k:\mathcal X\times\mathcal X \to \R$ as $k(x, x'):=\scal{k_x, k_{x'}}_{\mathcal H}$.
-This is known as the **reproducing kernel** of $\mathcal H$; we will also write $k_x = k(\cdot, x)$.
+We can then define a (positive-definite) bilinear form $k:\mathcal X\times\mathcal X \to \R$ as $k(x, x'):=\scal{k_{_X}, k_{x'}}_{\mathcal H}$.
+This is known as the **reproducing kernel** of $\mathcal H$; we will also write $k_{_X} = k(\cdot, x)$.
 
 There's then an important theorem that links the two (and that we won't prove) reproduced in a simplified form below:
 
@@ -45,10 +45,10 @@ When the kernel is clear from the context, we will simply write $\mathcal H$ for
 
 A classical way to try to represent points in a given space $\mathcal X$ is to *embed* them in $\R^s$ using a $s$-dimensional *feature map* $\Phi:\mathcal X\to \R^s$ with
 \eqa{   x\esp\mapsto\esp\Phi(x)\,\,=\,\, (\varphi_1(x), \varphi_2(x), \dots, \varphi_s(x)). }
-Instead, we can now consider embedding points in a RKHS with the infinite dimensional feature map $x\mapsto k_x$.
+Instead, we can now consider embedding points in a RKHS with the infinite dimensional feature map $x\mapsto k_{_X}$.
 In that case, we have an easily computable inner product between points with
 
-\eqa{   \scal{k_x, k_y}_{\mathcal H} &=& \scal{k(\cdot, x), k(\cdot, y)}_{\mathcal H} \speq k(x, y).       }
+\eqa{   \scal{k_{_X}, k_{_Y}}_{\mathcal H} &=& \scal{k(\cdot, x), k(\cdot, y)}_{\mathcal H} \speq k(x, y).       }
 
 Recall that an inner product is a *measure of alignment* so that this automatically gives us a measure of similarity between points through this kernel.
 
@@ -60,7 +60,7 @@ Each distribution is then considered as a point which we can embed through the *
 @@colbox-blue
 Let $P$ denote a distribution among a set of distributions, the **mean embedding** is defined as follows:
 
-\eqa{  P \mapsto \mu_X(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_X],}
+\eqa{  P \mapsto \mu_X(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_{_X}],}
 and, naturally, $\mu_X(P, k)\in\mathcal H$.
 @@
 
@@ -73,7 +73,7 @@ and this can easily be estimated if we have samples from both $P$ and $Q$.
 
 Note finally that $\mu_X$ represents *expectations with respect to $P$* i.e.: for any $f\in\mathcal H$,
 \eqa{
-    \scal{f, \mu_X}_{\mathcal H} &=& \E_X[{\scal{f, k_X}_{\mathcal H}}] \speq \E_X[f(X)] .
+    \scal{f, \mu_X}_{\mathcal H} &=& \E_X[{\scal{f, k_{_X}}_{\mathcal H}}] \speq \E_X[f(X)] .
 }
 
 ### Joint embedding
@@ -83,12 +83,12 @@ The generalisation to joint distributions is straightforward using tensor produc
 @@colbox-blue
 Let $X, Y$ be jointly distributed according to some distribution $P$, the **joint embedding** of $P$ is defined as
 \eqa{
-    P \mapsto \mathcal C_{XY}(P) \spe{:=} \E_{XY}[k_X\otimes k_Y],
+    P \mapsto \mathcal C_{XY}(P) \spe{:=} \E_{XY}[k_{_X}\otimes k_{_Y}],
 }
 assuming that the two variables share the same kernel.
 @@
 
-The tensor product satisfies $\scal{k_x \otimes k_y, k_{x'} \otimes k_{y'}}_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')$.
+The tensor product satisfies $\scal{k_{_X} \otimes k_{_Y}, k_{x'} \otimes k_{y'}}_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')$.
 
 In the same way that $\mu_X$ represents the expectation operator, the joint-embedding $\mathcal C_{XY}$ can be viewed as the *uncentered cross-covariance operator*: for any two functions $f, g \in \mathcal H$, their covariance is given by
 
@@ -135,12 +135,108 @@ where $X\sim P$ and $Y\sim Q$.
 
 ## Probabilistic reasoning with kernel embeddings
 
+Following notations in \cite{song13}, we still consider two random variables $X$ and $Y$ with joint distribution $P(X, Y)$ and, additionally, we consider a prior distribution $\pi$ on $Y$.
+
 ### Kernel sum rule
+
+The marginal distribution of $X$ can be computed by integrating out $Y$ from the joint density, i.e.:
+
+$$ Q(X) \speq \int P(X|Y) \mathrm d{\pi}(Y) \speq \E_{Y\sim\pi}[P(X|Y)]. $$
+
+Embedding it, we have
+
+$$ \mu_{_X}^\pi \spe{:=} \E_{X\sim Q}[k_{_X}] \speq \E_{Y\sim \pi}[\E_{X|Y}[k_{_X}]], $$
+
+which leads to the kernel sum rule quoted below.
+
+@@colbox-blue
+Let $X$ and $Y$ denote two random variables and $\pi$ a prior on $Y$, then the **Kernel sum rule** reads
+$$ \mu_{_X}^\pi \speq \mathcal C_{X|Y}\mu^\pi_{_Y} $$
+@@
+
+This is straightforward to prove using the definition of the conditional embedding.
+
+\eqal{ \mu_{_X}^\pi \speq \E_{X|Y}[k_{_Y}] \esp&=\esp \E_{Y\sim \pi}[\mathcal C_{X|Y}k_{_Y}]\\
+    &=\esp \mathcal C_{X|Y}\E_{Y\sim\pi}[k_{_Y}] \speq \mathcal C_{X|Y}\mu_{_Y}
+}
+
+The kernel sum rule shows that the conditional embedding operator $\mathcal C_{X|Y}$ maps the embedding of $\pi(Y)$ to that of $Q(X)$.
+
+In practice, an estimator $\hat\mu_{_Y}^\pi$ is given in the form $\sum_{i=1}^n \alpha_i k_{\tilde y_i} = \widetilde\Phi \alpha$ based on samples $\{\tilde y_i\}_{i=1}^n$.
+Let's also assume that the conditional embedding operator has been estimated from a sample $\{(x_i,y_i)\}_{i=1}^m$ drawn from the joint distribution with $\widehat\mathcal C_{X|Y}=\Upsilon(G+\lambda I)^{-1}\Phi$ where $\Upsilon = (k_{x_i})_{i=1}^m$, $\Phi=(k_{y_i})_{i=1}^m$, $G_{ij} = k(y_i,y_j)$ and $\widetilde G_{ij} = k(y_i, \tilde y_j)$.
+
+@@colbox-blue
+The kernel sum rule in the finite sample case has the following form:
+$$ \hat\mu_{_X}^\pi \speq \widehat\mathcal C_{X|Y}\hat\mu_{_Y}^\pi \speq \Upsilon(G+\lambda I)^{-1}\Phi \widetilde G\alpha. $$
+@@
+
 
 ### Kernel chain rule
 
+A joint distribution $Q$ can be factorised into a product between conditional and marginal with $Q(X, Y)=P(X|Y)\pi(Y)$.
+
+@@colbox-blue
+The **kernel chain rule** reads
+$$ \mathcal C^\pi_{XY} \speq \mathcal C_{X|Y}\mathcal C^\pi_{YY}. $$
+@@
+
+This is straightforward to prove:
+
+\eqal{
+    \mathcal C^\pi_{XY} \esp&=\esp \E_{(X,Y)\sim Q}[k_{_X}\otimes k_{_Y}] \speq \E_{Y\sim\pi}[\E_{X|Y}[k_{_X}] \otimes k_{_Y}]\\
+    &= \esp \mathcal C_{X|Y}\E_{Y\sim \pi}[k_Y \otimes k_Y] \speq \mathcal C_{X|Y}\mathcal C^\pi_{YY}.
+}
+
+@@colbox-blue
+The kernel chain rule in the finite sample case has the following form:
+$$ \widehat{\mathcal C}_{XY}^\pi \speq \widehat{\mathcal C}_{X|Y}\widehat{\mathcal C}^\pi_{YY} \speq \Upsilon(G+\lambda I)^{-1}\widetilde G\mathrm{diag}(\alpha)\widetilde\Phi^t,$$
+using $\widehat{\mathcal C}^\pi_{YY} = \widetilde\Phi \mathrm{diag}(\alpha)\widetilde\Phi^t$ and $\widehat{\mathcal C}_{X|Y} = \Upsilon(G+\lambda I)^{-1}\Phi$.
+@@
+
 ### Kernel Bayes rule
+
+A posterior distribution can be expressed in terms of a prior and a likelihood as
+
+$$ Q(Y|x) \speq {P(x|Y)\pi(Y)\over Q(x)}, $$
+
+where $Q(x)$ is the relevant normalisation factor.
+We seek to construct the conditional embedding operator $\mathcal C^\pi_{Y|X}$.
+
+@@colbox-blue
+The **kernel Bayes rule** reads
+
+$$ \mu^\pi_{_Y|x} \speq \mathcal C^\pi_{Y|X}k_x \speq \mathcal C^\pi_{YX} (\mathcal C^\pi_{XX})^{-1}k_x, $$
+with then $\mathcal C^\pi_{Y|X} = \mathcal C^\pi_{YX}(\mathcal C^\pi_{XX})^{-1}$.
+@@
+
+Using the sum rule, $\mathcal C^\pi_{XX}=\mathcal C_{(XX)|Y}\mu_{_Y}^\pi$ and, using the chain rule, $\mathcal C^\pi_{YX}=(\mathcal C_{X|Y}\mathcal C^\pi_{YY})^t$.
+The finite sample case can also be obtained (and is a bit messy).
 
 ### Kernel Bayesian average and posterior decoding
 
+Say we're interested in evaluating the expected value of a function $g\in \mathcal H$ with respect to the posterior $Q(Y|x)$ or to decode $y^{\star}$ most typical of the posterior.
+Assume that the embedding $\widehat\mu^{\pi}_{_{Y|x}}$ is given as $\sum_{i=1}^n \beta_{i}(x)k_{\tilde y_{i}}$ and $g=\sum_{i=1}^m\alpha_{i}k_{y_{i}}$ then
+
+@@colbox-blue
+the **kernel Bayes average** reads
+
+$$
+    \left\langle g,\widehat\mu_{Y|x}^{\pi}\right\rangle_{\mathcal H} \speq \beta^{t} \widetilde G  \alpha \speq \sum_{ij} \alpha_{i}\beta_{j}(x)k(y_{i},\tilde y_{j}),
+$$
+
+ and the **kernel Bayes posterior decoding** reads
+
+$$
+y^{\star} \speq \arg\min_{y} \,\, -2\beta^{t}\widetilde G_{:y}+k(y,y).
+$$
+
+The second expression coming from the minimisation $\min_{y}\|\widehat \mu^{\pi}_{_{Y|x}}-k_{y}\|_{\mathcal H}^{2}$.
+@@
+<!--_-->
+In general, the optimisation problem is difficult to solve.
+It corresponds to the so-called "pre-image" problem in kernel methods.
+
 ## References
+
+- \biblabel{fukumizu04}{Fukumizu et al. (2004)} **Fukumizu**, **Bach** and **Jordan**, [Dimensionality Reduction for Supervised Learning with Reproducing Kernel Hilbert Spaces](http://www.jmlr.org/papers/volume5/fukumizu04a/fukumizu04a.ps), 2004. A key paper in the RKHS literature. 
+- \biblabel{song13}{Song et al. (2013)} **Song**, **Fukumizu** and **Gretton**,  [Kernel embeddings of conditional distributions](https://www.cc.gatech.edu/~lsong/papers/SonFukGre13.pdf), 2013. The paper these notes are mainly based on.

@@ -1,1 +1,132 @@
-<!doctype html> <html lang=en-UK > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=stylesheet  href="/css/header.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>RKHS Embeddings</title> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <script src="/libs/katex/katex.min.js"></script> <script src="/libs/katex/auto-render.min.js"></script> <header> <div class=name >Thibaut Lienart</div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=content> <p></p> <h2>Introduction</h2> <p>These notes were prepared with help from <a href="http://www.stats.ox.ac.uk/~sejdinov/">Dino Sejdinovic</a> for a talk to a <em>kernel methods reading group</em> given in Oxford in July 2015, they&#39;re mostly based on a 2013 paper by Song, Fukumizu and Gretton: <em>Kernel embeddings of conditional distributions</em></p> <h3>Basic definitions</h3> <p><div class=colbox-blue >A Hilbert space \(\mathcal H\) of functions \(f:\mathcal X\mapsto \mathbb R\) defined on a non-empty set \(\mathcal X\) is said to be a <em>reproducing kernel Hilbert space</em> &#40;RKHS&#41; if <em>evaluation functionals</em> \(\delta_x: f\mapsto f(x)\) are continuous for all \(x\in\mathcal X\)</div> </p> <p>If we consider a RKHS then, by Riesz&#39;s representation theorem, since \(\delta_x\) is a continuous functional, it has a <em>representer</em> in \(\mathcal H\) that we can denote \(k_x\) such that</p> <p>$$\begin{array}{c} \left\langle f, k_x\right\rangle_{\mathcal H} &=& \delta_x(f) \quad\!\! =\quad\!\! f(x). \end{array}$$</p> <p>We can then define a &#40;positive-definite&#41; bilinear form \(k:\mathcal X\times\mathcal X \to \mathbb R\) as \(k(x, x'):=\left\langle k_x, k_{x'}\right\rangle_{\mathcal H}\). This is known as the <strong>reproducing kernel</strong> of \(\mathcal H\); we will also write \(k_x = k(\cdot, x)\).</p> <p>There&#39;s then an important theorem that links the two &#40;and that we won&#39;t prove&#41; reproduced in a simplified form below:</p> <p><div class=colbox-blue >&#40;<strong>Moore-Aronszajn</strong>&#41; Every positive-definite bilinear form \(k\) is a reproducing kernel for some Hilbert space \(\mathcal H_k\)</div> </p> <p>When the kernel is clear from the context, we will simply write \(\mathcal H\) for the RKHS and \(k\) for its reproducing kernel.</p> <h2>Kernel embedding of a distribution</h2> <h3>Mean embedding</h3> <p>A classical way to try to represent points in a given space \(\mathcal X\) is to <em>embed</em> them in \(\mathbb R^s\) using a \(s\)-dimensional <em>feature map</em> \(\Phi:\mathcal X\to \mathbb R^s\) with $$\begin{array}{c} x\quad\!\!\mapsto\quad\!\!\Phi(x)\,\,=\,\, (\varphi_1(x), \varphi_2(x), \dots, \varphi_s(x)). \end{array}$$ Instead, we can now consider embedding points in a RKHS with the infinite dimensional feature map \(x\mapsto k_x\). In that case, we have an easily computable inner product between points with</p> <p>$$\begin{array}{c} \left\langle k_x, k_y\right\rangle_{\mathcal H} &=& \left\langle k(\cdot, x), k(\cdot, y)\right\rangle_{\mathcal H} \quad\!\! =\quad\!\! k(x, y). \end{array}$$</p> <p>Recall that an inner product is a <em>measure of alignment</em> so that this automatically gives us a measure of similarity between points through this kernel.</p> <p>When the embedding is <em>injective</em> &#40;i.e.: different objects are mapped to different points in the RKHS&#41;, the corresponding kernel is said to be <strong>characteristic</strong> &#40;this is often the case for standard kernels&#41;.</p> <p>An example of objects we can embed in an RKHS are distributions. Each distribution is then considered as a point which we can embed through the <em>mean-embedding</em>.</p> <p><div class=colbox-blue >Let \(P\) denote a distribution among a set of distributions, the <strong>mean embedding</strong> is defined as follows:</p> <p>$$\begin{array}{c} P \mapsto \mu_X(P, k) \quad\!\!:=\quad\!\! \mathbb E_{X\sim P}[k(\cdot, X)]\quad\!\! =\quad\!\! \mathbb E_X[k_X],\end{array}$$ and, naturally, \(\mu_X(P, k)\in\mathcal H\)</div> </p> <p>When the kernel and the distribution are clear from the context, we will simply write \(\mu_X\). As before, note that we inherit a notion of <em>similarity</em> between probability measures by looking at the inner product on the RKHS: $$\begin{array}{c} \left\langle \mu_X(P, k), \mu_Y(Q, k)\right\rangle_{\mathcal H} \quad\!\! =\quad\!\! \mathbb E_{X, Y}[k(X, Y)], \end{array}$$ and this can easily be estimated if we have samples from both \(P\) and \(Q\).</p> <p>Note finally that \(\mu_X\) represents <em>expectations with respect to \(P\)</em> i.e.: for any \(f\in\mathcal H\), $$\begin{array}{c} \left\langle f, \mu_X\right\rangle_{\mathcal H} &=& \mathbb E_X[{\left\langle f, k_X\right\rangle_{\mathcal H}}] \quad\!\! =\quad\!\! \mathbb E_X[f(X)] . \end{array}$$</p> <h3>Joint embedding</h3> <p>The generalisation to joint distributions is straightforward using tensor product feature spaces.</p> <p><div class=colbox-blue >Let \(X, Y\) be jointly distributed according to some distribution \(P\), the <strong>joint embedding</strong> of \(P\) is defined as $$\begin{array}{c} P \mapsto \mathcal C_{XY}(P) \quad\!\! :=\quad\!\! \mathbb E_{XY}[k_X\otimes k_Y], \end{array}$$ assuming that the two variables share the same kernel.</div> </p> <p>The tensor product satisfies \(\left\langle k_x \otimes k_y, k_{x'} \otimes k_{y'}\right\rangle_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')\).</p> <p>In the same way that \(\mu_X\) represents the expectation operator, the joint-embedding \(\mathcal C_{XY}\) can be viewed as the <em>uncentered cross-covariance operator</em>: for any two functions \(f, g \in \mathcal H\), their covariance is given by</p> <p>$$\begin{array}{c} \mathbb E_{XY}[f(X)f(Y)] &=& \left\langle f\otimes g, \mathcal C_{XY}\right\rangle_{\mathcal H\otimes \mathcal H} \quad\!\! =\quad\!\! \left\langle f, \mathcal C_{XY} g\right\rangle_{\mathcal H}\end{array}$$</p> <p>&#40;still assuming both random variables share the same kernel&#41;. Following the same reasoning, we can define the <em>auto-covariance operators</em> \(\mathcal C_{XX}\) and \(\mathcal C_{YY}\). Note that, in the same way that \(\mu_X\) represents expectations with respect to \(P\) &#40;the distribution of \(X\)&#41;, these operatros represent cross-covariance/auto-covariance with respect to \(P\).</p> <p><strong>Remark</strong>: we have assumed that both random variables share the same kernel but this need not be the case: we can consider a second kernel \(k'\) with a RKHS \(\mathcal H'\); the cross-covariance operator then belongs to the product space \(\mathcal H\otimes \mathcal H'\) &#40;which is also a RKHS&#41;.</p> <h3>MMD and HSIC</h3> <p>When considering a characteristic kernel &#40;such as, for example, the Gaussian RBF with \(k(x, x')=\exp(-\sigma\|x-x'\|^2_2)\)&#41;, the RKHS embedding is injective. In that case, we can use the distance in the RKHS as a proxy for similarity in the distribution space. This can be used in the two-sample test or when testing for independence.</p> <p>In the <em>two sample test</em>, the test statistic is the squared distance between the embeddings of the two distributions:</p> <p><div class=colbox-blue >The kernel <strong>Maximum Mean Discrepancy</strong> &#40;<strong>MMD</strong>&#41; measure is defined for two distributions \(P\) and \(Q\) by $$\begin{array}{c} \mathrm{MMD}(P, Q) &:=& \|\mu_X - \mu_Y\|_{\mathcal H}^2, \end{array}$$ where \(X\sim P\) and \(Y\sim Q\)</div> </p> <p>When testing for <em>independence</em>, the test statistic is the squared distance between the embeddings of the joint distribution and the product of its marginals:</p> <p><div class=colbox-blue >The <strong>Hilbert-Schmidt Independence Criterion</strong> &#40;<strong>HSIC</strong>&#41; is defined for two distributions \(P\) and \(Q\) by $$\begin{array}{c} \mathrm{HSIC}(P, Q) &:=& \|\mathcal C_{XY} - \mu_X \otimes \mu_Y\|_{\mathcal H}^2, \end{array}$$ where \(X\sim P\) and \(Y\sim Q\)</div> </p> <h3>Finite sample embeddings</h3> <h2>Kernel embeddings of conditional distributions</h2> <h3>Pointwise definition</h3> <h3>Conditional operator</h3> <h3>Finite sample kernel estimator</h3> <h2>Probabilistic reasoning with kernel embeddings</h2> <h3>Kernel sum rule</h3> <h3>Kernel chain rule</h3> <h3>Kernel Bayes rule</h3> <h3>Kernel Bayesian average and posterior decoding</h3> <h2>References</h2> <div class=page-foot > <div class=copyright > &copy; T. Lienart. Last modified: October 13, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>. </div> </div> </div> <script> renderMathInElement(document.body) </script>
+<!doctype html>
+<html lang="en-UK">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="stylesheet" href="/css/header.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
+		 <title>RKHS Embeddings</title>	
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.min.css"></link>
+<script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+ 		
+        
+	</head>
+    <body>
+		
+        <header>
+            <div class="name">Thibaut Lienart</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
+                    <li><a href="/pub/julia.html">Julia notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="/assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+		
+
+<!-- Content appended here -->
+<div class=content>
+<p></p>
+<h2>Introduction</h2>
+<p>These notes were prepared with help from <a href="http://www.stats.ox.ac.uk/~sejdinov/">Dino Sejdinovic</a> for a talk to a <em>kernel methods reading group</em> given in Oxford in July 2015, they&#39;re mostly based on a 2013 paper by Song, Fukumizu and Gretton: <em>Kernel embeddings of conditional distributions</em></p>
+<h3>Basic definitions</h3>
+<p><div class="colbox-blue">A Hilbert space \(\mathcal H\) of functions \(f:\mathcal X\mapsto \mathbb R\) defined on a non-empty set \(\mathcal X\) is said to be a <em>reproducing kernel Hilbert space</em> &#40;RKHS&#41; if <em>evaluation functionals</em> \(\delta_x: f\mapsto f(x)\) are continuous for all \(x\in\mathcal X\)</div>
+</p>
+<p>If we consider a RKHS then, by Riesz&#39;s representation theorem, since \(\delta_x\) is a continuous functional, it has a <em>representer</em> in \(\mathcal H\) that we can denote \(k_x\) such that</p>
+<p>$$\begin{array}{c}   \left\langle f, k_x\right\rangle_{\mathcal H} &=& \delta_x(f) \quad\!\! =\quad\!\! f(x). \end{array}$$</p>
+<p>We can then define a &#40;positive-definite&#41; bilinear form \(k:\mathcal X\times\mathcal X \to \mathbb R\) as \(k(x, x'):=\left\langle k_x, k_{x'}\right\rangle_{\mathcal H}\). This is known as the <strong>reproducing kernel</strong> of \(\mathcal H\); we will also write \(k_x = k(\cdot, x)\).</p>
+<p>There&#39;s then an important theorem that links the two &#40;and that we won&#39;t prove&#41; reproduced in a simplified form below:</p>
+<p><div class="colbox-blue">&#40;<strong>Moore-Aronszajn</strong>&#41; Every positive-definite bilinear form \(k\) is a reproducing kernel for some Hilbert space \(\mathcal H_k\).</div>
+</p>
+<p>When the kernel is clear from the context, we will simply write \(\mathcal H\) for the RKHS and \(k\) for its reproducing kernel.</p>
+<h2>Kernel embedding of a distribution</h2>
+<h3>Mean embedding</h3>
+<p>A classical way to try to represent points in a given space \(\mathcal X\) is to <em>embed</em> them in \(\mathbb R^s\) using a \(s\)-dimensional <em>feature map</em> \(\Phi:\mathcal X\to \mathbb R^s\) with $$\begin{array}{c}    x\quad\!\!\mapsto\quad\!\!\Phi(x)\,\,=\,\, (\varphi_1(x), \varphi_2(x), \dots, \varphi_s(x)). \end{array}$$ Instead, we can now consider embedding points in a RKHS with the infinite dimensional feature map \(x\mapsto k_x\). In that case, we have an easily computable inner product between points with</p>
+<p>$$\begin{array}{c}    \left\langle k_x, k_y\right\rangle_{\mathcal H} &=& \left\langle k(\cdot, x), k(\cdot, y)\right\rangle_{\mathcal H} \quad\!\! =\quad\!\! k(x, y).       \end{array}$$</p>
+<p>Recall that an inner product is a <em>measure of alignment</em> so that this automatically gives us a measure of similarity between points through this kernel.</p>
+<p>When the embedding is <em>injective</em> &#40;i.e.: different objects are mapped to different points in the RKHS&#41;, the corresponding kernel is said to be <strong>characteristic</strong> &#40;this is often the case for standard kernels&#41;.</p>
+<p>An example of objects we can embed in an RKHS are distributions. Each distribution is then considered as a point which we can embed through the <em>mean-embedding</em>.</p>
+<p><div class="colbox-blue">Let \(P\) denote a distribution among a set of distributions, the <strong>mean embedding</strong> is defined as follows:</p>
+<p>$$\begin{array}{c}   P \mapsto \mu_{_X}(P, k) \quad\!\!:=\quad\!\! \mathbb E_{X\sim P}[k(\cdot, X)]\quad\!\! =\quad\!\! \mathbb E_X[k_X],\end{array}$$ and, naturally, \(\mu_{_X}(P, k)\in\mathcal H\).</div>
+</p>
+<p>When the kernel and the distribution are clear from the context, we will simply write \(\mu_{_X}\). As before, note that we inherit a notion of <em>similarity</em> between probability measures by looking at the inner product on the RKHS: $$\begin{array}{c} 
+    \left\langle \mu_{_X}(P, k), \mu_{_Y}(Q, k)\right\rangle_{\mathcal H} \quad\!\! =\quad\!\! \mathbb E_{X Y}[k(X, Y)],
+\end{array}$$ and this can easily be estimated if we have samples from both \(P\) and \(Q\).</p>
+<p>Note finally that \(\mu_{_X}\) represents <em>expectations with respect to \(P\)</em> i.e.: for any \(f\in\mathcal H\), $$\begin{array}{c} 
+    \left\langle f, \mu_{_X}\right\rangle_{\mathcal H} &=& \mathbb E_X[{\left\langle f, k_X\right\rangle_{\mathcal H}}] \quad\!\! =\quad\!\! \mathbb E_X[f(X)] .
+\end{array}$$</p>
+<h3>Joint embedding</h3>
+<p>The generalisation to joint distributions is straightforward using tensor product feature spaces.</p>
+<p><div class="colbox-blue">Let \(X, Y\) be jointly distributed according to some distribution \(P\), the <strong>joint embedding</strong> of \(P\) is defined as $$\begin{array}{c} 
+    P \mapsto \mathcal C_{XY}(P) \quad\!\! :=\quad\!\! \mathbb E_{XY}[k_X\otimes k_Y],
+\end{array}$$ assuming that the two variables share the same kernel.</div>
+</p>
+<p>The tensor product satisfies \(\left\langle k_x \otimes k_y, k_{x'} \otimes k_{y'}\right\rangle_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')\).</p>
+<p>In the same way that \(\mu_{_X}\) represents the expectation operator, the joint-embedding \(\mathcal C_{XY}\) can be viewed as the <em>uncentered cross-covariance operator</em>: for any two functions \(f, g \in \mathcal H\), their covariance is given by</p>
+<p><a name="2626712616588176884"></a>$$\begin{array}{c} \mathbb E_{XY}[f(X)f(Y)] &=& \left\langle f\otimes g, \mathcal C_{XY}\right\rangle_{\mathcal H\otimes \mathcal H} \quad\!\! =\quad\!\! \left\langle f, \mathcal C_{XY} g\right\rangle_{\mathcal H} \end{array}$$</p>
+<p>&#40;still assuming both random variables share the same kernel&#41;. Following the same reasoning, we can define the <em>auto-covariance operators</em> \(\mathcal C_{XX}\) and \(\mathcal C_{YY}\). Note that, in the same way that \(\mu_{_X}\) represents expectations with respect to \(P\) &#40;the distribution of \(X\)&#41;, these operatros represent cross-covariance/auto-covariance with respect to \(P\).</p>
+<p><strong>Remark</strong>: we have assumed that both random variables share the same kernel but this need not be the case: we can consider a second kernel \(k'\) with a RKHS \(\mathcal H'\); the cross-covariance operator then belongs to the product space \(\mathcal H\otimes \mathcal H'\) &#40;which is also a RKHS&#41;.</p>
+<h3>MMD and HSIC</h3>
+<p>When considering a characteristic kernel &#40;such as, for example, the Gaussian RBF with \(k(x, x')=\exp(-\sigma\|x-x'\|^2_2)\)&#41;, the RKHS embedding is injective. In that case, we can use the distance in the RKHS as a proxy for similarity in the distribution space. This can be used in the two-sample test or when testing for independence.</p>
+<p>In the <em>two sample test</em>, the test statistic is the squared distance between the embeddings of the two distributions:</p>
+<p><div class="colbox-blue">The kernel <strong>Maximum Mean Discrepancy</strong> &#40;<strong>MMD</strong>&#41; measure is defined for two distributions \(P\) and \(Q\) by $$\begin{array}{c} \mathrm{MMD}(P, Q) &:=& \|\mu_{_X} - \mu_{_Y}\|_{\mathcal H}^2, \end{array}$$  where \(X\sim P\) and \(Y\sim Q\). </div>
+</p>
+<p>When testing for <em>independence</em>, the test statistic is the squared distance between the embeddings of the joint distribution and the product of its marginals:</p>
+<p><div class="colbox-blue">The <strong>Hilbert-Schmidt Independence Criterion</strong> &#40;<strong>HSIC</strong>&#41; is defined for two distributions \(P\) and \(Q\) by $$\begin{array}{c} \mathrm{HSIC}(P, Q) &:=& \|\mathcal C_{XY} - \mu_{_X} \otimes \mu_{_Y}\|_{\mathcal H}^2, \end{array}$$ where \(X\sim P\) and \(Y\sim Q\).</div>
+</p>
+<h3>Finite sample embeddings</h3>
+<p>All of the embeddings defined above can readily be estimated using samples drawn from the distributions of interest. Let \(\{x_1, \dots, x_n\}\) be an iid. draw from \(P\), the <em>empirical kernel embedding</em> is defined as</p>
+<p>$$  \widehat{\mu}_{_X} \quad\!\! =\quad\!\! n^{-1}\sum_{i=1}^n k_{x_i}. $$</p>
+<p>As for standard Monte Carlo estimators, the rate of convergence is \(\mathcal O(1/\sqrt{n})\) &#40;an hence does not depend upon the dimensionality of the unerlying space&#41;. Similarly, for an iid draw of pairs \(\{(x_1,y_1), \dots, (x_n,y_n)\}\), the <em>empirical covariance operator</em> is defined as</p>
+<p><a name="18058751326955117006"></a>$$\begin{aligned} \widehat{\mathcal C}_{XY}  \quad\!\!&=\quad\!\! n^{-1}\sum_{i=1}^n k_{x_i} \otimes k_{y_i} \\
+&=\quad\!\! n^{-1}\Upsilon\Phi^t \end{aligned}$$ where \(\Upsilon := (k_{x_1}, \dots, k_{x_n})\) and \(\Phi:=(k_{y_1}, \dots, k_{y_n})\) are the <em>feature matrices</em>.</p>
+<p>To conclude, it is straightforward to obtain empirical estimators for the MMD and HSIC criterion considering kernel elements \(k(x_i, x_j)\), \(k(y_i, y_j)\) and \(k(x_i, y_j)\). In the case of the MMD for instance, one has:</p>
+<p>$$  \widehat{\mathrm{MMD}}(P, Q) \quad\!\! =\quad\!\! n^{-2}\sum_{i,j=1}^n \left(k(x_{i},x_{j})+k(y_{i},y_{j})-2k(x_{i},y_{j})\right) $$</p>
+<h2>Kernel embeddings of conditional distributions</h2>
+<h3>Pointwise definition</h3>
+<p>In line with the definitions presented earlier, the kernel embedding of a conditional distribution \(P(Y|X)\) is defined as</p>
+<p>$$\begin{array}{c}   \mu_{_{Y|x}} &=& \mathbb E_{Y|x}[k_Y], \end{array}$$</p>
+<p>and the conditional expectation of a function \(g\in \mathcal H\) can be expressed as</p>
+<p>$$\begin{array}{c}   \mathbb E_{Y|x}[g(Y)] &=& \left\langle g, \mu_{_{Y|x}}\right\rangle_{\mathcal H}. \end{array}$$</p>
+<p>Note that we now have a family of points in the RKHS indexed by \(x\), the value upon which we condition.</p>
+<h3>Conditional operator</h3>
+<p>We can also define an operator \(\mathcal C_{Y|X}\) such that</p>
+<p>$$\begin{array}{c} \mu_{_{Y|x}} &=& \mathcal C_{Y|X} k_x.\end{array}$$</p>
+<p>To do so, we must first introduce a result for which we will provide a partial proof &#40;the full proof can be found in Fukumizu et al., 2004&#41;.</p>
+<p><div class="colbox-blue">The following identity holds &#40;under mild technical conditions&#41;:</p>
+<p>$$\begin{array}{c}   \mathcal C_{XX} \mathbb E_{Y|X}[g(Y)] &=& \mathcal C_{XY}g.  \end{array}$$</div>
+</p>
+<p>To prove this &#40;partially&#41;, note that for \(f \in \mathcal H\), using <span class="eqref"><a href="#2626712616588176884">(8)</a></span>, we have</p>
+<p>$$\begin{aligned}  \left\langle f, \mathcal C_{XX} \mathbb E_{Y|X}[g(Y)]\right\rangle_{\mathcal H} \quad\!\! &=\quad\!\! \mathbb E_X[f(X)]\mathbb E_{Y|X}[g(Y)] \\
+&=\quad\!\!   \end{aligned}$$</p>
+<p></p>
+<h3>Finite sample kernel estimator</h3>
+<h2>Probabilistic reasoning with kernel embeddings</h2>
+<h3>Kernel sum rule</h3>
+<h3>Kernel chain rule</h3>
+<h3>Kernel Bayes rule</h3>
+<h3>Kernel Bayesian average and posterior decoding</h3>
+<h2>References</h2>
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. Last modified: October 14, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+</div>
+<!-- CONTENT ENDS HERE -->
+        
+                <script>
+		renderMathInElement(document.body)
+</script>
+
+        
+    </body>
+</html>

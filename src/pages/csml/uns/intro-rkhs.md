@@ -60,20 +60,20 @@ Each distribution is then considered as a point which we can embed through the *
 @@colbox-blue
 Let $P$ denote a distribution among a set of distributions, the **mean embedding** is defined as follows:
 
-\eqa{  P \mapsto \mu_X(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_X],}
-and, naturally, $\mu_X(P, k)\in\mathcal H$.
+\eqa{  P \mapsto \mu_{_X}(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_X],}
+and, naturally, $\mu_{_X}(P, k)\in\mathcal H$.
 @@
 
-When the kernel and the distribution are clear from the context, we will simply write $\mu_X$.
+When the kernel and the distribution are clear from the context, we will simply write $\mu_{_X}$.
 As before, note that we inherit a notion of *similarity* between probability measures by looking at the inner product on the RKHS:
 \eqa{
-    \scal{\mu_X(P, k), \mu_Y(Q, k)}_{\mathcal H} \speq \E_{X, Y}[k(X, Y)],
+    \scal{\mu_{_X}(P, k), \mu_{_Y}(Q, k)}_{\mathcal H} \speq \E_{X Y}[k(X, Y)],
 }
 and this can easily be estimated if we have samples from both $P$ and $Q$.
 
-Note finally that $\mu_X$ represents *expectations with respect to $P$* i.e.: for any $f\in\mathcal H$,
+Note finally that $\mu_{_X}$ represents *expectations with respect to $P$* i.e.: for any $f\in\mathcal H$,
 \eqa{
-    \scal{f, \mu_X}_{\mathcal H} &=& \E_X[{\scal{f, k_X}_{\mathcal H}}] \speq \E_X[f(X)] .
+    \scal{f, \mu_{_X}}_{\mathcal H} &=& \E_X[{\scal{f, k_X}_{\mathcal H}}] \speq \E_X[f(X)] .
 }
 
 ### Joint embedding
@@ -90,13 +90,13 @@ assuming that the two variables share the same kernel.
 
 The tensor product satisfies $\scal{k_x \otimes k_y, k_{x'} \otimes k_{y'}}_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')$.
 
-In the same way that $\mu_X$ represents the expectation operator, the joint-embedding $\mathcal C_{XY}$ can be viewed as the *uncentered cross-covariance operator*: for any two functions $f, g \in \mathcal H$, their covariance is given by
+In the same way that $\mu_{_X}$ represents the expectation operator, the joint-embedding $\mathcal C_{XY}$ can be viewed as the *uncentered cross-covariance operator*: for any two functions $f, g \in \mathcal H$, their covariance is given by
 
-\eqa{\E_{XY}[f(X)f(Y)] &=& \scal{f\otimes g, \mathcal C_{XY}}_{\mathcal H\otimes \mathcal H} \speq \scal{f, \mathcal C_{XY} g}_{\mathcal H}}
+\eqa{\E_{XY}[f(X)f(Y)] &=& \scal{f\otimes g, \mathcal C_{XY}}_{\mathcal H\otimes \mathcal H} \speq \scal{f, \mathcal C_{XY} g}_{\mathcal H} \label{covariance op 1}}
 
 (still assuming both random variables share the same kernel).
 Following the same reasoning, we can define the *auto-covariance operators* $\mathcal C_{XX}$ and $\mathcal C_{YY}$.
-Note that, in the same way that $\mu_X$ represents expectations with respect to $P$ (the distribution of $X$), these operatros represent cross-covariance/auto-covariance with respect to $P$.
+Note that, in the same way that $\mu_{_X}$ represents expectations with respect to $P$ (the distribution of $X$), these operatros represent cross-covariance/auto-covariance with respect to $P$.
 
 **Remark**: we have assumed that both random variables share the same kernel but this need not be the case: we can consider a second kernel $k'$ with a RKHS $\mathcal H'$; the cross-covariance operator then belongs to the product space $\mathcal H\otimes \mathcal H'$ (which is also a RKHS).
 
@@ -111,25 +111,72 @@ In the *two sample test*, the test statistic is the squared distance between the
 
 @@colbox-blue
 The kernel **Maximum Mean Discrepancy** (**MMD**) measure is defined for two distributions $P$ and $Q$ by
-\eqa{\mathrm{MMD}(P, Q) &:=& \|\mu_X - \mu_Y\|_{\mathcal H}^2, } <!--_-->
-where $X\sim P$ and $Y\sim Q$.
-@@
+\eqa{\mathrm{MMD}(P, Q) &:=& \|\mu_{_X} - \mu_{_Y}\|_{\mathcal H}^2, } <!--_-->
+where $X\sim P$ and $Y\sim Q$. @@
 
 When testing for *independence*, the test statistic is the squared distance between the embeddings of the joint distribution and the product of its marginals:
 
 @@colbox-blue
 The **Hilbert-Schmidt Independence Criterion** (**HSIC**) is defined for two distributions $P$ and $Q$ by
-\eqa{\mathrm{HSIC}(P, Q) &:=& \|\mathcal C_{XY} - \mu_X \otimes \mu_Y\|_{\mathcal H}^2, }<!--_-->
+\eqa{\mathrm{HSIC}(P, Q) &:=& \|\mathcal C_{XY} - \mu_{_X} \otimes \mu_{_Y}\|_{\mathcal H}^2, }<!--_-->
 where $X\sim P$ and $Y\sim Q$.
 @@
 
 ### Finite sample embeddings
 
+All of the embeddings defined above can readily be estimated using samples drawn from the distributions of interest.
+Let $\{x_1, \dots, x_n\}$ be an iid. draw from $P$, the *empirical kernel embedding* is defined as
+
+$$  \widehat{\mu}_{_X} \speq n^{-1}\sum_{i=1}^n k_{x_i}. $$
+
+As for standard Monte Carlo estimators, the rate of convergence is $\mathcal O(1/\sqrt{n})$ (an hence does not depend upon the dimensionality of the unerlying space).
+Similarly, for an iid draw of pairs $\{(x_1,y_1), \dots, (x_n,y_n)\}$, the *empirical covariance operator* is defined as
+
+\eqal{\widehat{\mathcal C}_{XY}  \esp&=\esp n^{-1}\sum_{i=1}^n k_{x_i} \otimes k_{y_i} \\
+&=\esp n^{-1}\Upsilon\Phi^t \label{empirical cxy}}
+where $\Upsilon := (k_{x_1}, \dots, k_{x_n})$ and $\Phi:=(k_{y_1}, \dots, k_{y_n})$ are the *feature matrices*.
+
+To conclude, it is straightforward to obtain empirical estimators for the MMD and HSIC criterion considering kernel elements $k(x_i, x_j)$, $k(y_i, y_j)$ and $k(x_i, y_j)$.
+In the case of the MMD for instance, one has:
+
+$$  \widehat{\mathrm{MMD}}(P, Q) \speq n^{-2}\sum_{i,j=1}^n \left(k(x_{i},x_{j})+k(y_{i},y_{j})-2k(x_{i},y_{j})\right) $$
+
 ## Kernel embeddings of conditional distributions
 
 ### Pointwise definition
 
+In line with the definitions presented earlier, the kernel embedding of a conditional distribution $P(Y|X)$ is defined as
+
+\eqa{  \mu_{_{Y|x}} &=& \mathbb E_{Y|x}[k_Y], }
+
+and the conditional expectation of a function $g\in \mathcal H$ can be expressed as
+
+\eqa{  \E_{Y|x}[g(Y)] &=& \scal{g, \mu_{_{Y|x}}}_{\mathcal H}. }
+
+Note that we now have a family of points in the RKHS indexed by $x$, the value upon which we condition.
+
 ### Conditional operator
+
+We can also define an operator $\mathcal C_{Y|X}$ such that
+
+\eqa{\mu_{_{Y|x}} &=& \mathcal C_{Y|X} k_x.}
+
+To do so, we must first introduce a result for which we will provide a partial proof (the full proof can be found in Fukumizu et al., 2004).
+
+@@colbox-blue
+The following identity holds (under mild technical conditions):
+
+\eqa{  \mathcal C_{XX} \E_{Y|X}[g(Y)] &=& \mathcal C_{XY}g.  }
+@@
+
+To prove this (partially), note that for $f \in \mathcal H$, using \eqref{covariance op 1}, we have
+
+\eqal{ \scal{f, \mathcal C_{XX} \E_{Y|X}[g(Y)]}_{\mathcal H} \esp &=\esp \E_X[f(X)]\E_{Y|X}[g(Y)] \\
+&=\esp   }
+
+<!-- \scal{f, \mathcal C_{XX} \E_{Y|X}[g(Y)]}_{\mathcal H}
+= (using 8) E_{XY}[f(X) \mathcal C_{XX} \E_{Y|X}[g(Y)] ]
+=   -->
 
 ### Finite sample kernel estimator
 

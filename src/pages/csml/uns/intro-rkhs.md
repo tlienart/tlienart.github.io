@@ -64,7 +64,7 @@ Note finally that $\mu_{_X}$ represents *expectations with respect to $P$* i.e.:
 }
 
 @@colbox-red
-proofreading stopped here, note that some of the $k_{_X}$ should be $k_x$.
+ proofreading stopped here, note that some of the $k_{_X}$ should be $k_x$.
 @@
 
 ### Joint embedding

@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
 			<link rel="stylesheet" href="/css/main.css">
-	        <link rel="stylesheet" href="/css/header.css">
 	        <link rel="icon" href="/assets/infra/favicon.png">
 		
 		 <title>Convex analysis III</title>	
@@ -45,11 +44,11 @@
 \end{array}$$</div>
 </p>
 <p>This simply means that the graph of the function is strictly above its supporting hyperplanes.</p>
-<p>We can prove this quickly by noting that <span class="eqref"><a href="#12340839312656349662">(1)</a></span> can be rearranged into <a name="16206547258716596284"></a>$$\begin{array}{c} 
+<p>We can prove this quickly by noting that <span class="eqref)">(<a href="#12340839312656349662">1</a>)</span> can be rearranged into <a name="16206547258716596284"></a>$$\begin{array}{c} 
     \psi(z) &>&\psi(x) + {\psi((1-\lambda)x+\lambda z) - \psi(x)\over \lambda}, 
 \end{array}$$ now if we let \(y\in\partial \psi(x)\) and using the subgradient inequality, we can also write <a name="8440941571142850415"></a>$$\begin{array}{c} 
     \psi((1-\lambda)x+\lambda z) &\ge& \psi(x) + \lambda\left\langle z-x, y\right\rangle.
-\end{array}$$ Combining <span class="eqref"><a href="#16206547258716596284">(3)</a></span> and <span class="eqref"><a href="#8440941571142850415">(4)</a></span> gives <span class="eqref"><a href="#4831439046191658188">(2)</a></span>.</p>
+\end{array}$$ Combining <span class="eqref)">(<a href="#16206547258716596284">3</a>)</span> and <span class="eqref)">(<a href="#8440941571142850415">4</a>)</span> gives <span class="eqref)">(<a href="#4831439046191658188">2</a>)</span>.</p>
 <p><strong>Example</strong>: \(\psi(x)=x\log(x)\) is strictly convex on \(\mathbb R^+\) whereas \(\psi(x)=|x|\) is not.</p>
 <p><div class="img-small"><img src="/assets/csml/cvxopt/strict-convex-ex.svg" alt="" /> </div>
 </p>
@@ -65,7 +64,7 @@
 </p>
 <p>To prove this result, we can use the link between \(\partial\psi\) and \(\partial\psi^{\star}\) &#40;cf. <a href="/pub/csml/cvxopt/ca2.html">convex analysis part 2</a>&#41;: <a name="17537716559854800401"></a>$$\begin{array}{c} 
     x\in \partial f(y)\cap C &\Longleftrightarrow& (y\in\partial f(x), x\in C). 
-\end{array}$$ \(\Rightarrow\): assume \(f^\star\) is not differentiable on \(C^\circ\). Then, there is a \(y\) such that \(\partial f^\star(y)\) contains more than one points, say \(x_1\neq x_2\) in in \(C^\circ\). But then, using the equivalence <span class="eqref"><a href="#17537716559854800401">(6)</a></span> we have that \(y\in\partial f(x_1) \cap \partial f(x_2)\). Since \(f\) is strictly convex and \(x_1\neq x_2\) the two following strict inequalities must hold: $$\begin{aligned} 
+\end{array}$$ \(\Rightarrow\): assume \(f^\star\) is not differentiable on \(C^\circ\). Then, there is a \(y\) such that \(\partial f^\star(y)\) contains more than one points, say \(x_1\neq x_2\) in in \(C^\circ\). But then, using the equivalence <span class="eqref)">(<a href="#17537716559854800401">6</a>)</span> we have that \(y\in\partial f(x_1) \cap \partial f(x_2)\). Since \(f\) is strictly convex and \(x_1\neq x_2\) the two following strict inequalities must hold: $$\begin{aligned} 
     f(x_2)\quad\!\! >\quad\!\!f(x_1)+\left\langle x_2-x_1, y\right\rangle,\\
     f(x_1)\quad\!\! >\quad\!\!f(x_2)+\left\langle x_1-x_2, y\right\rangle.
 \end{aligned}$$ But summing both leads to a contradiction.</p>
@@ -76,7 +75,7 @@
 \end{array}$$ with equality <em>if and only</em> if \(z=x\). We can use this to define a notion of similarity between two points \(x\) and \(z\) in \(C\).</p>
 <p><div class="colbox-blue">Let \(\psi\) denote a strictly convex and differentiable function on \(C^\circ\). The <em>Bregman-divergence</em> on \(C^\circ\times C^\circ\) associated with \(\psi\) is defined as $$\begin{array}{c} B_\psi(z, x) &=& \psi(z)-\psi(x)-\left\langle z-x,\nabla \psi(x)\right\rangle.\end{array}$$</div>
 </p>
-<p>Given <span class="eqref"><a href="#7960448677558964723">(8)</a></span>, we have that \(B_\psi(z, x)>0\) for all \(z\neq x\) and \(B_\psi(z, x)=0\) iff \(x=z\) which shows that \(B_\psi\) is a valid divergence &#40;positive definite functional&#41;.</p>
+<p>Given <span class="eqref)">(<a href="#7960448677558964723">8</a>)</span>, we have that \(B_\psi(z, x)>0\) for all \(z\neq x\) and \(B_\psi(z, x)=0\) iff \(x=z\) which shows that \(B_\psi\) is a valid divergence &#40;positive definite functional&#41;.</p>
 <p>For example, if we take \(\psi(x) = \frac12\left\langle x, x\right\rangle\) then $$\begin{aligned} 
     B_\psi(z, x) \quad\!\!&=\quad\!\! \frac12\left\langle z, z\right\rangle - \frac12\left\langle x, x\right\rangle - \left\langle z-x, x\right\rangle\\
                  &=\quad\!\! \frac12\left\langle z-x, z-x\right\rangle
@@ -104,7 +103,7 @@ B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C.
 <p>$$\begin{array}{c} 
     \|\phi(u)-\phi(v)\|_2 &\le& \beta \|u-v\|_2.
 \end{array}$$</p>
-<p>Using <span class="eqref"><a href="#11961872200048882832">(11)</a></span>, we can write $$\begin{array}{c} 
+<p>Using <span class="eqref)">(<a href="#11961872200048882832">11</a>)</span>, we can write $$\begin{array}{c} 
     \mu \|x-z\|^{2}_{2} &\le& B_{\varphi}(x,z)+B_{\varphi}(z,x) .
 \end{array}$$ for any \(x, z\in C^\circ\). Plugging the definition of the Bregman divergence in the right hand side and letting \(u=\nabla \varphi(x)\) and \(v=\nabla \varphi(z)\) we get $$\begin{aligned} 
     \mu\| x-z\|^{2}_{2} &\quad\!\! \le\quad\!\! \langle z-x, u-v \rangle \\
@@ -128,7 +127,7 @@ B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C.
 <p><em>See also the general references mentioned in the <a href="/pub/csml/cvxopt/intro.html">introduction</a>.</em></p>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. Last modified: October 13, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+				&copy; T. Lienart. Last modified: October 09, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 </div>

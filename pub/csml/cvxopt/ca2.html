@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
 			<link rel="stylesheet" href="/css/main.css">
-	        <link rel="stylesheet" href="/css/header.css">
 	        <link rel="icon" href="/assets/infra/favicon.png">
 		
 		 <title>Convex analysis II</title>	
@@ -53,7 +52,7 @@ $$</p>
 $$</div>
 </p>
 <p><strong>Note</strong>: it&#39;s easy to show that the convex conjugate of a function \(f\) is convex even if the function \(f\) is not convex.</p>
-<p>We can now use the convex conjugate in <span class="eqref"><a href="#12070367691270890435">(3)</a></span>: <a name="13601253349878846678"></a>$$\begin{array}{c} 
+<p>We can now use the convex conjugate in <span class="eqref)">(<a href="#12070367691270890435">3</a>)</span>: <a name="13601253349878846678"></a>$$\begin{array}{c} 
     \partial f(x) &=& \{ y\in\mathbb R^n \,|\, f^{\star}(y) \,=\, \langle x,y\rangle - f(x)\}, 
 \end{array}$$ which is a convenient characterisation.</p>
 <p><strong>Example</strong>: we can consider a simple &#40;and yet quite useful&#41; example for the convex conjugate: if we define \(\psi(x):=\|x\|^2/2\), its convex conjugate is then</p>
@@ -84,13 +83,13 @@ $$ but since \(-f^\star(y)=\inf_{x\in C} [f(x)-\left\langle x,y\right\rangle]\),
     \left\langle z,y\right\rangle - f^\star(y) &\le& \left\langle z-x,y\right\rangle + f(x), \quad\forall x\in C.
 \end{array}$$ In particular, for any \(z\in C\), we can take \(x=z\) so that \(f^{\star\star}(z) \le f(z)\) on \(C\).</p>
 <h4>FMT &#40;pt.2&#41;</h4>
-<p>Starting again from <span class="eqref"><a href="#2273686942998510415">(8)</a></span>, we can write $$\begin{array}{c} 
+<p>Starting again from <span class="eqref)">(<a href="#2273686942998510415">8</a>)</span>, we can write $$\begin{array}{c} 
     f^{\star\star}(z) &\ge& \left\langle z,y\right\rangle - f^\star(y), \quad \forall y \in\mathbb R^n.
-\end{array}$$ If we now consider a \(x\in C^\circ\), we know that \(\partial f(x)\) is non-empty and so can pick \(y\in \partial f(x)\). But for such a \(y\) using the characterisation of the subdifferential <span class="eqref"><a href="#13601253349878846678">(5)</a></span> we can write $$\begin{array}{c} 
+\end{array}$$ If we now consider a \(x\in C^\circ\), we know that \(\partial f(x)\) is non-empty and so can pick \(y\in \partial f(x)\). But for such a \(y\) using the characterisation of the subdifferential <span class="eqref)">(<a href="#13601253349878846678">5</a>)</span> we can write $$\begin{array}{c} 
     f^\star(y) &=& \left\langle x, y\right\rangle - f(x)
 \end{array}$$ so that \(f^{\star\star}(z) \ge \left\langle z-x, y\right\rangle + f(x)\). For \(z\in C^\circ\) we can pick \(x=z\) and get \(f^{\star\star}(z)\ge f(z)\).</p>
 <h2>Subdifferential of the convex conjugate </h2>
-<p>Consider the definition of the subdifferential <span class="eqref"><a href="#13601253349878846678">(5)</a></span>, for any \(x\in C\) with \(y\in \partial(x)\) we have $$\begin{array}{c} 
+<p>Consider the definition of the subdifferential <span class="eqref)">(<a href="#13601253349878846678">5</a>)</span>, for any \(x\in C\) with \(y\in \partial(x)\) we have $$\begin{array}{c} 
     (x\in C, y\in\partial f(x)) &\Longleftrightarrow& f^\star(y)=\left\langle x, y\right\rangle-f(x).
 \end{array}$$ With exactly the same definition, we have for \(x\in\partial f^\star(y)\) $$\begin{array}{c} 
     x\in\partial f^\star(y) &\Longleftrightarrow& f^{\star\star}(x)=\left\langle x, y\right\rangle-f^\star(y),
@@ -99,7 +98,7 @@ $$ but since \(-f^\star(y)=\inf_{x\in C} [f(x)-\left\langle x,y\right\rangle]\),
     (x\in C, y \in \partial f(x)) &\Longleftrightarrow& x \in \partial f^\star(y) \cap C. 
 \end{array}$$ Such a pair of point is called a <em>dual pair</em> and verifies \(f(x)+f^\star(y)=\left\langle x,y\right\rangle\).</div>
 </p>
-<p>Using the inverse of the subdifferential operator on the left hand side of <span class="eqref"><a href="#11956415616165887456">(14)</a></span>, we have that \(x\in(\partial f)^{-1}(y)\cap C\) is equivalent to \(x\in\partial f^\star(y)\cap C\) which exposes a close link between \((\partial f)^{-1}\) and \(\partial f^\star\). This link becomes even more apparent in the unconstrained case.</p>
+<p>Using the inverse of the subdifferential operator on the left hand side of <span class="eqref)">(<a href="#11956415616165887456">14</a>)</span>, we have that \(x\in(\partial f)^{-1}(y)\cap C\) is equivalent to \(x\in\partial f^\star(y)\cap C\) which exposes a close link between \((\partial f)^{-1}\) and \(\partial f^\star\). This link becomes even more apparent in the unconstrained case.</p>
 <p><div class="colbox-blue">Let \(f\in\Gamma_0(\mathbb R^n)\), then $$\begin{array}{c} 
     (\partial f)^{-1} &\equiv & \partial f^\star.
 \end{array}$$</div>
@@ -110,7 +109,7 @@ $$ but since \(-f^\star(y)=\inf_{x\in C} [f(x)-\left\langle x,y\right\rangle]\),
     y \,=\,\log x+1 &\Longrightarrow& x \,=\,\exp(y-1) \,=\,\nabla f^\star(y)
 \end{array}$$ and conversely if we consider a \(y\) such that \(\exp(y-1)\in C\) then $$\begin{array}{c} 
     x \,=\,\exp(y-1) &\Longrightarrow& y \,=\,\log x + 1 \,=\,\nabla f(x)
-\end{array}$$ So that the equivalence <span class="eqref"><a href="#11956415616165887456">(14)</a></span> holds as expected.</p>
+\end{array}$$ So that the equivalence <span class="eqref)">(<a href="#11956415616165887456">14</a>)</span> holds as expected.</p>
 <h2>Additional references</h2>
 <p><strong>Note</strong>: in this page &#40;and also further&#41; we usually consider \(C^\circ\) instead of  \(C\) to make the presentation simpler since we know that on \(C^\circ\), subgradients exist and are bounded. Of course this is done at the expense of generality and some care is needed to generalise properly but the extra details did not seem particularly relevant at the level of this presentation. The references listed typically show the results in their full glory.</p>
 <ol>
@@ -122,7 +121,7 @@ $$ but since \(-f^\star(y)=\inf_{x\in C} [f(x)-\left\langle x,y\right\rangle]\),
 <p><em>See also the general references mentioned in the <a href="/pub/csml/cvxopt/intro.html">introduction</a>.</em></p>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. Last modified: October 13, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+				&copy; T. Lienart. Last modified: October 09, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 </div>

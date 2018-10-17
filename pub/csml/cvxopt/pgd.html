@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
 			<link rel="stylesheet" href="/css/main.css">
-	        <link rel="stylesheet" href="/css/header.css">
 	        <link rel="icon" href="/assets/infra/favicon.png">
 		
 		 <title>Projected gradient descent</title>	
@@ -66,7 +65,7 @@
 <p>We will now show the connection between the normal cone and the Euclidean projection on \(C\). Remember that the Euclidean projection onto \(C\) &#40;denoted \(\pi_C\)&#41; is defined as follows for any \(z\in \mathbb R^n\):</p>
 <p><a name="8960741556087457471"></a>$$   \pi_C(z) \quad\!\! =\quad\!\! \arg\min_{x\in C}\,\, \frac12\|x-z\|_2^2 $$</p>
 <p>Note that in the <em>unconstrained problem</em>, \(C=\mathbb R^n\) and hence \(\pi_C=\mathbb I\), the identity operator. Note also that the factor \(1/2\) is here for aesthetics when computing the gradient which is just \((x-z)\).</p>
-<p>Considering the condition <span class="eqref"><a href="#7706369853534962573">(5)</a></span> for the optimisation problem <span class="eqref"><a href="#8960741556087457471">(7)</a></span>, we have that if</p>
+<p>Considering the condition <span class="eqref)">(<a href="#7706369853534962573">5</a>)</span> for the optimisation problem <span class="eqref)">(<a href="#8960741556087457471">7</a>)</span>, we have that if</p>
 <p>$$\begin{array}{c}   0\,\in\, (x^\sharp-z) + N_C(x^\sharp) \end{array}$$</p>
 <p>then \(x^\sharp\) is a minimiser with thus \(x^\sharp = \pi_C(z)\). This is equivalent to requiring \(z \in x^\sharp + N_C(x^\sharp)\) or, equivalently, \(z\in (\mathbb I + N_C)(x^\sharp)\). Replacing \(x^\sharp\) by \(\pi_C(z)\) and re-arranging terms gives</p>
 <p>$$\begin{array}{c}   \pi_C(z) &=& (\mathbb I + N_C)^{-1}(z). \end{array}$$</p>
@@ -74,17 +73,17 @@
 <p><div class="colbox-blue">Let \(C\) denote a convex subset of \(\mathbb R^n\) then <a name="16186488855891449143"></a>$$\begin{array}{c} \pi_C &\equiv& (\mathbb I+ N_C)^{-1}. \end{array}$$</div>
 </p>
 <h2>Projected gradient descent</h2>
-<p>We indicated at <span class="eqref"><a href="#8290924001926339138">(6)</a></span> that for any \(\alpha \ge 0\) and \(u\in N_C(x)\), then \(\alpha u\in N_C(x)\). We can rewrite this as:</p>
+<p>We indicated at <span class="eqref)">(<a href="#8290924001926339138">6</a>)</span> that for any \(\alpha \ge 0\) and \(u\in N_C(x)\), then \(\alpha u\in N_C(x)\). We can rewrite this as:</p>
 <p><a name="9033558848688047001"></a>$$\begin{array}{c} (x+\alpha u) - x &\in& N_C(x), \end{array}$$</p>
 <p>which may seem pointless but will lead us to a fixed-point algorithm &#40;remember from <a href="/pub/csml/cvxopt/intro.html">the introduction</a> that many algorithms for convex optimisation can be expressed in terms of fixed point algorithms&#41;.</p>
-<p>Let \(z:=(x+\alpha u)\) so that <span class="eqref"><a href="#9033558848688047001">(11)</a></span> can be rearranged to \(z\in (\mathbb I+N_C)(x)\). By <span class="eqref"><a href="#16186488855891449143">(10)</a></span>, this is equivalent to \(x=\pi_C(z)\) or</p>
+<p>Let \(z:=(x+\alpha u)\) so that <span class="eqref)">(<a href="#9033558848688047001">11</a>)</span> can be rearranged to \(z\in (\mathbb I+N_C)(x)\). By <span class="eqref)">(<a href="#16186488855891449143">10</a>)</span>, this is equivalent to \(x=\pi_C(z)\) or</p>
 <p><a name="3271864073650078948"></a>$$\begin{array}{c}    x &=& \pi_C(x+\alpha u), \quad (\alpha \ge 0, \,u\in N_C(x)).   \end{array}$$</p>
-<p>To finish up, let&#39;s go back once more to the FOC <span class="eqref"><a href="#7706369853534962573">(5)</a></span> which indicates that if \(x^\sharp\) is such that \(-\nabla f(x^\sharp) \in N_C(x^\sharp)\) then it is a minimiser. Combined with <span class="eqref"><a href="#3271864073650078948">(12)</a></span>, we get the following useful fixed-point form for the minimiser of the constrained problem:</p>
+<p>To finish up, let&#39;s go back once more to the FOC <span class="eqref)">(<a href="#7706369853534962573">5</a>)</span> which indicates that if \(x^\sharp\) is such that \(-\nabla f(x^\sharp) \in N_C(x^\sharp)\) then it is a minimiser. Combined with <span class="eqref)">(<a href="#3271864073650078948">12</a>)</span>, we get the following useful fixed-point form for the minimiser of the constrained problem:</p>
 <p><div class="colbox-blue"><a name="17226506964853765554"></a>$$ x^\sharp \quad\!\! =\quad\!\! \pi_C(x^\sharp - \alpha \nabla f(x^\sharp)).  $$</div>
 </p>
 <p><strong>Note</strong>: had we not assumed that \(f\) was differentiable on \(C\), we would still have that there exists a subgradient \(f'(x^\sharp) \in \partial f(x^\sharp)\) with \(-f'(x^\sharp)\in N_C(x^\sharp)\) and consequently the fixed-point \(x^\sharp = \pi_C(x^\sharp - \alpha f'(x^\sharp))\) leading the <em>projected subgradient method</em>. In practice however, one tries to cast a convex objective function as a sum of a smooth function with a non-smooth one, to follow a gradient descent on the smooth part and use a projection for the non-smooth part &#40;this is the case here with \(i_C\) being the non-smooth part&#41;.</p>
 <h3>The algorithm</h3>
-<p>Well there&#39;s not much left to do. Applying a fixed-point iteration to <span class="eqref"><a href="#17226506964853765554">(13)</a></span> from a starting point \(x_0\) generates the sequence \(\{x_0, x_1, \dots\}\) via</p>
+<p>Well there&#39;s not much left to do. Applying a fixed-point iteration to <span class="eqref)">(<a href="#17226506964853765554">13</a>)</span> from a starting point \(x_0\) generates the sequence \(\{x_0, x_1, \dots\}\) via</p>
 <p>$$\begin{array}{c}    x_{k+1} &=& \pi_C(x_k - \alpha_k \nabla f(x_k)) \end{array}$$</p>
 <p>where \(\alpha_k > 0\) is the <em>step size</em> &#40;ignoring the trivial case \(\alpha_k=0\)&#41;. This is the <em>projected gradient descent</em> method.</p>
 <p>Assuming that the \(\alpha_k\) are picked sensibly and basic regularity conditions on the problem are met, the method enjoys a convergence rate \((f(x_k)-f(x^\sharp)) = \mathcal O(k^{-1})\) &#40;see references for more&#41;.</p>
@@ -101,7 +100,7 @@
 <p><em>See also the general references mentioned in the <a href="/pub/csml/cvxopt/intro.html">introduction</a>.</em></p>
 <div class="page-foot">
 		<div class="copyright">
-				&copy; T. Lienart. Last modified: October 13, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+				&copy; T. Lienart. Last modified: October 09, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 </div>

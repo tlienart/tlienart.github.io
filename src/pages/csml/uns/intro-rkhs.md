@@ -1,22 +1,9 @@
-\newcommand{\eqa}[1]{\begin{eqnarray}#1\end{eqnarray}}
-\newcommand{\eqal}[1]{\begin{align}#1\end{align}}
-
-\newcommand{\esp}{\quad\!\!}
-\newcommand{\spe}[1]{\esp#1\esp}
-\newcommand{\speq}{\spe{=}}
-
-\newcommand{\E}{\mathbb E}
-\newcommand{\R}{\mathbb R}
-\newcommand{\eR}{\overline{\mathbb R}}
-
-\newcommand{\scal}[1]{\left\langle#1\right\rangle}
-
-
 @def title = "RKHS Embeddings"
 
 ## Introduction
 
 These notes were prepared with help from [Dino Sejdinovic](http://www.stats.ox.ac.uk/~sejdinov/) for a talk to a *kernel methods reading group* given in Oxford in July 2015, they're mostly based on \cite{song13}.
+
 
 ### Basic definitions
 
@@ -24,12 +11,12 @@ These notes were prepared with help from [Dino Sejdinovic](http://www.stats.ox.a
 A Hilbert space $\mathcal H$ of functions $f:\mathcal X\mapsto \R$ defined on a non-empty set $\mathcal X$ is said to be a *reproducing kernel Hilbert space* (RKHS) if *evaluation functionals* $\delta_x: f\mapsto f(x)$ are continuous for all $x\in\mathcal X$
 @@
 
-If we consider a RKHS then, by Riesz's representation theorem, since $\delta_x$ is a continuous functional, it has a *representer* in $\mathcal H$ that we can denote $k_{_X}$ such that
+If we consider a RKHS then, by Riesz's representation theorem, since $\delta_x$ is a continuous functional, it has a *representer* in $\mathcal H$ that we can denote $k_{x}$ such that
 
-\eqa{  \scal{f, k_{_X}}_{\mathcal H} &=& \delta_x(f) \speq f(x). }
+\eqa{  \scal{f, k_{x}}_{\mathcal H} &=& \delta_x(f) \speq f(x). }
 
-We can then define a (positive-definite) bilinear form $k:\mathcal X\times\mathcal X \to \R$ as $k(x, x'):=\scal{k_{_X}, k_{x'}}_{\mathcal H}$.
-This is known as the **reproducing kernel** of $\mathcal H$; we will also write $k_{_X} = k(\cdot, x)$.
+We can then define a (positive-definite) bilinear form $k:\mathcal X\times\mathcal X \to \R$ as $k(x, x'):=\scal{k_{x}, k_{x'}}_{\mathcal H}$.
+This is known as the **reproducing kernel** of $\mathcal H$; we will also write $k_{x} = k(\cdot, x)$.
 
 There's then an important theorem that links the two (and that we won't prove) reproduced in a simplified form below:
 
@@ -41,18 +28,18 @@ When the kernel is clear from the context, we will simply write $\mathcal H$ for
 
 ## Kernel embedding of a distribution
 
-### Mean embedding
-
 A classical way to try to represent points in a given space $\mathcal X$ is to *embed* them in $\R^s$ using a $s$-dimensional *feature map* $\Phi:\mathcal X\to \R^s$ with
 \eqa{   x\esp\mapsto\esp\Phi(x)\,\,=\,\, (\varphi_1(x), \varphi_2(x), \dots, \varphi_s(x)). }
-Instead, we can now consider embedding points in a RKHS with the infinite dimensional feature map $x\mapsto k_{_X}$.
+Instead, we can now consider embedding points in a RKHS with the infinite dimensional feature map $x\mapsto k_{x}$.
 In that case, we have an easily computable inner product between points with
 
-\eqa{   \scal{k_{_X}, k_{_Y}}_{\mathcal H} &=& \scal{k(\cdot, x), k(\cdot, y)}_{\mathcal H} \speq k(x, y).       }
+\eqa{   \scal{k_{x}, k_{y}}_{\mathcal H} &=& \scal{k(\cdot, x), k(\cdot, y)}_{\mathcal H} \speq k(x, y).       }
 
 Recall that an inner product is a *measure of alignment* so that this automatically gives us a measure of similarity between points through this kernel.
 
-When the embedding is *injective* (i.e.: different objects are mapped to different points in the RKHS), the corresponding kernel is said to be **characteristic** (this is often the case for standard kernels).
+When the embedding is *injective* (i.e.: different objects are mapped to different points in the RKHS), the corresponding kernel is said to be *characteristic* (this is often the case for standard kernels).
+
+### Mean embedding
 
 An example of objects we can embed in an RKHS are distributions.
 Each distribution is then considered as a point which we can embed through the *mean-embedding*.
@@ -60,12 +47,12 @@ Each distribution is then considered as a point which we can embed through the *
 @@colbox-blue
 Let $P$ denote a distribution among a set of distributions, the **mean embedding** is defined as follows:
 
-\eqa{  P \mapsto \mu_X(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_{_X}],}
-and, naturally, $\mu_X(P, k)\in\mathcal H$.
+\eqa{  P \mapsto \mu_{_X}(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_{_X}],}
+and, naturally, $\mu_{_X}(P, k)\in\mathcal H$; when the kernel and distribution are clear from the context, we will simply write $\mu_{_X}$.
 @@
 
-When the kernel and the distribution are clear from the context, we will simply write $\mu_{_X}$.
-As before, note that we inherit a notion of *similarity* between probability measures by looking at the inner product on the RKHS:
+Observe that we now have this continuous embedding instead of a finite-dimensional embedding that we could have considered such as $P\mapsto (\E[\varphi_1(X)], \dots, \E[\varphi_s(X)])$.
+Also, as before, we inherit a notion of *similarity* between points (here probability measures) by looking at the inner product on the RKHS:
 \eqa{
     \scal{\mu_{_X}(P, k), \mu_{_Y}(Q, k)}_{\mathcal H} \speq \E_{X Y}[k(X, Y)],
 }
@@ -75,6 +62,10 @@ Note finally that $\mu_{_X}$ represents *expectations with respect to $P$* i.e.:
 \eqa{
     \scal{f, \mu_X}_{\mathcal H} &=& \E_X[{\scal{f, k_{_X}}_{\mathcal H}}] \speq \E_X[f(X)] .
 }
+
+@@colbox-red
+proofreading stopped here, note that some of the $k_{_X}$ should be $k_x$.
+@@
 
 ### Joint embedding
 

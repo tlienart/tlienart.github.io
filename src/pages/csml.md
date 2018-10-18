@@ -41,9 +41,6 @@ If you find anything dubious in the notes, please send me an email, feedback is 
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 
-<!-- 🍺  **unsorted**
-* woodbury formula, link in rkhs part 1 -->
-
 
 ## Applied maths
 
@@ -68,3 +65,6 @@ NOTE TODO:
     * conjugate gradient
 -->
 <!-- 🍺 * *notes on matrix theory* -->
+
+<!-- 🍺  **unsorted**
+* woodbury formula, link in rkhs part 1 -->

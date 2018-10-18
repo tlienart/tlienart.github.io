@@ -38,7 +38,7 @@ The function $\varphi:C\to \R$ is said to be $\mu$-*strongly convex* at $x\in C$
 
 \eqa{
     \varphi(z) &\ge& \varphi(x) + \scal{z-x, y} + {\mu\over 2}\|z-x\|_2^2,
-}
+} <!--_-->
 
 for any $z\in C$ and $y\in\partial \varphi(x)$.
 @@
@@ -135,7 +135,7 @@ Recall that a function $\phi$ is said to be $\beta$*-Lipschitz-continuous* on $E
 
 \eqa{
     \|\phi(u)-\phi(v)\|_2 &\le& \beta \|u-v\|_2.
-}
+} <!--_-->
 
 Using \eqref{strong convex bregman}, we can write
 \eqa{
@@ -146,12 +146,12 @@ Plugging the definition of the Bregman divergence in the right hand side and let
 \eqal{
     \mu\| x-z\|^{2}_{2} &\spe{\le} \langle z-x, u-v \rangle \\
        &\spe{\le} \|x-z\|_2\|u-v\|_2,
-}
+} <!--_-->
 using Cauchy-Schwartz's inequality on the second line.
 Rearranging terms yields
 \eqa{
     \|x-z\|_{2} &\le& {1\over \mu}\| u-v\|_2.
-}
+} <!--_-->
 
 Since $x\in C^\circ$ and $u=\nabla \varphi(x)$, we can write $x = \nabla \varphi^\star(u)$ and similarly, $z=\nabla\varphi^\star(v)$ (see [convex analysis part 2](/pub/csml/cvx_opti/ca2.html)).
 This shows that the gradient $\nabla\varphi^\star$ is Lispchitz-continuous.

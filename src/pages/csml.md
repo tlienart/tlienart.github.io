@@ -34,11 +34,14 @@ If you find anything dubious in the notes, please send me an email, feedback is 
     * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
 
-* **unsorted notes**
-    * (⭒) [RKHS embeddings](/pub/csml/uns/intro-rkhs.html): a note on *reproducing kernel Hilbert space* embeddings and their use.
+* **Kernel methods**
+    * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a reading group kernel methods introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
+    * (⭒) [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings.
+
 
 <!-- 🍺 * *notes on inference on graphical models* -->
-<!-- 🍺 * *notes on RKHS embeddings* -->
+
+<!-- 🍺  **unsorted** --> woodbury formula, link in rkhs part 1 -->
 
 
 ## Applied maths

@@ -37,8 +37,8 @@ Combining \eqref{strict pt1} and \eqref{strict pt2} gives \eqref{strict def 2}.
 The function $\varphi:C\to \R$ is said to be $\mu$-*strongly convex* at $x\in C$ with parameter $\mu>0$ if the subgradient inequality holds with:
 
 \eqa{
-    \varphi(z) &\ge& \varphi(x) + \scal{z-x, y} + {\mu\over 2}\|z-x\|_2^2,<!--_-->
-}
+    \varphi(z) &\ge& \varphi(x) + \scal{z-x, y} + {\mu\over 2}\|z-x\|_2^2,
+} <!--_-->
 
 for any $z\in C$ and $y\in\partial \varphi(x)$.
 @@
@@ -134,8 +134,8 @@ We will show that if $\varphi$ is a differentiable, strongly convex function on 
 Recall that a function $\phi$ is said to be $\beta$*-Lipschitz-continuous* on $E\subseteq \mathrm{dom}\,\phi$ if the following inequality holds $\forall u,v\in E$:
 
 \eqa{
-    \|\phi(u)-\phi(v)\|_2 &\le& \beta \|u-v\|_2.<!--_-->
-}
+    \|\phi(u)-\phi(v)\|_2 &\le& \beta \|u-v\|_2.
+} <!--_-->
 
 Using \eqref{strong convex bregman}, we can write
 \eqa{
@@ -145,13 +145,13 @@ for any $x, z\in C^\circ$.
 Plugging the definition of the Bregman divergence in the right hand side and letting $u=\nabla \varphi(x)$ and $v=\nabla \varphi(z)$ we get
 \eqal{
     \mu\| x-z\|^{2}_{2} &\spe{\le} \langle z-x, u-v \rangle \\
-       &\spe{\le} \|x-z\|_2\|u-v\|_2,<!--_-->
-}
+       &\spe{\le} \|x-z\|_2\|u-v\|_2,
+} <!--_-->
 using Cauchy-Schwartz's inequality on the second line.
 Rearranging terms yields
 \eqa{
-    \|x-z\|_{2} &\le& {1\over \mu}\| u-v\|_2. <!--_-->
-}
+    \|x-z\|_{2} &\le& {1\over \mu}\| u-v\|_2.
+} <!--_-->
 
 Since $x\in C^\circ$ and $u=\nabla \varphi(x)$, we can write $x = \nabla \varphi^\star(u)$ and similarly, $z=\nabla\varphi^\star(v)$ (see [convex analysis part 2](/pub/csml/cvx_opti/ca2.html)).
 This shows that the gradient $\nabla\varphi^\star$ is Lispchitz-continuous.

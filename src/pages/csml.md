@@ -11,7 +11,7 @@ Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
 The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra. real analysis and basic probability theory).
-When the level of the notes is judged to be close to research, it is marked by a "⭒" symbol.
+When the level of the notes is a bit more advanced, it is marked by a "⭒" symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 

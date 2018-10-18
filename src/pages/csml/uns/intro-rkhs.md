@@ -45,27 +45,23 @@ An example of objects we can embed in an RKHS are distributions.
 Each distribution is then considered as a point which we can embed through the *mean-embedding*.
 
 @@colbox-blue
-Let $P$ denote a distribution among a set of distributions, the **mean embedding** is defined as follows:
+Let $P$ denote a distribution among a set $\mathcal P(\Omega)$ of distributions over some $\Omega$, the **mean embedding** is defined as follows:
 
-\eqa{  P \mapsto \mu_{_X}(P, k) \esp:=\esp \E_{X\sim P}[k(\cdot, X)]\speq \E_X[k_{_X}],}
-and, naturally, $\mu_{_X}(P, k)\in\mathcal H$; when the kernel and distribution are clear from the context, we will simply write $\mu_{_X}$.
+\eqa{  P \spe{\mapsto} \mu(P; k) \spe{:=} \E_{X\sim P}[k(\cdot, X)] \speq \E_{X\sim P}[k_{_X}],}
+and, naturally, $\mu(P, k)\in\mathcal H$. When the kernel and distribution are clear from the context, we will simply write $\mu(P; k)=:\mu_{_X}$ where, implicitly $X\sim P$.
 @@
 
 Observe that we now have this continuous embedding instead of a finite-dimensional embedding that we could have considered such as $P\mapsto (\E[\varphi_1(X)], \dots, \E[\varphi_s(X)])$.
-Also, as before, we inherit a notion of *similarity* between points (here probability measures) by looking at the inner product on the RKHS:
+Also, as before, we inherit a notion of *similarity* between points (here probability distributions) by considering the inner product on the RKHS:
 \eqa{
-    \scal{\mu_{_X}(P, k), \mu_{_Y}(Q, k)}_{\mathcal H} \speq \E_{X Y}[k(X, Y)],
+    \scal{\mu(P; k), \mu(Q; k)}_{\mathcal H} \speq \E_{X Y}[k(X, Y)],
 }
 and this can easily be estimated if we have samples from both $P$ and $Q$.
 
 Note finally that $\mu_{_X}$ represents *expectations with respect to $P$* i.e.: for any $f\in\mathcal H$,
 \eqa{
-    \scal{f, \mu_X}_{\mathcal H} &=& \E_X[{\scal{f, k_{_X}}_{\mathcal H}}] \speq \E_X[f(X)] .
+    \scal{f, \mu_{_X}}_{\mathcal H} &=& \E_X[{\scal{f, k_{_X}}_{\mathcal H}}] \speq \E_X[f(X)] .
 }
-
-@@colbox-red
- proofreading stopped here, note that some of the $k_{_X}$ should be $k_x$.
-@@
 
 ### Joint embedding
 
@@ -74,38 +70,40 @@ The generalisation to joint distributions is straightforward using tensor produc
 @@colbox-blue
 Let $X, Y$ be jointly distributed according to some distribution $P$, the **joint embedding** of $P$ is defined as
 \eqa{
-    P \mapsto \mathcal C_{XY}(P) \spe{:=} \E_{XY}[k_{_X}\otimes k_{_Y}],
+    P \spe{\mapsto} \mathcal C_{XY}(P) \spe{:=} \E_{XY}[k_{_X}\otimes k_{_Y}],
 }
 assuming that the two variables share the same kernel.
 @@
 
-The tensor product satisfies $\scal{k_{_X} \otimes k_{_Y}, k_{x'} \otimes k_{y'}}_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')$.
+The tensor product satisfies $\scal{k_{_x} \otimes k_{_y}, k_{x'} \otimes k_{y'}}_{\mathcal H\otimes \mathcal H} = k(x, x')k(y, y')$.
 
-In the same way that $\mu_{_X}$ represents the expectation operator, the joint-embedding $\mathcal C_{XY}$ can be viewed as the *uncentered cross-covariance operator*: for any two functions $f, g \in \mathcal H$, their covariance is given by
+In the same way that $\mu_{_X}$ represents the expectation operator, the joint-embedding $\mathcal C_{XY}$ can be viewed as the *uncentered cross-covariance operator*: for any two functions $f, g \in \mathcal H$, their uncentered covariance is given by
 
-\eqa{\E_{XY}[f(X)f(Y)] &=& \scal{f\otimes g, \mathcal C_{XY}}_{\mathcal H\otimes \mathcal H} \speq \scal{f, \mathcal C_{XY} g}_{\mathcal H} \label{covariance op 1}}
+\eqa{\E_{XY}[f(X)g(Y)] &=& \scal{f\otimes g, \mathcal C_{XY}}_{\mathcal H\otimes \mathcal H} \speq \scal{f, \mathcal C_{XY} g}_{\mathcal H} \label{covariance op 1}}
 
 (still assuming both random variables share the same kernel).
 Following the same reasoning, we can define the *auto-covariance operators* $\mathcal C_{XX}$ and $\mathcal C_{YY}$.
-Note that, in the same way that $\mu_{_X}$ represents expectations with respect to $P$ (the distribution of $X$), these operatros represent cross-covariance/auto-covariance with respect to $P$.
+Note also that, where $\mu_{_X}$ represents expectations with respect to $P$ (the distribution of $X$), these operators represent cross-covariance/auto-covariance with respect to $P$.
 
 **Remark**: we have assumed that both random variables share the same kernel but this need not be the case: we can consider a second kernel $k'$ with a RKHS $\mathcal H'$; the cross-covariance operator then belongs to the product space $\mathcal H\otimes \mathcal H'$ (which is also a RKHS).
 
-
 ### MMD and HSIC
 
-When considering a characteristic kernel (such as, for example, the Gaussian RBF with $k(x, x')=\exp(-\sigma\|x-x'\|^2_2)$), the RKHS embedding is injective.
-In that case, we can use the distance in the RKHS as a proxy for similarity in the distribution space.
-This can be used in the two-sample test or when testing for independence.
+We have now seen two ways of embedding a distribution into a RKHS, now let's see why that can be useful.
+When considering a characteristic kernel (such as, for example, the Gaussian RBF with $k(x, x')=\exp(-\sigma\|x-x'\|^2_2)$), the RKHS embedding is *injective*.
+In that case, we can use the distance in the RKHS (induced by the inner-product) as a proxy for similarity in the distribution space.
+This can be used in the two-sample test (to see whether two random variables are distributed according to the same distribution) or when testing for independence between random variables.
 
-In the *two sample test*, the test statistic is the squared distance between the embeddings of the two distributions:
+In the *kernel two sample test* \citep{gretton12a}, the test statistic is the squared distance between the embeddings of the two distributions:
 
 @@colbox-blue
 The kernel **Maximum Mean Discrepancy** (**MMD**) measure is defined for two distributions $P$ and $Q$ by
 \eqa{\mathrm{MMD}(P, Q) &:=& \|\mu_{_X} - \mu_{_Y}\|_{\mathcal H}^2, } <!--_-->
 where $X\sim P$ and $Y\sim Q$. @@
 
-When testing for *independence*, the test statistic is the squared distance between the embeddings of the joint distribution and the product of its marginals:
+It is then possible to study the asymptotic properties of both the MMD and the MMD² and build hypothesis tests at a given level, independently of the distributions considered (see \cite{gretton12a} corollary 9 and 11).
+
+When testing for *independence*, the test statistic can be the squared distance between the embeddings of the joint distribution and the product of its marginals which leads to the *kernel independence test* \citep{gretton07}:
 
 @@colbox-blue
 The **Hilbert-Schmidt Independence Criterion** (**HSIC**) is defined for two distributions $P$ and $Q$ by
@@ -113,15 +111,17 @@ The **Hilbert-Schmidt Independence Criterion** (**HSIC**) is defined for two dis
 where $X\sim P$ and $Y\sim Q$.
 @@
 
+Again, it is then possible to study the asymptotic properties of the HSIC and build a hypothesis test at a given level, independently of the distributions considered (cf. \citep{gretton07}).
+
 ### Finite sample embeddings
 
 All of the embeddings defined above can readily be estimated using samples drawn from the distributions of interest.
 Let $\{x_1, \dots, x_n\}$ be an iid. draw from $P$, the *empirical kernel embedding* is defined as
 
-$$  \widehat{\mu}_{_X} \speq n^{-1}\sum_{i=1}^n k_{x_i}. $$
+$$  \widehat{\mu}_{_X} \spe{:=} n^{-1}\sum_{i=1}^n k_{x_i}. $$
 
-As for standard Monte Carlo estimators, the rate of convergence is $\mathcal O(1/\sqrt{n})$ (an hence does not depend upon the dimensionality of the unerlying space).
-Similarly, for an iid draw of pairs $\{(x_1,y_1), \dots, (x_n,y_n)\}$, the *empirical covariance operator* is defined as
+As for standard Monte Carlo estimators, the rate of convergence is $\mathcal O(1/\sqrt{n})$ (an hence does not depend upon the dimensionality of the underlying space).
+Similarly, for an iid draw of pairs $\{(x_1,y_1), \dots, (x_n, y_n)\}$, the *empirical covariance operator* is defined as
 
 \eqal{\widehat{\mathcal C}_{XY}  \esp&=\esp n^{-1}\sum_{i=1}^n k_{x_i} \otimes k_{y_i} \\
 &=\esp n^{-1}\Upsilon\Phi^t \label{empirical cxy}}
@@ -130,7 +130,7 @@ where $\Upsilon := (k_{x_1}, \dots, k_{x_n})$ and $\Phi:=(k_{y_1}, \dots, k_{y_n
 To conclude, it is straightforward to obtain empirical estimators for the MMD and HSIC criterion considering kernel elements $k(x_i, x_j)$, $k(y_i, y_j)$ and $k(x_i, y_j)$.
 In the case of the MMD for instance, one has:
 
-$$  \widehat{\mathrm{MMD}}(P, Q) \speq n^{-2}\sum_{i,j=1}^n \left(k(x_{i},x_{j})+k(y_{i},y_{j})-2k(x_{i},y_{j})\right) $$
+$$  \widehat{\mathrm{MMD}}(P, Q) \speq {1\over n^{2}}\sum_{i,j=1}^n \left(k(x_{i},x_{j})+k(y_{i},y_{j})-2k(x_{i},y_{j})\right) $$
 
 ## Kernel embeddings of conditional distributions
 
@@ -138,7 +138,7 @@ $$  \widehat{\mathrm{MMD}}(P, Q) \speq n^{-2}\sum_{i,j=1}^n \left(k(x_{i},x_{j})
 
 In line with the definitions presented earlier, the kernel embedding of a conditional distribution $P(Y|X)$ is defined as
 
-\eqa{  \mu_{_{Y|x}} &=& \mathbb E_{Y|x}[k_Y], }
+\eqa{  \mu_{_{Y|x}} &=& \mathbb E_{Y|x}[k_{_Y}], }
 
 and the conditional expectation of a function $g\in \mathcal H$ can be expressed as
 
@@ -152,24 +152,47 @@ We can also define an operator $\mathcal C_{Y|X}$ such that
 
 \eqa{\mu_{_{Y|x}} &=& \mathcal C_{Y|X} k_x.}
 
-To do so, we must first introduce a result for which we will provide a partial proof (the full proof can be found in Fukumizu et al., 2004).
+To do so, we must first introduce a result for which we will provide a partial proof (the full proof can be found in \cite{fukumizu04}).
 
 @@colbox-blue
 The following identity holds (under mild technical conditions):
 
-\eqa{  \mathcal C_{XX} \E_{Y|X}[g(Y)] &=& \mathcal C_{XY}g.  }
+\eqa{  \mathcal C_{XX} \E_{Y|X}[g(Y)] &=& \mathcal C_{XY}g. \label{identity cxx cxy}  }
 @@
 
-To prove this (partially), note that for $f \in \mathcal H$, using \eqref{covariance op 1}, we have
+To prove this, note that for $f \in \mathcal H$, using the definition of the joint embedding, we have
 
-\eqal{ \scal{f, \mathcal C_{XX} \E_{Y|X}[g(Y)]}_{\mathcal H} \esp &=\esp \E_X[f(X)]\E_{Y|X}[g(Y)] \\
-&=\esp   }
+\eqal{ \scal{f, \mathcal C_{XX} \E_{Y|X}[g(Y)]}_{\mathcal H} \esp &=\esp \E_X[f(X)\E_{Y|X}[g(Y)]] \\
+&=\esp \E_X[\E_{Y|X}[f(X)g(Y)]] \speq \E_{XY}[f(X)g(Y)],   }
+where at the last equality, we used the tower property of expectations.
+Comparing with \eqref{covariance op 1} we get \eqref{identity cxx cxy}.
 
-<!-- \scal{f, \mathcal C_{XX} \E_{Y|X}[g(Y)]}_{\mathcal H}
-= (using 8) E_{XY}[f(X) \mathcal C_{XX} \E_{Y|X}[g(Y)] ]
-=   -->
+With this, we can show another nice identity.
+Using the definition of $\mu_{Y|x}$, we have
+\eqa{
+    \scal{g, \mu_{Y|x}}_{\mathcal H} &=& \mathbb E_{Y|x}[g(Y)] \speq \scal{\E_{Y|X}[g(Y)], k_x}_{\mathcal H}.
+}
+But, using \eqref{identity cxx cxy}, we have
+\eqa{
+    \scal{\E_{Y|X}[g(Y)], k_x}_{\mathcal H} &=& \scal{\mathcal C_{XX}^{-1}\mathcal C_{XY} g, k_x}_{\mathcal H} \speq \scal{g, \mathcal \mathcal C_{YX}C_{XX}^{-1} k_x}_{\mathcal H}
+}
+where at the last equality we took the adjoint of $\mathcal C_{XX}^{-1}\mathcal C_{XY}$ which allows us to introduce the definition that follows.
+
+@@colbox-blue
+The **conditional embedding operator** is defined as
+$$ \mathcal C_{Y|X} \spe{:=} \mathcal C_{YX}\mathcal C_{XX}^{-1}. $$
+@@
+
+In practice, $\mathcal C_{XX}$ is a *compact operator* which means that its eigenvalues go to zero and hence its inverse is not a bounded operator.
+So the definition of $\mathcal C_{Y|X}$ given above is a slight abuse of notation.
+The inversion of $\mathcal C_{XX}$ can be replaced by the *regularised inverse* $(\mathcal C_{XX}+\lambda I)^{-1}$ where $\lambda$ is a positive factor that can be determined by cross-validation.
 
 ### Finite sample kernel estimator
+
+@@colbox-red
+here
+@@
+
 
 ## Probabilistic reasoning with kernel embeddings
 
@@ -276,5 +299,8 @@ It corresponds to the so-called "pre-image" problem in kernel methods.
 
 ## References
 
-- \biblabel{fukumizu04}{Fukumizu et al. (2004)} **Fukumizu**, **Bach** and **Jordan**, [Dimensionality Reduction for Supervised Learning with Reproducing Kernel Hilbert Spaces](http://www.jmlr.org/papers/volume5/fukumizu04a/fukumizu04a.ps), 2004. A key paper in the RKHS literature.
+- \biblabel{fukumizu04}{Fukumizu et al. (2004)} **Fukumizu**, **Bach** and **Jordan**, [Dimensionality reduction for supervised learning with reproducing kernel Hilbert spaces](http://www.jmlr.org/papers/volume5/fukumizu04a/fukumizu04a.ps), 2004. A key paper in the RKHS literature.
+- \biblabel{gretton07}{Gretton et al. (2007)} **Gretton**, **Fukumizu**, **Hui Teo**, **Le Song**, **Schölkopf**, **Smola**, [A kernel statistical test of independence](http://www.kyb.mpg.de/fileadmin/user_upload/files/publications/attachments/NIPS2007-Gretton_%5b0%5d.pdf), 2007. Paper describing how to perform an independence test using the HSIC.
+- \biblabel{gretton12a}{Gretton et al. (2012a)} **Gretton**, **Borgwardt**, **Rasch**, **Schölkopf**, **Smola**, [A kernel two-sample test](http://www.jmlr.org/papers/volume13/gretton12a/gretton12a.pdf), 2012. Paper describing how to perform a two-sample test using the MMD.
+- \biblabel{gretton12b}{Gretton et al. (2012b)} **Gretton**, **Sriperumbudur**, **Sejdinovic**, **Strathmann**, **Balakrishnan**, **Pontil** and **Fukumizu**, [Optimal kernel choice for large-scale two-sample tests](http://www.gatsby.ucl.ac.uk/~gretton/papers/GreSriSejStrBalPonFuk12.pdf), 2012. Another paper describing how to perform a two-sample test using the MMD focusing on computational perspectives.
 - \biblabel{song13}{Song et al. (2013)} **Song**, **Fukumizu** and **Gretton**,  [Kernel embeddings of conditional distributions](https://www.cc.gatech.edu/~lsong/papers/SonFukGre13.pdf), 2013. The paper these notes are mainly based on.

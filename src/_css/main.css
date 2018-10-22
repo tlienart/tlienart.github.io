@@ -250,13 +250,18 @@ header {
     }
 }
 
-header .name {
+header .blog-name {
     width: 39%;
     display: inline-block;
     text-align: left;
     font-size: 25px;
     color: gray;
     font-family: monospace;
+}
+
+header .blog-name a {
+    color: gray;
+    text-decoration: none;
 }
 
 nav {

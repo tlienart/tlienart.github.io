@@ -31,13 +31,13 @@ html {
 
 .content .page-foot a {
     text-decoration: none;
-    color: lightgrey;
+    color: #a6a2a0;
     text-decoration: underline; }
 
 .page-foot {
     font-size: 80%;
     font-family: Arial, serif;
-    color: lightgrey;
+    color: #a6a2a0;
     text-align: center;
     margin-top: 6em;
     border-top: 1px solid lightgrey;

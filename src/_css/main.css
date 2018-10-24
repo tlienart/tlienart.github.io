@@ -4,28 +4,26 @@
 
 html {
     font-family: Helvetica, Arial, sans-serif;
-    font-size  : 17px;
-}
+    font-size  : 17px; }
 
 /* ==================================================================
     BASIC GRID FOR PROFILE PIC
 ================================================================== */
 
 .row {
-  display: block;
-}
+  display: block; }
+
 .left {
   float: left;
-  margin-right: 15px;
-}
+  margin-right: 15px; }
+
 .right {
-    float: right;
-}
+    float: right; }
+
 .content .container img {
     width: auto;
     padding-left: 0;
-    border-radius: 10px;
-}
+    border-radius: 10px; }
 
 /* ==================================================================
     FOOT / COPYRIGHT
@@ -34,8 +32,7 @@ html {
 .content .page-foot a {
     text-decoration: none;
     color: lightgrey;
-    text-decoration: underline;
-}
+    text-decoration: underline; }
 
 .page-foot {
     font-size: 80%;
@@ -45,8 +42,7 @@ html {
     margin-top: 6em;
     border-top: 1px solid lightgrey;
     padding-top: 2em;
-    margin-bottom: 4em;
-}
+    margin-bottom: 4em; }
 
 /* ==================================================================
     TEXT GEOMETRY
@@ -56,61 +52,48 @@ html {
     position: relative;
     padding-left: 12.5%;
     padding-right: 12.5%;
-    line-height: 1.35em;
-}
+    line-height: 1.35em; }
 
 /* on wide screens, fix content width to a max value */
 @media (min-width: 940px) {
     .content {
         width: 705px;
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto; }
     }
-}
 
 /* on narrow device, reduce margins */
 @media (max-width: 480px) {
     header {
         padding-left: 6%;
-        padding-right: 6%;
-    }
+        padding-right: 6%; }
     .content {
         padding-left: 6%;
-        padding-right: 6%;
+        padding-right: 6%; }
     }
-}
 
 /* ==================================================================
     TITLES
 ================================================================== */
 
-.content h1 {
-    font-size: 24px;
-}
-.content h2 {
-    font-size: 22px;
-}
-.content h3 {
-    font-size: 20px;
-}
+.content h1 { font-size: 24px; }
+.content h2 { font-size: 22px; }
+.content h3 { font-size: 20px; }
 
 .content h1, h2, h3, h4, h5 {
-    text-align: left;
-}
+    text-align: left; }
 
 .content h1 {
     padding-bottom: 0.5em;
     border-bottom: 3px double lightgrey;
     margin-top: 1.5em;
-    margin-bottom: 1em;
-}
+    margin-bottom: 1em; }
 
 .content h2 {
     padding-bottom: 0.3em;
     border-bottom: 1px solid lightgrey;
     margin-top: 2em;
-    margin-bottom: 1em;
-}
+    margin-bottom: 1em; }
 
 /* ==================================================================
     GENERAL FORMATTING
@@ -118,25 +101,20 @@ html {
 
 /* spacing between bullet points */
 .content li p {
-        margin: 10px 0;
-}
+        margin: 10px 0; }
 
 .content a {
     color: #598fc4;
-    text-decoration: none;
-}
+    text-decoration: none; }
 
 .content a:hover {
-    text-decoration: underline;
-}
+    text-decoration: underline; }
 
 /* ==================================================================
     HYPERREFS
 ================================================================== */
 
-.bibref a {
-    color: green;
-}
+.bibref a { color: green; }
 
 /* ==================================================================
     IMAGES in CONTENT
@@ -145,33 +123,27 @@ html {
 .content img {
     width: 70%;
     text-align: center;
-    padding-left: 10%;
-}
+    padding-left: 10%; }
 
 .content .img-small img {
     width: 50%;
     text-align: center;
-    padding-left: 20%;
-}
+    padding-left: 20%; }
 
 /* ==================================================================
     KATEX
 ================================================================== */
 
-body {
-    counter-reset: eqnum;
-}
+body { counter-reset: eqnum; }
 
-.katex {
-    font-size: 1em !important;
-}
+.katex { font-size: 1em !important; }
+
 .katex-display::after {
     counter-increment: eqnum;
     content: "(" counter(eqnum) ")";
     position: relative;
     float: right;
-    padding-right: 5px;
-}
+    padding-right: 5px; }
 
 /* ==================================================================
     CODE & HIGHLIGHT.JS
@@ -181,14 +153,12 @@ code {
     background-color: rgba(27,31,35,0.05); /*#f6f8fa;*/
     padding: 0.1em 0.2em;
     border-radius: 2px;
-    font-size: 95%;
-}
+    font-size: 95%; }
 
 .hljs {
     font-size: 85%;
     line-height: 1.1em;
-    border-radius: 10px;
-}
+    border-radius: 10px; }
 
 /* ==================================================================
     BOXES
@@ -204,8 +174,7 @@ code {
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 0 10px 10px 0;
-    border-left: 5px solid #4C9CF1;
-}
+    border-left: 5px solid #4C9CF1; }
 
 .colbox-yellow {
     background-color: #ffffe6;
@@ -217,8 +186,7 @@ code {
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 0 10px 10px 0;
-    border-left: 5px solid orange;
-}
+    border-left: 5px solid orange; }
 
 .colbox-red {
     background-color: red;
@@ -228,56 +196,23 @@ code {
     padding-bottom: 5px;
     margin: 5px;
     border-radius: 0 10px 10px 0;
-    border-left: 5px solid orange;
-}
+    border-left: 5px solid orange; }
 
 /* ==================================================================
-    Header
+    Header and Nav
 ================================================================== */
-
-header {
-    text-align: right;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
-    align-items: center;
-}
-
-@media (min-width: 480px) {
-    header {
-        padding-left: 12.5%;
-        padding-right: 12.5%;
-    }
-}
-
-header .blog-name {
-    width: 39%;
-    display: inline-block;
-    text-align: left;
-    font-size: 25px;
-    color: gray;
-    font-family: monospace;
-}
-
-header .blog-name a {
-    color: gray;
-    text-decoration: none;
-}
 
 nav {
     width: 69%;
-    display: inline-block;
-}
+    display: inline-block; }
 
 nav ul {
     padding-left: 0;
     margin-top: 0;
-    margin-bottom: 0;
-}
+    margin-bottom: 0; }
 
 nav li {
-    display: inline-block;
-}
+    display: inline-block; }
 
 nav li a {
     color: #4C9CF1;
@@ -292,42 +227,58 @@ nav li a {
     padding-bottom:5px;
     margin-left:7px;
     margin-right:7px;
-    border-bottom: 2px solid #4C9CF1;
-}
+    border-bottom: 2px solid #4C9CF1; }
+
+header {
+    text-align: right;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center; }
+
+header .blog-name {
+    width: 39%;
+    display: inline-block;
+    text-align: left;
+    font-size: 22px;
+    font-family: monospace;
+    padding-top: 10px;}
+
+header .blog-name a {
+    color: #a6a2a0;
+    text-decoration: none; }
 
 header li a:hover {
     color: black;
-    border-bottom: 2px solid black;
-}
+    border-bottom: 2px solid black; }
 
 
 #menu-icon {
-    display: none;
-}
+    display: none; }
 
-/*
-wide display: enforce maximum width of header to match content
-(see content.css)
-*/
+@media (min-width: 480px) {
+    header {
+        padding-left: 12.5%;
+        padding-right: 12.5%; }
+    }
+
+/* wide display: enforce maximum width of header to match content */
 @media (min-width: 940px) {
     header {
         width: 705px;
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto; }
     }
-}
 
 @media (max-width: 880px) {
     header { display: block; }
-    header .name {
+    header .blog-name {
         display: block;
         width: 100%;
-        padding-bottom: 10px;
-    }
+        padding-bottom: 10px; }
     nav {
-        width: 100%;
+        width: 100%; }
     }
-}
 
 /*
 narrow display: collapse the header (don't show the menu items)
@@ -337,17 +288,13 @@ instead, display a burger menu.
     header {
         height: 35px;
         display: flex;
-        align-items: center;
-    }
-    header .name {
+        align-items: center; }
+    header .blog-name {
         display: inline-block;
-        width: 70%;
-        padding-bottom: 0;
-    }
+        width: 70%; }
     nav {
         display: inline-block;
-        width: 27%;
-    }
+        width: 27%; }
     nav ul, nav:active ul {
         display: none;
         position: absolute;
@@ -357,20 +304,16 @@ instead, display a burger menu.
         right: 50px;
         top: 60px;
         width: 30%;
-        border-radius: 4px 0 4px 4px;
-    }
+        border-radius: 4px 0 4px 4px; }
     nav li {
         text-align: left;
         display: block;
         padding: 10px 0;
-        margin: 0;
-    }
+        margin: 0; }
     nav:hover ul{
-        display: block;
-    }
+        display: block; }
     #menu-icon {
         display: inline-block;
-        margin-right: 20px;
-        margin-top: 5px;
+        margin-right: 10px;
+        margin-top: 5px; }
     }
-}

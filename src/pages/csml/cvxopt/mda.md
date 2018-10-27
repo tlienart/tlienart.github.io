@@ -1,4 +1,4 @@
-@def title = "Mirror descent"
+@def title = "Mirror descent algorithm"
 
 # Mirror descent
 

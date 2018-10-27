@@ -106,6 +106,6 @@ It corresponds to the so-called "pre-image" problem in kernel methods.
 
 ## References
 
-- \biblabel{song13}{Song et al. (2013)} **Song**, **Fukumizu** and **Gretton**,  [Kernel embeddings of conditional distributions](https://www.cc.gatech.edu/~lsong/papers/SonFukGre13.pdf), 2013. The paper these notes are mainly based on.
+1. \biblabel{song13}{Song et al. (2013)} **Song**, **Fukumizu** and **Gretton**,  [Kernel embeddings of conditional distributions](https://www.cc.gatech.edu/~lsong/papers/SonFukGre13.pdf), 2013. The paper these notes are mainly based on.
 
 *See also the references given in the [first part](/pub/csml/rkhs/intro-rkhs1.html).*

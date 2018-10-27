@@ -17,8 +17,8 @@ To get to the method, we will need three main parts:
 
 ## First order condition
 
-The FOC indicates that $x^\sharp \in C$ is a minimiser if and only if $0\in \partial(f + i_C)(x^\sharp)$.
-However, remember that the subdifferential of a sum contains the sum of subdifferentials (see [convex analysis pt. 2](/pub/csml/cvxopt/ca2.html)) so that if $0 \in \nabla f(x^\sharp) + \partial i_C(x^\sharp)$ then $x^\sharp$ is a minimiser.
+The FOC indicates that $\xopt \in C$ is a minimiser if and only if $0\in \partial(f + i_C)(\xopt)$.
+However, remember that the subdifferential of a sum contains the sum of subdifferentials (see [convex analysis pt. 2](/pub/csml/cvxopt/ca2.html)) so that if $0 \in \nabla f(\xopt) + \partial i_C(\xopt)$ then $\xopt$ is a minimiser.
 
 If $y$ is a subgradient of $i_C$ at a point $x\in C$ then, by definition,
 
@@ -37,9 +37,9 @@ This inequality defines the subdifferential $\partial i_C$ but also happens to b
 In short:
 \eqa{\partial i_C(x) &=& \{y\in \R^n \,\mid\, \scal{z-x, y}\le 0, \forall z\in C\}\speq  N_C(x).}
 Bringing the pieces together, we have
-$$   0 \,\in\, \nabla f(x^\sharp) + N_C(x^\sharp) \spe{\Longrightarrow} x^\sharp \,\in\,\arg\min_{x\in C}\, f(x). \label{partial FOC}$$
+$$   0 \,\in\, \nabla f(\xopt) + N_C(\xopt) \spe{\Longrightarrow} \xopt \,\in\,\arg\min_{x\in C}\, f(x). \label{partial FOC}$$
 
-Of course this doesn't really help much because at this point we don't know how to find a $x^\sharp$ such that the left-hand-side holds.
+Of course this doesn't really help much because at this point we don't know how to find a $\xopt$ such that the left-hand-side holds.
 This is what the next section will explore.
 
 ## Normal cone and Euclidean projection
@@ -58,11 +58,11 @@ Note also that the factor $1/2$ is here for aesthetics when computing the gradie
 
 Considering the condition \eqref{partial FOC} for the optimisation problem \eqref{eq projection}, we have that if
 
-\eqa{  0\,\in\, (x^\sharp-z) + N_C(x^\sharp) }
+\eqa{  0\,\in\, (\xopt-z) + N_C(\xopt) }
 
-then $x^\sharp$ is a minimiser with thus $x^\sharp = \pi_C(z)$.
-This is equivalent to requiring $z \in x^\sharp + N_C(x^\sharp)$ or, equivalently, $z\in (\mathbb I + N_C)(x^\sharp)$.
-Replacing $x^\sharp$ by $\pi_C(z)$ and re-arranging terms gives
+then $\xopt$ is a minimiser with thus $\xopt = \pi_C(z)$.
+This is equivalent to requiring $z \in \xopt + N_C(\xopt)$ or, equivalently, $z\in (\mathbb I + N_C)(\xopt)$.
+Replacing $\xopt$ by $\pi_C(z)$ and re-arranging terms gives
 
 \eqa{  \pi_C(z) &=& (\mathbb I + N_C)^{-1}(z). }
 
@@ -87,14 +87,14 @@ By \eqref{proj equiv}, this is equivalent to $x=\pi_C(z)$ or
 
 \eqa{   x &=& \pi_C(x+\alpha u), \quad (\alpha \ge 0, \,u\in N_C(x)).   \label{fixed point 1}}
 
-To finish up, let's go back once more to the FOC \eqref{partial FOC} which indicates that if $x^\sharp$ is such that $-\nabla f(x^\sharp) \in N_C(x^\sharp)$ then it is a minimiser.
+To finish up, let's go back once more to the FOC \eqref{partial FOC} which indicates that if $\xopt$ is such that $-\nabla f(\xopt) \in N_C(\xopt)$ then it is a minimiser.
 Combined with \eqref{fixed point 1}, we get the following useful fixed-point form for the minimiser of the constrained problem:
 
 @@colbox-blue
-$$ x^\sharp \speq \pi_C(x^\sharp - \alpha \nabla f(x^\sharp)). \label{pgd fixed point} $$
+$$ \xopt \speq \pi_C(\xopt - \alpha \nabla f(\xopt)). \label{pgd fixed point} $$
 @@
 
-**Note**: had we not assumed that $f$ was differentiable on $C$, we would still have that there exists a subgradient $f'(x^\sharp) \in \partial f(x^\sharp)$ with $-f'(x^\sharp)\in N_C(x^\sharp)$ and consequently the fixed-point $x^\sharp = \pi_C(x^\sharp - \alpha f'(x^\sharp))$ leading the _projected subgradient method_.
+**Note**: had we not assumed that $f$ was differentiable on $C$, we would still have that there exists a subgradient $f'(\xopt) \in \partial f(\xopt)$ with $-f'(\xopt)\in N_C(\xopt)$ and consequently the fixed-point $\xopt = \pi_C(\xopt - \alpha f'(\xopt))$ leading the _projected subgradient method_.
 In practice however, one tries to cast a convex objective function as a sum of a smooth function with a non-smooth one, to follow a gradient descent on the smooth part and use a projection for the non-smooth part (this is the case here with $i_C$ being the non-smooth part).
 
 ### The algorithm
@@ -108,14 +108,15 @@ where $\alpha_k > 0$ is the _step size_ (ignoring the trivial case $\alpha_k=0$)
 This is the _projected gradient descent_ method.
 
 Assuming that the $\alpha_k$ are picked sensibly and basic regularity conditions on the problem are met, the method enjoys a convergence rate
-$(f(x_k)-f(x^\sharp)) = \mathcal O(k^{-1})$ (see references for more).
+$(f(x_k)-f(\xopt)) = \mathcal O(k^{-1})$ (see references for more).
 
-**Note**: this method is pretty easy to apply _provided you can compute the projection_. Of course, there may be situations for which computing the projection is as hard as the initial problem! But there are many special cases where efficient projection can be applied (e.g. if $C$ is a polyhedron, i.e. corresponds to a set of $x$ such that $Ax\le b$ for some matrix $A$ and vector $b$.)
+**Note**: this method is pretty easy to apply _provided you can compute the projection_. Of course, there may be situations for which computing the projection is as hard as the initial problem! But there are many special cases where efficient projection can be applied (e.g. if $C$ is a polyhedron, i.e. corresponds to a set of $x$ such that $Ax\le b$ for some matrix $A$ and vector $b$).
+See for example \citet{liu09}.
 
 ## Additional references
 
 1. **Burke**, [The Gradient Projection Algorithm](https://sites.math.washington.edu/~burke/crs/408/notes/nlp/gpa.pdf), 2014. Lecture notes at the University of Washington covering the topic in a bit more depth.
-2. **Saunders**, [Notes on First-Order Methods for Minimizing Smooth Functions](https://web.stanford.edu/class/msande318/notes/notes-first-order-smooth.pdf), 2017. Lectures notes at Stanford covering the topic (among others) and proving the linear convergence rate under regularity conditions.
-3. **Liu**, **Ye**, [Efficient Euclidean Projections in Linear Time](https://icml.cc/Conferences/2009/papers/123.pdf), 2009. A paper describing the projection problem and how it can be done efficiently in some cases.
+1. **Saunders**, [Notes on First-Order Methods for Minimizing Smooth Functions](https://web.stanford.edu/class/msande318/notes/notes-first-order-smooth.pdf), 2017. Lectures notes at Stanford covering the topic (among others) and proving the linear convergence rate under regularity conditions.
+1. \biblabel{liu09}{Liu and Ye (2009)} **Liu**, **Ye**, [Efficient Euclidean Projections in Linear Time](https://icml.cc/Conferences/2009/papers/123.pdf), 2009. A paper describing the projection problem and how it can be done efficiently in some cases.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

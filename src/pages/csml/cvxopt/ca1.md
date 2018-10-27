@@ -7,7 +7,7 @@ In the notes $\Gamma_0(C)$ denotes the set of *proper* and *lsc* convex function
 * a **proper** convex function $f$ is finite value for at least one $x\in C$ (i.e.: $\exists x\in C, f(x) < \infty$) and is always lower bounded (i.e.: $f(x)>-\infty, \forall x\in C$).
 * a **lsc** (*lower semi continuous*) function is such that
 \eqa{f(x)&\le& \lim_{i\to \infty} f(x_i) \label{def lsc}}
-for any sequence $x_1, x_2, \dots$ in $C$ that converges to $x$ and such that the limit exists (see Rockafellar section 7). The figure below illustrates this (note that the functions are of course not convex).
+for any sequence $x_1, x_2, \dots$ in $C$ that converges to $x$ and such that the limit exists (see \citet{rockafellar70} section 7). The figure below illustrates this (note that the functions are of course not convex).
 
 @@img-small ![](/assets/csml/cvxopt/lsc-usc.svg) @@
 
@@ -39,7 +39,7 @@ However, if the function is not differentiable at $x$ (e.g., if there is a kink 
 
 @@colbox-blue
 The set of subgradients of a convex function $f$ at a point $x\in \mathrm{dom}\, f$ is called the *subdifferential* of $f$ and denoted $\partial f(x)$.
-For a proper convex function $f$, it can be shown that the subdifferential of $f$ is a non-empty bounded set at any point $x\in (\mathrm{dom}\,f)^\circ$ (Rockafellar, theorem 23.4).
+For a proper convex function $f$, it can be shown that the subdifferential of $f$ is a non-empty bounded set at any point $x\in (\mathrm{dom}\,f)^\circ$ (\citet{rockafellar70}, theorem 23.4).
 @@
 
 Note that since we have assumed that $C\subseteq \mathrm{dom}\,f$, then $C^\circ\subseteq (\mathrm{dom}\,f)^\circ$ and therefore $\partial f$ is non-empty and bounded on $C^\circ$.
@@ -52,25 +52,25 @@ The set $[-1, 1]$ is therefore the subdifferential of the function at $0$, denot
 
 ### First order optimality condition (FOC) <!-- ✅ 12/9/2018 -->
 
-A point $x^{\sharp}\in C$ is a minimiser of the function $f$ if and only if $f(z)\ge f(x^{\sharp})$ for all $z\in C$.
+A point $\xopt\in C$ is a minimiser of the function $f$ if and only if $f(z)\ge f(\xopt)$ for all $z\in C$.
 This can be written equivalently as:
 
 \eqa{
-    f(z) &\ge& f(x^{\sharp}) + \scal{z-x, 0}, \qquad \forall z \in C,
+    f(z) &\ge& f(\xopt) + \scal{z-x, 0}, \qquad \forall z \in C,
 }
 
-and hence $0$ must be a subgradient of $f$ at $x^\sharp$.
+and hence $0$ must be a subgradient of $f$ at $\xopt$.
 
 @@colbox-blue
 *First-order optimality condition* (FOC): for a proper convex function $f$,
 $$
-x^\sharp \,\in\, \arg\min_{x\in C} \, f(x) \spe{\Longleftrightarrow} 0\,\in\, \partial f(x^\sharp).$$
+\xopt \,\in\, \arg\min_{x\in C} \, f(x) \spe{\Longleftrightarrow} 0\,\in\, \partial f(\xopt).$$
 @@
 
-**Note**: some care must be taken when $x^\sharp \in \arg\inf_{x\in C} f(x)$ is on the boundary of $C$ as there may not be a subgradient there, this is why we had originally assumed that $f$ is minimised on the interior of $C$.
+**Note**: some care must be taken when $\xopt \in \arg\inf_{x\in C} f(x)$ is on the boundary of $C$ as there may not be a subgradient there, this is why we had originally assumed that $f$ is minimised on the interior of $C$.
 We will come back to this when discussing optimisation methods for constrained problems such as the projected gradient descent.
 
-If we take the subdifferential as an *operator* then, intuitively, looking for a minimiser amounts to "inverting" the subdifferential and evaluating it at $0$, i.e.: $x^\sharp = (\partial f)^{-1}(0)$.
+If we take the subdifferential as an *operator* then, intuitively, looking for a minimiser amounts to "inverting" the subdifferential and evaluating it at $0$, i.e.: $\xopt = (\partial f)^{-1}(0)$.
 Of course at this point we don't know how to compute $(\partial f)^{-1}$ in general.
 We shall come back to this in more details but the idea of inverting an operator involving the subdifferential to find the minimiser is key in convex optimisation.
 
@@ -80,7 +80,7 @@ Note that in some simple situations the FOC is sufficient to immediately find a 
     \partial f(x) &=& \begin{cases} \mathrm{sign}(x) & (x\neq 0) \\\\ [-1, 1] & (x=0) \end{cases}
 }
 
-which shows that the only point $x^\sharp$ where $0\in \partial f(x^\sharp)$ is $x^\sharp=0$. In other words, $(\partial f)^{-1}(0) = 0$.
+which shows that the only point $\xopt$ where $0\in \partial f(\xopt)$ is $\xopt=0$. In other words, $(\partial f)^{-1}(0) = 0$.
 
 ### Subdifferential of a sum <!-- ✅ 12/9/2018 -->
 
@@ -106,5 +106,6 @@ Note that if we have $0\in \sum_i \partial f_i(x^\dagger)$ then the inclusion im
 ## Additional references
 
 1. **Boyd** and **Vandenberghe**, [Subgradients](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf), 2008. Accessible lecture notes introducing the subgradient and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.
+1. \biblabel{rockafellar70}{Rockafellar (1970)} **Rockafellar**: [Convex analysis](http://press.princeton.edu/titles/1815.html), 1970.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

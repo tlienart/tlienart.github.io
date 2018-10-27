@@ -7,3 +7,19 @@ This repository contains the source files behind [my website](https://tlienart.g
 ### Random notes
 
 * KaTeX: careful with updating as it may mess up things like numbering or not-equal sign, version here seems to work fine.
+
+## Todo list
+
+Stuff that should end up on the website at some point
+
+**CSML/cvxopt**
+* further on MDA, showing that MDA and natural gradient connect, just show that locally Bregman div are just A-norms and then you're in the natural world
+
+**CSML/sampling**
+* filtering etc, from kalman to SMC, smoothing and co + some code
+
+**CSML/ep-vb**
+* the whole lot from the thesis
+
+**Julia**
+* package exploration, just write short articles where you look at a package that's cool

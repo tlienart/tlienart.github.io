@@ -11,7 +11,7 @@ Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
 The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra. real analysis and basic probability theory).
-When the level of the notes is a bit more advanced, it is marked by a "⭒" symbol.
+When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 
@@ -34,7 +34,7 @@ If you find anything dubious in the notes, please send me an email, feedback is 
     * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
 
-* **Kernel methods**
+* **Kernel methods** (*assumes good knowledge of stats and real analysis*)
     * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a reading group kernel methods introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
     * (⭒) [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings.
 
@@ -44,7 +44,7 @@ If you find anything dubious in the notes, please send me an email, feedback is 
 
 ## Applied maths
 
-* **notes on convex optimisation** (*assumes basic knowledge of convexity*):  <!-- 🚫🚫🚫 12/9/18
+* **notes on convex optimisation** (*assumes familiarity with convexity*):  <!-- 🚫🚫🚫 12/9/18
 NOTE TODO:
     🍺 continue to port things from old website
         ✅ intro
@@ -53,12 +53,14 @@ NOTE TODO:
         🚫 mirror descent
         🚫 general descent method
 -->
-    * [introduction](/pub/csml/cvxopt/intro.html): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 1](/pub/csml/cvxopt/ca1.html): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 2](/pub/csml/cvxopt/ca2.html): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 3](/pub/csml/cvxopt/ca3.html): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
-    * [projected gradient descent](/pub/csml/cvxopt/pgd.html): _normal cone_, _Euclidean projection_ and _projected gradient descent_.
-    <!-- * [mirror descent](/) -->
+    * [introduction](\cvx{intro.html}): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
+    * [convex analysis part 1](\cvx{ca1.html}): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
+    * (⭒) [convex analysis part 2](\cvx{ca2.html}): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
+    * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
+    * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅ 10/10/2018 -->
+    * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- 🚫 27/10/2018 TODO: review -->
+    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫 27/10/2018 TODO: review -->
+    <!-- * [thoughts on first order methods](\cvx{fom.html}) -->
 
 <!-- 🍺
 * *notes on Krylov subspace methods*

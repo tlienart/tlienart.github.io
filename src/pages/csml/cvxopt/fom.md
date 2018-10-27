@@ -60,7 +60,9 @@ Such a step will be called an _admissible descent step_ if $x+\delta\in C$ and i
 
 $$ \scal{\delta, \nabla f(x)} + r_x(\delta) \spe{<} 0. $$
 
-
+@@colbox-red
+ongoing
+@@
 
 ## References
 

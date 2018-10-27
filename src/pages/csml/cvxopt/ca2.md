@@ -133,8 +133,8 @@ Let $f\in\Gamma_0(\R^n)$, then
 }
 @@
 
-**Note**: recall that, with the first order condition, a minimiser $x^\sharp$ is such that $0\in \partial f(x^\sharp)$ or $(\partial f)^{-1}(0) \ni x^\sharp$.
-We can now also write this $x^\sharp \in \partial f^\star(0)$, thereby expressing the minimiser in terms of the convex-conjugate.
+**Note**: recall that, with the first order condition, a minimiser $\xopt$ is such that $0\in \partial f(\xopt)$ or $(\partial f)^{-1}(0) \ni \xopt$.
+We can now also write this $\xopt \in \partial f^\star(0)$, thereby expressing the minimiser in terms of the convex-conjugate.
 Of course it's not clear at this point whether this helps at all to find the minimiser but, as it turns out, it will.
 
 **Example**: let's consider $f(x)=x\log(x)$ on $C = [0, 1]$.

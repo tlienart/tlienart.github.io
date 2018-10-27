@@ -14,3 +14,8 @@
 \newcommand{\eR}{\overline{\mathbb R}}
 
 \newcommand{\scal}[1]{\left\langle#1\right\rangle}
+
+\newcommand{\xopt}{x^\dagger}
+
+<!-- in-text replacements -->
+\newcommand{\cvx}[1]{/pub/csml/cvxopt/!#1}

@@ -9,17 +9,6 @@ TODO:
 
 # Introduction
 
-## Prerequisites <!-- ✅ 19/9/2018 -->
-
-In these notes I will assume that you're comfortable with the following notions at the level of an undergrad in a quantitative topic:
-
-- interior and boundary of a set,
-- *convex sets* and *convex functions*,
-- basic linear algebra and in particular things like the inner product (which we'll write $\scal{x, y}$) and norms,
-- basic calculus and in particular things like differentiability and the gradient.
-
-For each of these there is a plethora of excellent material online.
-
 ## Context <!-- ✅ 19/9/2018 -->
 
 We'll consider the standard *constrained minimisation problem* in convex optimisation:
@@ -33,7 +22,7 @@ The following notions of *nice* are used (unless explicitly specified):
 
 * $\mathrm{dom}\, f \supseteq C$, i.e.: the domain of $f$ covers $C$,
 * $f\in\Gamma_0(C)$, the set of convex functions that are *proper* and *lower semi-continuous* on $C$ (see [further](/pub/csml/cvxopt/ca1.html)),
-* $f$ achieves its minimum on the interior of $C$ denoted $C^\circ$, i.e.: there is a $x^\sharp\in C$ such that $f(z)\ge f(x^\sharp)$ for all $z\in C$.
+* $f$ achieves its minimum on the interior of $C$ denoted $C^\circ$, i.e.: there is a $\xopt\in C$ such that $f(z)\ge f(\xopt)$ for all $z\in C$.
 
 <!-- NOTE keep the restriction on C∘ as then you're sure that there's a subgradient and it simplifies stuff. Of course you'd have to discuss boundaries later on. -->
 
@@ -64,10 +53,10 @@ A big part of convex optimisation aims at defining clever *iterative algorithms*
 * the iterations converge "quickly" to a minimiser,
 * the iterations are "cheap" to compute.
 
-Often these iterative algorithms can be derived from some kind of *fixed point equation* that is satisfied by a minimiser $x^\sharp$, i.e.: an equation of the form
+Often these iterative algorithms can be derived from some kind of *fixed point equation* that is satisfied by a minimiser $\xopt$, i.e.: an equation of the form
 
 \eqa{
-	x^\sharp &=& P(x^\sharp)
+	\xopt &=& P(\xopt)
 }
 
 where $P$ is an appropriate operator.
@@ -77,7 +66,7 @@ Provided we have such a fixed point equation, we can consider a *fixed point alg
 	x_{k+1} &=& P(x_k).
 }
 
-Under some conditions on the operator $P$ and possibly on $x_0$, such an  algorithm will provably converge to $x^\sharp$.
+Under some conditions on the operator $P$ and possibly on $x_0$, such an  algorithm will provably converge to $\xopt$.
 This may seem reasonably straightforward but there are quite a few difficult questions that need be addressed and will be investigated in the notes:
 
 * how can we get a decent starting point? (quite a hard problem in general)

@@ -10,7 +10,7 @@ The emphasis here is on building intuition rather than mathematical rigour thoug
 Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
-The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra. real analysis and basic probability theory).
+The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra, real analysis and basic probability theory).
 When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.

@@ -63,7 +63,7 @@ Such a step will be called an _admissible descent step_ if $x+\delta\in C$ and i
 
 $$ \scal{\delta, \nabla f(x)} + r_x(\delta) \spe{<} 0. \label{admissibility}$$
 
-Let $\mathcal D_$ be the set of admissible descent steps from $x$.
+Let $\mathcal D_x$ be the set of admissible descent steps from $x$.
 Observe that it is always non-empty provided that $0<\|\nabla f(x)\|\infty$.
 
 To show this, let $\delta_\epsilon := -\epsilon(g+v)$ with $\epsilon>0$,  $g=\nabla f(x)/\|\nabla f(x)\|$ (the unit vector in direction of the gradient) and $v$ such that $\scal{v, \nabla f(x)}=0$ and $0 < \|v\|\le 1$.
@@ -91,15 +91,47 @@ However the expression \eqref{optimal step} will help us generate descent algori
 
 ## Local update schemes
 
-What we would like is thus to solve a problem that is simpler than \eqref{optimal step} and yet still generates admissible descent direction.
-A natural way to do that is to replace $r(z,x)$ and $r_x(\delta)$ by _a proxy function_ $d(z,x)$ and corresponding $d_x(\delta)$ enjoying the same properties of positive definiteness and strict convexity.
-We then have a general iteration scheme:
+What we would like is thus to consider a problem that is simpler than \eqref{optimal step} and yet still generates an admissible descent direction (and iterate).
+A natural way to try to do just that is to replace $r(z,x)$ and $r_x(\delta)$ by _a proxy function_ $d(z,x)$ and corresponding $d_x(\delta)$ enjoying the same properties of positive definiteness and strict convexity.
+The corresponding approximate problem is then
 
-$$ \tilde\delta_k \spe{\in} \arg\min_{\delta \mid x_k+\delta \in C} \left[\scal{\delta, \nabla f(x_k)} + \beta_k d_x(\delta_k)\right]. $$
+$$ \tilde\delta_\beta \spe{\in} \arg\min_{\delta \mid x+\delta \in C} \left[\scal{\delta, \nabla f(x)} + \beta d_x(\delta)\right]. \label{approx step}$$
 
-@@colbox-red
-ongoing
+Let's now show that these problems can lead to admissible descent steps for the original problem.
+We can follow a similar reasoning to that which led us to show the non-degeneracy of $\mathcal D_x$.
+In particular, observe that as $\beta\to\infty$, $\|\tilde\delta_{\beta}\|\to 0$.
+Hence, there exists a $\beta^\bullet$ large enough such that for any $\nu \ge \beta^\bullet$, $\|\tilde\delta_\nu\|$ is small enough for $\tilde\delta_\nu$ to be in $\mathcal D_x$.
+
+### GPGD is back
+
+Now that we know that \eqref{approx step} can lead to an admissible step, we can suggest iterating over the problem with a sequence of $\{\beta_k\}$:
+
+$$ \tilde\delta_{\beta_k} \spe{\in} \arg\min_{\delta\mid x_k+\delta \in C} \,\, \left[\scal{\delta, \nabla f(x_k)} + \beta_kd_x(\delta_k)\right]$$
+
+but basic manipulation of that expression show that this is in fact the generalised projected gradient descent (GPGD) that we [saw before](\cvx{mda.html}).
+
+@@colbox-blue
+The generalised projected gradient descent (GPGD) corresponds to the following iteration:
+
+$$ x_{k+1} \spe{\in} \arg\min_{x\in C} \left\{\scal{x, \nabla f(x_k)} + {1\over \alpha_k}d(x, x_k)\right\} $$
+
+for some $\alpha_k>0$ and for any positive-definite function $d$ that is strictly convex in its first argument. It generates a minimising sequence for $f$ provided the $\alpha_k$ are small enough.
 @@
+
+This may seem like it's not telling us that much, in particular it should be clear that you could pick the $\alpha_k$ infinitesimally small, that it would indeed give you a minimising sequence but also that it wouldn't bring you very far.
+So at this point there's two comments we can make:
+
+1. ideal $\alpha_k$ encapsulate a tradeoff between leading to steps that are too big and may not be admissible an steps that are too small to provide useful improvement,
+1. a key element that should hopefully be obvious by now corresponds to how we can interpret $d$: if we know nothing about the function at hand, we can just use a default $\|\cdot\|_2^2$ but if we _do_ know something useful about the function (and, in fact, about $C$), then that could be encoded in $d$.
+
+### Choice of distance and problem structure
+
+The second point is _very important_: it should be clear to you that you'd want the local problems to be as informed as possible while at the same time you'd want the iterations to not be overly expensive to compute, two extreme cases being:
+
+* $d(x, x_k)/\alpha_k = \|x-x_k\|_2^2/{2\alpha_k}$ <!--_--> and $\alpha_k$ small, the iterations are cheap to compute but potentially quite poor at decreasing the function, many steps are needed, minimal use of problem structure,
+* $d(x, x_k)/\alpha_k = r(x, x_k)$, the iteration is maximally expensive but only a single step is needed, maximal use of problem structure.
+
+This key tradeoff can be exposed in most iterative methods using gradient information that you'll find in the literature.
 
 ## References
 

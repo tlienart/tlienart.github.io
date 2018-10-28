@@ -1,14 +1,16 @@
 @def title = "First order methods"
 
+<!-- need to justify / structure what you're doing here. -->
+
 # Thoughts on first order descent methods
 
-First order methods broadly designate iterative methods for continuous and differentiable optimisation that mainly use information coming from the gradient of the function at the current point.
-The success of first order methods is often related to the fact that iterations are cheap to compute compared to, say, second order methods that use information coming from the hessian of the function at the current point.
+First order methods (FOM) broadly designate iterative methods for continuous and differentiable optimisation that mainly use information from the (sub)gradient of the function.
 
-In these notes we consider again the constrained minimisation problem $\min_C f$ and, to simplify the presentation, we'll assume that $C$ is closed and convex and that $f$ is strictly convex and smooth on $C$.
-What we're interested in is discussing, at a high level, how to generate a _minimising sequence_ for $f$ i.e., a sequence $\{x_k\}$ with $x_k\in C$ such that $f(x_{k+1}) < f(x_k)$ and $f(x_k) \to f(\xopt)$ as $k$ grows.
+In these notes we consider again the constrained minimisation problem $\min_{x\in C} f(x)$ and, to simplify the presentation, we'll assume that $C$ is closed and convex and that $f$ is strictly convex and smooth on $C$.
 
-All norms $\|\cdot\|$ are 2-norms unless otherwise mentioned.
+What we're interested in here is discussing, at a high level, how to generate a _minimising sequence_ for $f$ i.e., a sequence $\{x_k\}$ with $x_k\in C$ such that $f(x_{k+1}) < f(x_k)$ and $f(x_k) \to f(\xopt)$ as $k$ grows.
+
+_Remark_: all norms $\|\cdot\|$ are 2-norms.
 
 ## Local linearisation
 
@@ -26,7 +28,7 @@ That function enjoys the following properties:
 1. $r(a, a)=0$, and $r(x, a)>0$ for all $x\neq a$ by strict convexity of $f$,
 1. $r(\cdot, a)$ is also strictly convex and smooth for all $a\in C^\circ$.
 
-Let us now introduce the following notation: $r_a(\delta) := r(a+\delta, a)$ which will be quite useful.
+Let us introduce a more compact notation: $r_a(\delta) := r(a+\delta, a)$ which will be quite useful.
 It is easy to note that $r_a$ is smooth and strictly convex with $r_a(0)=0$ and, in fact, is globally minimised at $0$.
 By definition of strict convexity, we have
 
@@ -42,23 +44,58 @@ Since $r_a$ is smooth away from $0$ and since $\nabla r_a(0)=0$ (minimiser), we 
 
 @@colbox-blue
 The function $r_a$ is $o(\|\delta\|)$ meaning
-$$ \lim_{\|\delta\|\to 0} {r_a(\delta)\over \|\delta\|} \speq 0. $$
+$$ \lim_{\|\delta\|\to 0} {r_a(\delta)\over \|\delta\|} \speq 0. \label{remainder is small-o}$$
 @@
 
 This could have been obtained directly from consider the Taylor expansion of $f$ but I think it's nice to obtain it using only the notion of convexity.
-Another note is that the reasoning still holds if $f$ is only convex and sub-differentiable (though you'd need to be a bit careful )
+Another note is that the reasoning essentially still holds if $f$ is only convex and sub-differentiable.
 
 
 ## Admissible descent steps
 
-Let's now consider a point $x$ in $C$ and a step from $x$ to $x+\delta$ for some $\delta\neq 0$.
+Let's consider a point $x$ in $C$ and a step from $x$ to $x+\delta$ for some $\delta\neq 0$.
+We're interested in determining what are "good" steps $\delta$ to take.
 Using the notations from the previous point, we have
 
 $$ f(x+\delta) \speq f(x)+\scal{\delta, \nabla f(x)} + r_x(\delta). $$
 
 Such a step will be called an _admissible descent step_ if $x+\delta\in C$ and if it decreases the function, i.e. if $f(x+\delta) < f(x)$ or:
 
-$$ \scal{\delta, \nabla f(x)} + r_x(\delta) \spe{<} 0. $$
+$$ \scal{\delta, \nabla f(x)} + r_x(\delta) \spe{<} 0. \label{admissibility}$$
+
+Let $\mathcal D_$ be the set of admissible descent steps from $x$.
+Observe that it is always non-empty provided that $0<\|\nabla f(x)\|\infty$.
+
+To show this, let $\delta_\epsilon := -\epsilon(g+v)$ with $\epsilon>0$,  $g=\nabla f(x)/\|\nabla f(x)\|$ (the unit vector in direction of the gradient) and $v$ such that $\scal{v, \nabla f(x)}=0$ and $0 < \|v\|\le 1$.
+Then just by plugging things in we have
+$$\scal{\delta_\epsilon, \nabla f(x)} + r_x(\delta_\epsilon) \speq -\epsilon + r_x(\epsilon(g+v)) $$
+but recall that $r_x(\epsilon(g+v)) = o(\epsilon\|g+v\|)$ by \eqref{remainder is small-o}; by definition of $v$ and the triangular inequality we also have that $\|g+v\|\le 2\epsilon$ so that $r_x(\delta_\epsilon)=o(\epsilon)$ so that, for sufficiently small $\epsilon$, the condition \eqref{admissibility} holds for $\delta_\epsilon$.
+
+@@colbox-blue
+For sufficiently small $\epsilon$, $\delta_\epsilon=-\epsilon(g+v)$ is an admissible descent step.
+@@
+
+Note that, by construction, these $\delta_\epsilon$ span a half-ball of radius $\epsilon$ so that $\mathcal D_x$ is non-empty and also non-degenerate.
+
+@@colbox-blue
+Let $w$ be such that $0<\|w\|=:\eta$ and $\scal{w, \nabla f(x)}<0$, then, provided $\eta$ is small enough, $w\in\mathcal D_x$.
+@@
+
+Obviously, what we would like is to get the _best possible step_:
+
+$$ \deltaopt \spe{\in} \arg\min_{\delta \mid x+\delta \in C} \,\, \left[\scal{\delta, \nabla f(x)}+r_x(\delta)\right] \label{optimal step}  $$
+
+which leads directly to the minimiser $\xopt = x+\deltaopt$.
+Of course that's a bit silly since solving \eqref{optimal step} is as hard as solving the original problem.
+However the expression \eqref{optimal step} will help us generate descent algorithms.
+
+## Local update schemes
+
+What we would like is thus to solve a problem that is simpler than \eqref{optimal step} and yet still generates admissible descent direction.
+A natural way to do that is to replace $r(z,x)$ and $r_x(\delta)$ by _a proxy function_ $d(z,x)$ and corresponding $d_x(\delta)$ enjoying the same properties of positive definiteness and strict convexity.
+We then have a general iteration scheme:
+
+$$ \tilde\delta_k \spe{\in} \arg\min_{\delta \mid x_k+\delta \in C} \left[\scal{\delta, \nabla f(x_k)} + \beta_k d_x(\delta_k)\right]. $$
 
 @@colbox-red
 ongoing

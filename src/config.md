@@ -15,7 +15,9 @@
 
 \newcommand{\scal}[1]{\left\langle#1\right\rangle}
 
+<!-- optimisation specific -->
 \newcommand{\xopt}{x^\dagger}
+\newcommand{\deltaopt}{\delta^\dagger}
 
 <!-- in-text replacements -->
 \newcommand{\cvx}[1]{/pub/csml/cvxopt/!#1}

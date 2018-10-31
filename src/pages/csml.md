@@ -10,10 +10,14 @@ The emphasis here is on building intuition rather than mathematical rigour thoug
 Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
-The target audience is advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra, real analysis and basic probability theory).
-When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol.
+**Target audience**: advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra, real analysis and probability theory).
+When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol; when the notes are still under construction, they're marked with a 👷 symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
+
+<!-- TODO
+Once a bit clearer, think of a way to explain what exactly is kept here and how to navigate it otherwise might pile up quite quickly
+-->
 
 ## Stats, ML and related topics
 
@@ -34,24 +38,22 @@ If you find anything dubious in the notes, please send me an email, feedback is 
     * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
 
-* **Kernel methods** (*assumes good knowledge of stats and real analysis*)
-    * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a reading group kernel methods introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
-    * (⭒) [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings.
-
+* **adversarial ML** (*research notes on the topic*)
+    * 👷 [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances.
+    <!-- * 👷 [Robust stats](/pub/aml/robust-stats.html): -->
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 
+* **kernel methods** (*assumes good knowledge of stats and real analysis*)
+    * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a reading group kernel methods introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
+    * (⭒)👷 [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings.
 
 ## Applied maths
 
-* **notes on convex optimisation** (*assumes familiarity with convexity*):  <!-- 🚫🚫🚫 12/9/18
+* **convex optimisation** (*assumes familiarity with convexity*):  
+<!--
 NOTE TODO:
-    🍺 continue to port things from old website
-        ✅ intro
-        ✅ convex analysis (pt 1 and 2)
-        🚫 projected gradient descent
-        🚫 mirror descent
-        🚫 general descent method
+    - harmonise presentation, include a brief overview of each page at top, and summary linking to rest.
 -->
     * [introduction](\cvx{intro.html}): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
     * [convex analysis part 1](\cvx{ca1.html}): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
@@ -59,7 +61,7 @@ NOTE TODO:
     * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
     * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅ 10/10/2018 -->
     * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- 🚫 27/10/2018 TODO: review -->
-    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫 27/10/2018 TODO: review -->
+    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫 27/10/2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
     <!-- * [thoughts on first order methods](\cvx{fom.html}) -->
 
 <!-- 🍺

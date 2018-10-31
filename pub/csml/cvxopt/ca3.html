@@ -1,1 +1,143 @@
-<!doctype html> <html lang=en-UK > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Convex analysis III</title> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <script src="/libs/katex/katex.min.js"></script> <script src="/libs/katex/auto-render.min.js"></script> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=content> <h1>Convex analysis &#40;part 3&#41;</h1> <h2>Strict and strong convexity</h2> <p>Remember that a function \(\psi:C\to \mathbb R\) is convex if the following inequality holds for any two \(x, z \in C\) and \(0<\lambda<1\): <a name=hgLD ></a>$$\begin{array}{c} \psi((1-\lambda)x+\lambda z) &\le & (1-\lambda)\psi(x) + \lambda \psi(z). \end{array}$$ When that inequality holds <em>strictly</em> for any two \(x\neq z\) in \(C\), the function \(\psi\) is called <em>strictly convex</em>.</p> <div class=colbox-blue >Let \(x\in C^\circ\) and \(y\in \partial \psi(x)\), \(\psi\) is strictly convex on \(C^\circ\) if and only if the subgradient inequality holds strictly for all \(z\neq x\): <a name=aZ9L ></a>$$\begin{array}{c} \psi(z) &>& \psi(x) + \left\langle z-x, y\right\rangle, \quad\forall z\in C\backslash\{x\}. \end{array}$$</div> <p>This simply means that the graph of the function is strictly above its supporting hyperplanes.</p> <p>We can prove this quickly by noting that <span class=eqref >(<a href="#hgLD">1</a>)</span> can be rearranged into <a name=tV0O ></a>$$\begin{array}{c} \psi(z) &>&\psi(x) + {\psi((1-\lambda)x+\lambda z) - \psi(x)\over \lambda}, \end{array}$$ now if we let \(y\in\partial \psi(x)\) and using the subgradient inequality, we can also write <a name=5xaj ></a>$$\begin{array}{c} \psi((1-\lambda)x+\lambda z) &\ge& \psi(x) + \lambda\left\langle z-x, y\right\rangle. \end{array}$$ Combining <span class=eqref >(<a href="#tV0O">3</a>)</span> and <span class=eqref >(<a href="#5xaj">4</a>)</span> gives <span class=eqref >(<a href="#aZ9L">2</a>)</span>.</p> <p><strong>Example</strong>: \(\psi(x)=x\log(x)\) is strictly convex on \(\mathbb R^+\) whereas \(\psi(x)=|x|\) is not.</p> <div class=img-small ><img src="/assets/csml/cvxopt/strict-convex-ex.svg" alt="" /> </div> <div class=colbox-blue >The function \(\varphi:C\to \mathbb R\) is said to be \(\mu\)-<em>strongly convex</em> at \(x\in C\) with parameter \(\mu>0\) if the subgradient inequality holds with:</p> $$\begin{array}{c} \varphi(z) &\ge& \varphi(x) + \left\langle z-x, y\right\rangle + {\mu\over 2}\|z-x\|_2^2, \end{array}$$ </p> <p>for any \(z\in C\) and \(y\in\partial \varphi(x)\).</div> <p>Intuitively, a strongly convex function is a strictly convex function whose graph goes away from the supporting hyperplane sufficiently fast &#40;at least quadratically fast&#41;.</p> <h3>Strict convexity and differentiability</h3> <div class=colbox-blue >Let \(\psi:C\to \mathbb R\) a convex function; \(\psi\) is strictly convex on \(C^\circ\) if and only if \(\psi^\star\) is differentiable on \(\partial f(C^\circ) = \{y\in\mathbb R^n\,|\,\exists x\in C^\circ, y\in\partial f(x)\}\).</div> <p>To prove this result, we can use the link between \(\partial\psi\) and \(\partial\psi^{\star}\) &#40;cf. <a href="/pub/csml/cvxopt/ca2.html">convex analysis part 2</a>&#41;: <a name=QWqQ ></a>$$\begin{array}{c} x\in \partial f(y)\cap C &\Longleftrightarrow& (y\in\partial f(x), x\in C). \end{array}$$ \(\Rightarrow\): assume \(f^\star\) is not differentiable on \(C^\circ\). Then, there is a \(y\) such that \(\partial f^\star(y)\) contains more than one points, say \(x_1\neq x_2\) in in \(C^\circ\). But then, using the equivalence <span class=eqref >(<a href="#QWqQ">6</a>)</span> we have that \(y\in\partial f(x_1) \cap \partial f(x_2)\). Since \(f\) is strictly convex and \(x_1\neq x_2\) the two following strict inequalities must hold: $$\begin{aligned} f(x_2)\quad\!\! >\quad\!\!f(x_1)+\left\langle x_2-x_1, y\right\rangle,\\ f(x_1)\quad\!\! >\quad\!\!f(x_2)+\left\langle x_1-x_2, y\right\rangle. \end{aligned}$$ But summing both leads to a contradiction.</p> \(\Leftarrow\): assume \(f^\star\) is differentiable and take a \(y\) with \(x=\nabla f^\star(y)\) in \(C^\circ\). Let&#39;s now assume that \(f\) is not strictly convex on \(C^\circ\). Then, there exists \(z\in C^\circ\) such that \(f(z)=f(x)+\left\langle z-x, y\right\rangle\). But this can also be written \(f(x)=f(z)+\left\langle x-z,y\right\rangle\) so that \(y\in\partial f(z)\) by definition of the subgradient. This means that both \(x\) and \(z\) are in \(\partial f^\star(y)\) which contradicts the differentiability of \(f^\star\).</p> <h2>Bregman divergence</h2> <p>Consider the case where \(\psi\) is strictly convex and differentiable on \(C^\circ\) so that \(\partial \psi(x)=\{\nabla \psi(x)\}\) for \(x\in C^\circ\). In that case, we have <a name=Tka0 ></a>$$\begin{array}{c} \psi(z) &\ge& f(x) + \left\langle z-x, \nabla \psi(x)\right\rangle, \quad \forall z\in C, \end{array}$$ with equality <em>if and only</em> if \(z=x\). We can use this to define a notion of similarity between two points \(x\) and \(z\) in \(C\).</p> <div class=colbox-blue >Let \(\psi\) denote a strictly convex and differentiable function on \(C^\circ\). The <em>Bregman-divergence</em> on \(C^\circ\times C^\circ\) associated with \(\psi\) is defined as $$\begin{array}{c} B_\psi(z, x) &=& \psi(z)-\psi(x)-\left\langle z-x,\nabla \psi(x)\right\rangle.\end{array}$$</div> <p>Given <span class=eqref >(<a href="#Tka0">8</a>)</span>, we have that \(B_\psi(z, x)>0\) for all \(z\neq x\) and \(B_\psi(z, x)=0\) iff \(x=z\) which shows that \(B_\psi\) is a valid divergence &#40;positive definite functional&#41;.</p> <p>For example, if we take \(\psi(x) = \frac12\left\langle x, x\right\rangle\) then $$\begin{aligned} B_\psi(z, x) \quad\!\!&=\quad\!\! \frac12\left\langle z, z\right\rangle - \frac12\left\langle x, x\right\rangle - \left\langle z-x, x\right\rangle\\ &=\quad\!\! \frac12\left\langle z-x, z-x\right\rangle \end{aligned}$$ which is just the squared Euclidean &#40; \(\ell^{2}\)&#41; distance between \(z\) and \(x\). The factor \(1/2\) might seem irrelevant but it makes other developments a bit nicer so that, usually in convex-optimisation, the squared Euclidean distance is scaled by a factor two.</p> <p>Note that if the function \(\varphi\) is \(\mu\)-strongly convex and differentiable, then the Bregman divergence associated to it is lower bounded by the squared \(\ell^{2}\)-distance:</p> <a name=cZy7 ></a>$$\begin{array}{c} B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C. \end{array}$$ <h3>Bregman divergence and convex conjugacy</h3> <p>Let \(\psi\) be a differentiable and strictly convex function on \(C^\circ\) then \(\psi^\star\) is also differentiable and strictly convex on \(\nabla \psi(C^\circ)\) and we can consider the Bregman divergence that it induces.</p> <a name=s31v ></a>$$\begin{array}{c} B_{\psi^\star}(u, v) &=& \psi^\star(u) - \psi^\star(v) - \left\langle u-v, \nabla\psi^\star(v)\right\rangle. \end{array}$$ <p>Let us consider a pair \(x, z\in C^\circ\) with \(u=\nabla\psi(x)\) and \(v=\nabla\psi(z)\). Then, since \((x, u)\) and \((z, v)\) are dual pairs, we have that \(\psi^\star(u)+\psi(x)=\left\langle x, u\right\rangle\) &#40;and the same in \((z, v)\)&#41; as well as \(\nabla\psi^\star(v)=z\) so that \(B_{\psi^\star}(u, v)\) simplifies to $$\begin{array}{c} B_{\psi^\star}(u, v) &=& \psi(z) - \psi(x) - \left\langle z-x, \nabla \psi(x)\right\rangle, \end{array}$$ which proves the following result.</p> <div class=colbox-blue >Let \(\psi\) be a differentiable and strictly convex function on \(C^\circ\) then the following equality holds: $$\begin{array}{c} B_{\psi^\star}(\nabla\psi(x), \nabla\psi(z)) &=& B_\psi(z, x), \end{array}$$ for any \(x,z \in C^\circ\).</div> <p>Observe how the arguments get &quot;swapped&quot;.</p> <h2>Lipschitz continuity and strong convexity</h2> <p>This is a useful result to prove convergence rates of some iterative minimisation methods but can easily be skipped in a first reading.</p> <p>We will show that if \(\varphi\) is a differentiable, strongly convex function on \(C^\circ\) then \(\nabla \varphi^\star\) is Lipschitz continuous on \(\nabla\varphi(C^\circ)\). Recall that a function \(\phi\) is said to be \(\beta\)<em>-Lipschitz-continuous</em> on \(E\subseteq \mathrm{dom}\,\phi\) if the following inequality holds \(\forall u,v\in E\):</p> $$\begin{array}{c} \|\phi(u)-\phi(v)\|_2 &\le& \beta \|u-v\|_2. \end{array}$$ </p> <p>Using <span class=eqref >(<a href="#cZy7">11</a>)</span>, we can write $$\begin{array}{c} \mu \|x-z\|^{2}_{2} &\le& B_{\varphi}(x,z)+B_{\varphi}(z,x) . \end{array}$$ for any \(x, z\in C^\circ\). Plugging the definition of the Bregman divergence in the right hand side and letting \(u=\nabla \varphi(x)\) and \(v=\nabla \varphi(z)\) we get $$\begin{aligned} \mu\| x-z\|^{2}_{2} &\quad\!\! \le\quad\!\! \langle z-x, u-v \rangle \\ &\quad\!\! \le\quad\!\! \|x-z\|_2\|u-v\|_2, \end{aligned}$$ using Cauchy-Schwartz&#39;s inequality on the second line. Rearranging terms yields $$\begin{array}{c} \|x-z\|_{2} &\le& {1\over \mu}\| u-v\|_2. \end{array}$$ </p> <p>Since \(x\in C^\circ\) and \(u=\nabla \varphi(x)\), we can write \(x = \nabla \varphi^\star(u)\) and similarly, \(z=\nabla\varphi^\star(v)\) &#40;see <a href="/pub/csml/cvx_opti/ca2.html">convex analysis part 2</a>&#41;. This shows that the gradient \(\nabla\varphi^\star\) is Lispchitz-continuous.</p> <div class=colbox-blue >Let \(\varphi\) be a differentiable, \(\mu\)-strongly convex function on \(C^\circ\) then \(\varphi^\star\) has a gradient that is is \(1/\mu\)-Lipschitz continuous over \(\nabla \varphi(C^\circ)\), i.e.:</p> $$\begin{array}{c} \| \nabla \varphi^\star(u)-\nabla \varphi^\star(v) \| &\le& {1\over \mu}\|u-v\|,\quad \forall u,v\in\nabla\varphi(C^\circ), \end{array}$$ where \(\nabla \varphi (C^\circ)=\{u\in\mathbb R^n\,|\,\exists x\in C^\circ, u=\nabla \varphi(x)\}\).</div> <h2>Short references</h2> <ol> <li><p><strong>Bregman</strong>, <a href="http://www.mathnet.ru/links/7dbe5d285fbf611e001a7ab6365e2bed/zvmmf7353.pdf">A relaxation method of finding a common point of convex sets and its application to the solution of problems in convex programming</a>, 1967. This is just for fun, it&#39;s the original paper by Bregman in 1967 and though you may struggle to read it, you should be able to recognise equation &#40;1.4&#41;.</p> <li><p><strong>Goebel</strong>, <strong>Rockafellar</strong>, <a href="https://pdfs.semanticscholar.org/d16c/32505274be2bc80d8547a36e6ac2239a80b2.pdf">Local strong convexity and local Lipschitz continuity of the gradient of convex functions</a>, 2007. This is a more technical note covering the link between strong convexity and Lipschitz-continuity.</p> </ol> <p><em>See also the general references mentioned in the <a href="/pub/csml/cvxopt/intro.html">introduction</a>.</em></p> <div class=page-foot > <div class=copyright > &copy; T. Lienart. Last modified: October 19, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>. </div> </div> </div> <script> renderMathInElement(document.body) </script>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
+		 <title>Convex analysis III</title>	
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.min.css"></link>
+ 		
+        
+	</head>
+    <body>
+		
+        <header>
+            <div class="blog-name"><a href="/">Thibaut Lienart</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
+                    <li><a href="/pub/julia.html">Julia notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="/assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+		
+
+<!-- Content appended here -->
+
+<div class="jd-content">
+<h1>Convex analysis &#40;part 3&#41;</h1>
+<h2>Strict and strong convexity</h2>
+<p>Remember that a function \(\psi:C\to \mathbb R\) is convex if the following inequality holds for any two \(x, z \in C\) and \(0<\lambda<1\): <a id="hgLD"></a>$$\begin{array}{c} 
+    \psi((1-\lambda)x+\lambda z) &\le & (1-\lambda)\psi(x) + \lambda \psi(z). 
+\end{array}$$ When that inequality holds <em>strictly</em> for any two \(x\neq z\) in \(C\), the function \(\psi\) is called <em>strictly convex</em>.</p>
+<div class="colbox-blue">Let \(x\in C^\circ\) and \(y\in \partial \psi(x)\), \(\psi\) is strictly convex on \(C^\circ\) if and only if the subgradient inequality holds strictly for all \(z\neq x\): <a id="aZ9L"></a>$$\begin{array}{c} 
+    \psi(z) &>& \psi(x) + \left\langle z-x, y\right\rangle, \quad\forall z\in C\backslash\{x\}.
+\end{array}$$</div>
+
+<p>This simply means that the graph of the function is strictly above its supporting hyperplanes.</p>
+<p>We can prove this quickly by noting that <span class="eqref">(<a href="#hgLD">1</a>)</span> can be rearranged into <a id="tV0O"></a>$$\begin{array}{c} 
+    \psi(z) &>&\psi(x) + {\psi((1-\lambda)x+\lambda z) - \psi(x)\over \lambda}, 
+\end{array}$$ now if we let \(y\in\partial \psi(x)\) and using the subgradient inequality, we can also write <a id="5xaj"></a>$$\begin{array}{c} 
+    \psi((1-\lambda)x+\lambda z) &\ge& \psi(x) + \lambda\left\langle z-x, y\right\rangle.
+\end{array}$$ Combining <span class="eqref">(<a href="#tV0O">3</a>)</span> and <span class="eqref">(<a href="#5xaj">4</a>)</span> gives <span class="eqref">(<a href="#aZ9L">2</a>)</span>.</p>
+<p><strong>Example</strong>: \(\psi(x)=x\log(x)\) is strictly convex on \(\mathbb R^+\) whereas \(\psi(x)=|x|\) is not.</p>
+<div class="img-small"><img src="/assets/csml/cvxopt/strict-convex-ex.svg" alt="" /> </div>
+
+<div class="colbox-blue">The function \(\varphi:C\to \mathbb R\) is said to be \(\mu\)-<em>strongly convex</em> at \(x\in C\) with parameter \(\mu>0\) if the subgradient inequality holds with:</p>
+$$\begin{array}{c} 
+    \varphi(z) &\ge& \varphi(x) + \left\langle z-x, y\right\rangle + {\mu\over 2}\|z-x\|_2^2,
+\end{array}$$ </p>
+<p>for any \(z\in C\) and \(y\in\partial \varphi(x)\).</div>
+
+<p>Intuitively, a strongly convex function is a strictly convex function whose graph goes away from the supporting hyperplane sufficiently fast &#40;at least quadratically fast&#41;.</p>
+<h3>Strict convexity and differentiability</h3>
+<div class="colbox-blue">Let \(\psi:C\to \mathbb R\) a convex function; \(\psi\) is strictly convex on \(C^\circ\) if and only if \(\psi^\star\) is differentiable on \(\partial f(C^\circ) = \{y\in\mathbb R^n\,|\,\exists x\in C^\circ, y\in\partial f(x)\}\).</div>
+
+<p>To prove this result, we can use the link between \(\partial\psi\) and \(\partial\psi^{\star}\) &#40;cf. <a href="/pub/csml/cvxopt/ca2.html">convex analysis part 2</a>&#41;: <a id="QWqQ"></a>$$\begin{array}{c} 
+    x\in \partial f(y)\cap C &\Longleftrightarrow& (y\in\partial f(x), x\in C). 
+\end{array}$$ \(\Rightarrow\): assume \(f^\star\) is not differentiable on \(C^\circ\). Then, there is a \(y\) such that \(\partial f^\star(y)\) contains more than one points, say \(x_1\neq x_2\) in in \(C^\circ\). But then, using the equivalence <span class="eqref">(<a href="#QWqQ">6</a>)</span> we have that \(y\in\partial f(x_1) \cap \partial f(x_2)\). Since \(f\) is strictly convex and \(x_1\neq x_2\) the two following strict inequalities must hold: $$\begin{aligned} 
+    f(x_2)\quad\!\! >\quad\!\!f(x_1)+\left\langle x_2-x_1, y\right\rangle,\\
+    f(x_1)\quad\!\! >\quad\!\!f(x_2)+\left\langle x_1-x_2, y\right\rangle.
+\end{aligned}$$ But summing both leads to a contradiction.</p>
+\(\Leftarrow\): assume \(f^\star\) is differentiable and take a \(y\) with \(x=\nabla f^\star(y)\) in \(C^\circ\). Let&#39;s now assume that \(f\) is not strictly convex on \(C^\circ\). Then, there exists \(z\in C^\circ\) such that \(f(z)=f(x)+\left\langle z-x, y\right\rangle\). But this can also be written \(f(x)=f(z)+\left\langle x-z,y\right\rangle\) so that \(y\in\partial f(z)\) by definition of the subgradient. This means that both \(x\) and \(z\) are in \(\partial f^\star(y)\) which contradicts the differentiability of \(f^\star\).</p>
+<h2>Bregman divergence</h2>
+<p>Consider the case where \(\psi\) is strictly convex and differentiable on \(C^\circ\) so that \(\partial \psi(x)=\{\nabla \psi(x)\}\) for \(x\in C^\circ\). In that case, we have <a id="Tka0"></a>$$\begin{array}{c} 
+    \psi(z) &\ge& f(x) + \left\langle z-x, \nabla \psi(x)\right\rangle, \quad \forall z\in C,
+\end{array}$$ with equality <em>if and only</em> if \(z=x\). We can use this to define a notion of similarity between two points \(x\) and \(z\) in \(C\).</p>
+<div class="colbox-blue">Let \(\psi\) denote a strictly convex and differentiable function on \(C^\circ\). The <em>Bregman-divergence</em> on \(C^\circ\times C^\circ\) associated with \(\psi\) is defined as $$\begin{array}{c} B_\psi(z, x) &=& \psi(z)-\psi(x)-\left\langle z-x,\nabla \psi(x)\right\rangle.\end{array}$$</div>
+
+<p>Given <span class="eqref">(<a href="#Tka0">8</a>)</span>, we have that \(B_\psi(z, x)>0\) for all \(z\neq x\) and \(B_\psi(z, x)=0\) iff \(x=z\) which shows that \(B_\psi\) is a valid divergence &#40;positive definite functional&#41;.</p>
+<p>For example, if we take \(\psi(x) = \frac12\left\langle x, x\right\rangle\) then $$\begin{aligned} 
+    B_\psi(z, x) \quad\!\!&=\quad\!\! \frac12\left\langle z, z\right\rangle - \frac12\left\langle x, x\right\rangle - \left\langle z-x, x\right\rangle\\
+                 &=\quad\!\! \frac12\left\langle z-x, z-x\right\rangle
+\end{aligned}$$ which is just the squared Euclidean &#40;\(\ell^{2}\)&#41; distance between \(z\) and \(x\). The factor \(1/2\) might seem irrelevant but it makes other developments a bit nicer so that, usually in convex-optimisation, the squared Euclidean distance is scaled by a factor two.</p>
+<p>Note that if the function \(\varphi\) is \(\mu\)-strongly convex and differentiable, then the Bregman divergence associated to it is lower bounded by the squared \(\ell^{2}\)-distance:</p>
+<a id="cZy7"></a>$$\begin{array}{c} 
+B_{\varphi}(z,x) &\ge& {\mu\over 2} {\|z-x\|^{2}_{2}}, \quad\forall x,z \in C.
+\end{array}$$
+<h3>Bregman divergence and convex conjugacy</h3>
+<p>Let \(\psi\) be a differentiable and strictly convex function on \(C^\circ\) then \(\psi^\star\) is also differentiable and strictly convex on \(\nabla \psi(C^\circ)\) and we can consider the Bregman divergence that it induces.</p>
+<a id="s31v"></a>$$\begin{array}{c} 
+    B_{\psi^\star}(u, v) &=& \psi^\star(u) - \psi^\star(v) - \left\langle u-v, \nabla\psi^\star(v)\right\rangle.
+\end{array}$$
+<p>Let us consider a pair \(x, z\in C^\circ\) with \(u=\nabla\psi(x)\) and \(v=\nabla\psi(z)\). Then, since \((x, u)\) and \((z, v)\) are dual pairs, we have that \(\psi^\star(u)+\psi(x)=\left\langle x, u\right\rangle\) &#40;and the same in \((z, v)\)&#41; as well as \(\nabla\psi^\star(v)=z\) so that \(B_{\psi^\star}(u, v)\) simplifies to $$\begin{array}{c} 
+    B_{\psi^\star}(u, v) &=& \psi(z) - \psi(x) - \left\langle z-x, \nabla \psi(x)\right\rangle,
+\end{array}$$ which proves the following result.</p>
+<div class="colbox-blue">Let \(\psi\) be a differentiable and strictly convex function on \(C^\circ\) then the following equality holds: $$\begin{array}{c} 
+    B_{\psi^\star}(\nabla\psi(x), \nabla\psi(z)) &=& B_\psi(z, x),
+\end{array}$$ for any \(x,z \in C^\circ\).</div>
+
+<p>Observe how the arguments get &quot;swapped&quot;.</p>
+<h2>Lipschitz continuity and strong convexity</h2>
+<p>This is a useful result to prove convergence rates of some iterative minimisation methods but can easily be skipped in a first reading.</p>
+<p>We will show that if \(\varphi\) is a differentiable, strongly convex function on \(C^\circ\) then \(\nabla \varphi^\star\) is Lipschitz continuous on \(\nabla\varphi(C^\circ)\). Recall that a function \(\phi\) is said to be \(\beta\)<em>-Lipschitz-continuous</em> on \(E\subseteq \mathrm{dom}\,\phi\) if the following inequality holds \(\forall u,v\in E\):</p>
+$$\begin{array}{c} 
+    \|\phi(u)-\phi(v)\|_2 &\le& \beta \|u-v\|_2.
+\end{array}$$ </p>
+<p>Using <span class="eqref">(<a href="#cZy7">11</a>)</span>, we can write $$\begin{array}{c} 
+    \mu \|x-z\|^{2}_{2} &\le& B_{\varphi}(x,z)+B_{\varphi}(z,x) .
+\end{array}$$ for any \(x, z\in C^\circ\). Plugging the definition of the Bregman divergence in the right hand side and letting \(u=\nabla \varphi(x)\) and \(v=\nabla \varphi(z)\) we get $$\begin{aligned} 
+    \mu\| x-z\|^{2}_{2} &\quad\!\! \le\quad\!\! \langle z-x, u-v \rangle \\
+       &\quad\!\! \le\quad\!\! \|x-z\|_2\|u-v\|_2,
+\end{aligned}$$  using Cauchy-Schwartz&#39;s inequality on the second line. Rearranging terms yields $$\begin{array}{c} 
+    \|x-z\|_{2} &\le& {1\over \mu}\| u-v\|_2.
+\end{array}$$ </p>
+<p>Since \(x\in C^\circ\) and \(u=\nabla \varphi(x)\), we can write \(x = \nabla \varphi^\star(u)\) and similarly, \(z=\nabla\varphi^\star(v)\) &#40;see <a href="/pub/csml/cvx_opti/ca2.html">convex analysis part 2</a>&#41;. This shows that the gradient \(\nabla\varphi^\star\) is Lispchitz-continuous.</p>
+<div class="colbox-blue">Let \(\varphi\) be a differentiable, \(\mu\)-strongly convex function on \(C^\circ\) then \(\varphi^\star\) has a gradient that is is \(1/\mu\)-Lipschitz continuous over \(\nabla \varphi(C^\circ)\), i.e.:</p>
+$$\begin{array}{c} 
+    \| \nabla \varphi^\star(u)-\nabla \varphi^\star(v)  \| &\le& {1\over \mu}\|u-v\|,\quad \forall u,v\in\nabla\varphi(C^\circ),
+\end{array}$$ where \(\nabla \varphi (C^\circ)=\{u\in\mathbb R^n\,|\,\exists x\in C^\circ, u=\nabla \varphi(x)\}\).</div>
+
+<h2>Short references</h2>
+<ol>
+<li><p><strong>Bregman</strong>, <a href="http://www.mathnet.ru/links/7dbe5d285fbf611e001a7ab6365e2bed/zvmmf7353.pdf">A relaxation method of finding a common point of convex sets and its application to the solution of problems in convex programming</a>, 1967. This is just for fun, it&#39;s the original paper by Bregman in 1967 and though you may struggle to read it, you should be able to recognise equation &#40;1.4&#41;.</p>
+</li>
+<li><p><strong>Goebel</strong>, <strong>Rockafellar</strong>, <a href="https://pdfs.semanticscholar.org/d16c/32505274be2bc80d8547a36e6ac2239a80b2.pdf">Local strong convexity and local Lipschitz continuity of the gradient of convex functions</a>, 2007. This is a more technical note covering the link between strong convexity and Lipschitz-continuity.</p>
+</li>
+</ol>
+<p><em>See also the general references mentioned in the <a href="/pub/csml/cvxopt/intro.html">introduction</a>.</em></p>
+
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. Last modified: October 18, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+
+</div>
+<!-- CONTENT ENDS HERE -->
+        
+                <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+        
+        
+    </body>
+</html>

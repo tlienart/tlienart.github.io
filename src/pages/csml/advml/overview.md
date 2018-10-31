@@ -49,6 +49,16 @@ This has allowed to gain insight as to why Lipchitz regularisation of some model
 
 ## Attack
 
+### White-box attacks
+
+In white-box attacks, the adversary is assumed to have full knowledge of the model that is targeted.
+
+In \cite{papernot16}, the authors formulate their approach as
+
+$$ \arg\min_{\delta_{x}}\,\,\|\delta_x\|, \quad \text{s.t.}\quad F(x^* ) = y^* $$
+
+where $x$ is a normal sample, $\delta_x$ is a perturbation, $x^* := (x+\delta_x)$ is the adversarial example and $y^* $ a desired adversarial output.
+
 ## References
 
 1. \biblabel{goodfellow15}{Goodfellow et al. (2015)} **Goodfellow**, **Shiens** and **Szegedy**, [Explaining and harnessing adversarial examples](https://ai.google/research/pubs/pub43405), ICLR 2015.

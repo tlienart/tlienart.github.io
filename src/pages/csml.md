@@ -11,7 +11,7 @@ Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
 **Target audience**: advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra, real analysis and probability theory).
-When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol; when the notes are still under construction, they're marked with a 👷 symbol.
+When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 
@@ -39,14 +39,14 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
 -->
 
 * **adversarial ML** (*research notes on the topic*)
-    * 👷 [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances.
-    <!-- * 👷 [Robust stats](/pub/aml/robust-stats.html): -->
+    <!-- * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. --> <!--👷-->
+    <!-- * [Robust stats](/pub/aml/robust-stats.html): --> <!--👷-->
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 
 * **kernel methods** (*assumes good knowledge of stats and real analysis*)
     * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a reading group kernel methods introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
-    * (⭒)👷 [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings.
+    * (⭒) [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings. <!--👷-->
 
 ## Applied maths
 

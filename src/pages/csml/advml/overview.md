@@ -53,11 +53,16 @@ This has allowed to gain insight as to why Lipchitz regularisation of some model
 
 In white-box attacks, the adversary is assumed to have full knowledge of the model that is targeted.
 
-In \cite{papernot16}, the authors formulate their approach as
+In \cite{papernot16}, the authors formulate the problem as
 
 $$ \arg\min_{\delta_{x}}\,\,\|\delta_x\|, \quad \text{s.t.}\quad F(x^* ) = y^* $$
 
 where $x$ is a normal sample, $\delta_x$ is a perturbation, $x^* := (x+\delta_x)$ is the adversarial example and $y^* $ a desired adversarial output.
+In other words, find the minimum perturbation to a normal example $x$ so that it gets misclassified as a target class $y^* $.
+
+@@colbox-red
+ongoing
+@@
 
 ## References
 

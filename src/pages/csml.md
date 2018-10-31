@@ -39,7 +39,7 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
 -->
 
 * **adversarial ML** (*research notes on the topic*)
-    <!-- * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. --> <!--👷-->
+    * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. <!--👷 -->
     <!-- * [Robust stats](/pub/aml/robust-stats.html): --> <!--👷-->
 
 <!-- 🍺 * *notes on inference on graphical models* -->

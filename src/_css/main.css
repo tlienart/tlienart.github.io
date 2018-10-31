@@ -20,7 +20,7 @@ html {
 .right {
     float: right; }
 
-.content .container img {
+.jd-content .container img {
     width: auto;
     padding-left: 0;
     border-radius: 10px; }
@@ -29,7 +29,7 @@ html {
     FOOT / COPYRIGHT
 ================================================================== */
 
-.content .page-foot a {
+.jd-content .page-foot a {
     text-decoration: none;
     color: #a6a2a0;
     text-decoration: underline; }
@@ -48,7 +48,7 @@ html {
     TEXT GEOMETRY
 ================================================================== */
 
-.content {
+.jd-content {
     position: relative;
     padding-left: 12.5%;
     padding-right: 12.5%;
@@ -56,7 +56,7 @@ html {
 
 /* on wide screens, fix content width to a max value */
 @media (min-width: 940px) {
-    .content {
+    .jd-content {
         width: 705px;
         margin-left: auto;
         margin-right: auto; }
@@ -67,7 +67,7 @@ html {
     header {
         padding-left: 6%;
         padding-right: 6%; }
-    .content {
+    .jd-content {
         padding-left: 6%;
         padding-right: 6%; }
     }
@@ -76,20 +76,20 @@ html {
     TITLES
 ================================================================== */
 
-.content h1 { font-size: 24px; }
-.content h2 { font-size: 22px; }
-.content h3 { font-size: 20px; }
+.jd-content h1 { font-size: 24px; }
+.jd-content h2 { font-size: 22px; }
+.jd-content h3 { font-size: 20px; }
 
-.content h1, h2, h3, h4, h5 {
+.jd-content h1, h2, h3, h4, h5 {
     text-align: left; }
 
-.content h1 {
+.jd-content h1 {
     padding-bottom: 0.5em;
     border-bottom: 3px double lightgrey;
     margin-top: 1.5em;
     margin-bottom: 1em; }
 
-.content h2 {
+.jd-content h2 {
     padding-bottom: 0.3em;
     border-bottom: 1px solid lightgrey;
     margin-top: 2em;
@@ -100,14 +100,14 @@ html {
 ================================================================== */
 
 /* spacing between bullet points */
-.content li p {
+.jd-content li p {
         margin: 10px 0; }
 
-.content a {
+.jd-content a {
     color: #598fc4;
     text-decoration: none; }
 
-.content a:hover {
+.jd-content a:hover {
     text-decoration: underline; }
 
 /* ==================================================================
@@ -121,12 +121,12 @@ html {
     IMAGES in CONTENT
 ================================================================== */
 
-.content img {
+.jd-content img {
     width: 70%;
     text-align: center;
     padding-left: 10%; }
 
-.content .img-small img {
+.jd-content .img-small img {
     width: 50%;
     text-align: center;
     padding-left: 20%; }

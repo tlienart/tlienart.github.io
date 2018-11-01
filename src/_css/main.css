@@ -104,7 +104,7 @@ html {
         margin: 10px 0; }
 
 .jd-content a {
-    color: #598fc4;
+    color: #004de6;
     text-decoration: none; }
 
 .jd-content a:hover {
@@ -216,7 +216,7 @@ nav li {
     display: inline-block; }
 
 nav li a {
-    color: #4C9CF1;
+    color: #004de6;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;

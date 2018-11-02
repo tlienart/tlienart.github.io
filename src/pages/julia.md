@@ -2,7 +2,13 @@
 
 # Julia notes
 
-## Projects
+## Using Julia
+
+These are notes I keep on how to do stuff with Julia.
+
+* [Creating a package in Julia](/pub/julia/dev-package.html).
+
+## Projects in Julia
 
 Some packages I have worked on, I may write notes on some of them in the future.
 

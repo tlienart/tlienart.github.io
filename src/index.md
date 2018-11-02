@@ -31,7 +31,7 @@ If you would like to be updated when new sets of notes appear, you can follow me
     I got my PhD from Oxford in Bayesian ML co-supervised by <a href="http://www.stats.ox.ac.uk/~doucet/">Arnaud Doucet</a> and <a href="http://www.stats.ox.ac.uk/~teh/">Yee-Whye Teh</a>.
     </p>
     <p>
-    You can find me on <a href="https://github.com/tlienart">GitHub</a>, <a href="https://linkedin.com/in/tlienart">Linkedin</a> or email me at  𝛂.𝛃 @unimelb.edu.au where 𝛂 is my first and 𝛃 my last name (<a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x3B830BADB56BDAC4">PGP key</a>).
+    You can find me on <a href="https://github.com/tlienart">GitHub</a>, <a href="https://linkedin.com/in/tlienart">Linkedin</a> or email me at  𝛂.𝛃 @unimelb.edu.au where 𝛂 is my first and 𝛃 my last name.
     </p>
     <div style="clear: both"></div>      
   </div>

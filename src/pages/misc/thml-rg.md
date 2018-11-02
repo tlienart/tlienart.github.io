@@ -27,17 +27,17 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Nov 1, 2018**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_
+TBA
 
 ### Past
 
-( _currently empty_ )
+* (**Nov 1, 2018**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_
 
 ### Suggested papers to review
 
 To add papers to this list, please send me an email or let me know, it is just a draft at this point.
 The papers are (a bit arbitrarily) sorted in two blocks with the first one judged to have priority as potentially more likely to be of interest to everyone.
-At some point in the future, I'll organise the list with indicators of the theme.
+At some point in the future, I'll organise the list with indicators of the topics.
 
 #### priority block
 
@@ -55,7 +55,7 @@ At some point in the future, I'll organise the list with indicators of the theme
 * [An embarrassingly simple approach to zero-shot learning](http://proceedings.mlr.press/v37/romera-paredes15.pdf) by Romera-Paredes and Torr, ICML 2015.
 * [On the global linear convergence of Frank-Wolfe optimization variants](http://papers.nips.cc/paper/5925-on-the-global-linear-convergence-of-frank-wolfe-optimization-variants.pdf) by Lacoste-Julien and Jaggi, NIPS 2015.
 * [Fast and provably good seedings for k-means](https://papers.nips.cc/paper/6478-fast-and-provably-good-seedings-for-k-means.pdf) by Bachem, Lucic, Hassani and Krause, NIPS 2016.
-* [Revisiting the Nystrom method for improved large-scale machine learning](http://www.jmlr.org/papers/volume17/gittens16a/gittens16a.pdf), JMLR 2016.
+* [Revisiting the Nystrom method for improved large-scale machine learning](http://www.jmlr.org/papers/volume17/gittens16a/gittens16a.pdf), by Gittens and Mahoney, JMLR 2016.
 * [Hamiltonian descent methods](http://jmlr.org/papers/volume18/15-205/15-205.pdf) by Maddison, Paulin, Teh, Donoghue and Doucet, ArXiv 2018.
 * [Robust and scalable bayes via a median of subset posterior measures](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Minsker, Srivastava, Lin and Dunson, JMLR 2017.
 * [Fast algorithms for robust PCA via gradient descent](http://papers.nips.cc/paper/6445-fast-algorithms-for-robust-pca-via-gradient-descent.pdf) by Yi, Park, Chen and Caramanis, NIPS 2016.

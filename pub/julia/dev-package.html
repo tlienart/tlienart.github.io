@@ -23,8 +23,11 @@ Generating project PackageExample:
 <p>Once the folder is generated, you need to tell Julia that there&#39;s a new package you care about and that you want to be able to write <code>using PackageExample</code> in the REPL. To do this, simply write in Pkg mode:</p>
 <pre><code class=language-julia >&#40;1.0&#41; pkg&gt; dev ~/.julia/dev/PackageExample
 Resolving package versions...
-    Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;</code></pre>
-<code>~/.julia/environments/v1.0/Project.toml</code> &#96;&#96;&#96;</p>
+    Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;
+    &#91;afc87576&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;
+    Updating &#96;~/.julia/environments/v1.0/Manifest.toml&#96;
+    &#91;afc87576&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;</code></pre>
+
 <h3>Synching your new package with GitHub, Travis and CodeCov</h3>
 <h2>Developing your package</h2>
 <h3>Adding dependencies</h3>

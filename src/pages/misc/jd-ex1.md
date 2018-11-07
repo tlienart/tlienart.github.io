@@ -1,6 +1,7 @@
-@def isdemo = true
-@def hascode = true
 @def title = "Example"
+@def hascode = true
+@def isdemo = true
+
 
 \newcommand{\R}{\mathbb R}                <!-- just like in LaTeX -->
 \newcommand{\E}{\mathbb E}

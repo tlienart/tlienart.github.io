@@ -51,6 +51,9 @@ To do this, simply write in Pkg mode:
 (1.0) pkg> dev ~/.julia/dev/PackageExample
 Resolving package versions...
     Updating `~/.julia/environments/v1.0/Project.toml`
+    [afc87576] + PackageExample v0.1.0 [`~/.julia/dev/PackageExample`]
+    Updating `~/.julia/environments/v1.0/Manifest.toml`
+    [afc87576] + PackageExample v0.1.0 [`~/.julia/dev/PackageExample`]
 ```
 
 

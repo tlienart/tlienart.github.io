@@ -1,6 +1,9 @@
 <!-- Add here the global variables -->
 @def author = "T. Lienart"
 
+<!-- any non default judoc var must be pre-defined here with the right type -->
+@def isdemo = false
+
 <!-- Add here your commands that you'd like to use throughout  -->
 \newcommand{\eqa}[1]{\begin{eqnarray}#1\end{eqnarray}}
 \newcommand{\eqal}[1]{\begin{align}#1\end{align}}

@@ -27,7 +27,8 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-TBA
+* (**Nov 15, 2018**) Paper TBA. _Presenter: Neil Merchant_
+* (**Nov 29, 2018**) Paper TBA. _Presenter: Dongge Liu_
 
 ### Past
 

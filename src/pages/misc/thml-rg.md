@@ -27,12 +27,13 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Nov 15, 2018**) Paper TBA. _Presenter: Neil Merchant_.
-* (**Nov 29, 2018**) Paper TBA. _Presenter: Dongge Liu_.
+* (**Nov 15, '18**) Paper TBA. _Presenter: Neil Merchant_.
+* (**Nov 22, '18**) Paper TBA. _Presenter: Dongge Liu_.
+* (**Nov 29, '18**) [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018. _Presenter: Bastian Oetomo_.
 
 ### Past
 
-* (**Nov 1, 2018**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_.
+* (**Nov 1, '18**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_.
 
 ### Suggested papers to review
 
@@ -46,7 +47,6 @@ At some point in the future, I'll organise the list with indicators of the topic
 * [Gradient descent learns linear dynamical systems](http://jmlr.org/papers/volume19/16-465/16-465.pdf) by Hardt, Ma and Recht, JMLR 2018.
 * [Classification with imperfect training labels](https://arxiv.org/abs/1805.11505) by Cannings, Fan and Samworth, ArXiv 2018.
 * [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017.
-* [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018.
 * [Minimising the maximal loss: how and why](http://proceedings.mlr.press/v48/shalev-shwartzb16-supp.pdf) by Shalev-Shwartz and Wexler, ICML 2016.
 
 #### secondary block

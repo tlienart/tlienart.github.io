@@ -38,15 +38,15 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
     * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
 
-* **adversarial ML** (*research notes on the topic*)
-    * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. <!--👷 -->
+<!-- * **adversarial ML** (*research notes on the topic*) -->
+    <!-- * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. --> <!--👷-->
     <!-- * [Robust stats](/pub/aml/robust-stats.html): --> <!--👷-->
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 
 * **kernel methods** (*assumes good knowledge of stats and real analysis*)
-    * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a reading group kernel methods introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
-    * (⭒) [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): where we discuss probabilistic reasoning with kernel embeddings. <!--👷-->
+    * (⭒) [RKHS embeddings part 1](/pub/csml/rkhs/intro-rkhs1.html): notes from a 2015 "kernel methods reading group" introducing *reproducing kernel Hilbert space* embeddings of distributions and their use.
+    * (⭒) [RKHS embeddings part 2](/pub/csml/rkhs/intro-rkhs2.html): rest of the notes where we discuss probabilistic reasoning with kernel embeddings. <!--👷-->
 
 ## Applied maths
 

@@ -1,44 +1,4 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		
-			<link rel="stylesheet" href="/css/main.css">
-	        <link rel="icon" href="/assets/infra/favicon.png">
-		
-		 <title>Creating a package in Julia</title>	
-		
-         <!-- Syntax highlighting via Prism, note: restricted langs -->
-<link rel="stylesheet" href="/libs/highlight/github.min.css">
- 	
-	</head>
-    <body>
-		
-        <header>
-            <div class="blog-name"><a href="/">Thibaut Lienart</a></div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
-                    <li><a href="/pub/julia.html">Julia notes</a></li>
-                    <li><a href="/pub/misc.html">Misc.</a></li>
-                </ul>
-                <img src="/assets/infra/hamburger.svg" id="menu-icon">
-            </nav>
-        </header>
-		
-
-<!-- Content appended here -->
-
-<div class="jd-content">
-<h1>Creating a package in Julia</h1>
-<p>This is a short personal guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways to do this&#33;</p>
-<p>This has been written while using <code>Julia 1.0.1</code> and I&#39;m using MacOS &#40;but I expect the process to be identical on Linux and very similar on Windows 10&#41;.</p>
-<h2>Creating the package on your computer</h2>
-<p>I prefer to have all the packages I&#39;m developing in the same spot, it makes my life simpler, and this spot is <code>~/.julia/dev</code> where <code>~</code> is the path to my home folder.</p>
-<p>Fire up Julia and <code>cd</code> to the right directory:</p>
-<pre><code class="language-julia">julia&gt; cd&#40;expanduser&#40;&quot;~/.julia/dev&quot;&#41;&#41;</code></pre>
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Creating a package in Julia</title> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Creating a package in Julia</h1> <p>This is a short personal guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways to do this&#33;</p> <p>This has been written while using <code>Julia 1.0.1</code> and I&#39;m using MacOS &#40;but I expect the process to be identical on Linux and very similar on Windows 10&#41;.</p> <h2>Creating the package on your computer</h2> <p>I prefer to have all the packages I&#39;m developing in the same spot, it makes my life simpler, and this spot is <code>~/.julia/dev</code> where <code>~</code> is the path to my home folder.</p> <p>Fire up Julia and <code>cd</code> to the right directory:</p> <pre><code class=language-julia >julia&gt; cd&#40;expanduser&#40;&quot;~/.julia/dev&quot;&#41;&#41;</code></pre>
 
 <p>Then enter the package mode with <code>&#93;</code> and just use the <code>generate</code> command.</p>
 <pre><code>&#40;v1.0&#41; pkg&gt; generate PackageExample
@@ -55,13 +15,13 @@ Generating project PackageExample:
 <p>This is extremely bare-bones, in there you find essentially two files:</p>
 <ol>
 <li><p><code>Project.toml</code> which, will contain information about the authors, name of the package, an identifier and the dependencies,</p>
-</li>
+
 <li><p><code>src/PackageExample.jl</code> the main module file of your package, this will be where all your methods are defined, exported etc, in most cases it will be a file with lots of <code>include&#40;&quot;file.jl&quot;&#41;</code> where functions are actually defined in order to avoid having one massively cluttered file. Currently it only contains a simple <code>greet&#40;&#41;</code> function.</p>
-</li>
+
 </ol>
 <h3>Telling Julia about your new package</h3>
 <p>Once the folder is generated, you need to tell Julia that there&#39;s a new package you care about and that you want to be able to write <code>using PackageExample</code> in the REPL. To do this, simply write in Pkg mode:</p>
-<pre><code class="language-julia">&#40;1.0&#41; pkg&gt; dev ~/.julia/dev/PackageExample
+<pre><code class=language-julia >&#40;1.0&#41; pkg&gt; dev ~/.julia/dev/PackageExample
 Resolving package versions...
     Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;
     &#91;afc87576&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;
@@ -72,19 +32,15 @@ Resolving package versions...
 <h2>Developing your package</h2>
 <h3>Adding dependencies</h3>
 
-<div class="page-foot">
-		<div class="copyright">
-				&copy; T. Lienart. Last modified: November 02, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+<div class=page-foot >
+		<div class=copyright >
+				&copy; T. Lienart. Last modified: November 08, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 
 </div>
-<!-- CONTENT ENDS HERE -->
+
         
         
                 <script src="/libs/highlight/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
-
-        
-    </body>
-</html>

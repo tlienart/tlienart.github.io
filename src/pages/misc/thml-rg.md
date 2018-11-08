@@ -27,11 +27,12 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-TBA
+* (**Nov 15, 2018**) Paper TBA. _Presenter: Neil Merchant_.
+* (**Nov 29, 2018**) Paper TBA. _Presenter: Dongge Liu_.
 
 ### Past
 
-* (**Nov 1, 2018**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_
+* (**Nov 1, 2018**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_.
 
 ### Suggested papers to review
 

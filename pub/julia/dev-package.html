@@ -1,7 +1,7 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Creating a package in Julia</title> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Creating a package in Julia</h1> <p>This is a short personal guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways to do this&#33;</p> <p>This has been written while using <code>Julia 1.0.1</code> and I&#39;m using MacOS &#40;but I expect the process to be identical on Linux and very similar on Windows 10&#41;.</p> <h2>Creating the package on your computer</h2> <p>I prefer to have all the packages I&#39;m developing in the same spot, it makes my life simpler, and this spot is <code>~/.julia/dev</code> where <code>~</code> is the path to my home folder.</p> <p>Fire up Julia and <code>cd</code> to the right directory:</p> <pre><code class=language-julia >julia&gt; cd&#40;expanduser&#40;&quot;~/.julia/dev&quot;&#41;&#41;</code></pre>
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Creating a package in Julia</title> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Creating a package in Julia</h1> <p>This is a short guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways. It has been written while using <code>Julia 1.0.1</code> on MacOS &#40;but I expect the process to be identical on Linux and very similar on Windows 10&#41;.</p> <h2>Creating the package on your computer</h2> <p>I prefer to have all the packages I&#39;m developing in the same spot, it makes my life simpler, and this spot is <code>~/.julia/dev</code> where <code>~</code> is the path to my home folder.</p> <p>Fire up Julia and <code>cd</code> to the right directory:</p> <pre><code class=language-julia-repl >julia&gt; cd&#40;expanduser&#40;&quot;~/.julia/dev&quot;&#41;&#41;</code></pre>
 
 <p>Then enter the package mode with <code>&#93;</code> and just use the <code>generate</code> command.</p>
-<pre><code>&#40;v1.0&#41; pkg&gt; generate PackageExample
+<pre><code class=language-julia-repl >&#40;v1.0&#41; pkg&gt; generate PackageExample
 Generating project PackageExample:
     PackageExample/Project.toml
     PackageExample/src/PackageExample.jl</code></pre>
@@ -12,29 +12,99 @@ Generating project PackageExample:
 └── src
     └── PackageExample.jl</code></pre>
 
-<p>This is extremely bare-bones, in there you find essentially two files:</p>
+<p>This is extremely bare-bones with just two files:</p>
 <ol>
-<li><p><code>Project.toml</code> which, will contain information about the authors, name of the package, an identifier and the dependencies,</p>
+<li><p><code>Project.toml</code> which contains information about the authors, name of the package, an identifier and the dependencies. While you can change the author&#40;s&#41; detail, don&#39;t change anything else for now.</p>
 
-<li><p><code>src/PackageExample.jl</code> the main module file of your package, this will be where all your methods are defined, exported etc, in most cases it will be a file with lots of <code>include&#40;&quot;file.jl&quot;&#41;</code> where functions are actually defined in order to avoid having one massively cluttered file. Currently it only contains a simple <code>greet&#40;&#41;</code> function.</p>
+<li><p><code>src/PackageExample.jl</code> the main module file of your package, this will be where all your methods are defined, exported etc. Currently it only contains a simple <code>greet&#40;&#41;</code> function.</p>
 
 </ol>
 <h3>Telling Julia about your new package</h3>
-<p>Once the folder is generated, you need to tell Julia that there&#39;s a new package you care about and that you want to be able to write <code>using PackageExample</code> in the REPL. To do this, simply write in Pkg mode:</p>
-<pre><code class=language-julia >&#40;1.0&#41; pkg&gt; dev ~/.julia/dev/PackageExample
-Resolving package versions...
-    Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;
-    &#91;afc87576&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;
-    Updating &#96;~/.julia/environments/v1.0/Manifest.toml&#96;
-    &#91;afc87576&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;</code></pre>
+<p>Once the folder has been generated, you need to tell Julia that there&#39;s a new package you care about and that you want to be able to write <code>using PackageExample</code> in the REPL in order to play with it. To do this, simply write in Pkg mode:</p>
+<pre><code class=language-julia-repl >&#40;v1.0&#41; pkg&gt; dev ~/.julia/dev/PackageExample/
+ Resolving package versions...
+  Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;
+  &#91;80573836&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;
+  Updating &#96;~/.julia/environments/v1.0/Manifest.toml&#96;
+  &#91;80573836&#93; &#43; PackageExample v0.1.0 &#91;&#96;~/.julia/dev/PackageExample&#96;&#93;</code></pre>
 
-<h3>Synching your new package with GitHub, Travis and CodeCov</h3>
+<p>You can now test that everything works by calling <code>using PackageExample</code> in Julia:</p>
+<pre><code class=language-julia-repl >julia&gt; using PackageExample
+&#91; Info: Precompiling PackageExample &#91;80573836-e3e6-11e8-18aa-7378983e83b2&#93;
+julia&gt; PackageExample.greet&#40;&#41;
+Hello world&#33;</code></pre>
+
 <h2>Developing your package</h2>
+<h3>Adding tests</h3>
+<p>Let&#39;s add and export two basic functions in <code>src/PackageExample.jl</code>:</p>
+<pre><code class=language-julia >export foo, bar
+
+foo&#40;x::T, y::T&#41; where T &lt;: Real &#61; x &#43; y - 5
+bar&#40;z::Float64&#41; &#61; foo&#40;sqrt&#40;z&#41;, z&#41;</code></pre>
+
+<p>To add tests, you should create a folder <code>test/</code> in the <code>PackageExample</code> folder and add a file <code>runtests.jl</code> &#40;Julia convention&#41;. That file may typically contain calls to other test files via <code>include&#40;fname&#41;</code>. In our case there is only two functions to test so for instance we could write in <code>runtests.jl</code>:</p>
+<pre><code class=language-julia >using PackageExample, Test
+
+@testset &quot;foo&quot; begin
+    x, y &#61; 5, 7
+    @test foo&#40;x, y&#41; &#61;&#61; 7
+    x &#61; &quot;blah&quot;
+    @test_throws MethodError foo&#40;x, y&#41;
+end
+
+@testset &quot;bar&quot; begin
+    z &#61; 4.
+    @test bar&#40;z&#41; &#61;&#61; 1.
+end</code></pre>
+
+<p>To test your package you can then just run <code>runtests.jl</code> or alternatively you can use the Pkg mode again:</p>
+<pre><code class=language-julia-repl >&#40;v1.0&#41; pkg&gt; test PackageExample</code></pre>
+
+<p><strong>Note</strong>: you may have to do <code>&#93; add Test</code> to add the <code>Test</code> package to your environment.</p>
 <h3>Adding dependencies</h3>
+<h3>Syncing your with GitHub</h3>
+<p>Let&#39;s now put the package online on GitHub &#40;the instructions should be pretty much identical for GitLab&#41;.</p>
+<h4>on Github.com</h4>
+<ul>
+<li><p>create a new repository, the Julia convention is to name repositories with a <code>.jl</code> in the name, in our case: <code>PackageExample.jl</code></p>
+
+<li><p><strong>do not</strong> add anything &#40;<code>README</code>, <code>LICENSE</code> etc&#41; for now.</p>
+
+</ul>
+<h4>in your terminal</h4>
+<ul>
+<li><p>set up your local folder as a git repository</p>
+
+</ul>
+<pre><code>cd ~/.julia/dev/PackageExample
+git init
+git add .
+git commit -m &quot;First commit&quot;</code></pre>
+
+<ul>
+<li><p>link it to the new repository you have created on GitHub</p>
+
+</ul>
+<pre><code>git remote add origin https://github.com/tlienart/PackageExample.jl</code></pre>
+
+<ul>
+<li><p>push your local changes</p>
+
+</ul>
+<pre><code>git push -u origin master</code></pre>
+
+<h3>Travis and CodeCov</h3>
+<p>You&#39;ll want to add a <code>README.md</code> and a <code>LICENSE.md</code> file to your project which is pretty easy to do. For the license, most of Julia&#39;s projects tend to be <a href="choose license">MIT licensed</a>.</p>
+<p><strong>Travis</strong>: login to <a href="https://travis-ci.org">Travis</a> with your GitHub credentials, click on the <code>&#43;</code> button in the left-margin next to <code>My Repositories</code> and toggle <code>PackageExample.jl</code> from the list.</p>
+<p>You can then trigger a build manually for the first &#40;and last&#41; time by clicking on <code>More options &gt; Trigger build</code> on the right of the screen. The results will appear a while later, also on <a href="https://codecov.io/gh/tlienart/PackageExample.jl">CodeCov</a> where you can also login via your GitHub credentials and inspect the coverage of your code.</p>
+<p><strong>Badges</strong>: you may want to add badges reporting the status of the repository on your README.  To do so, copy the first few lines of <a href="">this README.md</a> file without forgetting to modify your username.</p>
+<p>This should show something like this:</p>
+<div class=ght ><table><tr><th>Status<th>Coverage<tr><td><a href="https://travis-ci.org/tlienart/PackageExample.jl"><img src="https://travis-ci.org/tlienart/PackageExample.jl.svg?branch&#61;master" alt="Build Status" /></a><td><a href="http://codecov.io/github/tlienart/PackageExample.jl?branch&#61;master"><img src="http://codecov.io/github/tlienart/PackageExample.jl/coverage.svg?branch&#61;master" alt=codecov.io  /></a></table>
+</div>
 
 <div class=page-foot >
 		<div class=copyright >
-				&copy; T. Lienart. Last modified: November 08, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+				&copy; T. Lienart. Last modified: November 09, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 

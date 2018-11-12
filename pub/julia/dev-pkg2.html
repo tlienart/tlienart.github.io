@@ -1,0 +1,80 @@
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Creating a package in Julia (pt. 2)</title> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Creating a package in Julia &#40;part 2&#41;</h1> <p>In this part we briefly discuss how to synch your package with GitHub &#40;the steps should be similar with GitLab&#41; as well as Travis CI, Appveyor and CodeCov.</p> <h2>Telling GitHub, Travis, AppVeyor and CodeCov about your package</h2> <p>&#40;This part follows the <a href="/pub/julia/dev-pkg.html">previous part</a> where we created a package <code>Ex</code>&#41;</p> <ul> <li><p><strong>github.com</strong>:</p> <ul> <li><p>create a new repository, the Julia convention is to name repositories with a <code>.jl</code> in the name, in our case: <code>Ex.jl</code></p> <li><p><strong>do not</strong> add anything &#40;<code>README</code>, <code>LICENSE</code> etc&#41; for now.</p> </ul> <li><p><strong>travis-ci.org</strong>:</p> <ul> <li><p>Login to <a href="https://travis-ci.org">Travis</a> with your GitHub credentials, click on the <code>&#43;</code> button in the left-margin next to <code>My Repositories</code> and toggle <code>Ex.jl</code> from the list.</p> </ul> <li><p><strong>appveyor.com</strong>:</p> <ul> <li><p>Login to <a href="https://ci.appveyor.com/">AppVeyor</a> with your GitHub credentials, click on &quot;new project&quot; and add <code>Ex.jl</code> from the list.</p> </ul> <li><p><strong>codecov.io</strong>:</p> <ul> <li><p>nothing to do</p> </ul> </ul> <h2>Configuration scripts for Travis and AppVeyor</h2> <p>In your <code>~/.julia/dev/Ex/</code> folder, you&#39;ll need to add files telling Travis and AppVeyor what to do with your repo.</p> <h3>script for Travis</h3> <p>In your <code>Ex/</code> folder, add a file <code>.appveyor.yml</code> with the following content &#40;more information <a href="https://docs.travis-ci.com/user/languages/julia/">here</a>&#41;:</p> <pre><code class=language-yml >language: julia
+os:
+  - linux
+julia:
+  - 0.7
+  - 1
+  - nightly
+matrix:
+  allow_failures:
+    - julia: nightly
+notifications:
+  email: false
+env:
+   - PYTHON&#61;&quot;&quot;
+after_success:
+- julia -e &#39;using Pkg;
+            Pkg.add&#40;&quot;Coverage&quot;&#41;;
+            using Coverage;
+            Codecov.submit&#40;Codecov.process_folder&#40;&#41;&#41;&#39;</code></pre> <h3>script for AppVeyor</h3> <p>In your <code>Ex/</code> folder, add a file <code>.appveyor.yml</code> with the following content &#40;more information <a href="https://github.com/JuliaCI/Appveyor.jl">here</a>&#41;:</p> <pre><code class=language-yml >environment:
+  matrix:
+  - julia_version: 0.7
+  - julia_version: 1
+  - julia_version: nightly
+
+platform:
+  - x86 # 32-bit
+  - x64 # 64-bit
+
+matrix:
+   allow_failures:
+   - julia_version: nightly
+
+branches:
+  only:
+    - master
+
+notifications:
+  - provider: Email
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: false
+
+install:
+  - ps: iex &#40;&#40;new-object net.webclient&#41;.DownloadString&#40;&quot;https://raw.githubusercontent.com/JuliaCI/Appveyor.jl/version-1/bin/install.ps1&quot;&#41;&#41;
+
+build_script:
+  - echo &quot;&#37;JL_BUILD_SCRIPT&#37;&quot;
+  - C:\julia\bin\julia -e &quot;&#37;JL_BUILD_SCRIPT&#37;&quot;
+
+test_script:
+  - echo &quot;&#37;JL_TEST_SCRIPT&#37;&quot;
+  - C:\julia\bin\julia -e &quot;&#37;JL_TEST_SCRIPT&#37;&quot;</code></pre> <h2>Synchronising</h2> <p>The only thing left to do is to push everything on GitHub. To do this, start by setting your local folder as a Git repository:</p> <pre><code class=language-bash >cd ~/.julia/dev/Ex
+git init
+git add .
+git commit -m &quot;First commit&quot;</code></pre> <p>you can then link it to the new repository you have just created on GitHub:</p> <pre><code class=language-bash >git remote add origin https://github.com/tlienart/Ex.jl</code></pre>
+
+<p>and finally, push your local changes:</p>
+<pre><code class=language-bash >git push -u origin master</code></pre>
+
+<p>That first push will also trigger a build on Travis and AppVeyor. Provided the build on Travis was successful, it will also send the coverage information to CodeCov.</p>
+<h2>Readme and license</h2>
+<p>You&#39;ll want to add a <code>README.md</code> and a <code>LICENSE.md</code> file to your project which is a pretty straightforward thing to do. For the license, most of Julia&#39;s projects tend to be <a href="choose license">MIT licensed</a>.</p>
+<p><strong>Badges</strong>: you may want to add badges reporting the status of the repository on your README. To do so, copy the first few lines of <a href="https://raw.githubusercontent.com/tlienart/Ex.jl/master/README.md">this README.md</a> file without forgetting to modify your username and project name.</p>
+<p>This should show something like this:</p>
+<div class=center ><div class=github ><table><tr><th>Linux/OSX<th>Windows<th>Coverage<tr><td><a href="https://travis-ci.org/tlienart/PackageExample.jl"><img src="https://travis-ci.org/tlienart/PackageExample.jl.svg?branch&#61;master" alt="Build Status" /></a><td><a href="https://ci.appveyor.com/project/tlienart/ex-jl"><img src="https://ci.appveyor.com/api/projects/status/bm91o5a9jirvanjj?svg&#61;true" alt=appveyor.com  /></a><td><a href="http://codecov.io/github/tlienart/PackageExample.jl?branch&#61;master"><img src="http://codecov.io/github/tlienart/PackageExample.jl/coverage.svg?branch&#61;master" alt=codecov.io  /></a></table>
+</div>
+ </div>
+
+<div class=page-foot >
+		<div class=copyright >
+				&copy; T. Lienart. Last modified: November 12, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+
+</div>
+
+        
+        
+                <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>

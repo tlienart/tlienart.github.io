@@ -24,3 +24,6 @@
 
 <!-- in-text replacements -->
 \newcommand{\cvx}[1]{/pub/csml/cvxopt/!#1}
+
+<!-- Text decoration -->
+\newcommand{\ul}[1]{~~~<span id=underline>!#1</span>~~~}

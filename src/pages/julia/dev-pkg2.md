@@ -5,20 +5,25 @@
 # Creating a package in Julia (part 2)
 
 In this part we briefly discuss how to synch your package with GitHub (the steps should be similar with GitLab) as well as Travis CI, Appveyor and CodeCov.
+Just in case you're not familiar with those:
+
+* Travis will run your tests in a Linux and Mac environment,
+* AppVeyor in a Windows environment
+* CodeCov will analyse the output of `Coverage.jl` which checks your [code coverage]()
 
 ## Telling GitHub, Travis, AppVeyor and CodeCov about your package
 
 (This part follows the [previous part](/pub/julia/dev-pkg.html) where we created a package `Ex`)
 
 * **github.com**:
-  * create a new repository, the Julia convention is to name repositories with a `.jl` in the name, in our case: `Ex.jl`
-  * **do not** add anything (`README`, `LICENSE` etc) for now.
+  * create a new repository, the Julia convention is to name repositories with a `.jl` in the name, in our case: `Ex.jl`,
+  * \ul{do not} add anything (`README`, `LICENSE` etc) for now.
 * **travis-ci.org**:
   * Login to [Travis](https://travis-ci.org) with your GitHub credentials, click on the `+` button in the left-margin next to `My Repositories` and toggle `Ex.jl` from the list.
 * **appveyor.com**:
   * Login to [AppVeyor](https://ci.appveyor.com/) with your GitHub credentials, click on "new project" and add `Ex.jl` from the list.
 * **codecov.io**:
-  * nothing to do
+  * nothing to do.
 
 ## Configuration scripts for Travis and AppVeyor
 
@@ -121,7 +126,7 @@ Provided the build on Travis was successful, it will also send the coverage info
 ## Readme and license
 
 You'll want to add a `README.md` and a `LICENSE.md` file to your project which is a pretty straightforward thing to do.
-For the license, most of Julia's projects tend to be [MIT licensed](choose license).
+For the license, most of Julia's projects tend to be [MIT licensed](https://choosealicense.com/licenses/mit/).
 
 **Badges**: you may want to add badges reporting the status of the repository on your README.
 To do so, copy the first few lines of [this README.md](https://raw.githubusercontent.com/tlienart/Ex.jl/master/README.md) file without forgetting to modify your username and project name.

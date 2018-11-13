@@ -11,11 +11,12 @@ It has been written while using `Julia 1.0.2` on MacOS (but I expect the process
 
 I prefer to have all the packages I'm developing in the same spot, it makes my life simpler, and this spot is `~/.julia/dev` where `~` is the path to my home folder (you don't necessarily need to do this).
 
-Fire up Julia and `cd` to the right directory:
+Fire up Julia and `cd` to the right directory (press `;` to activate the shell mode)
 
 ```julia-repl
-julia> cd(expanduser("~/.julia/dev"))
+shell> cd ~/.julia/dev
 ```
+
 
 Then enter the package mode with `]` and just use the `generate` command.
 
@@ -40,47 +41,39 @@ This generates a folder in `~/.julia/dev` with the following simple structure
 
 ### Telling Julia about your new package
 
-Once the folder has been generated, you need to tell Julia to consider a new environment where you will be developing the package.
-To do this, you need to go from the "main" environment `(v1.0)` to your package's environment `(Ex)`.
-While this may seem cumbersome, it allows to have distinct dependencies for different projects you may have without them clashing.
-
-To activate the environment:
+Once the folder has been generated, you need to tell Julia about it.
+To do this, in Pkg mode write:
 
 ```julia-repl
-shell> cd ~/.julia/Ex   # shell mode
-(v1.0) pkg> activate .  # pkg mode
-(Ex) pkg>
+(v1.0) pkg> dev ~/.julia/dev/Ex
+ Resolving package versions...
+  Updating `~/.julia/environments/v1.0/Project.toml`
+  [bd8551b6] + Ex v0.1.0 [`~/.julia/dev/Ex`]
+  Updating `~/.julia/environments/v1.0/Manifest.toml`
+  [bd8551b6] + Ex v0.1.0 [`~/.julia/dev/Ex`]
 ```
 
-**Remark**: where to activate the Pkg mode you should use `]` at the start of a line in the REPL, to activate the shell mode you should use `;`.
+**Note**: if you wanted to work on a repository that is already on GitHub but not yet on your computer, you could also use `dev` and just specify the appropriate repository url as path.
 
-If you now leave the Pkg mode, you can test that everything works:
+You can now call your package:
 
 ```julia-repl
 julia> using Ex
-[ Info: Precompiling Ex [fe723aa2-...]
+[ Info: Precompiling Ex [acebdc52-e6d5-...]
 julia> Ex.greet()
-Hello world!
-```
-
-**Note**: in the Pkg environment, if you want to go back to the "main" environment, just use `activate` without arguments.
-
-```julia-repl
-(Ex) pkg> activate
-(v1.0) pkg>
+Hello World!
 ```
 
 ## Developing your package
 
 ### Adding dependencies
 
-In the `(Ex)` environment, you can now add any dependency you need without it clashing with your "main" julia environment.
-Track of this will be kept in a `Manifest.toml` file.
-
-All this is handled in the Pkg mode seamlessly.
-For instance, you will almost certainly want to add the `Test` package to your project.
+In order to add dependencies and have them not clashing with the dependencies of other packages you may be developing, you need to enter the *environment* of `Ex` and add the relevant dependency there.
+To do this, `cd` to the package folder, and `activate` it:
 
 ```julia-repl
+shell> cd ~/.julia/dev/Ex
+(v1.0) pkg> activate .
 (Ex) pkg> add Test
   Updating registry at `~/.julia/registries/General`
   Updating git-repo `https://github.com/JuliaRegistries/General.git`
@@ -101,14 +94,13 @@ For instance, you will almost certainly want to add the `Test` package to your p
   [8dfed614] + Test
 ```
 
-Since it's the first time we add a dependency to the project, this also creates the `Manifest.toml` file.
-Some of the things you will may want to do later
+Here we added the package `Test` which will be needed for unit testing.
+To leave the package-specific environment, just use `activate` again but without arguments:
 
-1. update the dependencies: `(Ex) pkg> update`
-2. add a package at a specific stage: `(Ex) pkg> add Package#master`
-3.
-
-**Remark**: if some package you're interested in is not registered, you can just use the package URL.
+```julia-repl
+(Ex) pkg> activate
+(v1.0) pkg>
+```
 
 ### Adding tests
 
@@ -143,18 +135,40 @@ end
 end
 ```
 
+### Testing the package
+
 To test your package you can then just run `runtests.jl` or alternatively you can use the Pkg mode again:
 
 ```julia-repl
-(Ex) pkg> test Ex
+(Ex) pkg> test
    Testing Ex
  Resolving package versions...
 Test Summary: | Pass  Total
 foo           |    2      2
 Test Summary: | Pass  Total
 bar           |    1      1
+   Testing Ex tests passed
 ```
 
-You're good to go!
+If you're back in the main environment, just apply `resolve` and then `test Ex`:
+
+```julia-repl
+(v1.0) pkg> resolve
+ Resolving package versions...
+  Updating `~/.julia/environments/v1.0/Project.toml`
+ [no changes]
+  Updating `~/.julia/environments/v1.0/Manifest.toml`
+ [no changes]
+(v1.0) pkg> test Ex
+   Testing Ex
+ Resolving package versions...
+Test Summary: | Pass  Total
+foo           |    2      2
+Test Summary: | Pass  Total
+bar           |    1      1
+   Testing Ex tests passed
+```
+
+**Note**: you only need to call `resolve` if you've added new dependencies to the project (here we added `Test`).
 
 If you'd like to know how to synchronise your new package with GitHub (or similar system), head to the [second part](/pub/julia/dev-pkg2.html).

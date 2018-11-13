@@ -39,7 +39,6 @@ os:
   - linux
 julia:
   - 0.7
-  - 1
   - nightly
 matrix:
   allow_failures:
@@ -63,7 +62,6 @@ In your `Ex/` folder, add a file `.appveyor.yml` with the following content (mor
 environment:
   matrix:
   - julia_version: 0.7
-  - julia_version: 1
   - julia_version: nightly
 
 platform:

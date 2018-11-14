@@ -27,7 +27,7 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Nov 15, '18**) Paper TBA. _Presenter: Neil Merchant_.
+* (**Nov 15, '18**) [Explaining the success of adaboost and random forests as interpolating classifiers](http://jmlr.org/papers/volume18/15-240/15-240.pdf) by Wyner, Olson, Bleich and Mease, JMLR 2017. _Presenter: Neil Merchant_.
 * (**Nov 22, '18**) Paper TBA. _Presenter: Dongge Liu_.
 * (**Nov 29, '18**) [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018. _Presenter: Bastian Oetomo_.
 
@@ -43,7 +43,6 @@ At some point in the future, I'll organise the list with indicators of the topic
 
 #### priority block
 
-* [Explaining the success of adaboost and random forests as interpolating classifiers](http://jmlr.org/papers/volume18/15-240/15-240.pdf) by Wyner, Olson, Bleich and Mease, JMLR 2017.
 * [Gradient descent learns linear dynamical systems](http://jmlr.org/papers/volume19/16-465/16-465.pdf) by Hardt, Ma and Recht, JMLR 2018.
 * [Classification with imperfect training labels](https://arxiv.org/abs/1805.11505) by Cannings, Fan and Samworth, ArXiv 2018.
 * [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017.

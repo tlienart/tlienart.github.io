@@ -281,8 +281,8 @@ header .blog-name {
     width: 39%;
     display: inline-block;
     text-align: left;
-    font-size: 22px;
-    font-family: monospace;
+    font-size: 18px;
+    font-family: "Lucida Console", Monaco, monospace;
     padding-top: 10px;}
 
 header .blog-name a {

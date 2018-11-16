@@ -6,11 +6,11 @@
 The aim of the notes you'll find here is to suggest a direct, constructive path to results I find useful, beautiful, or simply interesting.
 This stems mainly from my experience reading papers where the presentation sometimes trades clarity for generality.
 
-The emphasis here is on building intuition rather than mathematical rigour though I try to indicate clearly where simplifications are made and what they may imply.
+The emphasis is on intuition rather than rigour though I try to indicate where simplifications are made and what they may imply.
 Often, these simplifications allow for straightforward demonstrations.
 The references to more technical work can then be helpful to learn the results in full.
 
-**Target audience**: advanced undergrads or grads in quantitative fields such as applied-maths, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra, real analysis and probability theory).
+**Target audience**: advanced undergrads or grads in quantitative fields such as applied-maths, stats, comp-sci, etc, assuming a decent background in basic maths (in particular linear algebra, real analysis and probability theory).
 When the level of the notes is judged (arbitrarily) to be a bit more advanced, it is marked by a "⭒" symbol.
 
 If you find anything dubious in the notes, please send me an email, feedback is always much appreciated.

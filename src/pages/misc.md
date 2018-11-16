@@ -5,7 +5,6 @@
 Here I keep a record of pages I wrote which do not deserve their own category (at least for now).
 
 * [theoretical machine learning reading group](/pub/misc/thml-rg.html): where I keep information about the theoretical ML reading group I organise at the university of Melbourne.
-* [about this website](/pub/misc/about-website.html): where I discuss how this website was built.
 
 <!--
 ## Travels

@@ -5,7 +5,7 @@
 # Creating a package in Julia
 
 This is a short guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways.
-It has been written while using `Julia 1.0.2` on MacOS (but I expect the process to be identical on Linux and very similar on Windows 10).
+It has been written while using `Julia 1.1` on MacOS (but I expect the process to be identical on Linux and very similar on Windows 10).
 
 ## Creating the package on your computer
 
@@ -16,7 +16,6 @@ Fire up Julia and `cd` to the right directory (press `;` to activate the shell m
 ```julia-repl
 shell> cd ~/.julia/dev
 ```
-
 
 Then enter the package mode with `]` and just use the `generate` command.
 

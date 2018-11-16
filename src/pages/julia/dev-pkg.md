@@ -102,6 +102,8 @@ To leave the package-specific environment, just use `activate` again but without
 (v1.0) pkg>
 ```
 
+**Remark**: a recent fix was added to Pkg so that you can do `(v1.0) pkg> dev ~/.julia/dev/Ex` instead of `cd` followed by `activate .`. This is not yet present in `1.0.2` but should be present in subsequent versions.
+
 ### Adding tests
 
 Let's add and export two basic functions in `src/Ex.jl`:

@@ -62,6 +62,7 @@ Hello World&#33;</code></pre>
 <pre><code class=language-julia-repl >&#40;Ex&#41; pkg&gt; activate
 &#40;v1.0&#41; pkg&gt;</code></pre>
 
+<p><strong>Remark</strong>: a recent fix was added to Pkg so that you can do <code>&#40;v1.0&#41; pkg&gt; dev ~/.julia/dev/Ex</code> instead of <code>cd</code> followed by <code>activate .</code>. This is not yet present in <code>1.0.2</code> but should be present in subsequent versions.</p>
 <h3>Adding tests</h3>
 <p>Let&#39;s add and export two basic functions in <code>src/Ex.jl</code>:</p>
 <pre><code class=language-julia >module Ex
@@ -117,7 +118,7 @@ bar           |    1      1
 <p>If you&#39;d like to know how to synchronise your new package with GitHub &#40;or similar system&#41;, head to the <a href="/pub/julia/dev-pkg2.html">second part</a>.
 <div class=page-foot >
 		<div class=copyright >
-				&copy; T. Lienart. Last modified: November 13, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+				&copy; T. Lienart. Last modified: November 16, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 

@@ -27,12 +27,12 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Nov 15, '18**) [Explaining the success of adaboost and random forests as interpolating classifiers](http://jmlr.org/papers/volume18/15-240/15-240.pdf) by Wyner, Olson, Bleich and Mease, JMLR 2017. _Presenter: Neil Merchant_.
-* (**Nov 22, '18**) Paper TBA. _Presenter: Dongge Liu_.
+* (**Nov 22, '18**) * [An optimal algorithm for bandit and zero-order convex optimisation with two-point feedback](http://jmlr.org/papers/volume18/16-632/16-632.pdf) by Shamir, JMLR 2017. _Presenter: Dongge Liu_.
 * (**Nov 29, '18**) [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018. _Presenter: Bastian Oetomo_.
 
 ### Past
 
+* (**Nov 15, '18**) [Explaining the success of adaboost and random forests as interpolating classifiers](http://jmlr.org/papers/volume18/15-240/15-240.pdf) by Wyner, Olson, Bleich and Mease, JMLR 2017. _Presenter: Neil Merchant_.
 * (**Nov 1, '18**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_.
 
 ### Suggested papers to review
@@ -51,7 +51,6 @@ At some point in the future, I'll organise the list with indicators of the topic
 #### secondary block
 
 * [On Markov chain Monte Carlo methods for tall data](http://jmlr.org/papers/volume18/15-205/15-205.pdf) by Bardenet, Doucet and Holmes, JMLR 2017.
-* [An optimal algorithm for bandit and zero-order convex optimisation with two-point feedback](http://jmlr.org/papers/volume18/16-632/16-632.pdf) by Shamir, JMLR 2017.
 * [An embarrassingly simple approach to zero-shot learning](http://proceedings.mlr.press/v37/romera-paredes15.pdf) by Romera-Paredes and Torr, ICML 2015.
 * [On the global linear convergence of Frank-Wolfe optimization variants](http://papers.nips.cc/paper/5925-on-the-global-linear-convergence-of-frank-wolfe-optimization-variants.pdf) by Lacoste-Julien and Jaggi, NIPS 2015.
 * [Fast and provably good seedings for k-means](https://papers.nips.cc/paper/6478-fast-and-provably-good-seedings-for-k-means.pdf) by Bachem, Lucic, Hassani and Krause, NIPS 2016.

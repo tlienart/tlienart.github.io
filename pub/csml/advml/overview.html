@@ -1,1 +1,107 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Adversarial ML - overview</title> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Overview of adversarial machine learning</h1> <p>Very broadly, adversarial ML considers a situation where one is assuming the data to come from some distribution \(P\) when, in fact, a portion of the data may have been corrupted by an attacker.</p> <p>This was exemplified when some pre-trained ConvNets were presented with adversarially modified images and consequently badly misclassified the image even though it was visually similar to an image that was adequately classified; the image below, drawn from <span class=bibref ><a href="#DXfx">Goodfellow et al. (2015)</a></span>, illustrates this clearly.</p> <p><img src="/assets/csml/advml/advnoise.jpg" alt="" /></p> <p>The field grew a lot recently with advances both on the attack and the defense side for a multitude of scenarios. These notes summarise briefly some of the important approaches for adversarial learning, some of which will be revisited in more depths in subsequent notes.</p> <h2>Defense</h2> <h3>Data corruption and robust statistics</h3> <p>Consider \(n\) data points \(X_i\) that we assume to be iid from a distribution \(P\) except that a portion \(\epsilon\) was adversarially modified &#40;\(\epsilon\)-corrupted samples&#41;. We could be interested in the following questions:</p> <ul> <li><p>recover an estimate \(\hat P\) such that for some appropriate divergence \(d\) between probability measures, \(d(\hat P, P)\) is small,</p> <li><p>recover an estimate \(\hat\mu\) of \(\mu:=\mathbb E_P[\phi]\) for some \(\phi\) such that for some appropriate norm, \(\|\hat\mu - \mu\|\) is small,</p> <li><p>quantify the impact of the corruption.</p> </ul> <p>Generic approaches to dealing with \(\epsilon\)-corruption are:</p> <ol> <li><p>use robust statistics such as the median</p> <li><p>filtering the samples to remove the ones that are corrupted,</p> <li><p>weighing the samples</p> </ol> <p>All three approaches have been fairly widely studied in low-dimensional settings &#40;e.g. <span class=bibref ><a href="#uOky">Huber and Ronchetti (2009)</a></span>&#41; but the classical approaches tend to suffer in a high-dimensional setting as discussed in <span class=bibref ><a href="#UIOO">Diakonikolas et al. (2016)</a></span> where the authors suggest efficient methods for the latter two approaches that can scale up to high-dimension.</p> <h3>Robust risk minimisation</h3> <p>Standard statistical learning considers the problem of picking a model \(f \in \mathcal M\) to minimise the expected risk with respect to a loss function \(\ell\) and distribution \(P\):</p> $$ f \quad\!\! \in\quad\!\!\arg\min_{f\in \mathcal M}\,\, \mathbb E_P[\ell_f] . $$ <p>In the adversarial learning setting however, we can consider the <em>robust risk minimisation</em> where we consider a <em>family of distributions</em> \(\mathcal P\) with \(P\in \mathcal P\) over which to minimise the expected risk:</p> $$ f \quad\!\! \in\quad\!\! \arg\min_{f\in \mathcal M}\,\,\left[\sup_{Q\in\mathcal P} \mathbb E_Q[\ell_f]\right] $$ <p>Recently, authors have shown that, if \(\mathcal P\) is a Wasserstein ball then</p> $$ f\quad\!\! \in\quad\!\! \arg\min_{f\in\mathcal M}\,\, \mathbb E_P[\ell_f] + L(f) $$ <p>where \(L(f)\) is a regularisation term which, in some cases, can be upper-bounded by a function related to the Lipschitz constant of the model \(f\) &#40;see e.g. <span class=bibref ><a href="#Vi6D">Cranko et al. (2018)</a></span> and references therein&#41;. This has allowed to gain insight as to why Lipchitz regularisation of some models such as neural networks had proved successful.</p> <h2>Attack</h2> <h3>White-box attacks</h3> <p>In white-box attacks, the adversary is assumed to have full knowledge of the model that is targeted.</p> <p>In <span class=bibref ><a href="#X48w">Papernot et al. (2016)</a></span>, the authors formulate their approach as</p> $$ \arg\min_{\delta_{x}}\,\,\|\delta_x\|, \quad \text{s.t.}\quad F(x^* ) = y^* $$ <p>where \(x\) is a normal sample, \(\delta_x\) is a perturbation, \(x^* := (x+\delta_x)\) is the adversarial example and \(y^* \) a desired adversarial output.</p> <h2>References</h2> <ol> <li><p><a id=DXfx ></a> <strong>Goodfellow</strong>, <strong>Shiens</strong> and <strong>Szegedy</strong>, <a href="https://ai.google/research/pubs/pub43405">Explaining and harnessing adversarial examples</a>, ICLR 2015.</p> <li><p><a id=bBMm ></a> <strong>Madry</strong>, <strong>Makelov</strong>, <strong>Schmidt</strong>, <strong>Tsipras</strong> and <strong>Vladu</strong>, <a href="https://arxiv.org/abs/1706.06083">Towards deep learning models resistant to adversarial attacks</a>, ICLR 2018.</p> <li><p><a id=X48w ></a> <strong>Papernot</strong>, <strong>McDaniel</strong>, <strong>Jha</strong>, <strong>Fredrikson</strong>, <strong>Celik</strong> and <strong>Swami</strong> <a href="https://arxiv.org/pdf/1511.07528.pdf">The limitations of deep learning in adversarial settings</a>, ESSP 2016.</p> <li><p><a id=UIOO ></a> <strong>Diakonikolas</strong>, <strong>Kamath</strong>, <strong>Kane</strong>, <strong>Li</strong>, <strong>Moitra</strong> and <strong>Stewart</strong>, <a href="https://arxiv.org/pdf/1604.06443.pdf">Robust estimators in high dimensions without the computational intractability</a>, FOCS 2016.</p> <li><p><a id=uOky ></a> <strong>Huber</strong>, <strong>Ronchetti</strong>, Robust Statistics, 2nd ed, Wiley 2009.</p> <li><p><a id=Vi6D ></a> <strong>Cranko</strong>, <strong>Kornblith</strong>, <strong>Shi</strong> and <strong>Nock</strong>, <a href="https://arxiv.org/abs/1809.01129">Lipschitz networks and distributional robustness</a>, ArXiv 2018.</p> </ol> <div class=page-foot > <div class=copyright > &copy; T. Lienart. Last modified: November 12, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>. </div> </div> </div> <script src="/libs/katex/katex.min.js"></script> <script src="/libs/katex/auto-render.min.js"></script> <script>renderMathInElement(document.body)</script>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
+		 <title>Adversarial ML - overview</title>	
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.min.css"></link>
+ 		
+        
+	</head>
+    <body>
+		
+        <header>
+            <div class="blog-name"><a href="/">Thibaut Lienart</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
+                    <li><a href="/pub/julia.html">Julia notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="/assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+		
+
+<!-- Content appended here -->
+
+<div class="jd-content">
+<h1>Overview of adversarial machine learning</h1>
+<p>Very broadly, adversarial ML considers a situation where one is assuming the data to come from some distribution \(P\) when, in fact, a portion of the data may have been corrupted by an attacker.</p>
+<p>This was exemplified when some pre-trained ConvNets were presented with adversarially modified images and consequently badly misclassified the image even though it was visually similar to an image that was adequately classified; the image below, drawn from <span class="bibref"><a href="#DXfx">Goodfellow et al. (2015)</a></span>, illustrates this clearly.</p>
+<p><img src="/assets/csml/advml/advnoise.jpg" alt="" /></p>
+<p>The field grew a lot recently with advances both on the attack and the defense side for a multitude of scenarios. These notes summarise briefly some of the important approaches for adversarial learning, some of which will be revisited in more depths in subsequent notes.</p>
+<h2>Defense</h2>
+<h3>Data corruption and robust statistics</h3>
+<p>Consider \(n\) data points \(X_i\) that we assume to be iid from a distribution \(P\) except that a portion \(\epsilon\) was adversarially modified &#40;\(\epsilon\)-corrupted samples&#41;. We could be interested in the following questions:</p>
+<ul>
+<li><p>recover an estimate \(\hat P\) such that for some appropriate divergence \(d\) between probability measures, \(d(\hat P, P)\) is small,</p>
+</li>
+<li><p>recover an estimate \(\hat\mu\) of \(\mu:=\mathbb E_P[\phi]\) for some \(\phi\) such that for some appropriate norm, \(\|\hat\mu - \mu\|\) is small,</p>
+</li>
+<li><p>quantify the impact of the corruption.</p>
+</li>
+</ul>
+<p>Generic approaches to dealing with \(\epsilon\)-corruption are:</p>
+<ol>
+<li><p>use robust statistics such as the median</p>
+</li>
+<li><p>filtering the samples to remove the ones that are corrupted,</p>
+</li>
+<li><p>weighing the samples</p>
+</li>
+</ol>
+<p>All three approaches have been fairly widely studied in low-dimensional settings &#40;e.g. <span class="bibref"><a href="#uOky">Huber and Ronchetti (2009)</a></span>&#41; but the classical approaches tend to suffer in a high-dimensional setting as discussed in <span class="bibref"><a href="#UIOO">Diakonikolas et al. (2016)</a></span> where the authors suggest efficient methods for the latter two approaches that can scale up to high-dimension.</p>
+<h3>Robust risk minimisation</h3>
+<p>Standard statistical learning considers the problem of picking a model \(f \in \mathcal M\) to minimise the expected risk with respect to a loss function \(\ell\) and distribution \(P\):</p>
+$$ f \quad\!\! \in\quad\!\!\arg\min_{f\in \mathcal M}\,\, \mathbb E_P[\ell_f] . $$
+<p>In the adversarial learning setting however, we can consider the <em>robust risk minimisation</em> where we consider a <em>family of distributions</em> \(\mathcal P\) with \(P\in \mathcal P\) over which to minimise the expected risk:</p>
+$$ f \quad\!\! \in\quad\!\! \arg\min_{f\in \mathcal M}\,\,\left[\sup_{Q\in\mathcal P} \mathbb E_Q[\ell_f]\right] $$
+<p>Recently, authors have shown that, if \(\mathcal P\) is a Wasserstein ball then</p>
+$$ f\quad\!\! \in\quad\!\! \arg\min_{f\in\mathcal M}\,\, \mathbb E_P[\ell_f] + L(f) $$
+<p>where \(L(f)\) is a regularisation term which, in some cases, can be upper-bounded by a function related to the Lipschitz constant of the model \(f\) &#40;see e.g. <span class="bibref"><a href="#Vi6D">Cranko et al. (2018)</a></span> and references therein&#41;. This has allowed to gain insight as to why Lipchitz regularisation of some models such as neural networks had proved successful.</p>
+<h2>Attack</h2>
+<h3>White-box attacks</h3>
+<p>In white-box attacks, the adversary is assumed to have full knowledge of the model that is targeted.</p>
+<p>In <span class="bibref"><a href="#X48w">Papernot et al. (2016)</a></span>, the authors formulate their approach as</p>
+$$ \arg\min_{\delta_{x}}\,\,\|\delta_x\|, \quad \text{s.t.}\quad F(x^* ) = y^* $$
+<p>where \(x\) is a normal sample, \(\delta_x\) is a perturbation, \(x^* := (x+\delta_x)\) is the adversarial example and \(y^* \) a desired adversarial output.</p>
+<h2>References</h2>
+<ol>
+<li><p><a id="DXfx"></a> <strong>Goodfellow</strong>, <strong>Shiens</strong> and <strong>Szegedy</strong>, <a href="https://ai.google/research/pubs/pub43405">Explaining and harnessing adversarial examples</a>, ICLR 2015.</p>
+</li>
+<li><p><a id="bBMm"></a> <strong>Madry</strong>, <strong>Makelov</strong>, <strong>Schmidt</strong>, <strong>Tsipras</strong> and <strong>Vladu</strong>, <a href="https://arxiv.org/abs/1706.06083">Towards deep learning models resistant to adversarial attacks</a>, ICLR 2018.</p>
+</li>
+<li><p><a id="X48w"></a> <strong>Papernot</strong>, <strong>McDaniel</strong>, <strong>Jha</strong>, <strong>Fredrikson</strong>, <strong>Celik</strong> and <strong>Swami</strong> <a href="https://arxiv.org/pdf/1511.07528.pdf">The limitations of deep learning in adversarial settings</a>, ESSP 2016.</p>
+</li>
+<li><p><a id="UIOO"></a> <strong>Diakonikolas</strong>, <strong>Kamath</strong>, <strong>Kane</strong>, <strong>Li</strong>, <strong>Moitra</strong> and <strong>Stewart</strong>, <a href="https://arxiv.org/pdf/1604.06443.pdf">Robust estimators in high dimensions without the computational intractability</a>, FOCS 2016.</p>
+</li>
+<li><p><a id="uOky"></a> <strong>Huber</strong>, <strong>Ronchetti</strong>, Robust Statistics, 2nd ed, Wiley 2009.</p>
+</li>
+<li><p><a id="Vi6D"></a> <strong>Cranko</strong>, <strong>Kornblith</strong>, <strong>Shi</strong> and <strong>Nock</strong>, <a href="https://arxiv.org/abs/1809.01129">Lipschitz networks and distributional robustness</a>, ArXiv 2018.</p>
+</li>
+</ol>
+
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. Last modified: November 12, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+
+</div>
+<!-- CONTENT ENDS HERE -->
+        
+                <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+        
+        
+    </body>
+</html>

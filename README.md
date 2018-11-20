@@ -6,7 +6,8 @@ This repository contains the source files behind [my website](https://tlienart.g
 
 ### Random notes
 
-* KaTeX: careful with updating as it may mess up things like numbering or not-equal sign, version here seems to work fine.
+* KaTeX: using `0.10.0` (latest currently), note:
+    * `.katex-display > .katex { display : inline-block;}` and not `display:block` (see [issue](https://github.com/KaTeX/KaTeX/issues/1785))
 
 ## Todo list
 

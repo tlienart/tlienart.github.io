@@ -101,7 +101,7 @@ and we can sum across these inequalities to get
     g(z) &\ge& g(x) + \langle z-x, \sum_i y_i\rangle, \quad\forall z\in C,
 }
 so that $\sum_i y_i \in \partial g(x)$.
-Note that if we have $0\in \sum_i \partial f_i(x^\dagger)$ then the inclusion implies that $0\in\partial \sum_i f_i(x^\dagger)$ which is sufficient to show that $x^\dagger$ is a minimiser.
+Note that if $0\in \sum_i \partial f_i(x^\dagger)$ then the inclusion implies $0\in\partial \sum_i f_i(x^\dagger)$ which is sufficient to show that $x^\dagger$ is a minimiser.
 
 ## Additional references
 

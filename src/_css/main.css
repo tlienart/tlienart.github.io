@@ -139,6 +139,9 @@ body { counter-reset: eqnum; }
 
 .katex { font-size: 1em !important; }
 
+.katex-display .katex {
+    display: inline-block; } /* overwrite katex settings */
+
 .katex-display::after {
     counter-increment: eqnum;
     content: "(" counter(eqnum) ")";

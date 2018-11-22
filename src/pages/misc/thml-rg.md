@@ -48,6 +48,7 @@ At some point in the future, I'll organise the list with indicators of the topic
 * [Classification with imperfect training labels](https://arxiv.org/abs/1805.11505) by Cannings, Fan and Samworth, ArXiv 2018.
 * [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017.
 * [Minimising the maximal loss: how and why](http://proceedings.mlr.press/v48/shalev-shwartzb16-supp.pdf) by Shalev-Shwartz and Wexler, ICML 2016.
+* [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan, ArXiv 2018.
 
 #### secondary block
 

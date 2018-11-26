@@ -7,6 +7,8 @@
 This is a short guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways.
 It has been written while using `Julia 1.1` on MacOS (but I expect the process to be identical on Linux and very similar on Windows 10).
 
+**Note**: you may also want to consider [`PkgTemplates.jl`](https://github.com/invenia/PkgTemplates.jl), a package that helps you create new Julia packages.
+
 ## Creating the package on your computer
 
 I prefer to have all the packages I'm developing in the same spot, it makes my life simpler, and this spot is `~/.julia/dev` where `~` is the path to my home folder (you don't necessarily need to do this).

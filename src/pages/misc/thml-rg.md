@@ -27,12 +27,12 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Nov 22, '18**) [An optimal algorithm for bandit and zero-order convex optimisation with two-point feedback](http://jmlr.org/papers/volume18/16-632/16-632.pdf) by Shamir, JMLR 2017. _Presenter: Dongge Liu_.
 * (**Nov 29, '18**) [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018. _Presenter: Bastian Oetomo_.
 * (**Dec 13, '18**) TBA. _Presenter: Yi Han_.
 
 ### Past
 
+* (**Nov 22, '18**) [An optimal algorithm for bandit and zero-order convex optimisation with two-point feedback](http://jmlr.org/papers/volume18/16-632/16-632.pdf) by Shamir, JMLR 2017. _Presenter: Dongge Liu_.
 * (**Nov 15, '18**) [Explaining the success of adaboost and random forests as interpolating classifiers](http://jmlr.org/papers/volume18/15-240/15-240.pdf) by Wyner, Olson, Bleich and Mease, JMLR 2017. _Presenter: Neil Merchant_.
 * (**Nov 1, '18**) [Can we trust the bootstrap in high dimension](http://jmlr.org/papers/volume19/17-006/17-006.pdf) by El Karoui and Purdom, JMLR 2017. _Presenter: Thibaut Lienart_.
 

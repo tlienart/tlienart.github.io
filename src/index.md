@@ -8,7 +8,7 @@ On this website, you will mainly find some notes on topics in computer science a
 These are mostly things I write to keep track of results I find useful or nice.
 I also really like the Julia programming language and keep some notes on that too.
 
-🚫 Please bear in mind that as of October-November 2018, this site is being migrated from a previous site so quite a few pages are yet to appear!
+🚫 Please bear in mind that as of December 2018, this site is (still) being migrated from a previous site so quite a few pages are yet to appear!
 
 <!-- Then, there's a number of miscellaneous posts in other topics ranging from  travel notes to side-projects.
 For example if you're interested in knowing how this website was built, there's a [post for that](/pub/misc/about-website.html).-->

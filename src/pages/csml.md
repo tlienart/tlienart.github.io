@@ -15,7 +15,7 @@ When the level of the notes is judged (arbitrarily) to be a bit more advanced, i
 
 **Errors & Comments**: if you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 
-**Browser note**: the notes use a recent version of [KaTeX](https://katex.org/) to render the maths which requires you to have Javascript on. The rendering has been tested on Firefox Quantum, Safari 12 and Chromium 71. If you use an older version or another browser it may be that some things don't render properly. If that's the case, kindly let me know by email, thanks!
+**Browser note**: the notes use a recent version of [KaTeX](https://katex.org/) to render the maths which requires you to have Javascript on. The rendering has been tested on Firefox 61, Safari 12 and Chromium 71. If you use an older version or another browser it may be that some things don't render properly. If that's the case, kindly let me know by email, thanks!
 
 <!-- TODO
 Once a bit clearer, think of a way to explain what exactly is kept here and how to navigate it otherwise might pile up quite quickly
@@ -65,6 +65,9 @@ NOTE TODO:
     * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- 🚫 27/10/2018 TODO: review -->
     * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫 27/10/2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
     <!-- * [thoughts on first order methods](\cvx{fom.html}) -->
+
+* **Matrix theory**:
+    * [matrix inversion lemmas](\mth{matinvlem.html}): _woodbury formula_ and a couple of useful related results.
 
 <!-- 🍺
 * *notes on Krylov subspace methods*

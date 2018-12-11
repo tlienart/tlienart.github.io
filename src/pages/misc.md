@@ -4,7 +4,8 @@
 
 Here I keep a record of pages I wrote which do not deserve their own category (at least for now).
 
-* [theoretical machine learning reading group](/pub/misc/thml-rg.html): where I keep information about the theoretical ML reading group I organise at the university of Melbourne.
+* [theoretical ML reading group](/pub/misc/thml-rg.html): informations about an informal theoretical ML reading group at the University of Melbourne.
+* [ML seminar](/pub/misc/mlseminar.html): informations about an upcoming ML seminar at the University of Melbourne (*expected starting date*: January 2019).
 
 <!--
 ## Travels

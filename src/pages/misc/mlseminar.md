@@ -10,7 +10,7 @@ The format is a traditional ~45 min presentation followed by a ~15 min discussio
 ## Logistics
 
 * **schedule**: TBA. *Expected start*: mid-January 2019.
-* **room**: TBA
+* **room**: TBA.
 * **mailing list**: you can subscribe by [clicking this link](https://lists.unimelb.edu.au/subscribe/ml-seminar).
 
 ## Presentations

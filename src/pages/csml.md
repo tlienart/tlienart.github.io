@@ -67,7 +67,7 @@ NOTE TODO:
     <!-- * [thoughts on first order methods](\cvx{fom.html}) -->
 
 * **Matrix theory**:
-    * [matrix inversion lemmas](\mth{matinvlem.html}): _woodbury formula_ and a couple of useful related results.
+    * [matrix inversion lemmas](\mth{matinvlem.html}): _woodbury formula_ and a couple of useful related results (with code).
 
 <!-- 🍺
 * *notes on Krylov subspace methods*

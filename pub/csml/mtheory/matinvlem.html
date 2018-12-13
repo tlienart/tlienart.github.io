@@ -15,7 +15,7 @@ u &#61; randn&#40;n_E&#41;;
 v &#61; randn&#40;n_E&#41;;
 iE &#61; inv&#40;E&#41;
 iEu &#61; iE*u
-@test inv&#40;E &#43; u*v&#39;&#41; ≈ iE - &#40;iEu*&#40;v&#39;*iE&#41;&#41;/&#40;1&#43;dot&#40;v, iEu&#41;&#41;</code></pre> <p>&#40;Recall that invertible matrices are dense among square matrices so that using randomly generated matrices for \(A\), \(D\), \(E\) and \(G\) is unlikely to cause problems&#41;.</p> <p>Interestingly <a href="https://github.com/timholy">Tim Holy</a> has written a simple little package for this called <a href="https://github.com/timholy/WoodburyMatrices.jl"><code>WoodburyMatrices.jl</code></a>.</p> <pre><code class=language-julia >using WoodburyMatrices
+@test inv&#40;E &#43; u*v&#39;&#41; ≈ iE - &#40;iEu*&#40;v&#39;*iE&#41;&#41;/&#40;1&#43;dot&#40;v, iEu&#41;&#41;</code></pre> <p>&#40;Recall that invertible matrices are dense among square matrices so that using randomly generated matrices for \(E\) and \(G\) is unlikely to cause problems&#41;.</p> <p>Interestingly <a href="https://github.com/timholy">Tim Holy</a> has written a simple package for this called <a href="https://github.com/timholy/WoodburyMatrices.jl"><code>WoodburyMatrices.jl</code></a>.</p> <pre><code class=language-julia >using WoodburyMatrices
 W &#61; Woodbury&#40;E, F, G, H&#41;;
 b &#61; randn&#40;n_E&#41;;
 # using the package

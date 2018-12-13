@@ -148,9 +148,9 @@ iEu = iE*u
 @test inv(E + u*v') ≈ iE - (iEu*(v'*iE))/(1+dot(v, iEu))
 ```
 
-(Recall that invertible matrices are dense among square matrices so that using randomly generated matrices for $A$, $D$, $E$ and $G$ is unlikely to cause problems).
+(Recall that invertible matrices are dense among square matrices so that using randomly generated matrices for $E$ and $G$ is unlikely to cause problems).
 
-Interestingly [Tim Holy](https://github.com/timholy) has written a simple little package for this called [`WoodburyMatrices.jl`](https://github.com/timholy/WoodburyMatrices.jl).
+Interestingly [Tim Holy](https://github.com/timholy) has written a simple  package for this called [`WoodburyMatrices.jl`](https://github.com/timholy/WoodburyMatrices.jl).
 
 ```julia
 using WoodburyMatrices
@@ -163,18 +163,3 @@ iEb = iE*b;
 s2  = iEb - iE*(F*((iG+H*iE*F)\(H*iEb)))
 @test s1 ≈ s2
 ```
-
-<!-- ## Useful derived formulas
-
-When considering regularised inverse, we often have to consider expressions of the form $(\lambda I + BC)\inv$.
-Using \eqref{lemma2} and letting $C\leftarrow -C$, $A\leftarrow \mathbf I$ and $D\leftarrow \lambda I$, we get
-
-$$
-(\lambda \mathbf I + BC)\inv B \speq B(\lambda I -CB)\inv
-$$
-
-A simple example for this (though not particularly useful) is the ridge regression with:
-
-$$ \beta_{\text{ridge}} \speq (\lambda\mathbf I + X^TX)\inv X^T y \speq X^T(\lambda\mathbf I + XX^T)\inv y. $$
-
-It is not particularly useful as, usually, $X$ is of size $n\times p$ with $p\ll n$ and therefore we prefer solving a system of size $p\times p$ instead of one of size $n\times n$... -->

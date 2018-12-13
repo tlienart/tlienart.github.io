@@ -79,7 +79,7 @@ In the rest of these notes, we will show how to obtain the fixed point equations
 
 More precise pointers will be given on subsequent pages but most of the content in these notes relates in some way or another to the following references (in particular the first one):
 
-1. **Rockafellar**: [Convex analysis](http://press.princeton.edu/titles/1815.html), 1970. A "must-read" in convex analysis, a reference of choice for technical details.
-1. **Nesterov**: [Introductory Lectures on Convex Optimization](https://www.springer.com/us/book/9781402075537), 1998. Another must-read with all the technical details and more focused on algorithms and convergence rates than Rockafellar's book.
-1. **Ben-Tal**, **Nemirovski**, [Lectures on Modern Optimization](https://www2.isye.gatech.edu/~nemirovs/Lect_ModConvOpt.pdf), 2013. A recent perspective on optimisation methods.
-1. **Boyd** and **Vandenberghe**: [Convex Optimization](https://stanford.edu/~boyd/cvxbook/), 2004. More accessible and more oriented towards giving "tools" to the reader than the previous references.
+1. **Rockafellar**: [Convex analysis](http://press.princeton.edu/titles/1815.html), 1970. -- A "must-read" in convex analysis, a reference of choice for technical details.
+1. **Nesterov**: [Introductory Lectures on Convex Optimization](https://www.springer.com/us/book/9781402075537), 1998. -- Another must-read with all the technical details and more focused on algorithms and convergence rates than Rockafellar's book.
+1. **Ben-Tal**, **Nemirovski**, [Lectures on Modern Optimization](https://www2.isye.gatech.edu/~nemirovs/Lect_ModConvOpt.pdf), 2013. -- A recent perspective on optimisation methods.
+1. **Boyd** and **Vandenberghe**: [Convex Optimization](https://stanford.edu/~boyd/cvxbook/), 2004. -- More accessible and more oriented towards giving "tools" to the reader than the previous references.

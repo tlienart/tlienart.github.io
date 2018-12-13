@@ -81,8 +81,8 @@ A final note is that, as for the PGD, the whole development of the MDA by relaxi
 
 ## References
 
- 1. \biblabel{beck03}{Beck and Teboulle (2003)} **Beck** and **Teboulle**, [Mirror descent and nonlinear projected subgradient methods for convex optimization](https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf), 2003. The paper behind the MDA, it also presents a convergence analysis and gives an example of application.
- 1. \biblabel{nemirovski12}{Nemirovski (2012)} **Nemirovski**, [Tutorial: mirror descent algorithms for large-scale deterministic and stochastic convex optimization](https://www2.isye.gatech.edu/~nemirovs/COLT2012Tut.pdf), 2012. A deck of slides from a 2012 presentation, covering the MDA as well as applications.
+ 1. \biblabel{beck03}{Beck and Teboulle (2003)} **Beck** and **Teboulle**, [Mirror descent and nonlinear projected subgradient methods for convex optimization](https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf), 2003. -- The paper behind the MDA, it also presents a convergence analysis and gives an example of application.
+ 1. \biblabel{nemirovski12}{Nemirovski (2012)} **Nemirovski**, [Tutorial: mirror descent algorithms for large-scale deterministic and stochastic convex optimization](https://www2.isye.gatech.edu/~nemirovs/COLT2012Tut.pdf), 2012. -- A deck of slides from a 2012 presentation, covering the MDA as well as applications.
 
  <!--
  https://stanford.edu/~jduchi/projects/DuchiShSiTe10.pdf

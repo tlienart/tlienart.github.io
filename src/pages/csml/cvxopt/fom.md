@@ -135,4 +135,4 @@ This key tradeoff can be exposed in most iterative methods using gradient inform
 
 ## References
 
-1. \biblabel{elghaoui12}{El Ghaoui (2012)} **El Ghaoui**, [Interior-Point Methods](https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227A/lecture19.pdf), 2012. Lecture notes at Berkeley, covering another topic (IPMs) but also summarising descent methods in general.
+1. \biblabel{elghaoui12}{El Ghaoui (2012)} **El Ghaoui**, [Interior-Point Methods](https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227A/lecture19.pdf), 2012. -- Lecture notes at Berkeley, covering another topic (IPMs) but also summarising descent methods in general.

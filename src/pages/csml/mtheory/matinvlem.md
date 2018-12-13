@@ -3,7 +3,9 @@
 
 # Matrix inversion lemmas
 
-The _Woodbury formula_ is maybe one of the most ubiquitous trick in basic linear algebra: it starts with the explicit formla for the inverse of a block 2x2 matrix and results in identities that can be used in kernel theory, the Kalman filter, to combine multivariate normals etc.
+The _Woodbury formula_ is maybe one of the most ubiquitous trick in basic linear algebra: it starts with the explicit formula for the inverse of a block 2x2 matrix and results in identities that can be used in kernel theory, the Kalman filter, to combine multivariate normals etc.
+
+In these notes I present a simple development leading to the Woodbury formula, and the special case of the Sherman-Morrison formula with some code to show those at work.
 
 ## Partitioned matrix inversion
 
@@ -73,7 +75,7 @@ Equating the expressions in \eqref{step-A} and \eqref{step-B} for $Y$ gives $D\i
 @@colbox-blue
 (**Lemma I**) let $A$ and $D$ be square, invertible matrices of size $n_A\times n_A$ and $n_D\times n_D$ and $B$ and $C$ be matrices of size $n_A\times n_D$ and $n_D\times n_A$, the following identity holds:
 $$
-D\inv C (A-BD\inv C)\inv \speq (D - CA\inv B)\inv CA\inv.
+D\inv C (A-BD\inv C)\inv \speq (D - CA\inv B)\inv CA\inv.\label{lemma1}
 $$
 @@
 
@@ -89,47 +91,78 @@ $$
 
 ### Woodbury formula
 
-One little bit of dark magic is required to get the Woodbury formula (also known as the *Sherman-Morrison-Woodbury formula*): observe that if we take the term $(A-BD\inv C)$ and right-multiply it by $-A\inv$ we get
+One little bit of dark magic is required to get the Woodbury formula: observe that if we take the term $(A-BD\inv C)$ and right-multiply it by $-A\inv$ we get
 
 $$ (A-BD\inv C)(-A\inv) \speq \textcolor{green}{BD\inv}\textcolor{blue}{CA\inv} - \mathbf I  $$
 
-and therefore $BD\inv CA\inv = (I + (A-BD\inv C)(-A\inv)$.
-Now if we post-multiply \eqref{lemma2} by $CA\inv$ and re-arrange the expression, we get the desired lemma.
+and therefore $BD\inv CA\inv = (\mathbf I + (A-BD\inv C)(-A\inv)$.
+Now if we post-multiply \eqref{lemma2} by $CA\inv$ and re-arrange the expression, we get the third lemma.
 
 @@colbox-blue
-(**Woodbury formula**) under the same assumptions as for Lemma I, the following identity holds:
+(**Lemma III**) under the same assumptions as for Lemma I, the following identity holds:
 $$
-(A-BD\inv C)\inv \speq A\inv + A\inv B(D-CA\inv B)\inv CA\inv.
+(A-BD\inv C)\inv \speq A\inv + A\inv B(D-CA\inv B)\inv CA\inv.\label{lemma3}
 $$
 @@
 
-of course the same gymnastics can be applied with the term $(D-CA\inv B)\inv$ to obtain
+of course the same gymnastics can be applied with the term $(D-CA\inv B)\inv$ to obtain a similar identity.
+To obtain the classical Woodbury formula though, we just need to reassign letters with $E\leftarrow A$, $F\leftarrow -B$, $G\leftarrow D\inv$ and $H\leftarrow C$.
+(So Lemma III is already the Woodbury formula, the re-assignment only leads to a somewhat more visually pleasing form)
 
 @@colbox-blue
-$$
-(D-CA\inv B)\inv \speq D\inv + D\inv C(A-BD\inv C)\inv BD\inv.
-$$
+(**Woodbury formula**) let $E$, $G$ be square invertible matrices of dimensions $n_E \times n_E$ and $n_G\times n_G$ respectively, let $F$ and $H$ be matrices of size $n_E\times n_G$ and $n_G\times n_E$ respectively, then the following identity holds:
+$$ (E+FGH)\inv \speq E\inv - E\inv F(G\inv + HE\inv F)\inv H E\inv\label{woodbury} $$
 @@
+
+### Sherman-Morrison formula
+
+Consider again \eqref{woodbury} and let $G=1$, $F=u$ and $H=v$ with $u, v\in\R^{n_E}$ then the formula gives
+
+$$ (E+uv^T)\inv \speq E\inv -{E\inv u v^T E\inv\over 1 + v^T E\inv u}, $$
+
+a useful expression for the inverse of a matrix combined with a rank-1 perturbation.
+This is used for instance in the development of the famous BFGS flavour of the Quasi-Newton iterations (see e.g. the [wikipedia article](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm)).  
 
 ## A bit of code
 
-If you want to convince yourself that these equations "work", here's a simple script that shows it at work:
+If you want to see these equations at work, here's a simple Julia script:
 
 ```julia
 using Test
-using Random: seed!
-seed!(11325)
-n_A = 15; n_D = 7;
-A = randn(n_A, n_A);
-B = randn(n_A, n_D);
-C = randn(n_D, n_A);
-D = randn(n_D, n_D);
-iA, iD = inv(A), inv(D);
-@test inv(A-B*iD*C) ≈ iA + iA*B*inv(D-C*iA*B)*C*iA
-@test inv(D-C*iA*B) ≈ iD + iD*C*inv(A-B*iD*C)*B*iD
+# Woodbury formula
+n_E, n_G = 13, 15;
+E = randn(n_E, n_E);
+F = randn(n_E, n_G);
+G = randn(n_G, n_G);
+H = randn(n_G, n_E);
+iE, iG = inv(E), inv(G);
+@test inv(E+F*G*H) ≈ iE - iE*F*inv(iG + H*iE*F)*H*iE
+
+# Sherman-Morrison formula
+n_E = 23;
+E = randn(n_E, n_E);
+u = randn(n_E);
+v = randn(n_E);
+iE = inv(E)
+iEu = iE*u
+@test inv(E + u*v') ≈ iE - (iEu*(v'*iE))/(1+dot(v, iEu))
 ```
 
-Where we profit from the fact that invertible matrices are dense among square matrices so that there's little chance that `A` and `D` are not invertible in the script above for a given seed.
+(Recall that invertible matrices are dense among square matrices so that using randomly generated matrices for $A$, $D$, $E$ and $G$ is unlikely to cause problems).
+
+Interestingly [Tim Holy](https://github.com/timholy) has written a simple little package for this called [`WoodburyMatrices.jl`](https://github.com/timholy/WoodburyMatrices.jl).
+
+```julia
+using WoodburyMatrices
+W = Woodbury(E, F, G, H);
+b = randn(n_E);
+# using the package
+s1 = W\b;
+# hand-coding using the formula
+iEb = iE*b;
+s2  = iEb - iE*(F*((iG+H*iE*F)\(H*iEb)))
+@test s1 ≈ s2
+```
 
 <!-- ## Useful derived formulas
 

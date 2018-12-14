@@ -1,7 +1,7 @@
 @def title = "Splitting methods"
 <!-- @def hascode = true -->
 
-# Splitting methods
+# Splitting methods and ADMM
 
 In these notes, I show how some well known methods from numerical linear algebra can be applied to convex optimisation.
 The aim of these notes is to give an idea for how the following topics intertwine:

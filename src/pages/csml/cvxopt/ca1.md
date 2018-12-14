@@ -105,7 +105,7 @@ Note that if $0\in \sum_i \partial f_i(x^\dagger)$ then the inclusion implies $0
 
 ## Additional references
 
-1. **Boyd** and **Vandenberghe**, [Subgradients](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf), 2008. Accessible lecture notes introducing the subgradient and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.
+1. **Boyd** and **Vandenberghe**, [Subgradients](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf), 2008. -- Accessible lecture notes introducing the subgradient and proving that the subdifferential of a convex function is non-empty and closed at any point in the interior of the domain of the function.
 1. \biblabel{rockafellar70}{Rockafellar (1970)} **Rockafellar**: [Convex analysis](http://press.princeton.edu/titles/1815.html), 1970.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

@@ -116,7 +116,7 @@ See for example \citet{liu09}.
 ## Additional references
 
 1. **Burke**, [The Gradient Projection Algorithm](https://sites.math.washington.edu/~burke/crs/408/notes/nlp/gpa.pdf), 2014. Lecture notes at the University of Washington covering the topic in a bit more depth.
-1. **Saunders**, [Notes on First-Order Methods for Minimizing Smooth Functions](https://web.stanford.edu/class/msande318/notes/notes-first-order-smooth.pdf), 2017. Lectures notes at Stanford covering the topic (among others) and proving the linear convergence rate under regularity conditions.
-1. \biblabel{liu09}{Liu and Ye (2009)} **Liu**, **Ye**, [Efficient Euclidean Projections in Linear Time](https://icml.cc/Conferences/2009/papers/123.pdf), 2009. A paper describing the projection problem and how it can be done efficiently in some cases.
+1. **Saunders**, [Notes on First-Order Methods for Minimizing Smooth Functions](https://web.stanford.edu/class/msande318/notes/notes-first-order-smooth.pdf), 2017. -- Lectures notes at Stanford covering the topic (among others) and proving the linear convergence rate under regularity conditions.
+1. \biblabel{liu09}{Liu and Ye (2009)} **Liu**, **Ye**, [Efficient Euclidean Projections in Linear Time](https://icml.cc/Conferences/2009/papers/123.pdf), 2009. -- A paper describing the projection problem and how it can be done efficiently in some cases.
 
 *See also the general references mentioned in the [introduction](/pub/csml/cvxopt/intro.html).*

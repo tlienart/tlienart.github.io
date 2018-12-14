@@ -21,6 +21,7 @@
 <!-- optimisation specific -->
 \newcommand{\xopt}{x^\dagger}
 \newcommand{\deltaopt}{\delta^\dagger}
+\newcommand{\prox}{\mathrm{prox}}
 
 <!-- matrix theory specific -->
 \newcommand{\inv}{^{-1}}

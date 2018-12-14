@@ -58,13 +58,14 @@ NOTE TODO:
     - harmonise presentation, include a brief overview of each page at top, and summary linking to rest.
 -->
     * [introduction](\cvx{intro.html}): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
-    * [convex analysis part 1](\cvx{ca1.html}): the *subdifferential* and the *first-order optimality condition*. <!-- ✅ 12/9/18 -->
-    * (⭒) [convex analysis part 2](\cvx{ca2.html}): the *convex conjugate* along with some useful properties. <!-- ✅ 12/9/18 -->
-    * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅ 23/9/2018-->
-    * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅ 10/10/2018 -->
-    * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- 🚫 27/10/2018 TODO: review -->
-    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫 27/10/2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
-    <!-- * [thoughts on first order methods](\cvx{fom.html}) -->
+    * [convex analysis part 1](\cvx{ca1.html}): the *subdifferential* and the *first-order optimality condition*. <!-- ✅  SEPT 2018 -->
+    * (⭒) [convex analysis part 2](\cvx{ca2.html}): the *convex conjugate* along with some useful properties. <!-- ✅  SEPT 2018 -->
+    * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅  SEPT 2018 -->
+    * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅  OCT 2018 -->
+    * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- 🚫  OCT 2018 TODO: review -->
+    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫  OCT 2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
+    * (⭒) [splitting methods](\cvx{split.html}): _splitting methods_ in optimisation, _proximal methods_ and _ADMM_. <!-- 🚫  DEC 2018 ONGOING -->
+
 
 * **Matrix theory**:
     * [matrix inversion lemmas](\mth{matinvlem.html}): re-obtaining the _Woodbury formula_ and the _Sherman-Morrison formula_ (with some code).

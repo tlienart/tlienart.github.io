@@ -54,8 +54,12 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
 
 * **convex optimisation** (*assumes familiarity with convexity*):  
 <!--
-NOTE TODO:
-    - harmonise presentation, include a brief overview of each page at top, and summary linking to rest.
+TODO:
+- harmonise presentation, include a brief overview of each page at top, and summary linking to rest.
+===
+- add example for MDA
+- suggest Bregman to approximate r_x in first order
+- add example for ADMM
 -->
     * [introduction](\cvx{intro.html}): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
     * [convex analysis part 1](\cvx{ca1.html}): the *subdifferential* and the *first-order optimality condition*. <!-- ✅  SEPT 2018 -->
@@ -63,8 +67,8 @@ NOTE TODO:
     * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅  SEPT 2018 -->
     * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅  OCT 2018 -->
     * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- ✅  OCT 2018 -->
-    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- ✅   OCT 2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
-    * (⭒) [splitting methods and ADMM](\cvx{split.html}): _splitting methods_ in optimisation, _proximal methods_ and _ADMM_. <!-- 🚫  DEC 2018 TODO: review, possibly add an example -->
+    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- ✅  OCT 2018 -->
+    * (⭒) [splitting methods and ADMM](\cvx{split.html}): _splitting methods_ in optimisation, _proximal methods_ and _ADMM_. <!-- ✅  DEC 2018 -->
 
 
 * **Matrix theory**:

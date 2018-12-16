@@ -7,8 +7,8 @@ In these notes, I show how some well known methods from numerical linear algebra
 The aim of these notes is to give an idea for how the following topics intertwine:
 
 * solving a system of linear equations via iterative methods
-* operator splitting techniques (*Gauss-Seidel*, *Douglas-Rachford*),
-* monotone operators and proximal methods,
+* operator splitting techniques (*Gauss-Seidel*, *Douglas-Rachford*, ...),
+* proximal operator,
 * the *alternating direction methods of multipliers* also known as ADM or ADMM
 
 ## From convex optimisation to linear algebra
@@ -16,7 +16,7 @@ The aim of these notes is to give an idea for how the following topics intertwin
 ### Decomposable problems
 In convex optimisation, a large portion of the problems can be written in the form:
 $$ \xopt \spe{\in} \arg\min_x\,\, f(x) + g(x).$$
-This includes constrained problems where $g\equiv \iota_C$ for a convex set $C$ for instance or penalised problems like the LASSO regression:
+This includes constrained problems where $g\equiv \iota_C$ for a convex set $C$ or penalised problems like the LASSO regression:
 $$ \xopt \spe{\in}\arg\min_x\,\, \frac12\|Ax-b\|_2^2 + \lambda\|x\|_1 \label{decomposable-pb}$$ <!--_-->
 
 In a similar vein as for the previous notes, the following regularity conditions are usually assumed to hold:
@@ -33,7 +33,7 @@ This issue can in fact be related to the classical problem of solving a linear s
 
 $$ Ax \speq b \label{linsyst}$$
 
-where $A$ is invertible but is (for example) too big or too poorly condition for its inverse to be computable cheaply and reliably.
+where $A$ is invertible but is (for example) too big or too poorly conditioned for its inverse to be computable cheaply and reliably.
 
 ### Operator splitting methods in linear algebra
 
@@ -52,7 +52,7 @@ There are two classical examples of this type of splitting:
 1. the *Gauss-Seidel method*, writing $A=(L+D)+U$ with $L$ and $U$ lower and upper triangular respectively.
 
 Under some conditions, the corresponding fixed-point iterations converge (see also \cite{ortega00}).
-For instance if $A$ is symmetric, positive definite then Gauss-Seidel converges.
+For instance if $A$ is symmetric, positive definite or if it is diagonally dominant then Gauss-Seidel converges.
 
 <!-- Here's a short Julia script to see it at work:
 
@@ -96,17 +96,17 @@ GS with 100000 steps: -- 2.9978755825784496e-13
 
 ### DPR splitting
 
-Researchers like **Douglas**, **Peaceman** and **Rachford** studied this extensively in the mid 1950s to solve linear systems arising from the discretisation of systems of partial differential equations \citep{peaceman55, douglas56}.
-They came up with what is known as the *Douglas-Rachford* splitting and the *Peaceman-Rachford* splitting.
+Researchers like *Douglas*, *Peaceman* and *Rachford* studied this in the mid 1950s to solve linear systems arising from the discretisation of systems of partial differential equations \citep{peaceman55, douglas56}.
+They came up with what is now known as the *Douglas-Rachford* splitting and the *Peaceman-Rachford* splitting.
 
-The context is simple, assume that we have a decomposition $A=B+C$ where $B$ and/or $C$ are poorly conditioned or even singular.
+The context is simple: assume that we have a decomposition $A=B+C$ where $B$ and/or $C$ are poorly conditioned or even singular.
 In that case, one can try to regularise them by writing
 
 $$
    A \speq (B+\alpha \mathbf I) + (C-\alpha \mathbf I)
 $$
 
-for some $\alpha>0$ which will shift the minimum singular value of $B$ and $C$ away from zero.
+for some $\alpha>0$ which will shift the minimum singular value of $B$ and $C$ away from zero (and thereby push them towards diagonally dominant matrices).
 The fixed-point corresponding to this splitting is
 
 $$
@@ -124,7 +124,7 @@ $$
    (C+\alpha\mathbf I)z_{k+1} &=\esp (b+(\alpha \mathbf I-B)x_{k+1})
 \end{cases}
 $$
-and converges to the solution for a sufficiently large $\alpha$.
+and converges to the solution provided $\alpha$ is sufficiently large.
 @@
 
 It can be proved that this iteration converges provided $\alpha$ is sufficiently large.
@@ -143,7 +143,7 @@ $$
 \end{cases}
 $$
 
-Letting $u_k = y_k/\alpha$, we can intertwine the fixed-point iterations as follows:
+We can then intertwine the corresponding fixed-point iterations as follows:
 
 $$
 \begin{cases}
@@ -167,7 +167,7 @@ $$
 \end{cases}
 \label{DPR2}
 $$
-and converges to the solution for a sufficiently large $\alpha$.
+and converges to the solution provided $\alpha$ is sufficiently large.
 @@
 
 
@@ -185,7 +185,7 @@ But in order to do this, we need to consider the inverse of the following two op
 Proximal operators can be recovered from a number of nice perspectives and are usually attributed to Moreau (see e.g. \cite{moreau65}).
 Here we'll just cover it briefly aiming to define the prox of a function $\mathrm{prox}_f$ and show a key result, i.e.: that $\mathrm{prox}_f \equiv (\partial f+\mathbf I)\inv$.
 
-Let $x$ and $z$ be such that $z \in (\partial f + \mathbf I)x$. We are interested in the inverse map or, in other words, in having $x$ in terms of $z$.
+Let $x$ and $z$ be such that $z \in (\partial f + \mathbf I)(x)$. We are interested in the inverse map or, in other words, in having $x$ in terms of $z$.
 Rearranging the equation note that we have
 
 $$
@@ -223,14 +223,14 @@ Note that $(\partial f+\alpha \mathbf I) \equiv \alpha (\partial (\alpha\inv f)+
 
 $$ \alpha\inv(\partial f + \alpha \mathbf I)\inv \spe{\equiv} \prox_{\alpha\inv f}. $$
 
-Finally, note that if $\alpha$ is sufficiently large, then the objective in \eqref{obj-prox} is strongly-convex and therefore can only have a unique minimiser meaning that $\prox_{\alpha\inv f}$ is a well-defined function.
+Note also that if $\alpha$ is sufficiently large, then the objective in \eqref{obj-prox} is strongly-convex and therefore can only have a unique minimiser meaning that $\prox_{\alpha\inv f}$ is a well-defined function.
 
 **Remark**: it may look like we just conjured this proximal operator out of the abyss for nothing but it turns out that a proximal operator exists in closed form for a number of important functions.
 Among the most known examples is the $\ell^1$-norm whose prox is the *soft-thresholding operator* and the $\iota_C$ indicator of a convex set whose proximal operator is the *orthogonal projection* on that set.
 
 ### ADMM
 
-Hopefully you saw this one coming: if you take DPR2 \eqref{DPR2} and simply replace $B$ by $\partial f$, $C$ by $\partial g$ and pepper with prox you get the ADMM (see e.g. \cite{combettes11}).
+Hopefully you saw this one coming: if you take DPR2 \eqref{DPR2} and simply replace $B$ by $\partial f$, $C$ by $\partial g$ and pepper with $\prox$ you get the ADMM (see e.g. \cite{combettes11}).
 
 @@colbox-blue
 (**Alternative direction method of multipliers (ADMM)**) the minimisation problem \eqref{decomposable-pb} can be tackled with the following elegant iteration:

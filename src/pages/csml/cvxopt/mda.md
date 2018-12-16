@@ -27,10 +27,10 @@ $$ x_{k+1} \speq \arg\min_{x\in C}\,\, \left\{\scal{x, \nabla f(x_k)} + {1\over 
 
 This new way of writing the PGD allows two important comments:
 
-1. the objective shows how the PGD corresponds to a tradeoff between following the direction of the negative gradient (first term) and not moving too much from the current point (second term),
-2. the second term is an isotropic measure of distance from the current point $x_k$, what if we used another measure of distance?
+1. the objective shows how the PGD corresponds to a tradeoff between following the direction of the negative gradient (first term) and not moving too much from the current point (second term) while staying in $C$,
+2. the second term is an isotropic measure of distance from the current point $x_k$, but what if we used another measure of distance?
 
-The first point might be obvious to you if you're already seen the gradient descent and related methods but it's actually deeper than what it may seems, I'll discuss this more in [thoughts on first order methods](\cvx{fom.html}).
+The first point might be obvious to you if you're already seen the gradient descent and related methods but it's actually a bit deeper than what it may seems on a cursory glance, I discuss this more in [thoughts on first order methods](\cvx{fom.html}).
 
 The second point gives the _generalised projected gradient descent_.
 
@@ -45,11 +45,11 @@ Recall that such a function verifies $d(u, v)>0$ for $u\neq v$ and $d(u, u)=0$.
 One reason why one might want to consider another distance-like function to penalise how much we move in a particular direction is that doing so can better reflect what we may know about the geometry of $C$ which can make steps easier to compute or convergence to a minimiser faster.
 
 For a given divergence, there now remains to compute the corresponding iteration steps which may be intractable depending on $d$.
-But there happens to be a popular class of divergences which [we've already discussed](\cvx{ca3.html}): Bregman divergences.
+But there happens to be a popular class of divergences for which it is tractable and which [we have already discussed](\cvx{ca3.html}): the Bregman divergences.
 
 ## Bregman divergences and the mirror descent algorithm
 
-Recall that for a _strictly convex_ and differentiable function $\psi$, we can define the _Bregman divergence_ associated with $\psi$, a positive-definite function $B_\psi$ with
+Recall that for a _strictly convex_ and differentiable function $\psi$, we can define the _Bregman divergence_ associated with $\psi$ as a positive-definite function $B_\psi$ with
 
 $$ B_\psi(x, y) \spe{:=} \psi(x)-\psi(y)-\scal{x - y, \nabla \psi(y)}. $$
 
@@ -59,7 +59,7 @@ If we use this as divergence in \eqref{gpgd}, the GPGD iteration is
 $$ x_{k+1} \spe{\in} \arg \min_{x\in C} \,\,\left\{ \scal{x, \nabla f(x_k)} + {1\over \alpha_k}B_\varphi(x, x_k)\right\} $$
 
 for $\alpha_k>0$.
-It's straightforward to take the gradient of the objective and we can thus write the FOC for one step:
+It's straightforward to take the gradient of the objective and write the FOC for one step:
 
 $$ 0 \spe{\in} \alpha_k\nabla f(x_k) + \nabla \varphi(x_{k+1}) - \nabla \varphi (x_k) + N_C(x_{k+1}), $$
 
@@ -77,7 +77,7 @@ where $\phi^\star(y) = \sup_{z\in C}[\scal{z,y}-\varphi(z)]$.
 
 Note that $\phi$ is also strongly convex on $C$ so that it is differentiable which is why we can write $\nabla \phi^\star$ (its gradient is even Lipschitz as we showed in [convex analysis part 3](\cvx{ca3.html})).
 
-A final note is that, as for the PGD, the whole development of the MDA by relaxing the differentiability of $f$ to sub-differentiability without much change, the iteration is then $x_{k+1}=\nabla\phi^\star(\nabla \varphi(x_k)-\alpha_k f'(x_k))$ with $f'(x_k)\in \partial f(x_k)$.
+A final note is that, as for the PGD, the differentiability of $f$ can be relaxed to sub-differentiability without much changes, the iteration is then $x_{k+1}=\nabla\phi^\star(\nabla \varphi(x_k)-\alpha_k f'(x_k))$ with $f'(x_k)\in \partial f(x_k)$.
 
 ## References
 

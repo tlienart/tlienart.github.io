@@ -8,13 +8,13 @@ First order methods (FOM) broadly designate iterative methods for continuous and
 
 In these notes we consider again the constrained minimisation problem $\min_{x\in C} f(x)$ and, to simplify the presentation, we'll assume that $C$ is closed and convex and that $f$ is strictly convex and smooth on $C$.
 
-What we're interested in here is discussing, at a high level, how to generate a _minimising sequence_ for $f$ i.e., a sequence $\{x_k\}$ with $x_k\in C$ such that $f(x_{k+1}) < f(x_k)$ and $f(x_k) \to f(\xopt)$ as $k$ grows.
+What we're interested in, at a high level, is how to generate a _minimising sequence_ for $f$ i.e., a sequence $\{x_k\}$ with $x_k\in C$ such that $f(x_{k+1}) < f(x_k)$ and $f(x_k) \to f(\xopt)$ as $k$ grows.
 
 _Remark_: all norms $\|\cdot\|$ are 2-norms.
 
 ## Local linearisation
 
-Local linearisation is basically what first order methods are about: form a linear approximation of the function around a current point.
+Local linearisation is basically what first order methods are about: form a linear approximation of the function around a current point and use that to move in a promising direction.
 Still, let's try to look at this from scratch: consider the local linearisation of $f$ around a point $a\in C^\circ$:
 
 $$ f(x) \speq f(a) + \scal{x-a, \nabla f(a)} + r(x, a) $$
@@ -64,7 +64,7 @@ Such a step will be called an _admissible descent step_ if $x+\delta\in C$ and i
 $$ \scal{\delta, \nabla f(x)} + r_x(\delta) \spe{<} 0. \label{admissibility}$$
 
 Let $\mathcal D_x$ be the set of admissible descent steps from $x$.
-Observe that it is always non-empty provided that $0<\|\nabla f(x)\|\infty$.
+Observe that it is always non-empty provided that $0<\|\nabla f(x)\|<\infty$.
 
 To show this, let $\delta_\epsilon := -\epsilon(g+v)$ with $\epsilon>0$,  $g=\nabla f(x)/\|\nabla f(x)\|$ (the unit vector in direction of the gradient) and $v$ such that $\scal{v, \nabla f(x)}=0$ and $0 < \|v\|\le 1$.
 Then just by plugging things in we have
@@ -106,9 +106,9 @@ Hence, there exists a $\beta^\bullet$ large enough such that for any $\nu \ge \b
 
 Now that we know that \eqref{approx step} can lead to an admissible step, we can suggest iterating over the problem with a sequence of $\{\beta_k\}$:
 
-$$ \tilde\delta_{\beta_k} \spe{\in} \arg\min_{\delta\mid x_k+\delta \in C} \,\, \left[\scal{\delta, \nabla f(x_k)} + \beta_kd_x(\delta_k)\right]$$
+$$ \tilde\delta_{\beta_k} \spe{\in} \arg\min_{\delta\mid x_k+\delta \in C} \,\, \left[\scal{\delta, \nabla f(x_k)} + \beta_kd_x(\delta_k)\right].$$
 
-but basic manipulation of that expression show that this is in fact the generalised projected gradient descent (GPGD) that we [saw before](\cvx{mda.html}).
+However, basic manipulation of that expression show that this is in fact the generalised projected gradient descent (GPGD) that we [saw before](\cvx{mda.html}).
 
 @@colbox-blue
 The generalised projected gradient descent (GPGD) corresponds to the following iteration:
@@ -129,7 +129,7 @@ So at this point there's two comments we can make:
 The second point is _very important_: it should be clear to you that you'd want the local problems to be as informed as possible while at the same time you'd want the iterations to not be overly expensive to compute, two extreme cases being:
 
 * $d(x, x_k)/\alpha_k = \|x-x_k\|_2^2/{2\alpha_k}$ <!--_--> and $\alpha_k$ small, the iterations are cheap to compute but potentially quite poor at decreasing the function, many steps are needed, minimal use of problem structure,
-* $d(x, x_k)/\alpha_k = r(x, x_k)$, the iteration is maximally expensive but only a single step is needed, maximal use of problem structure.
+* $d(x, x_k)/\alpha_k = r(x, x_k)$, the iteration is maximally expensive but only a single step is needed; maximal use of problem structure.
 
 This key tradeoff can be exposed in most iterative methods using gradient information that you'll find in the literature.
 

@@ -62,8 +62,8 @@ NOTE TODO:
     * (⭒) [convex analysis part 2](\cvx{ca2.html}): the *convex conjugate* along with some useful properties. <!-- ✅  SEPT 2018 -->
     * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅  SEPT 2018 -->
     * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅  OCT 2018 -->
-    * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- 🚫  OCT 2018 TODO: review -->
-    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- 🚫  OCT 2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
+    * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- ✅  OCT 2018 -->
+    * [thoughts on first order methods](\cvx{fom.html}): _first order methods_, _minimising sequence_, _admissible direction_, _generalised projected gradient descent_ (again). <!-- ✅   OCT 2018 TODO: review, add summary at bottom hinting at approximation of r_x with Bregman div for instance -->
     * (⭒) [splitting methods and ADMM](\cvx{split.html}): _splitting methods_ in optimisation, _proximal methods_ and _ADMM_. <!-- 🚫  DEC 2018 TODO: review, possibly add an example -->
 
 

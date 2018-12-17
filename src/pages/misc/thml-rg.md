@@ -27,7 +27,7 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Dec 20, '18**) [Gradient descent learns linear dynamical systems](http://jmlr.org/papers/volume19/16-465/16-465.pdf) by Hardt, Ma and Recht, JMLR 2018. _Presenter: Masoud Moravej_.
+* (**Dec 20, '18**) [An Outsider's Tour of RL](http://www.argmin.net/2018/06/25/outsider-rl/) by Recht. _Presenter: Thibaut Lienart_.
 
 ### Past
 

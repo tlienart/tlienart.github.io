@@ -63,7 +63,7 @@ TODO:
 -->
     * [introduction](\cvx{intro.html}): introduction of the general minimisation problem and hint at generic iterative methods. <!-- ✅ 12/9/18 -->
     * [convex analysis part 1](\cvx{ca1.html}): the *subdifferential* and the *first-order optimality condition*. <!-- ✅  SEPT 2018 -->
-    * (⭒) [convex analysis part 2](\cvx{ca2.html}): the *convex conjugate* along with some useful properties. <!-- ✅  SEPT 2018 -->
+    * (⭒) [convex analysis part 2](\cvx{ca2.html}): the *convex conjugate* along with some useful properties such as *Fenchel's inequality* and the *Fenchel-Moreau* theorem. <!-- ✅  SEPT 2018 -->
     * (⭒) [convex analysis part 3](\cvx{ca3.html}): *strict* and *strong* convexity, the *Bregman divergence* and link between *lipschitz continuity* and *strong convexity*. <!-- ✅  SEPT 2018 -->
     * [projected gradient descent](\cvx{pgd.html}): _normal cone_, _Euclidean projection_ and _projected gradient descent_. <!-- ✅  OCT 2018 -->
     * [mirror descent algorithm](\cvx{mda.html}): _generalised projected gradient descent_ and the _mirror descent algorithm_. <!-- ✅  OCT 2018 -->

@@ -1,1 +1,198 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Splitting methods</title> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Splitting methods and ADMM</h1> <p>In these notes, I show how some well known methods from numerical linear algebra can be applied to convex optimisation. The aim of these notes is to give an idea for how the following topics intertwine:</p> <ul> <li><p>solving a system of linear equations via iterative methods</p> <li><p>operator splitting techniques &#40;<em>Gauss-Seidel</em>, <em>Douglas-Rachford</em>, ...&#41;,</p> <li><p>proximal operator,</p> <li><p>the <em>alternating direction methods of multipliers</em> also known as ADM or ADMM</p> </ul> <h2>From convex optimisation to linear algebra</h2> <h3>Decomposable problems</h3> <p>In convex optimisation, a large portion of the problems can be written in the form: $$ x^\dagger \quad\!\! \in\quad\!\! \arg\min_x\,\, f(x) + g(x).$$ This includes constrained problems where \(g\equiv \iota_C\) for a convex set \(C\) or penalised problems like the LASSO regression: <a id=yJ0G ></a>$$ x^\dagger \quad\!\! \in\quad\!\!\arg\min_x\,\, \frac12\|Ax-b\|_2^2 + \lambda\|x\|_1 $$ </p> <p>In a similar vein as for the previous notes, the following regularity conditions are usually assumed to hold:</p> <ol> <li><p>\(f, g\in \Gamma_0\), the space of convex, proper, lower semi-continuous functions,</p> <li><p>\(f, g\) are such that on \(\mathrm{dom}\, f \cap \mathrm{dom}\, g\), \(\partial(f+g)=\partial f+\partial g\).</p> </ol> <p>As we showed in <a href="/pub/csml/cvxopt/ca1.html">convex analysis part 1</a>, for \(x^\dagger\) to be a minimiser, it must verify the first order condition, i.e.:</p> <a id=R3Uy ></a>$$ 0 \quad\!\! \in\quad\!\! (\partial f+\partial g)(x^\dagger), $$ <p>the issue being that, in most cases, we don&#39;t have a &#40;cheaply available&#41; closed-form expression for the inverse operator &#40;otherwise the problem is trivial&#41;.</p> <p>This issue can in fact be related to the classical problem of solving a linear system of equations:</p> <a id=HI7w ></a>$$ Ax \quad\!\! =\quad\!\! b $$ <p>where \(A\) is invertible but is &#40;for example&#41; too big or too poorly conditioned for its inverse to be computable cheaply and reliably.</p> <h3>Operator splitting methods in linear algebra</h3> <p>One way of attempting to solve <span class=eqref >(<a href="#HI7w">4</a>)</span> without computing the inverse of \(A\) is to consider a <em>splitting method</em>: a decomposition of \(A\) into a sum of matrices \(A=B+C\) with desirable properties. The equation <span class=eqref >(<a href="#HI7w">4</a>)</span> can then be written in the form of a <em>fixed-point equation</em>:</p> $$ Bx \quad\!\! =\quad\!\! b-Cx. $$ <p>Assuming that \(B\) is easier to invert than \(A\), we can consider the <em>fixed-point iteration</em> algorithm:</p> $$ x_{k+1} \quad\!\! =\quad\!\! B^{-1} (b-Cx_k). $$ <p>There are two classical examples of this type of splitting:</p> <ol> <li><p>the <em>Jacobi method</em>, writing \(A=D+R\) with \(D\) diagonal,</p> <li><p>the <em>Gauss-Seidel method</em>, writing \(A=(L+D)+U\) with \(L\) and \(U\) lower and upper triangular respectively.</p> </ol> <p>Under some conditions, the corresponding fixed-point iterations converge &#40;see also <span class=bibref ><a href="#dTun">Ortega and Rheinboldt (2000)</a></span>&#41;. For instance if \(A\) is symmetric, positive definite or if it is diagonally dominant then Gauss-Seidel converges.</p> <h3>DPR splitting</h3> <p>Researchers like <em>Douglas</em>, <em>Peaceman</em> and <em>Rachford</em> studied this in the mid 1950s to solve linear systems arising from the discretisation of systems of partial differential equations <span class=bibref >(<a href="#K9Ic">Peaceman and Rachford (1955)</a>, <a href="#4I6e">Douglas and Rachford (1956)</a>)</span>. They came up with what is now known as the <em>Douglas-Rachford</em> splitting and the <em>Peaceman-Rachford</em> splitting.</p> <p>The context is simple: assume that we have a decomposition \(A=B+C\) where \(B\) and/or \(C\) are poorly conditioned or even singular. In that case, one can try to regularise them by writing</p> $$ A \quad\!\! =\quad\!\! (B+\alpha \mathbf I) + (C-\alpha \mathbf I) $$ <p>for some \(\alpha>0\) which will shift the minimum singular value of \(B\) and \(C\) away from zero &#40;and thereby push them towards diagonally dominant matrices&#41;. The fixed-point corresponding to this splitting is</p> <a id=Ucgh ></a>$$ (B+\alpha \mathbf I) x \quad\!\! =\quad\!\! (b-(C-\alpha\mathbf I)x). $$ <p>Observe that for a suitably large \(\alpha\) we could also consider the fixed-point derived from <span class=eqref >(<a href="#Ucgh">8</a>)</span> where the role of \(B\) and \(C\) are swapped. The resulting fixed point equation is equivalent to <span class=eqref >(<a href="#Ucgh">8</a>)</span> but the fixed-point iteration is not and the DPR method suggests alternating between both.</p> <div class=colbox-blue >&#40;<strong>DPR iterative method</strong>&#41; let \(Ax=b\) and \(A=B+C\), the DPR iterative method is given by $$ \begin{cases} (B+\alpha\mathbf I)x_{k+1} &=\quad\!\! (b+(\alpha \mathbf I - C)z_k)\\ (C+\alpha\mathbf I)z_{k+1} &=\quad\!\! (b+(\alpha \mathbf I-B)x_{k+1}) \end{cases} $$ and converges to the solution provided \(\alpha\) is sufficiently large.</div> <p>It can be proved that this iteration converges provided \(\alpha\) is sufficiently large. It belongs to a class of method known as <em>alternating direction methods</em>...</p> <h3>DPR splitting for the kernel</h3> <p>Let&#39;s assume that \(b=0\) for now and let \(y=Cx=-Bx\). Then, we can suggest a triplet of fixed-points:</p> $$ \begin{cases} (B+\alpha\mathbf I) x &=\quad\!\! (\alpha\mathbf I - C)x + \textcolor{blue}{(Cx-y)}\\ (C+\alpha\mathbf I)x &=\quad\!\! (\alpha\mathbf I - B)x - \textcolor{blue}{(-Bx-y)}\\ \textcolor{blue}{y} &=\quad\!\! \textcolor{blue}{Cx} \end{cases} $$ <p>We can then intertwine the corresponding fixed-point iterations as follows:</p> $$ \begin{cases} (B+\alpha\mathbf I) x_{k+1} &=\quad\!\! (\alpha\mathbf I - C)z_k + (Cz_k-y_k)\\ (C+\alpha\mathbf I) z_{k+1} &=\quad\!\! (\alpha\mathbf I - B)x_{k+1} - (-Bx_{k+1}-y_k)\\ \textcolor{blue}{y_{k+1}} &=\quad\!\! Cz_{k+1} \end{cases} $$ <p>Let now \(u_k=y_k/\alpha\) and note that \(Cz_{k+1}= (\alpha x_{k+1} + y_k - \alpha z_{k+1})\) using the second iteration. This leads to an iterative method to solve \(Ax=0\) which we will show to be directly connected to the ADMM.</p> <div class=colbox-blue >&#40;<strong>DPR iterative method &#40;2&#41;</strong>&#41; let \(Ax=0\) and \(A=B+C\), the DPR2 iterative method is given by <a id=YN03 ></a>$$ \begin{cases} (B+\alpha\mathbf I)x_{k+1} &=\quad\!\! \alpha(z_k - u_k)\\ (C+\alpha\mathbf I)z_{k+1} &=\quad\!\! \alpha(z_k + u_k)\\ u_k &=\quad\!\! u_k + x_{k+1} - z_{k+1} \end{cases} $$ and converges to the solution provided \(\alpha\) is sufficiently large.</div> <h2>From linear algebra back to convex optimisation</h2> <p>Going back to problem <span class=eqref >(<a href="#yJ0G">2</a>)</span>, we had noted that a minimiser must be in the kernel of \((\partial f+\partial g)\):</p> $$ 0 \quad\!\! \in\quad\!\! (\partial f+\partial g)(x^\dagger). $$ <p>Since we&#39;ve just seen that splitting operators could be a good idea in linear algebra, we could be tempted to apply exactly the same approach here. But in order to do this, we need to consider the inverse of the following two operators: \((\partial f+\alpha \mathbf I)\) and \((\partial g+\alpha \mathbf I)\).</p> <h3>Proximal operators</h3> <p>Proximal operators can be recovered from a number of nice perspectives and are usually attributed to Moreau &#40;see e.g. <span class=bibref ><a href="#Hf9o">Moreau (1965)</a></span>&#41;. Here we&#39;ll just cover it briefly aiming to define the prox of a function \(\mathrm{prox}_f\) and show a key result, i.e.: that \(\mathrm{prox}_f \equiv (\partial f+\mathbf I)^{-1}\).</p> <p>Let \(x\) and \(z\) be such that \(z \in (\partial f + \mathbf I)(x)\). We are interested in the inverse map or, in other words, in having \(x\) in terms of \(z\). Rearranging the equation note that we have</p> <a id=BmI1 ></a>$$ 0 \quad\!\! \in\quad\!\! \partial f(x) + (x-z). $$ <p>Observe that the simple linear functional \((x-z)\) can be re-expressed as the gradient of a squared \(\ell^2\)-norm:</p> $$ \partial \left[\frac12\|x-z\|_2^2\right] \quad\!\! =\quad\!\! x-z. $$ </p> <p>Therefore, we can write <span class=eqref >(<a href="#BmI1">14</a>)</span> as</p> $$ 0 \quad\!\! \in\quad\!\! \partial \left[f + {1\over 2}\|\cdot-z\|_2^2\right] (x). $$ <p>This can be interpreted as a first order condition &#40;FOC&#41; and is equivalent to</p> <a id=Ep3S ></a>$$ x \quad\!\! \in\quad\!\! \arg\min_u \, f(u)+{1\over 2}\|u-z\|_2^2 $$ </p> <p>which <em>defines</em> the prox of \(f\).</p> <div class=colbox-blue >For a convex function \(f\), the proximal operator of \(f\) at a point \(z\) is defined as $$ \mathrm{prox}_f(z) \quad\!\! =\quad\!\! \arg\min_u \, f(u)+\frac12\|u-z\|_2^2 $$</div> </p> <p>Note that \((\partial f+\alpha \mathbf I) \equiv \alpha (\partial (\alpha^{-1} f)+\mathbf I)\) so that</p> $$ \alpha^{-1}(\partial f + \alpha \mathbf I)^{-1} \quad\!\! \equiv\quad\!\! \mathrm{prox}_{\alpha^{-1} f}. $$ <p>Note also that if \(\alpha\) is sufficiently large, then the objective in <span class=eqref >(<a href="#Ep3S">17</a>)</span> is strongly-convex and therefore can only have a unique minimiser meaning that \(\mathrm{prox}_{\alpha^{-1} f}\) is a well-defined function.</p> <p><strong>Remark</strong>: it may look like we just conjured this proximal operator out of the abyss for nothing but it turns out that a proximal operator exists in closed form for a number of important functions. Among the most known examples is the \(\ell^1\)-norm whose prox is the <em>soft-thresholding operator</em> and the \(\iota_C\) indicator of a convex set whose proximal operator is the <em>orthogonal projection</em> on that set.</p> <h3>ADMM</h3> <p>Hopefully you saw this one coming: if you take DPR2 <span class=eqref >(<a href="#YN03">12</a>)</span> and simply replace \(B\) by \(\partial f\), \(C\) by \(\partial g\) and pepper with \(\mathrm{prox}\) you get the ADMM &#40;see e.g. <span class=bibref ><a href="#BagP">Combettes and Pesquet (2011)</a></span>&#41;.</p> <div class=colbox-blue >&#40;<strong>Alternative direction method of multipliers &#40;ADMM&#41;</strong>&#41; the minimisation problem <span class=eqref >(<a href="#yJ0G">2</a>)</span> can be tackled with the following elegant iteration: $$ \begin{cases} x_{k+1} &=\quad\!\! \mathrm{prox}_{\gamma f}(z_k-u_k)\\ z_{k+1} &=\quad\!\! \mathrm{prox}_{\gamma g}(x_{k+1}+u_k)\\ u_{k+1} &=\quad\!\! u_k + x_{k+1} - z_{k+1} \end{cases} $$ which converges provided \(\gamma>0\) is small enough.</div> <p><strong>When is this helpful?</strong>: a frequent scenario has \(f\) complex but differentiable and \(g\) simple but non-differentiable &#40;e.g. \(\ell^1\)-norm&#41;; in that case, the first prox is a differentiable problem that can be &#40;approximately&#41; solved using a simple/cheap first-order method and the second prox exists in closed form. For instance, regularised maximum likelihood estimation or regularised inverse problems typically have this form.</p> <h2>References</h2> <p><strong>Proximal methods</strong></p> <ol> <li><p><a id=BagP ></a> <strong>Combettes</strong> and <strong>Pesquet</strong>, <a href="https://www.ljll.math.upmc.fr/~plc/prox.pdf">Proximal splitting methods in signal processing</a>, 2011. – A detailed review on proximal methods, accessible and comprehensive.</p> <li><p><a id=Hf9o ></a> <strong>Moreau</strong>, <a href="http://www.numdam.org/article/BSMF_1965__93__273_0.pdf">Proximité et dualité dans un espace hilbertien</a>, 1965. – A wonderful seminal paper, clear and complete, a great read if you understand French &#40;and even if you don&#39;t you should be able to follow the equations&#41;.</p> </ol> <p><strong>Linear algebra</strong></p> <ol> <li><p><a id=K9Ic ></a> <strong>Peaceman</strong> and <strong>Rachford</strong>, <a href="http://www.jstor.org/discover/10.2307/2098834?sid&#61;21106114630493&amp;uid&#61;2&amp;uid&#61;70&amp;uid&#61;4&amp;uid&#61;3738032&amp;uid&#61;2129">The numerical solution of parabolic and elliptic differential equations</a>, 1955.</p> <li><p><a id=4I6e ></a> <strong>Douglas</strong> and <strong>Rachford</strong>, <a href="http://www.ams.org/journals/tran/1956-082-02/S0002-9947-1956-0084194-4/S0002-9947-1956-0084194-4.pdf">On the numerical solution of heat conduction problems in two and three space variables</a>, 1956.</p> <li><p><a id=dTun ></a> <strong>Ortega</strong> and <strong>Rheinboldt</strong>, Iterative solutions of nonlinear equations in several variables, 2000.</p> </ol> <div class=page-foot > <div class=copyright > &copy; T. Lienart. Last modified: December 16, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>. </div> </div> </div> <script src="/libs/katex/katex.min.js"></script> <script src="/libs/katex/auto-render.min.js"></script> <script>renderMathInElement(document.body)</script>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.min.css"></link>
+ 		
+        
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
+		 <title>Splitting methods</title>	
+	</head>
+    <body>
+		
+        <header>
+            <div class="blog-name"><a href="/">Thibaut Lienart</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
+                    <li><a href="/pub/julia.html">Julia notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="/assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+		
+
+<!-- Content appended here -->
+
+<div class="jd-content">
+<h1>Splitting methods and ADMM</h1>
+<p>In these notes, I show how some well known methods from numerical linear algebra can be applied to convex optimisation. The aim of these notes is to give an idea for how the following topics intertwine:</p>
+<ul>
+<li><p>solving a system of linear equations via iterative methods</p>
+</li>
+<li><p>operator splitting techniques &#40;<em>Gauss-Seidel</em>, <em>Douglas-Rachford</em>, ...&#41;,</p>
+</li>
+<li><p>proximal operator,</p>
+</li>
+<li><p>the <em>alternating direction methods of multipliers</em> also known as ADM or ADMM</p>
+</li>
+</ul>
+<h2>From convex optimisation to linear algebra</h2>
+<h3>Decomposable problems</h3>
+<p>In convex optimisation, a large portion of the problems can be written in the form: $$ x^\dagger \quad\!\! \in\quad\!\! \arg\min_x\,\, f(x) + g(x).$$ This includes constrained problems where \(g\equiv \iota_C\) for a convex set \(C\) or penalised problems like the LASSO regression: <a id="yJ0G"></a>$$ x^\dagger \quad\!\! \in\quad\!\!\arg\min_x\,\, \frac12\|Ax-b\|_2^2 + \lambda\|x\|_1 $$ </p>
+<p>In a similar vein as for the previous notes, the following regularity conditions are usually assumed to hold:</p>
+<ol>
+<li><p>\(f, g\in \Gamma_0\), the space of convex, proper, lower semi-continuous functions,</p>
+</li>
+<li><p>\(f, g\) are such that on \(\mathrm{dom}\, f \cap \mathrm{dom}\, g\), \(\partial(f+g)=\partial f+\partial g\).</p>
+</li>
+</ol>
+<p>As we showed in <a href="/pub/csml/cvxopt/ca1.html">convex analysis part 1</a>, for \(x^\dagger\) to be a minimiser, it must verify the first order condition, i.e.:</p>
+<a id="R3Uy"></a>$$ 0 \quad\!\! \in\quad\!\! (\partial f+\partial g)(x^\dagger), $$
+<p>the issue being that, in most cases, we don&#39;t have a &#40;cheaply available&#41; closed-form expression for the inverse operator &#40;otherwise the problem is trivial&#41;.</p>
+<p>This issue can in fact be related to the classical problem of solving a linear system of equations:</p>
+<a id="HI7w"></a>$$ Ax \quad\!\! =\quad\!\! b $$
+<p>where \(A\) is invertible but is &#40;for example&#41; too big or too poorly conditioned for its inverse to be computable cheaply and reliably.</p>
+<h3>Operator splitting methods in linear algebra</h3>
+<p>One way of attempting to solve <span class="eqref">(<a href="#HI7w">4</a>)</span> without computing the inverse of \(A\) is to consider a <em>splitting method</em>: a decomposition of \(A\) into a sum of matrices \(A=B+C\) with desirable properties. The equation <span class="eqref">(<a href="#HI7w">4</a>)</span> can then be written in the form of a <em>fixed-point equation</em>:</p>
+$$ Bx \quad\!\! =\quad\!\! b-Cx. $$
+<p>Assuming that \(B\) is easier to invert than \(A\), we can consider the <em>fixed-point iteration</em> algorithm:</p>
+$$ x_{k+1} \quad\!\! =\quad\!\! B^{-1} (b-Cx_k). $$
+<p>There are two classical examples of this type of splitting:</p>
+<ol>
+<li><p>the <em>Jacobi method</em>, writing \(A=D+R\) with \(D\) diagonal,</p>
+</li>
+<li><p>the <em>Gauss-Seidel method</em>, writing \(A=(L+D)+U\) with \(L\) and \(U\) lower and upper triangular respectively.</p>
+</li>
+</ol>
+<p>Under some conditions, the corresponding fixed-point iterations converge &#40;see also <span class="bibref"><a href="#dTun">Ortega and Rheinboldt (2000)</a></span>&#41;. For instance if \(A\) is symmetric, positive definite or if it is diagonally dominant then Gauss-Seidel converges.</p>
+<h3>DPR splitting</h3>
+<p>Researchers like <em>Douglas</em>, <em>Peaceman</em> and <em>Rachford</em> studied this in the mid 1950s to solve linear systems arising from the discretisation of systems of partial differential equations <span class="bibref">(<a href="#K9Ic">Peaceman and Rachford (1955)</a>, <a href="#4I6e">Douglas and Rachford (1956)</a>)</span>. They came up with what is now known as the <em>Douglas-Rachford</em> splitting and the <em>Peaceman-Rachford</em> splitting.</p>
+<p>The context is simple: assume that we have a decomposition \(A=B+C\) where \(B\) and/or \(C\) are poorly conditioned or even singular. In that case, one can try to regularise them by writing</p>
+$$
+   A \quad\!\! =\quad\!\! (B+\alpha \mathbf I) + (C-\alpha \mathbf I)
+$$
+<p>for some \(\alpha>0\) which will shift the minimum singular value of \(B\) and \(C\) away from zero &#40;and thereby push them towards diagonally dominant matrices&#41;. The fixed-point corresponding to this splitting is</p>
+<a id="Ucgh"></a>$$
+   (B+\alpha \mathbf I) x \quad\!\! =\quad\!\! (b-(C-\alpha\mathbf I)x). 
+$$
+<p>Observe that for a suitably large \(\alpha\) we could also consider the fixed-point derived from <span class="eqref">(<a href="#Ucgh">8</a>)</span> where the role of \(B\) and \(C\) are swapped. The resulting fixed point equation is equivalent to <span class="eqref">(<a href="#Ucgh">8</a>)</span> but the fixed-point iteration is not and the DPR method suggests alternating between both.</p>
+<div class="colbox-blue">&#40;<strong>DPR iterative method</strong>&#41; let \(Ax=b\) and \(A=B+C\), the DPR iterative method is given by $$
+\begin{cases}
+   (B+\alpha\mathbf I)x_{k+1} &=\quad\!\! (b+(\alpha \mathbf I - C)z_k)\\
+   (C+\alpha\mathbf I)z_{k+1} &=\quad\!\! (b+(\alpha \mathbf I-B)x_{k+1})
+\end{cases}
+$$ and converges to the solution provided \(\alpha\) is sufficiently large.</div>
+
+<p>It can be proved that this iteration converges provided \(\alpha\) is sufficiently large. It belongs to a class of method known as <em>alternating direction methods</em>...</p>
+<h3>DPR splitting for the kernel</h3>
+<p>Let&#39;s assume that \(b=0\) for now and let \(y=Cx=-Bx\). Then, we can suggest a triplet of fixed-points:</p>
+$$
+\begin{cases}
+   (B+\alpha\mathbf I) x &=\quad\!\! (\alpha\mathbf I - C)x + \textcolor{blue}{(Cx-y)}\\
+   (C+\alpha\mathbf I)x &=\quad\!\! (\alpha\mathbf I - B)x - \textcolor{blue}{(-Bx-y)}\\
+   \textcolor{blue}{y} &=\quad\!\! \textcolor{blue}{Cx}
+\end{cases}
+$$
+<p>We can then intertwine the corresponding fixed-point iterations as follows:</p>
+$$
+\begin{cases}
+   (B+\alpha\mathbf I) x_{k+1} &=\quad\!\! (\alpha\mathbf I - C)z_k + (Cz_k-y_k)\\
+   (C+\alpha\mathbf I) z_{k+1} &=\quad\!\! (\alpha\mathbf I - B)x_{k+1} - (-Bx_{k+1}-y_k)\\
+   \textcolor{blue}{y_{k+1}} &=\quad\!\! Cz_{k+1}
+\end{cases}
+$$
+<p>Let now \(u_k=y_k/\alpha\) and note that \(Cz_{k+1}= (\alpha x_{k+1} + y_k - \alpha z_{k+1})\) using the second iteration. This leads to an iterative method to solve \(Ax=0\) which we will show to be directly connected to the ADMM.</p>
+<div class="colbox-blue">&#40;<strong>DPR iterative method &#40;2&#41;</strong>&#41; let \(Ax=0\) and \(A=B+C\), the DPR2 iterative method is given by <a id="YN03"></a>$$
+\begin{cases}
+   (B+\alpha\mathbf I)x_{k+1} &=\quad\!\! \alpha(z_k - u_k)\\
+   (C+\alpha\mathbf I)z_{k+1} &=\quad\!\! \alpha(z_k + u_k)\\
+   u_k &=\quad\!\! u_k + x_{k+1} - z_{k+1}
+\end{cases}
+
+$$ and converges to the solution provided \(\alpha\) is sufficiently large.</div>
+
+<h2>From linear algebra back to convex optimisation</h2>
+<p>Going back to problem <span class="eqref">(<a href="#yJ0G">2</a>)</span>, we had noted that a minimiser must be in the kernel of \((\partial f+\partial g)\):</p>
+$$ 0 \quad\!\! \in\quad\!\! (\partial f+\partial g)(x^\dagger). $$
+<p>Since we&#39;ve just seen that splitting operators could be a good idea in linear algebra, we could be tempted to apply exactly the same approach here. But in order to do this, we need to consider the inverse of the following two operators: \((\partial f+\alpha \mathbf I)\) and \((\partial g+\alpha \mathbf I)\).</p>
+<h3>Proximal operators</h3>
+<p>Proximal operators can be recovered from a number of nice perspectives and are usually attributed to Moreau &#40;see e.g. <span class="bibref"><a href="#Hf9o">Moreau (1965)</a></span>&#41;. Here we&#39;ll just cover it briefly aiming to define the prox of a function \(\mathrm{prox}_f\) and show a key result, i.e.: that \(\mathrm{prox}_f \equiv (\partial f+\mathbf I)^{-1}\).</p>
+<p>Let \(x\) and \(z\) be such that \(z \in (\partial f + \mathbf I)(x)\). We are interested in the inverse map or, in other words, in having \(x\) in terms of \(z\). Rearranging the equation note that we have</p>
+<a id="BmI1"></a>$$
+   0 \quad\!\! \in\quad\!\! \partial f(x) + (x-z). 
+$$
+<p>Observe that the simple linear functional \((x-z)\) can be re-expressed as the gradient of a squared \(\ell^2\)-norm:</p>
+$$
+\partial \left[\frac12\|x-z\|_2^2\right] \quad\!\! =\quad\!\! x-z.
+$$ </p>
+<p>Therefore, we can write <span class="eqref">(<a href="#BmI1">14</a>)</span> as</p>
+$$
+   0 \quad\!\! \in\quad\!\! \partial \left[f + {1\over 2}\|\cdot-z\|_2^2\right] (x).
+$$
+<p>This can be interpreted as a first order condition &#40;FOC&#41; and is equivalent to</p>
+<a id="Ep3S"></a>$$
+   x \quad\!\! \in\quad\!\! \arg\min_u \, f(u)+{1\over 2}\|u-z\|_2^2 
+$$ </p>
+<p>which <em>defines</em> the prox of \(f\).</p>
+<div class="colbox-blue">For a convex function \(f\), the proximal operator of \(f\) at a point \(z\) is defined as $$
+   \mathrm{prox}_f(z) \quad\!\! =\quad\!\! \arg\min_u \, f(u)+\frac12\|u-z\|_2^2
+$$</div>
+ </p>
+<p>Note that \((\partial f+\alpha \mathbf I) \equiv \alpha (\partial (\alpha^{-1} f)+\mathbf I)\) so that</p>
+$$ \alpha^{-1}(\partial f + \alpha \mathbf I)^{-1} \quad\!\! \equiv\quad\!\! \mathrm{prox}_{\alpha^{-1} f}. $$
+<p>Note also that if \(\alpha\) is sufficiently large, then the objective in <span class="eqref">(<a href="#Ep3S">17</a>)</span> is strongly-convex and therefore can only have a unique minimiser meaning that \(\mathrm{prox}_{\alpha^{-1} f}\) is a well-defined function.</p>
+<p><strong>Remark</strong>: it may look like we just conjured this proximal operator out of the abyss for nothing but it turns out that a proximal operator exists in closed form for a number of important functions. Among the most known examples is the \(\ell^1\)-norm whose prox is the <em>soft-thresholding operator</em> and the \(\iota_C\) indicator of a convex set whose proximal operator is the <em>orthogonal projection</em> on that set.</p>
+<h3>ADMM</h3>
+<p>Hopefully you saw this one coming: if you take DPR2 <span class="eqref">(<a href="#YN03">12</a>)</span> and simply replace \(B\) by \(\partial f\), \(C\) by \(\partial g\) and pepper with \(\mathrm{prox}\) you get the ADMM &#40;see e.g. <span class="bibref"><a href="#BagP">Combettes and Pesquet (2011)</a></span>&#41;.</p>
+<div class="colbox-blue">&#40;<strong>Alternative direction method of multipliers &#40;ADMM&#41;</strong>&#41; the minimisation problem <span class="eqref">(<a href="#yJ0G">2</a>)</span> can be tackled with the following elegant iteration: $$
+\begin{cases}
+   x_{k+1} &=\quad\!\! \mathrm{prox}_{\gamma f}(z_k-u_k)\\
+   z_{k+1} &=\quad\!\! \mathrm{prox}_{\gamma g}(x_{k+1}+u_k)\\
+   u_{k+1} &=\quad\!\! u_k + x_{k+1} - z_{k+1}
+\end{cases}
+$$ which converges provided \(\gamma>0\) is small enough.</div>
+
+<p><strong>When is this helpful?</strong>: a frequent scenario has \(f\) complex but differentiable and \(g\) simple but non-differentiable &#40;e.g. \(\ell^1\)-norm&#41;; in that case, the first prox is a differentiable problem that can be &#40;approximately&#41; solved using a simple/cheap first-order method and the second prox exists in closed form. For instance, regularised maximum likelihood estimation or regularised inverse problems typically have this form.</p>
+<h2>References</h2>
+<p><strong>Proximal methods</strong></p>
+<ol>
+<li><p><a id="BagP"></a> <strong>Combettes</strong> and <strong>Pesquet</strong>, <a href="https://www.ljll.math.upmc.fr/~plc/prox.pdf">Proximal splitting methods in signal processing</a>, 2011. – A detailed review on proximal methods, accessible and comprehensive.</p>
+</li>
+<li><p><a id="Hf9o"></a> <strong>Moreau</strong>, <a href="http://www.numdam.org/article/BSMF_1965__93__273_0.pdf">Proximité et dualité dans un espace hilbertien</a>, 1965. – A wonderful seminal paper, clear and complete, a great read if you understand French &#40;and even if you don&#39;t you should be able to follow the equations&#41;.</p>
+</li>
+</ol>
+<p><strong>Linear algebra</strong></p>
+<ol>
+<li><p><a id="K9Ic"></a> <strong>Peaceman</strong> and <strong>Rachford</strong>, <a href="http://www.jstor.org/discover/10.2307/2098834?sid&#61;21106114630493&amp;uid&#61;2&amp;uid&#61;70&amp;uid&#61;4&amp;uid&#61;3738032&amp;uid&#61;2129">The numerical solution of parabolic and elliptic differential equations</a>, 1955.</p>
+</li>
+<li><p><a id="4I6e"></a> <strong>Douglas</strong> and <strong>Rachford</strong>, <a href="http://www.ams.org/journals/tran/1956-082-02/S0002-9947-1956-0084194-4/S0002-9947-1956-0084194-4.pdf">On the numerical solution of heat conduction problems in two and three space variables</a>, 1956.</p>
+</li>
+<li><p><a id="dTun"></a> <strong>Ortega</strong> and <strong>Rheinboldt</strong>, Iterative solutions of nonlinear equations in several variables, 2000.</p>
+</li>
+</ol>
+
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. Last modified: December 16, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+
+</div>
+<!-- CONTENT ENDS HERE -->
+        
+                <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+        
+        
+    </body>
+</html>

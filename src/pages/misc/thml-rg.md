@@ -27,10 +27,12 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Dec 20, '18**) [An Outsider's Tour of RL](http://www.argmin.net/2018/06/25/outsider-rl/) by Recht. _Presenter: Thibaut Lienart_.
+* (TBA)
 
 ### Past
 
+
+* (**Dec 20, '18**) [An Outsider's Tour of RL](http://www.argmin.net/2018/06/25/outsider-rl/) by Recht. _Presenter: Thibaut Lienart_.
 * (**Dec 13, '18**) [Classification with imperfect training labels](https://arxiv.org/abs/1805.11505) by Cannings, Fan and Samworth, arXiv '18. _Presenter: Yi Han_.
 * (**Nov 29, '18**) [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018. _Presenter: Bastian Oetomo_.
 * (**Nov 22, '18**) [An optimal algorithm for bandit and zero-order convex optimisation with two-point feedback](http://jmlr.org/papers/volume18/16-632/16-632.pdf) by Shamir, JMLR 2017. _Presenter: Dongge Liu_.

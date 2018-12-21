@@ -1,47 +1,7 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		
-         <!-- Syntax highlighting via Prism, note: restricted langs -->
-<link rel="stylesheet" href="/libs/highlight/github.min.css">
- 	
-		
-			<link rel="stylesheet" href="/css/main.css">
-	        <link rel="icon" href="/assets/infra/favicon.png">
-		
-		 <title>Creating a package in Julia</title>	
-	</head>
-    <body>
-		
-        <header>
-            <div class="blog-name"><a href="/">Thibaut Lienart</a></div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
-                    <li><a href="/pub/julia.html">Julia notes</a></li>
-                    <li><a href="/pub/misc.html">Misc.</a></li>
-                </ul>
-                <img src="/assets/infra/hamburger.svg" id="menu-icon">
-            </nav>
-        </header>
-		
-
-<!-- Content appended here -->
-
-<div class="jd-content">
-<h1>Creating a package in Julia</h1>
-<p>This is a short guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways. It has been written while using <code>Julia 1.1</code> on MacOS &#40;but I expect the process to be identical on Linux and very similar on Windows 10&#41;.</p>
-<p><strong>Note</strong>: you may also want to consider <a href="https://github.com/invenia/PkgTemplates.jl"><code>PkgTemplates.jl</code></a>, a package that helps you create new Julia packages.</p>
-<h2>Creating the package on your computer</h2>
-<p>I prefer to have all the packages I&#39;m developing in the same spot, it makes my life simpler, and this spot is <code>~/.julia/dev</code> where <code>~</code> is the path to my home folder &#40;you don&#39;t necessarily need to do this&#41;.</p>
-<p>Fire up Julia and <code>cd</code> to the right directory &#40;press <code>;</code> to activate the shell mode&#41;</p>
-<pre><code class="language-julia-repl">shell&gt; cd ~/.julia/dev</code></pre>
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>Creating a package in Julia</title> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Creating a package in Julia</h1> <p>This is a short guide as to how to start developing a package in Julia, it is not an official tutorial and so there may be better ways. It has been written while using <code>Julia 1.1</code> on MacOS &#40;but I expect the process to be identical on Linux and very similar on Windows 10&#41;.</p> <p><strong>Note</strong>: you may also want to consider <a href="https://github.com/invenia/PkgTemplates.jl"><code>PkgTemplates.jl</code></a>, a package that helps you create new Julia packages.</p> <h2>Creating the package on your computer</h2> <p>I prefer to have all the packages I&#39;m developing in the same spot, it makes my life simpler, and this spot is <code>~/.julia/dev</code> where <code>~</code> is the path to my home folder &#40;you don&#39;t necessarily need to do this&#41;.</p> <p>Fire up Julia and <code>cd</code> to the right directory &#40;press <code>;</code> to activate the shell mode&#41;</p> <pre><code class=language-julia-repl >shell&gt; cd ~/.julia/dev</code></pre>
 
 <p>Then enter the package mode with <code>&#93;</code> and just use the <code>generate</code> command.</p>
-<pre><code class="language-julia-repl">&#40;v1.0&#41; pkg&gt; generate Ex
+<pre><code class=language-julia-repl >&#40;v1.0&#41; pkg&gt; generate Ex
 Generating project Ex:
     Ex/Project.toml
     Ex/src/Ex.jl</code></pre>
@@ -54,13 +14,13 @@ Generating project Ex:
 
 <ol>
 <li><p><code>Project.toml</code> which contains information about the authors, name of the package, an identifier and the dependencies. While you can change the author&#40;s&#41; detail, don&#39;t change anything else for now.</p>
-</li>
+
 <li><p><code>src/PackageExample.jl</code> the main module file of your package, this will be where all your methods are defined, exported etc. Currently it only contains a simple <code>greet&#40;&#41;</code> function.</p>
-</li>
+
 </ol>
 <h3>Telling Julia about your new package</h3>
 <p>Once the folder has been generated, you need to tell Julia about it. To do this, in Pkg mode write:</p>
-<pre><code class="language-julia-repl">&#40;v1.0&#41; pkg&gt; dev ~/.julia/dev/Ex
+<pre><code class=language-julia-repl >&#40;v1.0&#41; pkg&gt; dev ~/.julia/dev/Ex
  Resolving package versions...
   Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;
   &#91;bd8551b6&#93; &#43; Ex v0.1.0 &#91;&#96;~/.julia/dev/Ex&#96;&#93;
@@ -69,7 +29,7 @@ Generating project Ex:
 
 <p><strong>Note</strong>: if you wanted to work on a repository that is already on GitHub but not yet on your computer, you could also use <code>dev</code> and just specify the appropriate repository url as path.</p>
 <p>You can now call your package:</p>
-<pre><code class="language-julia-repl">julia&gt; using Ex
+<pre><code class=language-julia-repl >julia&gt; using Ex
 &#91; Info: Precompiling Ex &#91;acebdc52-e6d5-...&#93;
 julia&gt; Ex.greet&#40;&#41;
 Hello World&#33;</code></pre>
@@ -77,7 +37,7 @@ Hello World&#33;</code></pre>
 <h2>Developing your package</h2>
 <h3>Adding dependencies</h3>
 <p>In order to add dependencies and have them not clashing with the dependencies of other packages you may be developing, you need to enter the <em>environment</em> of <code>Ex</code> and add the relevant dependency there. To do this, <code>cd</code> to the package folder, and <code>activate</code> it:</p>
-<pre><code class="language-julia-repl">shell&gt; cd ~/.julia/dev/Ex
+<pre><code class=language-julia-repl >shell&gt; cd ~/.julia/dev/Ex
 &#40;v1.0&#41; pkg&gt; activate .
 &#40;Ex&#41; pkg&gt; add Test
   Updating registry at &#96;~/.julia/registries/General&#96;
@@ -99,13 +59,13 @@ Hello World&#33;</code></pre>
   &#91;8dfed614&#93; &#43; Test</code></pre>
 
 <p>Here we added the package <code>Test</code> which will be needed for unit testing. To leave the package-specific environment, just use <code>activate</code> again but without arguments:</p>
-<pre><code class="language-julia-repl">&#40;Ex&#41; pkg&gt; activate
+<pre><code class=language-julia-repl >&#40;Ex&#41; pkg&gt; activate
 &#40;v1.0&#41; pkg&gt;</code></pre>
 
 <p><strong>Remark</strong>: a recent fix was added to Pkg so that you can do <code>&#40;v1.0&#41; pkg&gt; dev ~/.julia/dev/Ex</code> instead of <code>cd</code> followed by <code>activate .</code>. This is not yet present in <code>1.0.2</code> but should be present in subsequent versions.</p>
 <h3>Adding tests</h3>
 <p>Let&#39;s add and export two basic functions in <code>src/Ex.jl</code>:</p>
-<pre><code class="language-julia">module Ex
+<pre><code class=language-julia >module Ex
 export foo, bar
 
 foo&#40;x::T, y::T&#41; where T &lt;: Real &#61; x &#43; y - 5
@@ -113,7 +73,7 @@ bar&#40;z::Float64&#41; &#61; foo&#40;sqrt&#40;z&#41;, z&#41;
 end</code></pre>
 
 <p>To add tests, you should create a folder <code>test/</code> in the <code>Ex</code> folder and add a file <code>runtests.jl</code> &#40;Julia convention&#41;. That file may typically contain calls to other test files via <code>include&#40;fname&#41;</code>. In our case there is only two functions to test, so we will just write in <code>runtests.jl</code> directly:</p>
-<pre><code class="language-julia">using Ex, Test
+<pre><code class=language-julia >using Ex, Test
 
 @testset &quot;foo&quot; begin
     x, y &#61; 5, 7
@@ -129,7 +89,7 @@ end</code></pre>
 
 <h3>Testing the package</h3>
 <p>To test your package you can then just run <code>runtests.jl</code> or alternatively you can use the Pkg mode again:</p>
-<pre><code class="language-julia-repl">&#40;Ex&#41; pkg&gt; test
+<pre><code class=language-julia-repl >&#40;Ex&#41; pkg&gt; test
    Testing Ex
  Resolving package versions...
 Test Summary: | Pass  Total
@@ -139,7 +99,7 @@ bar           |    1      1
    Testing Ex tests passed</code></pre>
 
 <p>If you&#39;re back in the main environment, just apply <code>resolve</code> and then <code>test Ex</code>:</p>
-<pre><code class="language-julia-repl">&#40;v1.0&#41; pkg&gt; resolve
+<pre><code class=language-julia-repl >&#40;v1.0&#41; pkg&gt; resolve
  Resolving package versions...
   Updating &#96;~/.julia/environments/v1.0/Project.toml&#96;
  &#91;no changes&#93;
@@ -156,19 +116,15 @@ bar           |    1      1
 
 <p><strong>Note</strong>: you only need to call <code>resolve</code> if you&#39;ve added new dependencies to the project &#40;here we added <code>Test</code>&#41;.</p>
 <p>If you&#39;d like to know how to synchronise your new package with GitHub &#40;or similar system&#41;, head to the <a href="/pub/julia/dev-pkg2.html">second part</a>.
-<div class="page-foot">
-		<div class="copyright">
+<div class=page-foot >
+		<div class=copyright >
 				&copy; T. Lienart. Last modified: November 26, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
 		</div>
 </div>
 
 </div>
-<!-- CONTENT ENDS HERE -->
+
         
         
                 <script src="/libs/highlight/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
-
-        
-    </body>
-</html>

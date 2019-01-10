@@ -282,7 +282,7 @@ header {
     align-items: center; }
 
 header .blog-name {
-    width: 39%;
+    width: 28%;
     display: inline-block;
     text-align: left;
     font-size: 18px;
@@ -315,7 +315,7 @@ header li a:hover {
         margin-right: auto; }
     }
 
-@media (max-width: 880px) {
+@media (max-width: 800px) {
     header { display: block; }
     header .blog-name {
         display: block;

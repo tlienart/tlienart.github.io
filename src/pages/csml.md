@@ -23,6 +23,9 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
 
 ## Stats, ML and related topics
 
+* **approximate bayesian inference** (assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation;  these notes are mostly drawn from a section of my PhD thesis)
+    * [introduction](/pub/csml/abi/intro.html): <!--🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references-->
+
 <!--
 * **notes on approximated bayesian inference** (*assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation*)
     * [introduction](/pub/csml/abi/intro.html): 🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references //

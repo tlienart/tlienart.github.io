@@ -18,6 +18,9 @@
 
 \newcommand{\scal}[1]{\left\langle#1\right\rangle}
 
+<!-- ABI specific -->
+\newcommand{\KL}{\mathrm{KL}}
+
 <!-- optimisation specific -->
 \newcommand{\xopt}{x^\dagger}
 \newcommand{\deltaopt}{\delta^\dagger}

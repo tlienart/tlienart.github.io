@@ -1,1 +1,108 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/css/main.css"> <link rel=icon  href="/assets/infra/favicon.png"> <title>CS/ML</title> <header> <div class=blog-name ><a href="/">Thibaut Lienart</a></div> <nav> <ul> <li><a href="/">Home</a> <li><a href="/pub/csml.html">CS/ML notes</a> <li><a href="/pub/julia.html">Julia notes</a> <li><a href="/pub/misc.html">Misc.</a> </ul> <img src="/assets/infra/hamburger.svg" id=menu-icon > </nav> </header> <div class=jd-content > <h1>Computer science &amp; machine learning notes</h1> <p>The aim of the notes you&#39;ll find here is to suggest a direct, constructive path to results I find useful, beautiful, or simply interesting. This stems mainly from my experience reading papers where the presentation sometimes trades clarity for generality.</p> <p>The emphasis is on intuition rather than rigour though I try to indicate where simplifications are made and what they may imply. Often, these simplifications allow for straightforward demonstrations. The references to more technical work can then be helpful to learn the results in full.</p> <p><strong>Target audience</strong>: advanced undergrads or grads in quantitative fields such as applied-maths, stats, comp-sci, etc, assuming a decent background in basic maths &#40;in particular linear algebra, real analysis and probability theory&#41;. When the level of the notes is judged &#40;arbitrarily&#41; to be a bit more advanced, it is marked by a &quot;⭒&quot; symbol.</p> <p><strong>Errors &amp; Comments</strong>: if you find anything dubious in the notes, please send me an email, feedback is always much appreciated.</p> <p><strong>Browser note</strong>: the notes use a recent version of <a href="https://katex.org/">KaTeX</a> to render the maths which requires you to have Javascript on. The rendering has been tested on Firefox 61, Safari 12 and Chromium 71. If you use an older version or another browser it may be that some things don&#39;t render properly. If that&#39;s the case, kindly let me know by email, thanks&#33;</p> <h2>Stats, ML and related topics</h2> <ul> <li><p><strong>kernel methods</strong> &#40;<em>assumes good knowledge of stats and real analysis</em>&#41;</p> <ul> <li><p>&#40;⭒&#41; <a href="/pub/csml/rkhs/intro-rkhs1.html">RKHS embeddings part 1</a>: notes from a 2015 &quot;kernel methods reading group&quot; introducing <em>reproducing kernel Hilbert space</em> embeddings of distributions and their use.</p> <li><p>&#40;⭒&#41; <a href="/pub/csml/rkhs/intro-rkhs2.html">RKHS embeddings part 2</a>: rest of the notes where we discuss probabilistic reasoning with kernel embeddings. </p> </ul> </ul> <h2>Applied maths</h2> <ul> <li><p><strong>convex optimisation</strong> &#40;<em>assumes familiarity with convexity</em>&#41;: </p> <ul> <li><p><a href="/pub/csml/cvxopt/intro.html">introduction</a>: introduction of the general minimisation problem and hint at generic iterative methods. </p> <li><p><a href="/pub/csml/cvxopt/ca1.html">convex analysis part 1</a>: the <em>subdifferential</em> and the <em>first-order optimality condition</em>. </p> <li><p>&#40;⭒&#41; <a href="/pub/csml/cvxopt/ca2.html">convex analysis part 2</a>: the <em>convex conjugate</em> along with some useful properties such as <em>Fenchel&#39;s inequality</em> and the <em>Fenchel-Moreau</em> theorem. </p> <li><p>&#40;⭒&#41; <a href="/pub/csml/cvxopt/ca3.html">convex analysis part 3</a>: <em>strict</em> and <em>strong</em> convexity, the <em>Bregman divergence</em> and link between <em>lipschitz continuity</em> and <em>strong convexity</em>. </p> <li><p><a href="/pub/csml/cvxopt/pgd.html">projected gradient descent</a>: <em>normal cone</em>, <em>Euclidean projection</em> and <em>projected gradient descent</em>. </p> <li><p><a href="/pub/csml/cvxopt/mda.html">mirror descent algorithm</a>: <em>generalised projected gradient descent</em> and the <em>mirror descent algorithm</em>. </p> <li><p><a href="/pub/csml/cvxopt/fom.html">thoughts on first order methods</a>: <em>first order methods</em>, <em>minimising sequence</em>, <em>admissible direction</em>, <em>generalised projected gradient descent</em> &#40;again&#41;. </p> <li><p>&#40;⭒&#41; <a href="/pub/csml/cvxopt/split.html">splitting methods and ADMM</a>: <em>splitting methods</em> in optimisation, <em>proximal methods</em> and <em>ADMM</em>. </p> </ul> </ul> <ul> <li><p><strong>Matrix theory</strong>:</p> <ul> <li><p><a href="/pub/csml/mtheory/matinvlem.html">matrix inversion lemmas</a>: re-obtaining the <em>Woodbury formula</em> and the <em>Sherman-Morrison formula</em> &#40;with some code&#41;.</p> </ul> </ul> <div class=page-foot > <div class=copyright > &copy; T. Lienart. Last modified: December 18, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>. </div> </div> </div> <script src="/libs/katex/katex.min.js"></script> <script src="/libs/katex/auto-render.min.js"></script> <script>renderMathInElement(document.body)</script>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.min.css"></link>
+ 		
+        
+		
+			<link rel="stylesheet" href="/css/main.css">
+	        <link rel="icon" href="/assets/infra/favicon.png">
+		
+		 <title>CS/ML</title>	
+	</head>
+    <body>
+		
+        <header>
+            <div class="blog-name"><a href="/">Thibaut Lienart</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pub/csml.html">CS/ML notes</a></li>
+                    <li><a href="/pub/julia.html">Julia notes</a></li>
+                    <li><a href="/pub/misc.html">Misc.</a></li>
+                </ul>
+                <img src="/assets/infra/hamburger.svg" id="menu-icon">
+            </nav>
+        </header>
+		
+
+<!-- Content appended here -->
+
+<div class="jd-content">
+<h1>Computer science &amp; machine learning notes</h1>
+<p>The aim of the notes you&#39;ll find here is to suggest a direct, constructive path to results I find useful, beautiful, or simply interesting. This stems mainly from my experience reading papers where the presentation sometimes trades clarity for generality.</p>
+<p>The emphasis is on intuition rather than rigour though I try to indicate where simplifications are made and what they may imply. Often, these simplifications allow for straightforward demonstrations. The references to more technical work can then be helpful to learn the results in full.</p>
+<p><strong>Target audience</strong>: advanced undergrads or grads in quantitative fields such as applied-maths, stats, comp-sci, etc, assuming a decent background in basic maths &#40;in particular linear algebra, real analysis and probability theory&#41;. When the level of the notes is judged &#40;arbitrarily&#41; to be a bit more advanced, it is marked by a &quot;⭒&quot; symbol.</p>
+<p><strong>Errors &amp; Comments</strong>: if you find anything dubious in the notes, please send me an email, feedback is always much appreciated.</p>
+<p><strong>Browser note</strong>: the notes use a recent version of <a href="https://katex.org/">KaTeX</a> to render the maths which requires you to have Javascript on. The rendering has been tested on Firefox 61, Safari 12 and Chromium 71. If you use an older version or another browser it may be that some things don&#39;t render properly. If that&#39;s the case, kindly let me know by email, thanks&#33;</p>
+<h2>Stats, ML and related topics</h2>
+<ul>
+<li><p><strong>approximate bayesian inference</strong> &#40;assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation;  these notes are mostly drawn from a section of my PhD thesis&#41;</p>
+<ul>
+<li><p><a href="/pub/csml/abi/intro.html">introduction</a>: </p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>kernel methods</strong> &#40;<em>assumes good knowledge of stats and real analysis</em>&#41;</p>
+<ul>
+<li><p>&#40;⭒&#41; <a href="/pub/csml/rkhs/intro-rkhs1.html">RKHS embeddings part 1</a>: notes from a 2015 &quot;kernel methods reading group&quot; introducing <em>reproducing kernel Hilbert space</em> embeddings of distributions and their use.</p>
+</li>
+<li><p>&#40;⭒&#41; <a href="/pub/csml/rkhs/intro-rkhs2.html">RKHS embeddings part 2</a>: rest of the notes where we discuss probabilistic reasoning with kernel embeddings. </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Applied maths</h2>
+<ul>
+<li><p><strong>convex optimisation</strong> &#40;<em>assumes familiarity with convexity</em>&#41;:  </p>
+<ul>
+<li><p><a href="/pub/csml/cvxopt/intro.html">introduction</a>: introduction of the general minimisation problem and hint at generic iterative methods. </p>
+</li>
+<li><p><a href="/pub/csml/cvxopt/ca1.html">convex analysis part 1</a>: the <em>subdifferential</em> and the <em>first-order optimality condition</em>. </p>
+</li>
+<li><p>&#40;⭒&#41; <a href="/pub/csml/cvxopt/ca2.html">convex analysis part 2</a>: the <em>convex conjugate</em> along with some useful properties such as <em>Fenchel&#39;s inequality</em> and the <em>Fenchel-Moreau</em> theorem. </p>
+</li>
+<li><p>&#40;⭒&#41; <a href="/pub/csml/cvxopt/ca3.html">convex analysis part 3</a>: <em>strict</em> and <em>strong</em> convexity, the <em>Bregman divergence</em> and link between <em>lipschitz continuity</em> and <em>strong convexity</em>. </p>
+</li>
+<li><p><a href="/pub/csml/cvxopt/pgd.html">projected gradient descent</a>: <em>normal cone</em>, <em>Euclidean projection</em> and <em>projected gradient descent</em>. </p>
+</li>
+<li><p><a href="/pub/csml/cvxopt/mda.html">mirror descent algorithm</a>: <em>generalised projected gradient descent</em> and the <em>mirror descent algorithm</em>. </p>
+</li>
+<li><p><a href="/pub/csml/cvxopt/fom.html">thoughts on first order methods</a>: <em>first order methods</em>, <em>minimising sequence</em>, <em>admissible direction</em>, <em>generalised projected gradient descent</em> &#40;again&#41;. </p>
+</li>
+<li><p>&#40;⭒&#41; <a href="/pub/csml/cvxopt/split.html">splitting methods and ADMM</a>: <em>splitting methods</em> in optimisation, <em>proximal methods</em> and <em>ADMM</em>. </p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>Matrix theory</strong>:</p>
+<ul>
+<li><p><a href="/pub/csml/mtheory/matinvlem.html">matrix inversion lemmas</a>: re-obtaining the <em>Woodbury formula</em> and the <em>Sherman-Morrison formula</em> &#40;with some code&#41;.</p>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="page-foot">
+		<div class="copyright">
+				&copy; T. Lienart. Last modified: January 10, 2019. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+
+</div>
+<!-- CONTENT ENDS HERE -->
+        
+                <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+        
+        
+    </body>
+</html>

@@ -30,6 +30,7 @@
 \newcommand{\inv}{^{-1}}
 
 <!-- in-text replacements -->
+\newcommand{\abi}[1]{/pub/csml/abi/!#1}
 \newcommand{\cvx}[1]{/pub/csml/cvxopt/!#1}
 \newcommand{\mth}[1]{/pub/csml/mtheory/!#1}
 \newcommand{\uns}[1]{/pub/csml/unsorted/!#1}

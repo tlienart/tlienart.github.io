@@ -23,14 +23,19 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
 
 ## Stats, ML and related topics
 
-* **approximate bayesian inference** (assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation;  these notes are mostly drawn from a section of my PhD thesis)
-    * [introduction](/pub/csml/abi/intro.html): <!--🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references-->
+* **approximate Bayesian inference** (*assumes knowledge of the Bayesian framework, familiarity with the exponential family and convex optimisation;  these notes are mostly adapted from a section of my PhD thesis*)
+    * [introduction](/pub/csml/abi/intro.html): introduction to approximate Bayesian Inference and the generic variational problem with a warning note.
+    * [variational bayes](/pub/csml/abi/vb.html) <!--🚫🚫🚫🚫 (ongoing)
+        ref:
+        >> http://www.orchid.ac.uk/eprints/40/1/fox_vbtut.pdf
+    -->
+    * [expectation propagation](/pub/csml/abi/ep.html) <!-- 🚫🚫🚫🚫 (ongoing)
+        ref:
+        >>
+    -->
+
 
 <!--
-* **notes on approximated bayesian inference** (*assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation*)
-    * [introduction](/pub/csml/abi/intro.html): 🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references //
-        - http://www.orchid.ac.uk/eprints/40/1/fox_vbtut.pdf
-        -
     * [exponential family and convexity part 1](/pub/csml/abi/ef-cvx1.html): 🚫🚫🚫🚫 (ongoing)
     * [exponential family and convexity part 2](/pub/csml/abi/ef-cvx2.html): 🚫🚫🚫🚫 (ongoing)
     * [online bayesian learning and assumed density filtering](/pub/csml/abi/obl-adf.html): 🚫🚫🚫🚫 (ongoing)
@@ -74,7 +79,7 @@ TODO:
     * (⭒) [splitting methods and ADMM](\cvx{split.html}): _splitting methods_ in optimisation, _proximal methods_ and _ADMM_. <!-- ✅  DEC 2018 -->
 
 
-* **Matrix theory**:
+* **matrix theory**:
     * [matrix inversion lemmas](\mth{matinvlem.html}): re-obtaining the _Woodbury formula_ and the _Sherman-Morrison formula_ (with some code).
 
 <!-- 🍺

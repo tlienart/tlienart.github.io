@@ -7,22 +7,21 @@ In *Bayesian Machine Learning* (BML), one is broadly interested in recovering a 
 $$ p(\theta|\mathcal D) \spe{\propto} p(\mathcal D|\theta)p(\theta), $$
 
 where $p(\theta)$ denotes our prior belief on what the parameters should be.
-The posterior distribution $p(\theta|\mathcal D)$ can then in theory be used to make more robust predictions with the model and, in particular, to account for **uncertainty** in the model parameters.
+The posterior distribution $p(\theta|\mathcal D)$ can then be used to make more robust predictions with the model and, in particular, to account for **uncertainty** in the model parameters.
 
 This approach is optimal under two key assumptions:
 1. your prior is chosen appropriately,
-1. the posterior is tractable (at the very least we'd like to be able to sample from it).
+1. the posterior is tractable (or at least we can sample from it).
 
-The first point is usually overlooked by researchers in computational Bayesian statistics who usually assume the prior is given (and, in practice, it typically encodes a regularisation).
-The second point is generally far from true especially with complex models and many approaches have been suggested such as the well known MCMC methods.
+The first assumption is usually overlooked by researchers in computational Bayesian statistics who usually assume the prior is given (and, in practice, it typically encodes a regularisation).
+This is not without its weaknesses but it would require an entire set of notes to be discussed appropriately.
+The second assumption is generally far from true especially with complex models and many approaches have been suggested such as the well known MCMC methods.
 
-In these notes we define *Approximate Bayesian Inference* (ABI) in broad terms as the class of methods attempting to recover a distribution $q$ in a restricted family of distributions such that $q$ is a good *proxy* for some posterior distribution of interest $p$.
+In these notes we define *Approximate Bayesian Inference* (ABI) in broad terms as the class of methods attempting to recover a distribution $q$ such that $q$ is a good *proxy* for the posterior distribution of interest $p$.
 
-## Context
+## Variational problem
 
-In what follows we will write $\mathcal F\mathcal \subset \mathcal P(\mathcal X)$ the restricted family of candidate proxy distributions where $\mathcal P$ designates all probability distributions on the domain $\mathcal X$.
-
-This context leaves significant room to describe different methods based on the definition of what a "good proxy" means.
+In what follows we write $\mathcal F\mathcal \subset \mathcal P(\mathcal X)$ a restricted family of candidate proxy distributions where $\mathcal P$ designates all probability distributions on the domain $\mathcal X$.
 Let $D:\mathcal P(\mathcal X)\times \mathcal P(\mathcal X) \mapsto \R_+$ denote a discrepancy measure between two probability distribution functions.
 Then, the generic variational problem considered in (our interpretation of) ABI is the minimisation of this $D$ between the candidate $q\in \mathcal F$ and the target $p$:
 
@@ -46,18 +45,17 @@ In the rest of the notes we will look at both $\KL(p, q)$ and $\KL(q, p)$.
 While in both case \eqref{eq:basic-abi} is intractable, in both cases a proxy problem can be obtained and worked with.
 This leads namely to two well known algorithms that we will discuss (along with related variants):
 
-* the mean-field variational inference algorithm (MFVI),
-* the expectation propagation algorithm (EP).
+* the (Mean-Field) Variational Bayes algorithm ((MF)VB), which we will discuss [here](\abi{vb.html}),
+* the Expectation Propagation algorithm (EP), which we will discuss [here](\abi{ep.html}).
 
 ## A warning note
 
-At the risk of stating the obvious, it is absolutely crucial to note that ABI algorithms do *not lead to the correct posterior* but rather a proxy which may be quite far off the target.
-Therefore, it goes without saying that no matter what ABI algorithm you use, you should in general be very careful about how you use the recovered proxy $q$ and should ideally refrain from making strong statements about the uncertainty in the model parameters based upon $q$.
+At the risk of stating the obvious, we must stress that ABI algorithms do in general *not lead to the correct posterior* but rather a proxy which may be a very poor approximation to the target posterior.
+Therefore, no matter what ABI algorithm you use, you should in general be very careful about how you interpret the recovered proxy $q$ and should ideally refrain from making strong statements about the uncertainty in the model parameters based upon $q$ unless you've tested it somehow.
 
-There are some cases where ABI does give a pretty good proxy (in particular if $p$ is known to be log-concave and thin-tailed) but unless you know for sure that you're in one of those cases, you should remain careful.
+While there are some cases where ABI algorithms can give good proxy (in particular if $p$ is known to be log-concave and thin-tailed), in many circumstances, and especially in the context of complex / high-dimensional models such as neural networks, ABI algorithms lead to proxy distributions which
 
-### Short rant
-
-In many circumstances and especially in the context of complex / high-dimensional models such as neural networks, ABI algorithms lead to proxy distributions which recover reasonable location (i.e. the most likely $\theta$ according to the proxy $q$ is a good parameter for the model in terms of generalisation) but appalling uncertainty (often catastrophically underestimated).
-
-<!-- NOTE: HERE HERE HERE, add that basically amounts to regularised MLE which is much much faster, of course no uncertainty estimate but between un-usable ones and none with a fast method... -->
+* typically recover reasonable location (e.g. the most likely $\theta$ according to the proxy $q$ is a good parameter for the model in terms of generalisation error)
+* typically recover appalling uncertainty (often catastrophically underestimated).
+ABI is a nice theoretical field with interesting mathematical tools but that should not prevent you from checking that the results obtained are sensible.
+If you are not in a position to check the validity of the obtained proxy, you should probably revert to simply considering the maximum a posteriori (MAP) and avoid fooling yourself into thinking that you have a workable model of the uncertainty.

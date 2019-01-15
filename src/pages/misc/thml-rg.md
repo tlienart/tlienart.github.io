@@ -27,7 +27,9 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (TBA)
+* (**Jan 17, '19**) (TBC). _Presenter: Neil Merchant_.
+* (**Jan 24, '19**) (TBC). _Presenter: _Bastian Oetomo_.
+* (**Jan 31, '19**) [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan. _Presenter: Miquel Ramírez_.
 
 ### Past
 
@@ -49,7 +51,6 @@ At some point in the future, I'll organise the list with indicators of the topic
 
 * [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017.
 * [Minimising the maximal loss: how and why](http://proceedings.mlr.press/v48/shalev-shwartzb16-supp.pdf) by Shalev-Shwartz and Wexler, ICML 2016.
-* [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan, ArXiv 2018.
 
 #### secondary block
 

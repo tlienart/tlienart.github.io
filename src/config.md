@@ -37,3 +37,7 @@
 
 <!-- Text decoration -->
 \newcommand{\ul}[1]{~~~<span id=underline>!#1</span>~~~}
+\newcommand{\textcolor}[2]{~~~<font color="!#1">!#2</font>~~~}
+
+<!-- Text alignment -->
+\newcommand{\br}{~~~</br>~~~} <!-- skip a line -->

@@ -247,7 +247,7 @@ span#underline { text-decoration: underline; }
 ================================================================== */
 
 nav {
-    width: 69%;
+    width: 64%;
     display: inline-block; }
 
 nav ul {
@@ -282,7 +282,7 @@ header {
     align-items: center; }
 
 header .blog-name {
-    width: 28%;
+    width: 35%;
     display: inline-block;
     text-align: left;
     font-size: 18px;
@@ -301,7 +301,7 @@ header li a:hover {
 #menu-icon {
     display: none; }
 
-@media (min-width: 480px) {
+@media (min-width: 481px) {
     header {
         padding-left: 12.5%;
         padding-right: 12.5%; }
@@ -315,7 +315,10 @@ header li a:hover {
         margin-right: auto; }
     }
 
-@media (max-width: 800px) {
+/*
+medium display: nav goes under name
+*/
+@media (max-width: 700px) {
     header { display: block; }
     header .blog-name {
         display: block;
@@ -329,7 +332,7 @@ header li a:hover {
 narrow display: collapse the header (don't show the menu items)
 instead, display a burger menu.
 */
-@media (max-width: 530px) {
+@media (max-width: 500px) {
     header {
         height: 35px;
         display: flex;

@@ -27,9 +27,10 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Jan 17, '19**) (TBC). _Presenter: Neil Merchant_.
 * (**Jan 24, '19**) (TBC). _Presenter: Bastian Oetomo_.
 * (**Jan 31, '19**) [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan. _Presenter: Miquel Ramírez_.
+* (**Feb 7, '19**) (TBC). _Presenter: Yi Han_.
+* (**Feb 14, '19**) (TBC). _Presenter: Neil Merchant_.
 
 ### Past
 

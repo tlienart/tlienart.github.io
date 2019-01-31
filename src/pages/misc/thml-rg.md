@@ -27,14 +27,13 @@ We also have a small catering budget for biscuits and tea 🍫.
 
 ### Upcoming
 
-* (**Jan 24, '19**) (TBC). _Presenter: Bastian Oetomo_.
 * (**Jan 31, '19**) [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan. _Presenter: Miquel Ramírez_.
 * (**Feb 7, '19**) (TBC). _Presenter: Yi Han_.
 * (**Feb 14, '19**) (TBC). _Presenter: Neil Merchant_.
 
 ### Past
 
-
+* (**Jan 24, '19**) [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017. _Presenter: Bastian Oetomo_.
 * (**Dec 20, '18**) [An Outsider's Tour of RL](http://www.argmin.net/2018/06/25/outsider-rl/) by Recht. _Presenter: Thibaut Lienart_.
 * (**Dec 13, '18**) [Classification with imperfect training labels](https://arxiv.org/abs/1805.11505) by Cannings, Fan and Samworth, arXiv '18. _Presenter: Yi Han_.
 * (**Nov 29, '18**) [To tune or not to tune the number of trees in random forest](http://jmlr.org/papers/volume18/17-269/17-269.pdf) by Probst and Boulesteix, JMLR 2018. _Presenter: Bastian Oetomo_.
@@ -50,7 +49,6 @@ At some point in the future, I'll organise the list with indicators of the topic
 
 #### priority block
 
-* [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017.
 * [Minimising the maximal loss: how and why](http://proceedings.mlr.press/v48/shalev-shwartzb16-supp.pdf) by Shalev-Shwartz and Wexler, ICML 2016.
 
 #### secondary block

@@ -21,18 +21,19 @@ A bit of friendly chasing will hopefully ensure this happens 🚂.
 * 🎪 **room**: McDonnell, usually 7.02 unless otherwise mentioned,
 * 📧 **mailing list**: you can subscribe by [clicking this link](https://lists.unimelb.edu.au/subscribe/ml-theory).
 
-We also have a small catering budget for biscuits and tea 🍫.
-
 ## Presentations
 
 ### Upcoming
 
-* (**Jan 31, '19**) [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan. _Presenter: Miquel Ramírez_.
-* (**Feb 7, '19**) (TBC). _Presenter: Yi Han_.
-* (**Feb 14, '19**) (TBC). _Presenter: Neil Merchant_.
+* TBD
 
 ### Past
 
+* (**Mar 7, '19**) [Adaptive Data Analysis](https://protect-au.mimecast.com/s/t9StCE8knvs5D9qVuNz-y6?domain=simons.berkeley.edu  ) by Roth. _Presenter: Ben Rubinstein_.
+* (**Feb 21, '19**) [Conservative contextual linear bandits](https://papers.nips.cc/paper/6980-conservative-contextual-linear-bandits) by Kazerouni et al. _Presenter: Masoud Khorasani_.
+* (**Feb 14, '19**) [Is Q-Learning provably efficient](https://papers.nips.cc/paper/7735-is-q-learning-provably-efficient.pdf) by Jin et al. _Presenter: Neil Merchant_.
+* (**Feb 7, '19**) [Minimising the maximal loss: how and why](http://proceedings.mlr.press/v48/shalev-shwartzb16-supp.pdf) by Shalev-Shwartz and Wexler. _Presenter: Yi Han_.
+* (**Jan 31, '19**) [Sampling can be faster than optimization](https://arxiv.org/abs/1811.08413) by Ma, Chen, Jin, Flammarion and Jordan. _Presenter: Miquel Ramírez_.
 * (**Jan 24, '19**) [Second-order stochastic optimisation for machine learning in linear time](http://jmlr.org/papers/volume18/16-491/16-491.pdf) by Agarwal, Bullins and Hazan, JMLR 2017. _Presenter: Bastian Oetomo_.
 * (**Dec 20, '18**) [An Outsider's Tour of RL](http://www.argmin.net/2018/06/25/outsider-rl/) by Recht. _Presenter: Thibaut Lienart_.
 * (**Dec 13, '18**) [Classification with imperfect training labels](https://arxiv.org/abs/1805.11505) by Cannings, Fan and Samworth, arXiv '18. _Presenter: Yi Han_.
@@ -49,7 +50,7 @@ At some point in the future, I'll organise the list with indicators of the topic
 
 #### priority block
 
-* [Minimising the maximal loss: how and why](http://proceedings.mlr.press/v48/shalev-shwartzb16-supp.pdf) by Shalev-Shwartz and Wexler, ICML 2016.
+* TBD
 
 #### secondary block
 

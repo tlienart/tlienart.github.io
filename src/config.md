@@ -18,6 +18,9 @@
 
 \newcommand{\scal}[1]{\left\langle#1\right\rangle}
 
+<!-- ABI specific -->
+\newcommand{\KL}{\mathrm{KL}}
+
 <!-- optimisation specific -->
 \newcommand{\xopt}{x^\dagger}
 \newcommand{\deltaopt}{\delta^\dagger}
@@ -27,9 +30,14 @@
 \newcommand{\inv}{^{-1}}
 
 <!-- in-text replacements -->
+\newcommand{\abi}[1]{/pub/csml/abi/!#1}
 \newcommand{\cvx}[1]{/pub/csml/cvxopt/!#1}
 \newcommand{\mth}[1]{/pub/csml/mtheory/!#1}
 \newcommand{\uns}[1]{/pub/csml/unsorted/!#1}
 
 <!-- Text decoration -->
 \newcommand{\ul}[1]{~~~<span id=underline>!#1</span>~~~}
+\newcommand{\textcolor}[2]{~~~<font color="!#1">!#2</font>~~~}
+
+<!-- Text alignment -->
+\newcommand{\br}{~~~</br>~~~} <!-- skip a line -->

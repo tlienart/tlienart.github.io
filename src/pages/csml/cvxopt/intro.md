@@ -1,4 +1,4 @@
-@def title = "Convex Optimisation I"
+@def title = "Convex Optimisation - Introduction"
 
 <!--
 TODO:
@@ -7,9 +7,7 @@ TODO:
 * add link to mirror descent (same place)
 -->
 
-# Introduction
-
-## Context <!-- ✅ 19/9/2018 -->
+# Introduction to convex optimisation
 
 We'll consider the standard *constrained minimisation problem* in convex optimisation:
 

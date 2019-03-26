@@ -31,3 +31,7 @@ If you would like to be updated when new sets of notes appear, you can follow me
   </div>
 </div>
 ~~~
+
+## Misc.
+
+* [theoretical ML reading group](/pub/misc/thml-rg.html): informations about an informal theoretical ML reading group I organise at the University of Melbourne.

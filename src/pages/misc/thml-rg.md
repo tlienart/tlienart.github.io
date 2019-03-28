@@ -50,7 +50,7 @@ At some point in the future, I'll organise the list with indicators of the topic
 
 #### priority block
 
-* TBD
+* [Why are big data matrices approximately low rank](https://epubs.siam.org/doi/pdf/10.1137/18M1183480) by Udell and Townsend, SIAM 2019.
 
 #### secondary block
 

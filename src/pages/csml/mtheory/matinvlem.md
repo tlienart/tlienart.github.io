@@ -93,7 +93,7 @@ $$
 
 One little bit of dark magic is required to get the Woodbury formula: observe that if we take the term $(A-BD\inv C)$ and right-multiply it by $-A\inv$ we get
 
-$$ (A-BD\inv C)(-A\inv) \speq \textcolor{green}{BD\inv}\textcolor{blue}{CA\inv} - \mathbf I  $$
+$$ (A-BD\inv C)(-A\inv) \speq \textcolor{green}{BD\inv} \textcolor{blue}{CA\inv} - \mathbf I  $$
 
 and therefore $BD\inv CA\inv = (\mathbf I + (A-BD\inv C)(-A\inv)$.
 Now if we post-multiply \eqref{lemma2} by $CA\inv$ and re-arrange the expression, we get the third lemma.

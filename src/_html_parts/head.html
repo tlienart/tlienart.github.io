@@ -11,7 +11,7 @@
 			<link rel="stylesheet" href="/css/main.css">
 	        <link rel="icon" href="/assets/infra/favicon.png">
 		{{ end }}
-		{{ifdef title}} <title>{{fill title}}</title>	{{end}}
+		{{isdef title}} <title>{{fill title}}</title>	{{end}}
 	</head>
     <body>
 		{{ if isdemo }} {{ else }}

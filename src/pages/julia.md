@@ -21,12 +21,14 @@ I may write notes on some of them in the future.
 
 ### Misc.
 
-* [`JuDoc.jl`](https://github.com/tlienart/JuDoc.jl), an experimental static site generator which I use for this website that allows using LaTeX-like syntax (\htmlcolor{gray}{actively maintained}).
+* [`JuDoc.jl`](https://github.com/tlienart/JuDoc.jl), an experimental static site generator which I use for this website that allows using LaTeX-like syntax (\htmlcolor{gray}{ongoing development}).
 * [`GPlot.jl`](https://github.com/tlienart/GPlot.jl), a prototype wrapper for the [Graphics Layout Engine](glx.sourceforge.net/index.html), a powerful engine for fast and publication-quality plots (\htmlcolor{gray}{ongoing development}).
+* [`LiveServer.jl`](http://github.com/asprionj/LiveServer.jl) (with Jonas Asprion), a local web server with live-reload capacity inspired from [browser-sync](https://www.browsersync.io/) (\htmlcolor{gray}{actively maintained}).
 
 ### Stats/ML
 
-* [`CovarianceEstimation.jl`](https://github.com/mateuszbaran/CovarianceEstimation.jl), a package for robust covariance estimation I contribute to (\htmlcolor{gray}{ongoing development}).
+* [`CovarianceEstimation.jl`](https://github.com/mateuszbaran/CovarianceEstimation.jl) (with Mateusz Baran), a package for robust covariance estimation (\htmlcolor{gray}{actively maintained}).
+* [`MLJ.jl`](https://github.com/alan-turing-institute/MLJ.jl) (with Anthony Blaom and a team at the Alan Turing Institute), a Machine Learning toolbox (\htmlcolor{gray}{ongoing development}).
 
 ### Research
 

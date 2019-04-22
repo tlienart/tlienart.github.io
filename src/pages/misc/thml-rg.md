@@ -29,6 +29,7 @@ A bit of friendly chasing will hopefully ensure this happens 🚂.
 
 ### Past
 
+* (**Apr 18, '19**) [Neural Ordinary Differential Equations](https://arxiv.org/pdf/1806.07366.pdf) by Chen, Rubanova, Bettencourt and Duvenaud. _Presenter: Thibaut Lienart_.
 * (**Mar 7, '19**) [Adaptive Data Analysis](https://protect-au.mimecast.com/s/t9StCE8knvs5D9qVuNz-y6?domain=simons.berkeley.edu  ) by Roth. _Presenter: Ben Rubinstein_.
 * (**Feb 21, '19**) [Conservative contextual linear bandits](https://papers.nips.cc/paper/6980-conservative-contextual-linear-bandits) by Kazerouni et al. _Presenter: Masoud Khorasani_.
 * (**Feb 14, '19**) [Is Q-Learning provably efficient](https://papers.nips.cc/paper/7735-is-q-learning-provably-efficient.pdf) by Jin et al. _Presenter: Neil Merchant_.

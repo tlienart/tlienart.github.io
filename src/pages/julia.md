@@ -5,7 +5,7 @@
 I've been using Julia since 2015 and like it a lot, primarily for two reasons:
 
 * the types + multiple dispatch paradigm makes more sense to me than object-oriented programming, more generally I like the syntax,
-* it's interpreted which helps to try out ideas quickly and yet code can be very fast.
+* it's interpreted which helps to try out ideas quickly and yet programs can be very fast.
 
 <!-- ## Using Julia
 

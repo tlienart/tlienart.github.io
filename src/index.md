@@ -4,9 +4,8 @@
 
 # Welcome
 
-On this website, you will mainly find some notes on topics in computer science, machine learning (CS/ML) and applied maths in general.
-These are mostly things I write to keep track of results I find useful or nice.
-I also really like the Julia programming language and keep some notes on that too.
+On this website, you will find some notes I keep on topics in computer science and machine learning (CS/ML).
+These are mostly notes I write to keep track of results I find useful or nice (or both).
 
 ## News
 

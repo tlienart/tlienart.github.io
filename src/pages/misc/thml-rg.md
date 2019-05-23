@@ -25,7 +25,10 @@ A bit of friendly chasing will hopefully ensure this happens 🚂.
 
 ### Upcoming
 
-* TBD
+* (**May 23, '19**) [Why are big data matrices approximately low rank](https://epubs.siam.org/doi/pdf/10.1137/18M1183480) by Udell and Townsend. _Presenter: Victor Fedyashov_.
+* (**May 30, '19**) TBD. _Presenter: Bastian Oetomo_.
+* (**Jun 6, '19**) [Augmented Neural ODEs](https://arxiv.org/abs/1904.01681) by Dupont, Doucet and Teh. _Presenter: Thibaut Lienart_.
+
 
 ### Past
 
@@ -50,8 +53,6 @@ The papers are (a bit arbitrarily) sorted in two blocks with the first one judge
 At some point in the future, I'll organise the list with indicators of the topics.
 
 #### priority block
-
-* [Why are big data matrices approximately low rank](https://epubs.siam.org/doi/pdf/10.1137/18M1183480) by Udell and Townsend, SIAM 2019.
 
 #### secondary block
 

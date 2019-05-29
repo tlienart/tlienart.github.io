@@ -17,7 +17,7 @@ A bit of friendly chasing will hopefully ensure this happens 🚂.
 
 ## Logistics
 
-* 📆 **schedule**: the reading groups take place on Thursdays from 4pm to 5pm,
+* 📆 **schedule**: the reading groups take place on Fridays from 10am to 11am,
 * 🎪 **room**: McDonnell, usually 7.02 unless otherwise mentioned,
 * 📧 **mailing list**: you can subscribe by [clicking this link](https://lists.unimelb.edu.au/subscribe/ml-theory).
 
@@ -25,13 +25,15 @@ A bit of friendly chasing will hopefully ensure this happens 🚂.
 
 ### Upcoming
 
-* (**May 23, '19**) [Why are big data matrices approximately low rank](https://epubs.siam.org/doi/pdf/10.1137/18M1183480) by Udell and Townsend. _Presenter: Victor Fedyashov_.
-* (**May 30, '19**) TBD. _Presenter: Bastian Oetomo_.
-* (**Jun 6, '19**) [Augmented Neural ODEs](https://arxiv.org/abs/1904.01681) by Dupont, Doucet and Teh. _Presenter: Thibaut Lienart_.
+**Note**: change of time from Thursday afternoon to Friday morning!
+
+* (**May 31, '19**) [Tutorial on Thomson Sampling for Bandits algorithms](https://epubs.siam.org/doi/pdf/10.1137/18M1183480). _Presenter: Bastian Oetomo_.
+* (**Jun 7, '19**) [Augmented Neural ODEs](https://arxiv.org/abs/1904.01681) by Dupont, Doucet and Teh. _Presenter: Thibaut Lienart_.
 
 
 ### Past
 
+* (**May 23, '19**) [Why are big data matrices approximately low rank](https://epubs.siam.org/doi/pdf/10.1137/18M1183480) by Udell and Townsend. _Presenter: Victor Fedyashov_.
 * (**Apr 18, '19**) [Neural Ordinary Differential Equations](https://arxiv.org/pdf/1806.07366.pdf) by Chen, Rubanova, Bettencourt and Duvenaud. _Presenter: Thibaut Lienart_.
 * (**Mar 7, '19**) [Adaptive Data Analysis](https://protect-au.mimecast.com/s/t9StCE8knvs5D9qVuNz-y6?domain=simons.berkeley.edu  ) by Roth. _Presenter: Ben Rubinstein_.
 * (**Feb 21, '19**) [Conservative contextual linear bandits](https://papers.nips.cc/paper/6980-conservative-contextual-linear-bandits) by Kazerouni et al. _Presenter: Masoud Khorasani_.

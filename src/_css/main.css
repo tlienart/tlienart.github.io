@@ -97,6 +97,19 @@ html {
     margin-top: 2em;
     margin-bottom: 1em; }
 
+.jd-content h1 > a { color: inherit;}
+.jd-content h2 > a { color: inherit;}
+.jd-content h3 > a { color: inherit;}
+.jd-content h4 > a { color: inherit;}
+.jd-content h5 > a { color: inherit;}
+.jd-content h6 > a { color: inherit;}
+.jd-content h1 > a:hover { text-decoration: none; }
+.jd-content h2 > a:hover { text-decoration: none; }
+.jd-content h3 > a:hover { text-decoration: none; }
+.jd-content h4 > a:hover { text-decoration: none; }
+.jd-content h5 > a:hover { text-decoration: none; }
+.jd-content h6 > a:hover { text-decoration: none; }
+
 /* ==================================================================
     GENERAL FORMATTING
 ================================================================== */

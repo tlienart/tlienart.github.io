@@ -25,7 +25,7 @@ $$ \mu_{_X}^\pi \speq \mathcal C_{X|Y}\mu^\pi_{_Y} $$
 This is straightforward to prove using the definition of the conditional embedding (see [part 1](/pub/csml/rkhs/intro-rkhs1.html)).
 
 \eqal{ \mu_{_X}^\pi \speq \E_{X|Y}[k_{_Y}] \esp&=\esp \E_{Y\sim \pi}[\mathcal C_{X|Y}k_{_Y}]\\
-    &=\esp \mathcal C_{X|Y}\E_{Y\sim\pi}[k_{_Y}] \speq \mathcal C_{X|Y}\mu_{_Y}
+  &=\esp \mathcal C_{X|Y}\E_{Y\sim\pi}[k_{_Y}] \speq \mathcal C_{X|Y}\mu_{_Y}
 }
 
 The kernel sum rule shows that the conditional embedding operator $\mathcal C_{X|Y}$ maps the embedding of $\pi(Y)$ to that of $Q(X)$.
@@ -51,8 +51,8 @@ $$ \mathcal C^\pi_{XY} \speq \mathcal C_{X|Y}\mathcal C^\pi_{YY}. $$
 This is straightforward to prove:
 
 \eqal{
-    \mathcal C^\pi_{XY} \esp&=\esp \E_{(X,Y)\sim Q}[k_{_X}\otimes k_{_Y}] \speq \E_{Y\sim\pi}[\E_{X|Y}[k_{_X}] \otimes k_{_Y}]\\
-    &= \esp \mathcal C_{X|Y}\E_{Y\sim \pi}[k_Y \otimes k_Y] \speq \mathcal C_{X|Y}\mathcal C^\pi_{YY}.
+  \mathcal C^\pi_{XY} \esp&=\esp \E_{(X,Y)\sim Q}[k_{_X}\otimes k_{_Y}] \speq \E_{Y\sim\pi}[\E_{X|Y}[k_{_X}] \otimes k_{_Y}]\\
+  &= \esp \mathcal C_{X|Y}\E_{Y\sim \pi}[k_Y \otimes k_Y] \speq \mathcal C_{X|Y}\mathcal C^\pi_{YY}.
 }
 
 @@colbox-blue
@@ -89,7 +89,7 @@ Assume that the embedding $\widehat\mu^{\pi}_{_{Y|x}}$ is given as $\sum_{i=1}^n
 the **kernel Bayes average** reads
 
 $$
-    \left\langle g,\widehat\mu_{Y|x}^{\pi}\right\rangle_{\mathcal H} \speq \beta^{t} \widetilde G  \alpha \speq \sum_{ij} \alpha_{i}\beta_{j}(x)k(y_{i},\tilde y_{j}),
+  \left\langle g,\widehat\mu_{Y|x}^{\pi}\right\rangle_{\mathcal H} \speq \beta^{t} \widetilde G  \alpha \speq \sum_{ij} \alpha_{i}\beta_{j}(x)k(y_{i},\tilde y_{j}),
 $$
 
  and the **kernel Bayes posterior decoding** reads

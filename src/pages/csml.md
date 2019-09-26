@@ -25,24 +25,24 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
 
 <!--
 * **notes on approximated bayesian inference** (*assumes knowledge of the bayesian framework, familiarity with the exponential family and convex optimisation*)
-    * [introduction](/pub/csml/abi/intro.html): 🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references //
-        - http://www.orchid.ac.uk/eprints/40/1/fox_vbtut.pdf
-        -
-    * [exponential family and convexity part 1](/pub/csml/abi/ef-cvx1.html): 🚫🚫🚫🚫 (ongoing)
-    * [exponential family and convexity part 2](/pub/csml/abi/ef-cvx2.html): 🚫🚫🚫🚫 (ongoing)
-    * [online bayesian learning and assumed density filtering](/pub/csml/abi/obl-adf.html): 🚫🚫🚫🚫 (ongoing)
-    * [expectation propagation](/pub/csml/abi/ep.html): 🚫🚫🚫🚫 (ongoing)
-    * (⭒) [EP and distributed bayesian inference part 1](/pub/csml/abi/ep-dbi1.html): 🚫🚫🚫🚫 (ongoing)
-    * (⭒) [EP and distributed bayesian inference part 1](/pub/csml//abi/ep-dbi2.html): 🚫🚫🚫🚫 (ongoing)
-    * (⭒) [EP and distributed bayesian inference part 2](/pub/csml//abi/ep-dbi2.html): 🚫🚫🚫🚫 (ongoing) natural parameter space update, links with SMS
-    * (⭒) [EP and distributed bayesian inference part 3](/pub/csml//abi/ep-dbi3.html): 🚫🚫🚫🚫 (ongoing) mean parameter space
-    * (⭒) [EP and distributed bayesian inference part 4](/pub/csml//abi/ep-dbi4.html): 🚫🚫🚫🚫 (ongoing) ep energy perspective
-    * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
+  * [introduction](/pub/csml/abi/intro.html): 🚫🚫🚫🚫 (ongoing) + discussion of whether it's a good idea + setup for experiments discussed here + references //
+    - http://www.orchid.ac.uk/eprints/40/1/fox_vbtut.pdf
+    -
+  * [exponential family and convexity part 1](/pub/csml/abi/ef-cvx1.html): 🚫🚫🚫🚫 (ongoing)
+  * [exponential family and convexity part 2](/pub/csml/abi/ef-cvx2.html): 🚫🚫🚫🚫 (ongoing)
+  * [online bayesian learning and assumed density filtering](/pub/csml/abi/obl-adf.html): 🚫🚫🚫🚫 (ongoing)
+  * [expectation propagation](/pub/csml/abi/ep.html): 🚫🚫🚫🚫 (ongoing)
+  * (⭒) [EP and distributed bayesian inference part 1](/pub/csml/abi/ep-dbi1.html): 🚫🚫🚫🚫 (ongoing)
+  * (⭒) [EP and distributed bayesian inference part 1](/pub/csml//abi/ep-dbi2.html): 🚫🚫🚫🚫 (ongoing)
+  * (⭒) [EP and distributed bayesian inference part 2](/pub/csml//abi/ep-dbi2.html): 🚫🚫🚫🚫 (ongoing) natural parameter space update, links with SMS
+  * (⭒) [EP and distributed bayesian inference part 3](/pub/csml//abi/ep-dbi3.html): 🚫🚫🚫🚫 (ongoing) mean parameter space
+  * (⭒) [EP and distributed bayesian inference part 4](/pub/csml//abi/ep-dbi4.html): 🚫🚫🚫🚫 (ongoing) ep energy perspective
+  * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
 
 <!-- * **adversarial ML** (*research notes on the topic*) -->
-    <!-- * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. --> <!--👷-->
-    <!-- * [Robust stats](/pub/aml/robust-stats.html): --> <!--👷-->
+  <!-- * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. --> <!--👷-->
+  <!-- * [Robust stats](/pub/aml/robust-stats.html): --> <!--👷-->
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 

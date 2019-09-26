@@ -56,13 +56,14 @@ and, naturally, $\mu(P, k)\in\mathcal H$. When the kernel and distribution are c
 Observe that we now have this continuous embedding instead of a finite-dimensional embedding that we could have considered such as $P\mapsto (\E[\varphi_1(X)], \dots, \E[\varphi_s(X)])$.
 Also, as before, we inherit a notion of *similarity* between points (here probability distributions) by considering the inner product on the RKHS:
 \eqa{
-    \scal{\mu(P; k), \mu(Q; k)}_{\mathcal H} \speq \E_{X Y}[k(X, Y)],
+  \scal{\mu(P; k), \mu(Q; k)}_{\mathcal H} \speq \E_{X Y}[k(X, Y)],
 }
 and this can easily be estimated if we have samples from both $P$ and $Q$.
 
 Note finally that $\mu_{_X}$ represents *expectations with respect to $P$* i.e.: for any $f\in\mathcal H$,
+
 \eqa{
-    \scal{f, \mu_{_X}}_{\mathcal H} &=& \E_X[{\scal{f, k_{_X}}_{\mathcal H}}] \speq \E_X[f(X)] .
+  \scal{f, \mu_{_X}}_{\mathcal H} &=& \E_X[{\scal{f, k_{_X}}_{\mathcal H}}] \speq \E_X[f(X)] .
 }
 
 ### Joint embedding
@@ -72,7 +73,7 @@ The generalisation to joint distributions is straightforward using tensor produc
 @@colbox-blue
 Let $X, Y$ be jointly distributed according to some distribution $P$, the **joint embedding** of $P$ is defined as
 \eqa{
-    P \spe{\mapsto} \mathcal C_{XY}(P) \spe{:=} \E_{XY}[k_{_X}\otimes k_{_Y}],
+  P \spe{\mapsto} \mathcal C_{XY}(P) \spe{:=} \E_{XY}[k_{_X}\otimes k_{_Y}],
 }
 assuming that the two variables share the same kernel.
 @@
@@ -172,11 +173,11 @@ Comparing with \eqref{covariance op 1} we get \eqref{identity cxx cxy}.
 With this, we can show another nice identity.
 Using the definition of $\mu_{Y|x}$, we have
 \eqa{
-    \scal{g, \mu_{Y|x}}_{\mathcal H} &=& \mathbb E_{Y|x}[g(Y)] \speq \scal{\E_{Y|X}[g(Y)], k_x}_{\mathcal H}.
+  \scal{g, \mu_{Y|x}}_{\mathcal H} &=& \mathbb E_{Y|x}[g(Y)] \speq \scal{\E_{Y|X}[g(Y)], k_x}_{\mathcal H}.
 }
 But, using \eqref{identity cxx cxy}, we have
 \eqa{
-    \scal{\E_{Y|X}[g(Y)], k_x}_{\mathcal H} &=& \scal{\mathcal C_{XX}^{-1}\mathcal C_{XY} g, k_x}_{\mathcal H} \speq \scal{g, \mathcal C_{YX}C_{XX}^{-1} k_x}_{\mathcal H}
+  \scal{\E_{Y|X}[g(Y)], k_x}_{\mathcal H} &=& \scal{\mathcal C_{XX}^{-1}\mathcal C_{XY} g, k_x}_{\mathcal H} \speq \scal{g, \mathcal C_{YX}C_{XX}^{-1} k_x}_{\mathcal H}
 }
 where at the last equality we took the adjoint of $\mathcal C_{XX}^{-1}\mathcal C_{XY}$ which allows us to introduce the definition that follows.
 

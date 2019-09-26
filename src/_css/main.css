@@ -104,8 +104,12 @@ html {
         margin: 10px 0; }
 
 .jd-content a {
-    color: #004de6;
+    color: darkslateblue;
     text-decoration: none; }
+
+.jd-content p a {
+    color: royalblue;
+}
 
 .jd-content a:hover {
     text-decoration: underline; }
@@ -259,7 +263,7 @@ nav li {
     display: inline-block; }
 
 nav li a {
-    color: #004de6;
+    color: darkslateblue;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
@@ -271,7 +275,7 @@ nav li a {
     padding-bottom:5px;
     margin-left:7px;
     margin-right:7px;
-    border-bottom: 2px solid #4C9CF1;
+    border-bottom: 2px solid brown;
     transition: color 0.3s ease; }
 
 header {

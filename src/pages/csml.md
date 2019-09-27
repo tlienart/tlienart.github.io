@@ -48,9 +48,10 @@ Once a bit clearer, think of a way to explain what exactly is kept here and how 
     * (⭒) [EP and distributed bayesian inference part 5](/pub/csml//abi/ep-dbi5.html): 🚫🚫🚫🚫 (ongoing) mirror descent for ep energy
 -->
 
-<!-- * **adversarial ML** (*research notes on the topic*) -->
-    <!-- * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances. --> <!--👷-->
-    <!-- * [Robust stats](/pub/aml/robust-stats.html): --> <!--👷-->
+<!-- * **adversarial ML** (*research notes on the topic*)
+         * [Overview](/pub/csml/advml/overview.html): brief discussion of some interesting recent advances.
+         * [Robust stats](/pub/aml/robust-stats.html):
+-->
 
 <!-- 🍺 * *notes on inference on graphical models* -->
 

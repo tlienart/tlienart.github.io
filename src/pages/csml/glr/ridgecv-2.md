@@ -40,13 +40,13 @@ Let $H_1 = H - x_1 x_1^t$ and $H_2 = H_1 - x_2x_2^t$.
 Then, Sherman-Morrison gives
 
 \eqa{
-  H_1^{-1} &=& \displaystyle H^{-1}  + {H^{-1}x_1 x_1^t H^{-1} \over 1 - x_1^t H^{-1} x_1},
+  H_1^{-1} &=& \displaystyle H^{-1}  + {H^{-1}x_1 x_1^t H^{-1} \over 1 - x_1^t H^{-1} x_1}, \\
   H_2^{-1} &=&\displaystyle H_1^{-1} + {H_1^{-1}x_2 x_2^t H_1^{-1} \over 1 - x_2^t H_1^{-1} x_2}. }
 
 Let us now write $b_1 = H^{-1}x_1$, $γ_1 = x_1^t b_1$, $b_2=H_1^{-1}x_2$ and $γ_2=x_2^tb_2$ then:
 
 \eqa{
-  H_1^{-1} &=& \displaystyle H^{-1}  + {b_1 b_1^t \over 1 - γ_1},
+  H_1^{-1} &=& \displaystyle H^{-1}  + {b_1 b_1^t \over 1 - γ_1}, \\
   H_2^{-1} &=&\displaystyle H^{-1}  + {b_1 b_1^t \over 1 - γ_1} + {b_2 b_2^t \over 1 - γ_2}. }
 
 It's straightforward to generalise this:
@@ -82,3 +82,14 @@ If, instead, we were to re-compute an SVD of $X_S^tX_S$ per fold and recycle the
 Since, in general, we are much more likely to want to  test many $λ$ (large $κ$) with a few folds (with $K$ of order $5$-$10$), doing re-computations per fold makes more sense than applying RSM.
 
 **Note**: it is still important to recycle computations otherwise we pay $O(κKnp^2)$ by doing a naive grid-computations for every fold and every $\lambda$; surprisingly this seems to be what is currently done in SkLearn as per [these lines of code](https://github.com/scikit-learn/scikit-learn/blob/e94b67a4d36bfa68f5a864a6401253846bac7138/sklearn/linear_model/_ridge.py#L1576-L1579).
+
+
+## Fat case
+
+Since the complexity of RSM is $O(Mp^2)$, it shouldn't be considered.
+Computing $K$ problem with $n-M$ rows and recycling computations for the $λ$ is best.
+
+## Conclusion
+
+So disappointingly the generalisation of the LOO trick to the more general case is not particularly useful compared to simply re-computing things per-folds and recycling computations for the $λ$.
+This could maybe have been expected, we have to deal with an expansion in $M$ terms where $M$ scales like $n$ in $K$ folds with low $K$ (the usual case).

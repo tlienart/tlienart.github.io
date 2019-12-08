@@ -127,8 +127,8 @@ html {
     HYPERREFS
 ================================================================== */
 
-.eqref a  { color: green; }
-.bibref a { color: green; }
+/* .jd-content .eqref a  { color: green; } */
+.jd-content .bibref a { color: darkcyan; text-decoration: underline;}
 
 /* ==================================================================
     IMAGES in CONTENT
@@ -381,3 +381,63 @@ instead, display a burger menu.
         margin-right: 10px;
         margin-top: 5px; }
     }
+
+.jd-content .fndef table {
+  margin: 0;
+  margin-bottom: 1em;
+  border: 0;
+}
+.jd-content .fndef th, tr {
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+.jd-content .fndef td {
+  padding: 0;
+  border: 0;
+}
+.jd-content .fndef td.fndef-backref {
+  vertical-align: top;
+  font-size: 80%;
+  padding-left: 5px;
+}
+.jd-content .fndef td.fndef-content {
+  font-size: 90%;
+  padding-left: 10px;
+}
+.jd-content .fndef tr {
+  border-left: 2px solid lightgray;
+}
+sub,sup{
+  font-size:75%;
+  line-height:0;
+  position:relative;
+  vertical-align:baseline
+}
+sup{
+  top:-0.5em
+}
+sub{
+  bottom:-0.25em
+}
+
+.ctable table {
+    line-height: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 1.5em;}
+.ctable tr:first-of-type {
+    background: #eae9f4;
+}
+.ctable tr:first-of-type > th {
+    text-align: center;
+}
+.ctable tr,th,td{
+    padding: 10px;
+    border: 1px solid lightgray;}
+
+.ctable table tbody tr td {
+  border: 1px solid lightgray;
+}

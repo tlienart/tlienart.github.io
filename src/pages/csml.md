@@ -15,13 +15,15 @@ When the level of the notes is judged (somewhat arbitrarily) to be a bit more ad
 
 **Errors & Comments**: if you find anything dubious in the notes, please send me an email, feedback is always much appreciated.
 
-**Browser note**: the notes use a recent version of [KaTeX](https://katex.org/) to render the maths which requires you to have Javascript on. The rendering has been tested on Firefox 61, Safari 12 and Chromium 71. If you use an older version or another browser it may be that some things don't render properly. If that's the case, kindly let me know by email, thanks!
-
 <!-- TODO
 Once a bit clearer, think of a way to explain what exactly is kept here and how to navigate it otherwise might pile up quite quickly
 -->
 
 ## Stats, ML and related topics
+
+* **generalized linear regression** (*assumes good knowledge of matrix theory and convex optim*)
+    * [CV Ridge](/pub/csml/glr/ridgecv.html): when looking at Ridge regression there's a couple of tricks that can be used to reduce the computational complexity in a cross-validation context.
+    * [CV Ridge part 2](/pub/csml/glr/ridgecv-2.html): a (novel) generalisation of the LOOCV trick.
 
 * **approximate Bayesian inference** (*assumes knowledge of the Bayesian framework, familiarity with the exponential family and convex optimisation;  these notes are mostly adapted from a section of my PhD thesis*)
     * [introduction](/pub/csml/abi/intro.html): introduction to Bayesian ML, approximate Bayesian inference and the generic variational problem with a warning note.

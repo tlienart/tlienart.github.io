@@ -15,8 +15,7 @@
 <span class=hljs-bullet >-</span> <span class=hljs-string >julia</span> <span class=hljs-bullet >-e</span> <span class=hljs-string >'using Pkg;
             Pkg.add("Coverage");
             using Coverage;
-            Codecov.submit(Codecov.process_folder())'</span>
-</code></pre> <h3 id=script_for_appveyor ><a href="/pub/julia/dev-pkg2.html#script_for_appveyor">script for AppVeyor</a></h3> <p>In your <code>Ex/</code> folder, add a file <code>.appveyor.yml</code> with the following content &#40;more information <a href="https://github.com/JuliaCI/Appveyor.jl">here</a>&#41;:</p> <pre><code class="yml hljs"><span class=hljs-attr >environment:</span>
+            Codecov.submit(Codecov.process_folder())'</span></code></pre> <h3 id=script_for_appveyor ><a href="/pub/julia/dev-pkg2.html#script_for_appveyor">script for AppVeyor</a></h3> <p>In your <code>Ex/</code> folder, add a file <code>.appveyor.yml</code> with the following content &#40;more information <a href="https://github.com/JuliaCI/Appveyor.jl">here</a>&#41;:</p> <pre><code class="yml hljs"><span class=hljs-attr >environment:</span>
 <span class=hljs-attr >  matrix:</span>
 <span class=hljs-attr >  - julia_version:</span> <span class=hljs-number >0.7</span>
 <span class=hljs-attr >  - julia_version:</span> <span class=hljs-string >nightly</span>
@@ -48,11 +47,23 @@
 
 <span class=hljs-attr >test_script:</span>
 <span class=hljs-bullet >  -</span> <span class=hljs-string >echo</span> <span class=hljs-string >"%JL_TEST_SCRIPT%"</span>
-<span class=hljs-attr >  - C:</span><span class=hljs-string >\julia\bin\julia</span> <span class=hljs-bullet >-e</span> <span class=hljs-string >"%JL_TEST_SCRIPT%"</span>
-</code></pre> <h2 id=synchronising ><a href="/pub/julia/dev-pkg2.html#synchronising">Synchronising</a></h2> <p>The only thing left to do is to push everything on GitHub. To do this, start by setting your local folder as a Git repository:</p> <pre><code class="bash hljs"><span class=hljs-built_in >cd</span> ~/.julia/dev/Ex
+<span class=hljs-attr >  - C:</span><span class=hljs-string >\julia\bin\julia</span> <span class=hljs-bullet >-e</span> <span class=hljs-string >"%JL_TEST_SCRIPT%"</span></code></pre> <h2 id=synchronising ><a href="/pub/julia/dev-pkg2.html#synchronising">Synchronising</a></h2> <p>The only thing left to do is to push everything on GitHub. To do this, start by setting your local folder as a Git repository:</p> <pre><code class="bash hljs"><span class=hljs-built_in >cd</span> ~/.julia/dev/Ex
 git init
 git add .
-git commit -m <span class=hljs-string >"First commit"</span>
-</code></pre> <p>you can then link it to the new repository you have just created on GitHub:</p> <pre><code class="bash hljs">git remote add origin https://github.com/tlienart/Ex.jl
-</code></pre> <p>and finally, push your local changes:</p> <pre><code class="bash hljs">git push -u origin master
-</code></pre> <p>That first push will also trigger a build on Travis and AppVeyor. Provided the build on Travis was successful, it will also send the coverage information to CodeCov.</p> <h2 id=readme_and_license ><a href="/pub/julia/dev-pkg2.html#readme_and_license">Readme and license</a></h2> <p>You&#39;ll want to add a <code>README.md</code> and a <code>LICENSE.md</code> file to your project which is a pretty straightforward thing to do. For the license, most of Julia&#39;s projects tend to be <a href="https://choosealicense.com/licenses/mit/">MIT licensed</a>.</p> <p><strong>Badges</strong>: you may want to add badges reporting the status of the repository on your README. To do so, copy the first few lines of <a href="https://raw.githubusercontent.com/tlienart/Ex.jl/master/README.md">this README.md</a> file without forgetting to modify your username and project name.</p> <p>This should show something like this:</p> <div class=center ><div class=github ><table><tr><th>Linux/OSX<th>Windows<th>Coverage<tr><td><a href="https://travis-ci.org/tlienart/PackageExample.jl"><img src="https://travis-ci.org/tlienart/PackageExample.jl.svg?branch&#61;master" alt="Build Status" /></a><td><a href="https://ci.appveyor.com/project/tlienart/ex-jl"><img src="https://ci.appveyor.com/api/projects/status/bm91o5a9jirvanjj?svg&#61;true" alt=appveyor.com  /></a><td><a href="http://codecov.io/github/tlienart/PackageExample.jl?branch&#61;master"><img src="http://codecov.io/github/tlienart/PackageExample.jl/coverage.svg?branch&#61;master" alt=codecov.io  /></a></table> </div> </div> <div class=page-foot > <div class=copyright > &copy; T. Lienart. Last modified: November 30, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>. </div> </div> </div>
+git commit -m <span class=hljs-string >"First commit"</span></code></pre> <p>you can then link it to the new repository you have just created on GitHub:</p> <pre><code class="bash hljs">git remote add origin https://github.com/tlienart/Ex.jl</code></pre>
+<p>and finally, push your local changes:</p>
+<pre><code class="bash hljs">git push -u origin master</code></pre>
+<p>That first push will also trigger a build on Travis and AppVeyor. Provided the build on Travis was successful, it will also send the coverage information to CodeCov.</p>
+<h2 id=readme_and_license ><a href="/pub/julia/dev-pkg2.html#readme_and_license">Readme and license</a></h2>
+<p>You&#39;ll want to add a <code>README.md</code> and a <code>LICENSE.md</code> file to your project which is a pretty straightforward thing to do. For the license, most of Julia&#39;s projects tend to be <a href="https://choosealicense.com/licenses/mit/">MIT licensed</a>.</p>
+<p><strong>Badges</strong>: you may want to add badges reporting the status of the repository on your README. To do so, copy the first few lines of <a href="https://raw.githubusercontent.com/tlienart/Ex.jl/master/README.md">this README.md</a> file without forgetting to modify your username and project name.</p>
+<p>This should show something like this:</p>
+<div class=center ><div class=github ><table><tr><th align=center >Linux/OSX<th align=center >Windows<th align=center >Coverage<tr><td align=center ><a href="https://travis-ci.org/tlienart/PackageExample.jl"><img src="https://travis-ci.org/tlienart/PackageExample.jl.svg?branch&#61;master" alt="Build Status" /></a><td align=center ><a href="https://ci.appveyor.com/project/tlienart/ex-jl"><img src="https://ci.appveyor.com/api/projects/status/bm91o5a9jirvanjj?svg&#61;true" alt=appveyor.com  /></a><td align=center ><a href="http://codecov.io/github/tlienart/PackageExample.jl?branch&#61;master"><img src="http://codecov.io/github/tlienart/PackageExample.jl/coverage.svg?branch&#61;master" alt=codecov.io  /></a></table>
+</div></div>
+<div class=page-foot >
+		<div class=copyright >
+				&copy; T. Lienart. Last modified: November 30, 2018. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+		</div>
+</div>
+
+</div>

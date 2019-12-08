@@ -40,13 +40,13 @@ Let $H_1 = H - x_1 x_1^t$ and $H_2 = H_1 - x_2x_2^t$.
 Then, Sherman-Morrison gives
 
 \eqa{
-  H_1^{-1} &=& \displaystyle H^{-1}  + {H^{-1}x_1 x_1^t H^{-1} \over 1 - x_1^t H^{-1} x_1}, \\[.5cm]
+  H_1^{-1} &=& \displaystyle H^{-1}  + {H^{-1}x_1 x_1^t H^{-1} \over 1 - x_1^t H^{-1} x_1},
   H_2^{-1} &=&\displaystyle H_1^{-1} + {H_1^{-1}x_2 x_2^t H_1^{-1} \over 1 - x_2^t H_1^{-1} x_2}. }
 
 Let us now write $b_1 = H^{-1}x_1$, $γ_1 = x_1^t b_1$, $b_2=H_1^{-1}x_2$ and $γ_2=x_2^tb_2$ then:
 
 \eqa{
-  H_1^{-1} &=& \displaystyle H^{-1}  + {b_1 b_1^t \over 1 - γ_1}, \\[.5cm]
+  H_1^{-1} &=& \displaystyle H^{-1}  + {b_1 b_1^t \over 1 - γ_1},
   H_2^{-1} &=&\displaystyle H^{-1}  + {b_1 b_1^t \over 1 - γ_1} + {b_2 b_2^t \over 1 - γ_2}. }
 
 It's straightforward to generalise this:

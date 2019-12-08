@@ -44,8 +44,8 @@ $$ U(Σ^2 + λ I) Σ V^t β \quad=\quad U Σ^2U^t y$$
 taking advantage from the fact that $U$ is orthogonal so that $UU^t = I$ (same with $V$).
 This can be further massaged into
 
-\eqa{ β &=&  V Σ (Σ^2 + \lambda I)U^t y \label{ridge-fat-sol}\\
-&=& X^t U(Σ^2 + \lambda I)U^t y,   }
+\eqa{ β &=&  V Σ (Σ^2 + \lambda I)^{-1}U^t y \label{ridge-fat-sol}\\
+&=& X^t U(Σ^2 + \lambda I)^{-1}U^t y,   }
 
 using that $X=UΣ V^t$ so that $V = X^t U Σ^{-1}$.
 Overall, the complexity is asymptotically dominated by the construction of $XX^t$ which is $O(pn^2)$ followed by the complexity of computing its SVD which is $O(p^3)$.
@@ -85,7 +85,7 @@ so basically since $p^2$ is dominated by $np^2$, it's effectively free to comput
 
 ### Fat case
 
-In the fat case, we already have the equation \eqref{ridge-fat-sol}: $β = X^t U(Σ^2+λI)U^ty$, we get an analogous argument:
+In the fat case, we already have the equation \eqref{ridge-fat-sol}: $β = X^t U(Σ^2+λI)^{-1}U^ty$, we get an analogous argument:
 
 @@ctable
 Operation | Dominating Cost

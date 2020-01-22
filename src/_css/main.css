@@ -22,7 +22,7 @@ html {
 .right {
     float: right; }
 
-.jd-content .container img {
+.franklin-content .container img {
     width: auto;
     padding-left: 0;
     border-radius: 10px; }
@@ -31,7 +31,7 @@ html {
     FOOT / COPYRIGHT
 ================================================================== */
 
-.jd-content .page-foot a {
+.franklin-content .page-foot a {
     text-decoration: none;
     color: #a6a2a0;
     text-decoration: underline; }
@@ -50,7 +50,7 @@ html {
     TEXT GEOMETRY
 ================================================================== */
 
-.jd-content {
+.franklin-content {
     position: relative;
     padding-left: 12.5%;
     padding-right: 12.5%;
@@ -58,7 +58,7 @@ html {
 
 /* on wide screens, fix content width to a max value */
 @media (min-width: 940px) {
-    .jd-content {
+    .franklin-content {
         width: 705px;
         margin-left: auto;
         margin-right: auto; }
@@ -69,7 +69,7 @@ html {
     header {
         padding-left: 6%;
         padding-right: 6%; }
-    .jd-content {
+    .franklin-content {
         padding-left: 6%;
         padding-right: 6%; }
     }
@@ -78,68 +78,68 @@ html {
     TITLES
 ================================================================== */
 
-.jd-content h1 { font-size: 24px; }
-.jd-content h2 { font-size: 22px; }
-.jd-content h3 { font-size: 20px; }
+.franklin-content h1 { font-size: 24px; }
+.franklin-content h2 { font-size: 22px; }
+.franklin-content h3 { font-size: 20px; }
 
-.jd-content h1, h2, h3, h4, h5 {
+.franklin-content h1, h2, h3, h4, h5 {
     text-align: left; }
 
-.jd-content h1 {
+.franklin-content h1 {
     padding-bottom: 0.5em;
     border-bottom: 3px double lightgrey;
     margin-top: 1.5em;
     margin-bottom: 1em; }
 
-.jd-content h2 {
+.franklin-content h2 {
     padding-bottom: 0.3em;
     border-bottom: 1px solid lightgrey;
     margin-top: 2em;
     margin-bottom: 1em; }
 
-.jd-content h1 > a:hover { text-decoration: none; }
-.jd-content h2 > a:hover { text-decoration: none; }
-.jd-content h3 > a:hover { text-decoration: none; }
-.jd-content h4 > a:hover { text-decoration: none; }
-.jd-content h5 > a:hover { text-decoration: none; }
-.jd-content h6 > a:hover { text-decoration: none; }
+.franklin-content h1 > a:hover { text-decoration: none; }
+.franklin-content h2 > a:hover { text-decoration: none; }
+.franklin-content h3 > a:hover { text-decoration: none; }
+.franklin-content h4 > a:hover { text-decoration: none; }
+.franklin-content h5 > a:hover { text-decoration: none; }
+.franklin-content h6 > a:hover { text-decoration: none; }
 
 /* ==================================================================
     GENERAL FORMATTING
 ================================================================== */
 
 /* spacing between bullet points */
-.jd-content li p {
+.franklin-content li p {
         margin: 10px 0; }
 
-.jd-content a {
+.franklin-content a {
     color: darkslateblue;
     text-decoration: none; }
 
-.jd-content p a {
+.franklin-content p a {
     color: royalblue;
 }
 
-.jd-content a:hover {
+.franklin-content a:hover {
     text-decoration: underline; }
 
 /* ==================================================================
     HYPERREFS
 ================================================================== */
 
-/* .jd-content .eqref a  { color: green; } */
-.jd-content .bibref a { color: darkcyan; text-decoration: underline;}
+/* .franklin-content .eqref a  { color: green; } */
+.franklin-content .bibref a { color: darkcyan; text-decoration: underline;}
 
 /* ==================================================================
     IMAGES in CONTENT
 ================================================================== */
 
-.jd-content img {
+.franklin-content img {
     width: 70%;
     text-align: center;
     padding-left: 10%; }
 
-.jd-content .img-small img {
+.franklin-content .img-small img {
     width: 50%;
     text-align: center;
     padding-left: 20%; }
@@ -382,30 +382,30 @@ instead, display a burger menu.
         margin-top: 5px; }
     }
 
-.jd-content .fndef table {
+.franklin-content .fndef table {
   margin: 0;
   margin-bottom: 1em;
   border: 0;
 }
-.jd-content .fndef th, tr {
+.franklin-content .fndef th, tr {
   padding: 0;
   border: 0;
   text-align: left;
 }
-.jd-content .fndef td {
+.franklin-content .fndef td {
   padding: 0;
   border: 0;
 }
-.jd-content .fndef td.fndef-backref {
+.franklin-content .fndef td.fndef-backref {
   vertical-align: top;
   font-size: 80%;
   padding-left: 5px;
 }
-.jd-content .fndef td.fndef-content {
+.franklin-content .fndef td.fndef-content {
   font-size: 90%;
   padding-left: 10px;
 }
-.jd-content .fndef tr {
+.franklin-content .fndef tr {
   border-left: 2px solid lightgray;
 }
 sub,sup{

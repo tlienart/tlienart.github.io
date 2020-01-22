@@ -135,5 +135,5 @@ This should show something like this:
 @@github
 | Linux/OSX | Windows | Coverage |
 | :----: | :----: | :----: |
-| [![Build Status](https://travis-ci.org/tlienart/PackageExample.jl.svg?branch=master)](https://travis-ci.org/tlienart/PackageExample.jl) | [![appveyor.com](https://ci.appveyor.com/api/projects/status/bm91o5a9jirvanjj?svg=true)](https://ci.appveyor.com/project/tlienart/ex-jl) | [![codecov.io](http://codecov.io/github/tlienart/PackageExample.jl/coverage.svg?branch=master)](http://codecov.io/github/tlienart/PackageExample.jl?branch=master) |
+| [![Build Status](https://travis-ci.org/tlienart/PackageExample.jl.svg?branch=master)](https://travis-ci.org/tlienart/PackageExample.jl) | [![appveyor.com](https://ci.appveyor.com/api/projects/status/bm91o5a9jirvanjj?svg=true)](https://ci.appveyor.com/project/tlienart/ex-jl) | [![codecov.io](https://codecov.io/github/tlienart/PackageExample.jl/coverage.svg?branch=master)](https://codecov.io/github/tlienart/PackageExample.jl?branch=master) |
 @@ @@

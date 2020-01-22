@@ -27,8 +27,8 @@ I may write notes on some of them in the future.
 
 ### Misc.
 
-* [`JuDoc.jl`](https://github.com/tlienart/JuDoc.jl), an experimental static site generator which I use for this website that allows using LaTeX-like syntax (\htmlcolor{gray}{ongoing development}).
-* [`GPlot.jl`](https://github.com/tlienart/GPlot.jl), a prototype wrapper for the [Graphics Layout Engine](glx.sourceforge.net/index.html), a powerful engine for fast and publication-quality plots (\htmlcolor{gray}{ongoing development}).
+* [`Franklin.jl`](https://github.com/tlienart/Franklin.jl), an experimental static site generator which I use for this website that allows using LaTeX-like syntax (\htmlcolor{gray}{actively under development}).
+* [`GPlot.jl`](https://github.com/tlienart/GPlot.jl), a prototype wrapper for the [Graphics Layout Engine](glx.sourceforge.net/index.html), a powerful engine for fast and publication-quality plots (\htmlcolor{gray}{ongoing slow development}).
 * [`LiveServer.jl`](http://github.com/asprionj/LiveServer.jl) (with Jonas Asprion), a local web server with live-reload capacity inspired from [browser-sync](https://www.browsersync.io/) (\htmlcolor{gray}{actively maintained}).
 
 ### Research

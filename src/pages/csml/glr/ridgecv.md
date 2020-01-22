@@ -45,7 +45,7 @@ taking advantage from the fact that $U$ is orthogonal so that $UU^t = I$ (same w
 This can be further massaged into
 
 \eqa{ β &=&  V Σ (Σ^2 + \lambda I)^{-1}U^t y \label{ridge-fat-sol}\\
-&=& X^t U(Σ^2 + \lambda I)^{-1}U^t y,   }
+    &=& X^t U(Σ^2 + \lambda I)^{-1}U^t y,   }
 
 using that $X=UΣ V^t$ so that $V = X^t U Σ^{-1}$.
 Overall, the complexity is asymptotically dominated by the construction of $XX^t$ which is $O(pn^2)$ followed by the complexity of computing its SVD which is $O(p^3)$.

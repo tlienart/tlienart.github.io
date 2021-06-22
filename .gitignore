@@ -1,4 +1,5 @@
-*DS_Store
-sandbox/
-src/pages/misc/sandbox.md
-pub/misc/sandbox.html
+__site/
+.DS_Store
+node_modules/
+package-lock.json
+Manifest.toml

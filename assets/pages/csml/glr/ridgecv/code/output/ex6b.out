@@ -1,1 +1,0 @@
-rᵢ ≈ (dot(g̃ᵢ, w) - yᵢ) / (1 - dot(g̃ᵢ, gᵢ)) = true

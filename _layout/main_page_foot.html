@@ -1,0 +1,20 @@
+  </div> <!-- container -->
+</main> <!-- flex shrink 0 -->
+
+<div class='py-3'></div>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">
+      &copy; {{author}}, {{current_year}}.
+      Website made with <a href="https://franklinjl.org">Franklin.jl</a>.
+    </span>
+  </div>
+</footer>
+
+{{if hasmath}}
+    {{insert foot_katex.html}}
+{{end}}
+{{if hascode}}
+    {{insert foot_highlight.html}}
+{{end}}

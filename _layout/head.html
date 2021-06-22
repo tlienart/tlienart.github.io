@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{description}}">
+  <meta name="author" content="{{author}}">
+  <meta name="generator" content="Franklin">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  {{if cover}}
+    {{insert cover_head.html}}
+  {{else}}
+    {{insert main_head.html}}
+  {{end}}
+
+  <style>
+    :root {
+      --oxb: #002147;
+      --camb: #A3C1AD;
+      --banana: #FFE135;
+      --lgray: #D3D3D3;
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {font-size: 3.5rem;}
+    }
+
+    .border-oxb {border-color: var(--oxb);}
+    .bg-oxb {background-color: var(--oxb);}
+    .text-oxb {color: var(--oxb);}
+    .border-camb {border-color: var(--camb);}
+
+    .bg-camb {background-color: var(--camb);}
+    .text-camb {color: var(--camb);}
+  </style>
+
+</head>
+
+{{if cover}}
+  {{insert cover_body_top.html}}
+{{else}}
+  {{insert main_body_top.html}}
+{{end}}
+
+<!-- Content appended here -->

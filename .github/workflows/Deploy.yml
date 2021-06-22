@@ -35,6 +35,7 @@ jobs:
     - run: julia -e '
             using Pkg; Pkg.activate("."); Pkg.instantiate();
             using NodeJS; run(`$(npm_cmd()) install highlight.js purgecss`);
+            Pkg.add(Pkg.PackageSpec(name="Franklin", rev="master"));
             using Franklin;
             optimize();
             io = IOBuffer();

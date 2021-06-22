@@ -37,10 +37,7 @@ jobs:
             using NodeJS; run(`$(npm_cmd()) install highlight.js purgecss`);
             using Franklin;
             optimize();
-            io = IOBuffer();
-            run(pipeline(`$(NodeJS.npm_cmd()) root`, stdout=io));
-            nodepath = String(take!(io));
-            run(`$(strip(nodepath))/purgecss/bin/purgecss.js --css __site/css/bootstrap.min.css --content __site/index.html __site/about/index.html __site/tags/index.html __site/posts/**/*.html  --output __site/css/bootstrap.min.css`);
+            run(`bash -c "purgecss --css __site/css/bootstrap.min.css --content __site/index.html __site/about/*.html __site/tags/*.html __site/posts/**/*.html  --output __site/css/bootstrap.min.css"`);
             '
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3

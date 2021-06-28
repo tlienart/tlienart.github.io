@@ -140,9 +140,8 @@ rᵢ ≈ (dot(g̃ᵢ, w) - yᵢ) / (<span class=hljs-number >1</span> - dot(g̃�
 			// which only has the className of 'language-'.
 
 			for (var i = 0; i < pre.length; i++) {
-				var isLanguage = pre[i].children[0].className.indexOf('language-');
-
-				if ( isLanguage === 0 ) {
+				var cName = pre[i].children[0].className
+				if ( cName.includes('language-') || cName.includes('hljs') && !cName.includes('plaintext') ) {
 					var button           = document.createElement('button');
 					button.className = 'copy-button';
 					button.textContent = 'Copy';

@@ -1,1 +1,4 @@
-UndefVarError: StableRNG not defined
+Max error: 0.37
+Max error: 0.055
+Max error: 0.072
+Max error: 0.053

@@ -1,3 +1,4 @@
-ArgumentError: Package StableRNGs not found in current path:
-- Run `import Pkg; Pkg.add("StableRNGs")` to install the StableRNGs package.
-
+Max error: 3.6e-16
+Max error: 1.3e-15
+Max error: 7.8e-16
+Max error: 1.8e-15

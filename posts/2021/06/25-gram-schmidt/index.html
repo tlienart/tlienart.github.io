@@ -37,9 +37,10 @@ n, m = <span class=hljs-number >10</span>, <span class=hljs-number >20</span>
 A = randn(rng, n, m)
 Q, R = gs(A)
 err(Q&#x27; * Q - I)
-err(Q * R - A)</code></pre><pre><code class="plaintext hljs">ArgumentError: Package StableRNGs not found in current path:
-- Run `import Pkg; Pkg.add(&quot;StableRNGs&quot;)` to install the StableRNGs package.
-
+err(Q * R - A)</code></pre><pre><code class="plaintext hljs">Max error: 3.6e-16
+Max error: 1.3e-15
+Max error: 7.8e-16
+Max error: 1.8e-15
 </code></pre>
 <div class="alert alert-warning"><strong>Note</strong>: <a href="https://github.com/JuliaRandom/StableRNGs.jl"><code>StableRNGs</code></a> is a library that offers guaranteed reproducible streams of random numbers so that if you run the code above you should get exactly the same results as shown here.</div>
 <p>The code above considers two toy examples: one where there&#39;s fewer vectors than dimensions and that are linearly independent with high probability and one where there&#39;s more vectors than dimensions and so that are necessarily not linearly independent.</p>
@@ -86,7 +87,10 @@ Qm, Rm = mgs(A)
 err(Q&#x27; * Q - I)
 err(Q * R - A)
 err(Qm&#x27; * Qm - I)
-err(Qm * Rm - A)</code></pre><pre><code class="plaintext hljs">UndefVarError: StableRNG not defined
+err(Qm * Rm - A)</code></pre><pre><code class="plaintext hljs">Max error: 0.37
+Max error: 0.055
+Max error: 0.072
+Max error: 0.053
 </code></pre>
 <p>There is an improvement though maybe not a spectacular one. There are however cases where CGS can be catastrophically bad whereas MGS still fares well, we refer the reader to the references in <span class=bibref ><a href="#bjorck10">Björck (2010)</a></span> for more on this.</p>
 <h2 id=short_references ><a href="#short_references" class=header-anchor >Short references</a></h2>

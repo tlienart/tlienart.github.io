@@ -2,3 +2,4 @@
 Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
 InvertedIndices = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
 NodeJS = "2bd173c7-0d6d-553b-b6af-13a54713934c"
+StableRNGs = "860ef19b-820b-49d6-a774-d7a799459cd3"

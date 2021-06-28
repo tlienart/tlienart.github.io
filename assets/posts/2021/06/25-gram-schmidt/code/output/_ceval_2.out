@@ -1,0 +1,3 @@
+ArgumentError: Package StableRNGs not found in current path:
+- Run `import Pkg; Pkg.add("StableRNGs")` to install the StableRNGs package.
+

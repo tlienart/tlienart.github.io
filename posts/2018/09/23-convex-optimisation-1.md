@@ -10,6 +10,8 @@ tags = ["optimisation"]
 
 # Convex analysis (part I)
 
+{{page_tags}}
+
 \toc \\
 
 In the notes $\Gamma_0(C)$ denotes the set of *proper* and *lsc* convex functions on a non-empty convex set $C\subseteq \R^n.$ Remember that we assume $C\subseteq \mathrm{dom} f$ the domain of the function of interest $f$.

@@ -12,6 +12,8 @@ tags = ["linear algebra", "machine learning"]
 
 # CV Ridge (LOO)
 
+{{page_tags}}
+
 \toc
 
 ## Brief recap

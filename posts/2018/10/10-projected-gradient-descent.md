@@ -10,6 +10,8 @@ tags = ["optimisation", "projected gradient descent"]
 
 # Projected gradient descent
 
+{{page_tags}}
+
 Here we will show a general method to approach a constrained minimisation problem of a convex, differentiable function $f$ over a closed convex set $C\subset \R^n$.
 Such problems can be written in an unconstrained form as we discussed in the [introduction](/posts/2018/09/13-convex-optimisation-intro/)
 

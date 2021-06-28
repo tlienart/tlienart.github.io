@@ -16,6 +16,8 @@ last major review: 19/9/2018 ✅
 
 # Convex analysis (part 2)
 
+{{page_tags}}
+
 \toc
 
 ## The convex conjugate <!-- ✅ 12/9/2018 -->

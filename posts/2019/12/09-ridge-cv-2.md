@@ -12,6 +12,8 @@ tags = ["machine learning", "linear algebra", "prospective"]
 
 # CV Ridge (K-Folds)
 
+{{page_tags}}
+
 Where in [the first part](/pub/csml/glr/ridgecv.html), we showed that the LOOCV trick could be obtained by using the Sherman-Morrison formula for the inversion of a rank-1 perturbation of an invertible matrix, in the general case we want to sequentially drop more than one point.
 In other words, we would like to consider the case where we consider not just a single rank-1 but a sum of rank-1 perturbations.
 

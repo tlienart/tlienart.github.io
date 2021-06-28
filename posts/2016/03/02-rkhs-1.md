@@ -13,6 +13,8 @@ tags = ["statistics", "probability", "rkhs"]
 
 # Introduction to RKHS
 
+{{page_tags}}
+
 These notes were prepared with help from [Dino Sejdinovic](http://www.stats.ox.ac.uk/~sejdinov/) for a talk to a *kernel methods reading group* given in Oxford in July 2015.
 The notes are fairly dry, I intend to come back and add more comments on the intuition in the future (in particular for the second part).
 

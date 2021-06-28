@@ -1,20 +1,79 @@
-  </div> <!-- container -->
+</div> <!-- container -->
 </main> <!-- flex shrink 0 -->
 
 <div class='py-3'></div>
 
 <footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">
-      &copy; {{author}}, {{current_year}}.
-      Website made with <a href="https://franklinjl.org">Franklin.jl</a>.
-    </span>
-  </div>
+	<div class="container">
+		<span class="text-muted">
+			&copy; {{author}}, {{current_year}}.
+			Website made with <a href="https://franklinjl.org">Franklin.jl</a>.
+		</span>
+	</div>
 </footer>
 
 {{if hasmath}}
-    {{insert foot_katex.html}}
+	{{insert foot_katex.html}}
 {{end}}
 {{if hascode}}
-    {{insert foot_highlight.html}}
+	{{insert foot_highlight.html}}
+	<script>
+		(function(){
+
+			// Get the elements.
+			// - the 'pre' element.
+			// - the 'div' with the 'paste-content' id.
+
+			var pre = document.getElementsByTagName('pre');
+
+			// Add a copy button in the 'pre' element.
+			// which only has the className of 'language-'.
+
+			for (var i = 0; i < pre.length; i++) {
+				var isLanguage = pre[i].children[0].className.indexOf('language-');
+
+				if ( isLanguage === 0 ) {
+					var button           = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = 'Copy';
+
+					pre[i].appendChild(button);
+				}
+			};
+
+			// Run Clipboard
+
+			var copyCode = new Clipboard('.copy-button', {
+				target: function(trigger) {
+					return trigger.previousElementSibling;
+				}
+			});
+
+			// On success:
+			// - Change the "Copy" text to "Copied".
+			// - Swap it to "Copy" in 2s.
+			// - Lead user to the "contenteditable" area with Velocity scroll.
+
+			copyCode.on('success', function(event) {
+				event.clearSelection();
+				event.trigger.textContent = 'Copied';
+				window.setTimeout(function() {
+					event.trigger.textContent = 'Copy';
+				}, 2000);
+
+			});
+
+			// On error (Safari):
+			// - Change the  "Press Ctrl+C to copy"
+			// - Swap it to "Copy" in 2s.
+
+			copyCode.on('error', function(event) {
+				event.trigger.textContent = 'Press "Ctrl + C" to copy';
+				window.setTimeout(function() {
+					event.trigger.textContent = 'Copy';
+				}, 5000);
+			});
+
+		})();
+	</script>
 {{end}}

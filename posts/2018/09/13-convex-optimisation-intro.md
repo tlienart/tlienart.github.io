@@ -17,6 +17,8 @@ TODO:
 
 # Introduction to convex optimisation
 
+{{page_tags}}
+
 We'll consider the standard *constrained minimisation problem* in convex optimisation:
 
 $$

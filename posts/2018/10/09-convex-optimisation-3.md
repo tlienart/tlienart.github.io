@@ -16,6 +16,8 @@ last review 20/9/2018
 
 # Convex analysis (part 3)
 
+{{page_tags}}
+
 \toc
 
 ## Strict and strong convexity

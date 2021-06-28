@@ -15,3 +15,8 @@
 ## Mat
 
 * use https://github.com/triscale-innov/GFlops.jl to count number of floating point ops and plot that to show how things scale
+
+## Others
+
+* show tags on posts
+* group posts by "stories" (maybe change the part xxx and just add a number or whatever)

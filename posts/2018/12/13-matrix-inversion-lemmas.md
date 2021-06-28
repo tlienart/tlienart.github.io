@@ -6,6 +6,8 @@ tags = ["linear algebra"]
 
 # Matrix inversion lemmas
 
+{{page_tags}}
+
 {{redirect /pub/csml/mtheory/matinvlem.html}}
 
 The _Woodbury formula_ is maybe one of the most ubiquitous trick in basic linear algebra: it starts with the explicit formula for the inverse of a block 2x2 matrix and results in identities that can be used in kernel theory, the Kalman filter, to combine multivariate normals etc.

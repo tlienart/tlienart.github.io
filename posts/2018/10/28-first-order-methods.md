@@ -13,6 +13,8 @@ tags = ["optimisation", "projected gradient descent", "prospective"]
 
 # Thoughts on first order descent methods
 
+{{page_tags}}
+
 > This is an experimental set of notes, take it with appropriate care.
 
 First order methods (FOM) broadly designate iterative methods for continuous and (sub)differentiable optimisation that mainly use information from the (sub)gradient of the function.

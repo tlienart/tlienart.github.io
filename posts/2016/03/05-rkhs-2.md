@@ -10,6 +10,8 @@ tags = ["statistics", "probability", "rkhs"]
 
 # Probabilistic reasoning with kernel embeddings
 
+{{page_tags}}
+
 Following notations in \cite{song13}, we still consider two random variables $X$ and $Y$ with joint distribution $P(X, Y)$ and, additionally, we consider a prior distribution $\pi$ on $Y$.
 
 \toc

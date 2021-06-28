@@ -10,6 +10,8 @@ tags = ["optimisation", "projected gradient descent", "mirror descent"]
 
 # Mirror descent algorithm
 
+{{page_tags}}
+
 \toc
 
 ## From Euclidean to arbitrary projections

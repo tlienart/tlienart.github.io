@@ -11,6 +11,8 @@ tags = ["optimisation", "proximal method", "admm", "splitting methods"]
 
 # Splitting methods and ADMM
 
+{{page_tags}}
+
 In these notes, I show how some well known methods from numerical linear algebra can be applied to convex optimisation.
 The aim of these notes is to give an idea for how the following topics intertwine:
 

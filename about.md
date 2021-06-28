@@ -10,16 +10,16 @@ cover=true
 
 I've been working at Amazon as a machine learning (ML) scientist since 2020, first as part of
 [AWS SageMaker Autopilot team](https://aws.amazon.com/sagemaker/autopilot/) (an Auto-ML product),
-and currently as part of Amazon Transportation Services Europe (logistics and forecasting).
+and currently as part of ATS Europe (logistics and forecasting).
 
-Before that, I worked as a freelance ML engineer, mainly working on the ML for Julia
+Before that, I worked as a freelance ML engineer, mainly on the ML for Julia
 [MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl) open-source project sponsored by the
 [Alan Turing Institute](https://www.turing.ac.uk/).
 Prior to that, I was a postdoc in [Ben Rubinstein's group](http://www.bipr.net/) group at the University
 of Melbourne working on adversarial learning, after a stint as a postdoc in [Yves-Alexandre de Montjoye's group](https://cpg.doc.ic.ac.uk) computational privacy group at the Imperial College
 London.
 
-I obtained my DPhil in Statistics from Oxford in 2018 where I was part of the
+I obtained my DPhil in computational statistics from Oxford in 2018 where I was part of the
 [OxCSML group](http://csml.stats.ox.ac.uk/), co-supervised by
 [Arnaud Doucet](http://www.stats.ox.ac.uk/~doucet/) and
 [Yee-Whye Teh](http://www.stats.ox.ac.uk/~teh/).

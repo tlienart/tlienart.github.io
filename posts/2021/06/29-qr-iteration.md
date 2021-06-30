@@ -206,8 +206,8 @@ Writing it out, we have:
 1. get $(Q_{k,k+1}, R_{k+1}) = \text{qr}(R_{k} Q_{k-1,k})$ with $Q_{01}, R_1=\text{qr}(A)$,
 2. compute $Q_{k+1} = Q_k Q_{k,k+1}$.
 
-this is the (basic) QR iteration algorithm, also known as Francis QR algorithm.
-The columns of $Q_{k+1}$ align with the eigenvectors of $A$ for sufficiently large $k$.
+This is the (basic) QR iteration algorithm, also known as the Francis QR algorithm \citep{gvl83}.
+For $k$ sufficiently large, the columns of $Q_{k+1}$ will align with the eigenvectors of $A$.
 Correspondingly, we get the eigenvalues with
 
 $$
@@ -215,6 +215,8 @@ $$
 $$
 
 ### Implementation
+
+A basic version of the QR algorithm is fairly easy to implement as shown below with an implementation in Julia.
 
 ```!
 function francis_qr(A::Symmetric; iter=20)

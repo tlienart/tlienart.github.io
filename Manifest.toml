@@ -56,9 +56,9 @@ version = "0.8.18"
 
 [[HTTP]]
 deps = ["Base64", "Dates", "IniFile", "Logging", "MbedTLS", "NetworkOptions", "Sockets", "URIs"]
-git-tree-sha1 = "99c6bc381e98c5331f34b9ce949aebea209bd0db"
+git-tree-sha1 = "c6a1fff2fd4b1da29d3dccaffb1e1001244d844e"
 uuid = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-version = "0.9.11"
+version = "0.9.12"
 
 [[IOCapture]]
 deps = ["Logging", "Random"]

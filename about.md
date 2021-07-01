@@ -35,6 +35,12 @@ maintain a few packages with the main ones being:
 
 I also maintain(ed) or help(ed) maintain a bunch of related packages: [LiveServer.jl](http://github.com/asprionj/LiveServer.jl), [PkgPage.jl](https://github.com/tlienart/PkgPage.jl), [MLJLinearModels.jl](https://github.com/alan-turing-institute/MLJLinearModels.jl),  [DataScienceTutorials.jl](https://github.com/alan-turing-institute/DataScienceTutorials.jl),... as well as a few packages accompanying past research projects: [PDSampler.jl](https://github.com/alan-turing-institute/PDSampler.jl) ([paper](https://arxiv.org/abs/1701.04244)), [EPBP.jl](https://github.com/tlienart/EPBP.jl) ([paper](https://tlienart.github.io/assets/misc/pdf/epbp.pdf)), and [PosteriorServer.jl](https://github.com/BigBayes/PosteriorServer) ([paper](http://www.jmlr.org/papers/volume18/16-478/16-478.pdf)).
 
+## License
+
+The content of this website is under the permissive [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/legalcode) license.
+The code snippets can all be considered to be under the [MIT License](https://opensource.org/licenses/MIT).
+More importantly though, if you find some content useful, great, and even better if you let me know :smile:.
+
 @@pt-4 @@
 
 @@social-icons

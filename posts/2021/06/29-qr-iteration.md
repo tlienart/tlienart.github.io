@@ -56,20 +56,18 @@ and therefore $\lambda = \lambda^\star$ since $v$ is nonzero.
 Let $(v_1, \lambda_1)$ and $(v_2, \lambda_2)$ be two eigenpairs with $\lambda_1\neq \lambda_2$; then,
 
 \eqa{
-    (Av_1)^\star (Av_2) &=& \lambda_1\lambda_2 v_1^\star v_2 \\
-        &=& v_1^\star A^\star (\lambda_2 v_2) \speq \lambda_2^2 v_1^\star v_2
+    (Av_1)^\star (Av_2) &=& (\lambda_1v_1)^\star A v_2 \speq \lambda_1 (Av_1)^\star v_2 \speq \lambda_1^2 v_1^\star v_2 \\
+        &=& v_1^\star A (\lambda_2 v_2) \speq \lambda_2^2 v_1^\star v_2.
 }
-
-where for the first equality we just used the definition of eigenpairs and that the eigenvalues are real, and the second uses $A=A^\star$.
-Now, since $\lambda_1 \neq \lambda_2$ but $\lambda_1\lambda_2v_1^\star v_2 = \lambda_2^2 v_1^\star v_2$, we must necessarily have $v_1^\star v_2 = 0$.
+Thus, we have $\lambda_1^2 v_1^\star v_2 = \lambda_2^2 v_1^\star v_2$, but since $\lambda_1 \neq \lambda_2$ we must necessarily have $v_1^\star v_2 = 0$.
 
 @@colbox-blue
-  **Corollary**: let $A$ be real-valued and symmetric, then all eigenvectors are real-valued.
+  **Corollary**: let $A$ be real-valued and symmetric, then its eigenvectors are real-valued.
 @@
 
 This is a trivial consequence of the first theorem: since all eigenvalues are real, for any eigenpair we have $Av = \lambda v$ but since $A$ is real-valued and $\lambda$ is real, we must necessarily have the entries of $v$ be real too.
 
-A last thing we should prove is that a symmetric matrix is always diagonalisable but we'll shove this under the carpet for now and refer the reader to e.g. \citet{gvl83} for details.
+A last thing we should prove is that a symmetric matrix is always diagonalisable but we'll shove this under the carpet and refer the reader to e.g. \citet{gvl83} for details.
 
 For the rest of this page, we'll assume that $A$ is **real-valued**, **symmetric** and has **distinct** (real) **eigenvalues** $\lambda_k$ with normalised eigenvectors $v_k$ (i.e. the $v_k$ form an orthonormal basis of $\R^n$).
 Further, we will assume (without loss of generality) that the $(v_k,\lambda_k)$ are _ordered_ by the absolute value of $\lambda_k$ so that $|\lambda_1|>|\lambda_2|>\dots>|\lambda_n|$.
@@ -207,8 +205,7 @@ Writing it out, we have:
 2. compute $Q_{k+1} = Q_k Q_{k,k+1}$.
 
 This is the (basic) QR iteration algorithm, also known as the Francis QR algorithm \citep{gvl83}.
-For $k$ sufficiently large, the columns of $Q_{k+1}$ will align with the eigenvectors of $A$.
-Correspondingly, we get the eigenvalues with
+For $k$ sufficiently large, the columns of $Q_{k+1}$ will align with the eigenvectors of $A$ so that $AQ_{k+1} \approx Q_{k+1}\mathrm{diag}(\lambda_1, \dots, \lambda_n)$. Correspondingly, we approximate the eigenvalues with
 
 $$
     Q_{k+1}^tAQ_{k+1} \spe{\approx} \text{diag}(\lambda_1, \dots, \lambda_n).
@@ -217,6 +214,7 @@ $$
 ### Implementation
 
 A basic version of the QR algorithm is fairly easy to implement as shown below with an implementation in Julia.
+The function is called `francis_qr` since the algorithm is sometimes called "Francis QR algorithm" in reference to the english computer scientist [John Francis](https://en.wikipedia.org/wiki/John_G._F._Francis), see e.g. \citet{gvl83}.
 
 ```!
 function francis_qr(A::Symmetric; iter=20)
@@ -249,6 +247,9 @@ println("|D-Λ|: $err_offdiag")
 err_diag = round(maximum(abs.(A * Q - Q * Λ)), sigdigits=2)
 println("|AQ-QΛ|: $err_diag")
 ```
+
+In this form, the algorithm computes $K$ QR factorisations of an $n\times n$ matrix and computes $2K$ matrix-matrix of the same sizes.
+All these operations are $\mathcal O(n^3)$ so, overall, the complexity is $O(Kn^3)$ where $K$ is the number of iterations.
 
 ### Generalisations
 

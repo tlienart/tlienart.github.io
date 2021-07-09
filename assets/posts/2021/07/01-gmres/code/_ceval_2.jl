@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
 using LinearAlgebra, StableRNGs
 
-function mgs!(Q::Matrix, R::Matrix, v::Vector, k::Int)
+function mgs!(Q::AbstractMatrix, R::AbstractMatrix, v::Vector, k::Int)
     n = length(v)
     Q[:, k] .= v
     for i = 1:k-1

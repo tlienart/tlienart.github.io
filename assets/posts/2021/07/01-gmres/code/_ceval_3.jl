@@ -1,5 +1,5 @@
 # This file was generated, do not modify it. # hide
-function trisolve(R::Matrix, v::Vector)
+function trisolve(R::AbstractMatrix, v::Vector)
     k = size(R, 1)
     β = zero(v)
     for j = k:-1:1

@@ -3,9 +3,9 @@ title = "QR for eigen decomposition"
 mintoclevel = 2
 
 descr = """
-    Power method and the QR iteration.
+    Power method and the QR iteration, with code.
     """
-tags = ["linear algebra"]
+tags = ["linear algebra", "code"]
 +++
 
 # QR for eigen decomposition
@@ -217,28 +217,38 @@ A basic version of the QR algorithm is fairly easy to implement as shown below w
 The function is called `francis_qr` since the algorithm is sometimes called "Francis QR algorithm" in reference to the english computer scientist [John Francis](https://en.wikipedia.org/wiki/John_G._F._Francis), see e.g. \citet{gvl83}.
 
 ```!
+using PyPlot
+
 function francis_qr(A::Symmetric; iter=20)
     λ = sort(eigvals(A), by=abs, rev=true)   # to show convergence
     Q̃, R̃ = qr(A)
     Q = copy(Q̃)
     D = zero(Q)
+    δ = zeros(iter)
     for i = 1:iter
         Q̃, R̃ = qr(R̃ * Q̃)    # step 1
         Q *= Q̃              # step 2
         # computations to show convergence
-        D  = Q' * A * Q
-        λ̂  = diag(D)
-        δ  = round(maximum(abs.((λ̂ .- λ) ./ λ)), sigdigits=2)
-        println("Step $i: $δ")
+        D    = Q' * A * Q
+        λ̂    = diag(D)
+        δ[i] = maximum(abs.((λ̂ .- λ) ./ λ))
     end
-    return Q, D
+    return Q, D, δ
 end
 
 rng = StableRNG(510)
 n = 5
 A = Symmetric(rand(rng, n, n))
 
-Q, D = francis_qr(A)
+Q, D, δ = francis_qr(A)
+
+figure(figsize=(8, 6))
+semilogy(δ, marker="x")
+xlabel("Number of iterations")
+ylabel("Maximum relative error")
+xticks([1, 5, 10, 15, 20])
+savefig(joinpath(@OUTPUT, "conv.svg")) # hide
+
 Λ = Diagonal(D)
 
 err_offdiag = round(maximum(abs.(D - Λ)), sigdigits=2)
@@ -247,6 +257,8 @@ println("|D-Λ|: $err_offdiag")
 err_diag = round(maximum(abs.(A * Q - Q * Λ)), sigdigits=2)
 println("|AQ-QΛ|: $err_diag")
 ```
+
+@@reduce-vspace \fig{conv.svg} @@
 
 In this form, the algorithm computes $K$ QR factorisations of an $n\times n$ matrix and computes $2K$ matrix-matrix of the same sizes.
 All these operations are $\mathcal O(n^3)$ so, overall, the complexity is $O(Kn^3)$ where $K$ is the number of iterations.

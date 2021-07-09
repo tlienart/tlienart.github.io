@@ -7,7 +7,7 @@ main a {
 }
 
 main a:hover {
-  color: var(--oxb);
+  color: navy;
 }
 
 #main-name {font-weight: 500;}
@@ -308,4 +308,12 @@ pre {
 a#tag-icon {
   border-bottom: none;
   padding-right: 5px
+}
+
+span.bibref a:hover {
+  color: olive;
+}
+
+.reduce-vspace > img {
+  margin-top: -2em;
 }

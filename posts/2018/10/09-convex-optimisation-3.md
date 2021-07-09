@@ -14,7 +14,7 @@ NOTE:
 last review 20/9/2018
 -->
 
-# Convex analysis (part 3)
+# Convex analysis (part III)
 
 {{page_tags}}
 

@@ -3,9 +3,9 @@ title = "Gram-Schmidt Orthogonalisation"
 mintoclevel = 2
 
 descr = """
-    Gram-Schmidt, Modified Gram-Schmidt, QR factorisation, and implementation.
+    Gram-Schmidt, Modified Gram-Schmidt, QR factorisation, with code.
     """
-tags = ["linear algebra"]
+tags = ["linear algebra", "code"]
 +++
 
 # Gram-Schmidt Procedure

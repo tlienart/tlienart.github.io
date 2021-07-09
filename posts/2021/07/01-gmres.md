@@ -218,7 +218,7 @@ This code computes the $k$-th column of $Q$ and $R$ in place by orthogonalising 
 ```!
 using LinearAlgebra, StableRNGs
 
-function mgs!(Q::Matrix, R::Matrix, v::Vector, k::Int)
+function mgs!(Q::AbstractMatrix, R::AbstractMatrix, v::Vector, k::Int)
     n = length(v)
     Q[:, k] .= v
     for i = 1:k-1
@@ -260,7 +260,7 @@ so $\mathcal O(kn)$ overall.
 The code below is just a simple function implementing \eqref{qrls2}:
 
 ```!
-function trisolve(R::Matrix, v::Vector)
+function trisolve(R::AbstractMatrix, v::Vector)
     k = size(R, 1)
     β = zero(v)
     for j = k:-1:1

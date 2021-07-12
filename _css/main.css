@@ -158,8 +158,8 @@ li p {
 
 @media (max-width: 768px) {
   :target[id] {
-    margin-top: -100px;
-    padding-top: 120px;
+    margin-top: -90px;
+    padding-top: 130px;
   }
 }
 

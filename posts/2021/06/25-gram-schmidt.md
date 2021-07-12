@@ -19,7 +19,7 @@ tags = ["linear algebra", "code"]
 A set $\{u_1, \dots, u_n\}$ of vectors in $\R^n$ is an _orthonormal basis_ of $\R^n$ if $\scal{u_i, u_j}=\delta_{ij}$ for any $i,j \in \{1,\dots, n\}$.
 For such a set, any vector $w$ in $\R^n$ can be expressed as a linear combination of the $u_i$:
 $$ w \speq \sum_{i=1}^n \alpha_i u_i, $$
-where the weights $\alpha_i$ can be easily obtained by leveraging the orthonormality:
+where the weights $\alpha_i$ can easily be obtained by leveraging the orthonormality:
 \eqa{
     \scal{w, u_j} &=& \scal{\sum_{i=1}^n\alpha_i u_i, u_j} \\
                     &=& \sum_{i=1}^n\alpha_i \delta_{ij} \speq \alpha_j. }

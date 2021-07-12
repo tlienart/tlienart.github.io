@@ -1,5 +1,5 @@
 +++
-pretitle = "GMRES and related topics"
+pretitle = "GMRES & Conjugate Gradient"
 title = "$pretitle &ndash; pt. I"
 mintoclevel = 2
 
@@ -113,7 +113,8 @@ Both of these can be guided by how easy/cheap the iterations are, and how good a
 
 ### Minimum residual criterion
 
-The criterion we'll use mostly on this page is the **minimum residual criterion**.
+The criterion we'll use on this page is the **minimum residual criterion**.
+We will discuss another one in the [follow up post](\postCG).
 It's a fairly natural criterion that requires taking the $\beta_i$ such that the 2-norm of the residual $r_{k} = Ax_{k} - b$ is minimised with
 
 $$
@@ -129,10 +130,9 @@ $$
 which is just a least-square regression in $k$ dimensions.
 These subsequent regressions can each be solved cheaply as we show below.
 
-Let us simultaneously orthogonalise the $Aq_i$ to get another orthonormal basis  $\{\tilde{q}_1,\dots,\tilde{q}_k\}$.
+Assume we simultaneously orthogonalise the vectors $Aq_i$ to get another orthonormal basis  $\{\tilde{q}_1,\dots,\tilde{q}_k\}$.
 Let $\tilde{Q}^{(k)}$ be the matrix with columns $\tilde{q}_i$.
-Then, at step $k$, we can write $AQ^{(k)} = \tilde{Q}^{(k)}R^{(k)}$.
-The least-square problem then becomes
+Then, at step $k$, we can write $AQ^{(k)} = \tilde{Q}^{(k)}R^{(k)}$, and the least-square problem becomes
 
 $$
     \gamma^{(k)} \speq \arg\min_{\gamma \in \R^k}\quad \left\| r_0 + \tilde{Q}^{(k)}\gamma \right\|_2 \quad\text{with}\quad \gamma^{(k)} = R^{(k)}\beta^{(k)}.
@@ -150,7 +150,7 @@ Picking this criterion as well as the "Krylov" directions (see below) leads to t
 ### Generating directions
 
 Ideally, we would like the space $\mathcal P_k$ spanned by the $\{p_1, \dots, p_k\}$ to be such that the projection of $x$ on $\mathcal P_k$ is close to $x$.
-This, unfortunately, is not very easy to translate into a cheap procedure for generating a good sequence of $p_k$ not least because we don't have access to $x$.\\
+This, unfortunately, is not very easy to translate into a cheap procedure for generating a good sequence of $p_k$ not least because we don't have access to $x$.
 After executing step $k-1$, the only new information we can compute is the new residual $r_{k-1}$ and so, naturally, we could try using that in forming the new direction $p_k$.
 
 In this point we will briefly discuss three approaches to generating the $p_k$:
@@ -159,7 +159,7 @@ In this point we will briefly discuss three approaches to generating the $p_k$:
 * **Krylov**, where the $p_k$ are the residuals $r_{k-1}$,
 * **gradient**, where the $p_k$ are $A^tr_{k-1}$.
 
-The first one is not motivated by anything else than "it should work" but should not be expected to work great, the second one is a common choice which we already briefly discussed that links with Krylov subspace methods (as [discussed in the second part](\postCG)), and, finally, the third one is motivated by the gradient of \nobr{$F(x) = \|Ax - b\|_2^2$} which is $A^t(Ax-b)$ so that
+The first one is not motivated by anything else than "it should work" but should not be expected to work very well, the second one is a common choice, that links with Krylov subspace methods (as [discussed in the second part](\postCG)), and finally, the third one is motivated by the gradient of \nobr{$F(x) = \|Ax - b\|_2^2$} which is $A^t(Ax-b)$ so that
 
 $$
     \nabla F(x_{k-1}) \speq A^tr_{k-1}.
@@ -201,12 +201,12 @@ In that sense, the "Krylov" choice earlier can be connected to a fixed-point ite
 
 We've now discussed the different moving parts and can build a simple implementation which, at step $k$, does the following:
 
-1. gets a new direction $p_k$ and finds the corresponding $q_k$ using,
-2. computes $Aq_k$ and finds the corresponding $\tilde{q}_k$ as well as the corresponding $r_{i,k}$,
+1. gets a new direction $p_k$ and finds the corresponding orthonormal $q_k$,
+2. computes $Aq_k$ and finds the corresponding orthonormal $\tilde{q}_k$ as well as the $r_{i,k}$,
 3. computes $\gamma_k = - (\tilde{Q}^{(k)})^t r_0$,
 4. solves $R^{(k)}\beta^{(k)}=\gamma_k$ (a triangular system of size $k$).
 
-For step (1) and (2) we can for instance use the modified Gram-Schmidt procedure.
+For step (1) and (2) we can use the modified Gram-Schmidt procedure.
 
 In the points below, we show code that solves each of these steps and ultimately put them all together to form a working iterative solver.
 The code is not optimised but should hopefully be easy to read and to analyze.
@@ -387,8 +387,7 @@ The computational complexity (ignoring constants) at iteration $k$ of this funct
 The step with dominant complexity is the matrix-vector multiplication (computation of $Aq_k$) (and computation of $A^tr_k$ in the `grad` case).
 Applying a $n\times n$ matrix has complexity $\mathcal O(n^2)$ making the overall procedure $\mathcal O(Kn^2)$ with $K$ the number of steps.
 
-@@alert,alert-secondary **Note**: in many cases, there may be a specific procedure available to compute $Ax$ for some $x$ that will be faster than $\mathcal O(n^2)$. The Fourier matrix for instance can be applied in $\mathcal O(n\log n)$.
-The Fast Multipole Method (FMM) can also be used for many systems arising in physics, also leading to complexity  $\mathcal O(n\log n)$ (see e.g. \citet{bg97}). @@
+@@alert,alert-secondary **Note**: in many cases, there is a specific procedure available to compute (exactly or approximately) $Ax$ for some $x$ with complexity better than $\mathcal O(n^2)$. This can for instance be the case when $A$ is very sparse, or in some physics problem where the the Fast Multipole Method (FMM) can be used (see e.g. \citet{bg97}). @@
 
 ### Comparison
 
@@ -445,10 +444,8 @@ On this first plot we can see a number of interesting things:
 3. the "grad" directions (where $p_k = A^tr_k$) lead to much faster convergence than the other two,
 4. all choices eventually lead to $\|r_n\|\approx 0$ as expected.
 
-@@alert,alert-info **Note**: when writing this post and running experiments, I was a bit surprised by how much better the "grad" version behaves compared to the others, especially since, to the best of my knowledge, no one seems to discuss this choice in the literature.
-It could be an artifact of the benchmark though, or it could be well known. Either way if you have thoughts on this, I'll be glad to [hear from you](https://github.com/tlienart/tlienart.github.io/issues/new/choose).
-
-Note that this is not always the case though as will be seen in the [next post](/posts/2021/05-cg/). @@
+@@alert,alert-info **Note**: when writing this post and running experiments, I was a bit surprised by how much better the "grad" version behaves compared to the others here, especially since I had not seen that choice discussed in the literature.
+It may well be an artefact of the benchmark though (see e.g. [next post](/posts/2021/05-cg/)), or a well known fact. Either way if you have thoughts on this, I'll be glad to [hear from you](https://github.com/tlienart/tlienart.github.io/issues/new/choose). @@
 
 We can repeat a similar experiment with a larger matrix and more iterations and look at the time taken since the start instead of the number of iterations. Before doing so note that:
 
@@ -531,7 +528,7 @@ savefig(joinpath(@OUTPUT, "comp_3.svg")) # hide
 @@reduce-vspace \fig{comp_3.svg}@@
 
 As could be expected, the `gmres!` function is significantly faster (our code is really not optimised) but all methods exhibit the same behaviour, scaling like $n^2$ as expected.
-Note that only the trend should be looked at, the peaks and trophs should be ignored and are most likely due to how Julia handles the vector operations at different sizes.
+Note that only the trend should be looked at, the peaks and trophs should be ignored and are mostly due to how un-optimised our implementation is and how well Julia manages to optimise the steps at various sizes.
 
 
 ## Short references

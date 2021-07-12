@@ -18,7 +18,7 @@
 
 ## Site
 
-* group posts by "stories" (maybe change the part xxx and just add a number or whatever)
+* group posts by "stories" (maybe change the part xxx and just add a number or whatever) (in tags)
 
 ## Future topics
 

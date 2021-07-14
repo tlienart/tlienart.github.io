@@ -8,7 +8,7 @@ cover=true
 
 # Bio
 
-I've been working at Amazon as a machine learning (ML) scientist since 2020, first as part of
+I've been working at Amazon as a machine learning scientist since 2020, first as part of
 [AWS SageMaker Autopilot team](https://aws.amazon.com/sagemaker/autopilot/) (an Auto-ML product),
 and currently as part of ATS Europe (logistics and forecasting).
 
@@ -23,7 +23,7 @@ I obtained my DPhil in computational statistics from Oxford in 2018 where I was 
 [OxCSML group](http://csml.stats.ox.ac.uk/), co-supervised by
 [Arnaud Doucet](http://www.stats.ox.ac.uk/~doucet/) and
 [Yee-Whye Teh](http://www.stats.ox.ac.uk/~teh/).
-My research there focused on computational methods for Bayesian ML.
+My research focused on computational methods for Bayesian ML.
 
 ## Julia
 
@@ -31,7 +31,7 @@ I'm fond of the [Julia](https://julialang.org/) programming language and maintai
 maintain a few packages with the main ones being:
 
 * [Franklin.jl](https://github.com/tlienart/Franklin.jl), a hackable static site generator. Franklin is used for quite a few Julia sites including <https://julialang.org> and <https://juliacon.org>,
-* [MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl), a ML toolbox for Julia, a project led by [Anthony Blaom](https://ablaom.github.io) and sponsored by the [Alan Turing Institute](https://www.turing.ac.uk).
+* [MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl), a ML toolbox project for Julia led by [Anthony Blaom](https://ablaom.github.io), and sponsored by the [Alan Turing Institute](https://www.turing.ac.uk).
 
 I also maintain(ed) or help(ed) maintain a bunch of related packages: [LiveServer.jl](http://github.com/asprionj/LiveServer.jl), [PkgPage.jl](https://github.com/tlienart/PkgPage.jl), [MLJLinearModels.jl](https://github.com/alan-turing-institute/MLJLinearModels.jl),  [DataScienceTutorials.jl](https://github.com/alan-turing-institute/DataScienceTutorials.jl),... as well as a few packages accompanying past research projects: [PDSampler.jl](https://github.com/alan-turing-institute/PDSampler.jl) ([paper](https://arxiv.org/abs/1701.04244)), [EPBP.jl](https://github.com/tlienart/EPBP.jl) ([paper](https://tlienart.github.io/assets/misc/pdf/epbp.pdf)), and [PosteriorServer.jl](https://github.com/BigBayes/PosteriorServer) ([paper](http://www.jmlr.org/papers/volume18/16-478/16-478.pdf)).
 
@@ -39,7 +39,7 @@ I also maintain(ed) or help(ed) maintain a bunch of related packages: [LiveServe
 
 The content of this website is under the permissive [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/legalcode) license.
 The code snippets can all be considered to be under the [MIT License](https://opensource.org/licenses/MIT).
-More importantly though, if you find some content useful, great, and even better if you let me know :smile:.
+If you find something useful on this site, drop me a line, it will encourage me to keep writing!
 
 @@pt-4 @@
 

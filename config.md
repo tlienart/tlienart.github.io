@@ -5,6 +5,7 @@ Add here global page variables to use throughout your website.
 import Dates
 
 author = "Thibaut Lienart"
+short_author = "T. Lienart"
 description = "Thibaut Lienart's website"
 mintoclevel = 2
 maxtoclevel = 3

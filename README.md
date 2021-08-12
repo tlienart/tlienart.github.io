@@ -1,11 +1,7 @@
-* [ ] favicon
-* [ ] License
-* [x] cvxopt
-* [x] matinv
-* [x] rkhs
 * [ ] abi
 * [ ] glr
-* [ ]
+* [ ] linprog via convex conjugate
+* [ ] add link to Krylov for projected gradient descent
 
 
 ## Cvx
@@ -27,3 +23,12 @@
 * Nesterov (and related) accelerations
 * LP and dual LP (and relation with convex conjugate)
 * ABI, MAP
+* generate correlation matrix: 
+
+```julia
+L = LowerTriangular(randn(5, 5))
+D = Diagonal(1 ./ vec(sqrt.(sum(abs2, L, dims=2))))
+C = D * L * L' * D
+```
+
+could be interesting to see whether that covers the space, maybe look at spectrum

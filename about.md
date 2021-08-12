@@ -8,38 +8,34 @@ cover=true
 
 # Bio
 
-I've been working at Amazon as a machine learning scientist since 2020, first as part of
-[AWS SageMaker Autopilot team](https://aws.amazon.com/sagemaker/autopilot/) (an Auto-ML product),
-and currently as part of ATS Europe (logistics and forecasting).
+I've been working at Amazon as a ML scientist since early 2020, first as part of
+[AWS SageMaker Autopilot team](https://aws.amazon.com/sagemaker/autopilot/) (an Auto-ML service),
+and currently as part of ATS Europe (forecasting and logistics).
 
-Before that, I worked as a freelance ML engineer, mainly on the ML for Julia
-[MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl) open-source project sponsored by the
-[Alan Turing Institute](https://www.turing.ac.uk/).
-Prior to that, I was a postdoc in [Ben Rubinstein's group](http://www.bipr.net/) group at the University
-of Melbourne working on adversarial learning, after a stint as a postdoc in [Yves-Alexandre de Montjoye's group](https://cpg.doc.ic.ac.uk) computational privacy group at the Imperial College
-London.
+Before that, I worked as a freelance ML engineer on a number of projects including [MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl), an ML for Julia open-source project.
+I also did a postdoc with [Ben Rubinstein](http://www.bipr.net/) at the University
+of Melbourne working on adversarial learning, and one with [Yves-Alexandre de Montjoye](https://cpg.doc.ic.ac.uk) at the Imperial College London working on applications of ML in privacy.
 
-I obtained my DPhil in computational statistics from Oxford in 2018 where I was part of the
-[OxCSML group](http://csml.stats.ox.ac.uk/), co-supervised by
-[Arnaud Doucet](http://www.stats.ox.ac.uk/~doucet/) and
-[Yee-Whye Teh](http://www.stats.ox.ac.uk/~teh/).
-My research focused on computational methods for Bayesian ML.
+My DPhil was in computational Bayesian ML; I was part of the [Oxford CSML group](http://csml.stats.ox.ac.uk/), co-supervised by
+[Arnaud Doucet](http://www.stats.ox.ac.uk/~doucet/) and [Yee-Whye Teh](http://www.stats.ox.ac.uk/~teh/).
+
 
 ## Julia
 
-I'm fond of the [Julia](https://julialang.org/) programming language and maintain(ed) / help(ed)
-maintain a few packages with the main ones being:
+I enjoy coding in [Julia](https://julialang.org/) and maintain(ed) / help(ed) maintain a few packages, notably:
 
-* [Franklin.jl](https://github.com/tlienart/Franklin.jl), a hackable static site generator. Franklin is used for quite a few Julia sites including <https://julialang.org> and <https://juliacon.org>,
-* [MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl), a ML toolbox project for Julia led by [Anthony Blaom](https://ablaom.github.io), and sponsored by the [Alan Turing Institute](https://www.turing.ac.uk).
+* [Franklin.jl](https://github.com/tlienart/Franklin.jl), a hackable static site generator used for a number of Julia websites including <https://julialang.org> and <https://juliacon.org>,
+* [MLJ.jl](https://github.com/alan-turing-institute/MLJ.jl), a ML toolbox project for Julia led by [Anthony Blaom](https://ablaom.github.io).
 
-I also maintain(ed) or help(ed) maintain a bunch of related packages: [LiveServer.jl](http://github.com/asprionj/LiveServer.jl), [PkgPage.jl](https://github.com/tlienart/PkgPage.jl), [MLJLinearModels.jl](https://github.com/alan-turing-institute/MLJLinearModels.jl),  [DataScienceTutorials.jl](https://github.com/alan-turing-institute/DataScienceTutorials.jl),... as well as a few packages accompanying past research projects: [PDSampler.jl](https://github.com/alan-turing-institute/PDSampler.jl) ([paper](https://arxiv.org/abs/1701.04244)), [EPBP.jl](https://github.com/tlienart/EPBP.jl) ([paper](https://tlienart.github.io/assets/misc/pdf/epbp.pdf)), and [PosteriorServer.jl](https://github.com/BigBayes/PosteriorServer) ([paper](http://www.jmlr.org/papers/volume18/16-478/16-478.pdf)).
+I also maintain(ed) or help(ed) maintain a bunch of related packages: [LiveServer.jl](http://github.com/asprionj/LiveServer.jl), [PkgPage.jl](https://github.com/tlienart/PkgPage.jl), [MLJLinearModels.jl](https://github.com/alan-turing-institute/MLJLinearModels.jl),  [DataScienceTutorials.jl](https://github.com/alan-turing-institute/DataScienceTutorials.jl), etc. as well as a few others accompanying past research projects: [PDSampler.jl](https://github.com/alan-turing-institute/PDSampler.jl) ([paper](https://arxiv.org/abs/1701.04244)), [EPBP.jl](https://github.com/tlienart/EPBP.jl) ([paper](https://tlienart.github.io/assets/misc/pdf/epbp.pdf)), and [PosteriorServer.jl](https://github.com/BigBayes/PosteriorServer) ([paper](http://www.jmlr.org/papers/volume18/16-478/16-478.pdf)).
 
-## License
+<!-- ## License
 
 The content of this website is under the permissive [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/legalcode) license.
 The code snippets can all be considered to be under the [MIT License](https://opensource.org/licenses/MIT).
 If you find something useful on this site, drop me a line, it will encourage me to keep writing!
+
+-->
 
 @@pt-4 @@
 
